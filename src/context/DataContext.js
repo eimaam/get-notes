@@ -32,7 +32,10 @@ export default function DataProvider({ children }) {
         })
         .catch(err => toast.error(err.message))
     }
-  
+    
+    // const fetchNotes = async () => {
+    //     const data = await getDoc(doc(database, "noteDetails", ))
+    // }
   
   
     const value = {

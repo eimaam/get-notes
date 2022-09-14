@@ -85,9 +85,6 @@ export default function Upload() {
   const noteRef = collection(database, "noteDetails") //Note reference in firebase database
   const uploadNote = async (e) => {
     e.preventDefault()
-    if(fileURL == ""){
-      return toast.error("Retry...")
-    }
     uploadFile() //Calling the function for handling file upload
     // function to handle File/Note details
     setTimeout(async () => {
