@@ -6,7 +6,7 @@ import { auth } from '../firebaseConfig'
 
 export default function Home() {
     const { navigate } = useAuth()
-    const { userInfo } = useData();
+    const { userInfo, setShowMnav } = useData();
 
     useEffect(() => {
         onAuthStateChanged(auth, data => {
@@ -21,7 +21,7 @@ export default function Home() {
     const [showOthers, setShowOthers] = useState(false)
 
   return (
-    <div id='home' className="notes--container">
+    <div id='home' className="notes--container" onClick={() => setShowMnav(false)}>
         <div className='accordion--container'>
             <div id='header' className='accordion' onClick={() => setShowCPE(!showCPE)}>
                 <h2>Computer Engineering</h2>

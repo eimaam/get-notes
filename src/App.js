@@ -12,8 +12,8 @@ import Footer from './components/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 
   import 'react-toastify/dist/ReactToastify.css';
-import AuthProvider from './context/AuthContext';
-import DataProvider from './context/DataContext';
+import AuthProvider, { useAuth } from './context/AuthContext';
+import DataProvider, { useData } from './context/DataContext';
 import UsernameRegistration from './components/UsernameRegistration';
 import ErrorPage from './ErrorPage';
 
@@ -25,7 +25,7 @@ function App() {
         <DataProvider>
           <Nav />
           <Footer />
-          <Routes>
+          <Routes >
             <Route exact path="/" element={<Home />} />  
             <Route path="/signup" element={<Signup />} />  
             <Route exact path="/login" element={<Login />}    />
@@ -35,7 +35,9 @@ function App() {
           </Routes>
         </DataProvider>
       </AuthProvider>
-      <ToastContainer />
+      <ToastContainer 
+      autoClose={3000}
+      />
     </Router>
   );
 }

@@ -17,6 +17,10 @@ export const useData = () => {
 
 export default function DataProvider({ children }) {
 
+    // NAV show and hide state manager
+    const [showMnav, setShowMnav] = useState(false);
+
+
     const { user } = useAuth()
     const [userInfo, setUserInfo] = useState({})
 
@@ -34,7 +38,9 @@ export default function DataProvider({ children }) {
     const value = {
         userInfo,
         fetchUserDetail,
-        setUserInfo
+        setUserInfo,
+        setShowMnav,
+        showMnav
     }
 
     return (

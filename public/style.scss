@@ -295,7 +295,10 @@ nav{
         font-weight: 900;
     }
     #showNav{
-        display: block;
+        display: none;
+        @include mobile(1000px){
+            display: block;
+        }
     }
     #hideNav{
         display: none
@@ -380,6 +383,7 @@ footer{
     bottom: 0;
     margin: auto;
     width: 100%;
+    background-color: $--bgColor;
     
     p{
         margin: auto;

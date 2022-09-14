@@ -7,8 +7,8 @@ import { useEffect } from 'react';
 import { auth } from '../firebaseConfig';
 
 export default function Nav() {
-  const { userInfo, fetchUserDetail } = useData();
-  const [showMnav, setShowMnav] = useState(false);
+  const { userInfo, fetchUserDetail, setShowMnav, showMnav } = useData();
+  // const [showMnav, setShowMnav] = useState(false);
   const { logOut, user, isLogged } = useAuth();
   
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Nav() {
     const hamburger = document.getElementById("showNav") 
     const mNav = document.getElementById("mNav");
     const closeNav = document.getElementById("hideNav");
-    
+ 
     if(hamburger.style.display != "none"){
         setShowMnav(true)
         hamburger.style.display = "none"
@@ -56,7 +56,7 @@ export default function Nav() {
 
     {showMnav &&
     <div id='mNav'>
-      <h3>$Username</h3>
+      {userInfo.username ? <h3>{userInfo.username}</h3> : <h3></h3>}
       <ul>
           <NavLink to="/"><li>GET NOTES</li></NavLink>
           <NavLink to="/upload"><li>Upload Notes</li></NavLink>

@@ -308,7 +308,12 @@ nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
   font-weight: 900;
 }
 nav #showNav, #mNav #showNav {
-  display: block;
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  nav #showNav, #mNav #showNav {
+    display: block;
+  }
 }
 nav #hideNav, #mNav #hideNav {
   display: none;
@@ -399,6 +404,7 @@ footer {
   bottom: 0;
   margin: auto;
   width: 100%;
+  background-color: #7d8e95;
 }
 footer p {
   margin: auto;

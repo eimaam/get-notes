@@ -7,9 +7,11 @@ import { auth, database } from "../firebaseConfig"
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
+import { useData } from '../context/DataContext';
 
 export default function Signup() {
   const { user, setUser, DocRef, navigate} = useAuth();
+  const { setShowMnav } = useData();
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
@@ -66,7 +68,7 @@ export default function Signup() {
  
 
   return (
-    <div id='signup'>
+    <div id='signup' onClick={() => setShowMnav(false)}>
       <form onSubmit={signUp}>
         <label htmlFor="Username">
           Username:
