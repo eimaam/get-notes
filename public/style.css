@@ -1,0 +1,406 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@-webkit-keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: rotate(30deg);
+  }
+}
+@-webkit-keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+html, body {
+  margin: auto;
+  scroll-behavior: smooth;
+  font-family: "Noto Sans JP", sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(224, 224, 224);
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+a {
+  color: #fcccb4;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ul {
+  list-style-type: none;
+}
+
+div,
+button,
+h1, h2, h3, h4, h5, h6,
+span, p {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Righteous", cursive;
+  text-transform: uppercase;
+  font-size: 6vw;
+}
+
+h2 {
+  font-family: "Righteous", cursive;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 1000px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+}
+
+h3 {
+  font-family: "Righteous", cursive;
+  text-transform: Capitalize;
+}
+@media only screen and (max-width: 1000px) {
+  h3 {
+    font-size: 1rem;
+  }
+}
+
+h4 {
+  text-transform: uppercase;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 1000px) {
+  h4 {
+    font-size: 0.8rem;
+  }
+}
+
+p {
+  text-align: justify;
+}
+
+span {
+  color: #fcccb4;
+}
+
+input,
+select,
+textarea {
+  width: 80%;
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 0.8rem 0.5rem;
+  border: 1px solid #fbe0c3;
+  border-radius: 0.3rem;
+  background-color: #7d8e95;
+  color: var(--default);
+  resize: none;
+}
+@media only screen and (max-width: 1000px) {
+  input,
+select,
+textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+input[type=submit] {
+  font-family: "Righteous", cursive;
+  background-color: #fcccb4;
+  color: #344648;
+  font-weight: 1000;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1000px) {
+  input[type=submit] {
+    font-weight: 100;
+  }
+}
+
+button {
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  width: 120px;
+  border: none;
+  background-color: #fcccb4;
+  font-weight: 1000;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1000px) {
+  button {
+    font-weight: 100;
+  }
+}
+
+label {
+  font-size: 1.2rem;
+}
+@media only screen and (max-width: 1000px) {
+  label {
+    font-size: 1rem;
+  }
+}
+
+#home {
+  width: 80%;
+  height: 100vh;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  align-self: center;
+  margin-block: 25vh;
+  height: 100%;
+}
+@media only screen and (max-width: 1000px) {
+  #home {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #home {
+    width: 100%;
+  }
+}
+#home .accordion--container {
+  width: 70%;
+  background-color: #7d8e95;
+  padding: 3rem 1rem;
+}
+@media only screen and (max-width: 1000px) {
+  #home .accordion--container {
+    width: 90%;
+  }
+}
+#home .accordion--container .accordion {
+  padding-block: 1rem;
+  cursor: pointer;
+}
+#home .accordion--container .accordion h2 {
+  border-top: 1px solid #fcccb4;
+  border-bottom: 1px solid #fcccb4;
+  padding-block: 0.5rem;
+  color: #fcccb4;
+  display: flex;
+  justify-content: space-between;
+}
+#home .accordion--container .accordion h2::after {
+  content: "+";
+}
+#home .accordion--container .accordion .notes--detail {
+  padding-block: 1rem;
+}
+#home .accordion--container .accordion .notes--detail h3 {
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 2px;
+  padding-block: 0.5rem;
+}
+#home .accordion--container .accordion .notes--detail h3::before {
+  content: "*";
+}
+#home .accordion--container .accordion .notes--detail h3 span {
+  font-size: 1.2rem;
+}
+
+nav, #mNav {
+  position: fixed;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  background-color: #7d8e95;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-around;
+  z-index: 9;
+}
+@media only screen and (max-width: 1000px) {
+  nav, #mNav {
+    display: block;
+    top: 0;
+    height: auto;
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  nav h3, #mNav h3 {
+    display: none;
+  }
+}
+nav ul, #mNav ul {
+  text-transform: uppercase;
+  font-family: "Righteous", cursive;
+  font-size: 2rem;
+  color: #fcccb4;
+}
+@media only screen and (max-width: 1000px) {
+  nav ul, #mNav ul {
+    display: none;
+  }
+}
+nav li, #mNav li {
+  padding: 1rem;
+  margin-block: 2rem;
+  border-top: 1px solid #fbe0c3;
+  border-bottom: 1px solid #fbe0c3;
+}
+nav .nav--buttons--container, #mNav .nav--buttons--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+@media only screen and (max-width: 1000px) {
+  nav .nav--buttons--container, #mNav .nav--buttons--container {
+    display: none;
+  }
+}
+nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
+  font-size: 1.5rem;
+  align-self: center;
+  color: #fcccb4;
+  font-weight: 900;
+}
+nav #showNav, #mNav #showNav {
+  display: block;
+}
+nav #hideNav, #mNav #hideNav {
+  display: none;
+}
+
+#mNav {
+  display: grid;
+  position: fixed;
+  width: auto;
+  inset: 0 50% 0 0;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+}
+#mNav h3 {
+  display: block;
+  text-align: center;
+}
+#mNav ul {
+  display: block;
+}
+#mNav ul li {
+  font-size: 1.2rem;
+}
+#mNav .nav--buttons--container {
+  display: grid;
+}
+#mNav #close {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#main {
+  width: 80%;
+  height: 100vh;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+@media only screen and (max-width: 1000px) {
+  #main {
+    width: 100%;
+  }
+}
+
+#signup, #upload, #login {
+  width: 80%;
+  height: 100vh;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: rgb(224, 224, 224);
+  font-family: "Noto Sans JP", sans-serif;
+}
+@media only screen and (max-width: 1000px) {
+  #signup, #upload, #login {
+    width: 100%;
+  }
+}
+#signup form, #upload form, #login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-start;
+  width: 50%;
+  padding: 5rem 2rem;
+  background-color: #344648;
+}
+@media only screen and (max-width: 1000px) {
+  #signup form, #upload form, #login form {
+    width: 95%;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+}
+footer p {
+  margin: auto;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */

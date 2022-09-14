@@ -1,0 +1,388 @@
+@import './variables';
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+@mixin flex($direction){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+@mixin mobile($size){
+    @media only screen and (max-width: $size){
+        @content;
+    }
+}
+@mixin containerDesktop{
+    width: 80%;
+    height: 100vh;
+    float: right;
+    @include flex(column);
+
+    @include mobile(1000px){
+        width: 100%;
+    }
+}
+
+@mixin containerMobile{
+    width: 100%;
+}
+
+@mixin border{
+    border: 1px solid $--primary;
+    border-radius: 0.3rem;
+}
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: rotate(30deg);
+    }
+  }
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+
+html, body{
+    margin: auto;
+    scroll-behavior: smooth;
+    font-family: $--Noto;
+    width: 100%;
+    height: 100%;
+    background-color: $--default;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+a{
+    color: $--secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+img{
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+}
+ul{
+    list-style-type: none;
+}
+div,
+button,
+h1,h2,h3,h4,h5,h6,
+span,p{
+    margin: 0;
+}
+h1{
+    font-family: $--Righteous;
+    text-transform: uppercase;
+    font-size: 6vw;
+}
+h2{
+    font-family: $--Righteous;
+    font-size: 2rem;
+    text-transform: uppercase;
+
+    @include mobile(1000px){
+        font-size: 1.2rem;
+    }
+    
+}
+h3{
+    font-family: $--Righteous;
+    text-transform: Capitalize;
+
+    @include mobile(1000px){
+        font-size: 1rem;
+    }
+}
+h4{
+    text-transform: uppercase;
+    font-family: $--Righteous;
+    font-size: 1rem;
+
+    @include mobile(1000px){
+        font-size: 0.8rem;
+    }
+}
+p{
+    text-align: justify;
+}
+span{
+    color: $--secondary;
+}
+input, 
+select,  
+textarea{
+    width: 80%;
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 0.8rem 0.5rem;
+    @include border;
+    background-color: $--bgColor;
+    color: var(--default);
+    resize: none;
+
+    @include mobile(1000px){
+        width: 100%;
+        font-size: 16px;
+    }
+}
+input[type=submit]{
+    font-family: $--Righteous;
+    background-color: $--secondary;
+    color: $--main;
+    font-weight:1000;
+    cursor: pointer;
+
+    @include mobile(1000px){
+        font-weight: 100;
+    }
+}
+button{
+    font-family: $--Righteous;
+    font-size: 1rem;
+    width: 120px;
+    border: none;
+    background-color: $--secondary;
+    font-weight: 1000;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    @include mobile(1000px){
+        font-weight: 100;
+    }
+}
+label{
+    font-size: 1.2rem;
+
+    @include mobile(1000px){
+        font-size: 1rem;
+    }
+}
+
+
+// COMPONENTS STYLING starts here
+// HOME Component
+#home{
+    @include containerDesktop;
+    align-self: center;
+    margin-block: 25vh;
+    height: 100%;
+
+    @include mobile(1000px){
+        width: 100%;
+    }
+    
+    .accordion--container{
+        width: 70%;
+        background-color: $--bgColor;
+        padding: 3rem 1rem;
+
+        @include mobile(1000px){
+            width: 90%;
+        }
+
+        .accordion{
+            padding-block: 1rem;
+            cursor: pointer;
+
+            h2{
+                border-top: 1px solid $--secondary;
+                border-bottom: 1px solid $--secondary;
+                padding-block: 0.5rem;
+                color: $--secondary;
+                display: flex;
+                justify-content: space-between;
+
+                &::after{
+                    content: "+";
+                }
+            }
+
+            .notes--detail{
+                padding-block: 1rem;
+
+                h3{
+                    font-family: $--Noto;
+                    letter-spacing: 2px;
+                    padding-block: 0.5rem;
+
+                    &::before{
+                        content: "*";
+                    }
+
+                    span{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+        
+        
+    }
+}
+
+// NAV Styling
+// Desktop Nav
+nav{
+    position: fixed;
+    left: 0;
+    width: 20%;
+    height: 100vh;
+    background-color: $--bgColor;
+    @include flex(column);
+    justify-content: space-around;
+    z-index: 9;
+
+    @include mobile(1000px){
+        display: block;
+        top: 0;
+        height: auto;
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    h3{
+        @include mobile(1000px){
+            display: none;
+        }
+    }
+
+    ul{
+        text-transform: uppercase;
+        font-family: $--Righteous;
+        font-size: 2rem;
+        color: $--secondary;
+
+        @include mobile(1000px){
+            display: none;
+        }
+        
+    }
+    li{
+        padding: 1rem;
+        margin-block: 2rem;
+        border-top: 1px solid $--primary;
+        border-bottom: 1px solid $--primary;
+    }
+
+    .nav--buttons--container{
+        @include flex(column);
+
+        @include mobile(1000px){
+            display: none;
+        }
+    }
+
+    #hideNav, #showNav{
+        font-size: 1.5rem;
+        align-self: center;
+        color: $--secondary;
+        font-weight: 900;
+    }
+    #showNav{
+        display: block;
+    }
+    #hideNav{
+        display: none
+    }
+}
+// Mobile Nav
+#mNav{
+    @extend nav;
+    display: grid;
+    position: fixed;
+    width: auto;
+    inset: 0 50% 0 0;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+    h3{
+        display: block;
+        text-align: center;
+    }
+
+    ul{
+        display: block;
+        
+
+        li{
+            font-size: 1.2rem;
+        }
+    }
+
+    .nav--buttons--container{
+        display: grid;
+    }
+
+    #close{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+}
+
+// Main Component
+#main{
+    @include containerDesktop;
+}
+
+// SIGN UP component
+
+#signup{
+    @include containerDesktop;
+    color: $--default;
+    font-family: $--Noto;
+    
+    
+    form{
+        @include flex(column);
+        justify-content: flex-start;
+        width: 50%;
+        padding: 5rem 2rem;
+        background-color: $--main;
+
+        @include mobile(1000px){
+            width: 95%
+        }
+    }
+}
+
+// LOGIN Component
+#login{
+    @extend #signup;
+}
+
+// UPLOAD component
+#upload{
+    @extend #signup;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    
+    p{
+        margin: auto;
+        text-align: center;
+    }
+}
