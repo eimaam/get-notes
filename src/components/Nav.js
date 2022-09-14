@@ -62,7 +62,7 @@ export default function Nav() {
           <NavLink to="/upload"><li>Upload Notes</li></NavLink>
       </ul>
       <div className='nav--buttons--container'>
-        <button>Sign out</button>
+        <button onClick={logOut}>Sign out</button>
         <button>settings</button>
       </div>
     </div>
