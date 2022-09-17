@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { useEffect } from 'react';
 import { auth } from '../firebaseConfig';
+import { BarLoader } from "react-spinners"
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Nav() {
   const { userInfo, fetchUserDetail, setShowMnav, showMnav } = useData();
@@ -30,7 +32,6 @@ export default function Nav() {
         setShowMnav(false)
         hamburger.style.display = "block"
         closeNav.style.display = "none"
-
     }
   }
 
@@ -50,8 +51,9 @@ export default function Nav() {
           <button onClick={logOut}>Sign out</button>
           <button>settings</button>
         </div>
-        <RiMenuUnfoldLine id='showNav' onClick={toggleNav}/>
-        <RiMenuFoldLine id='hideNav' onClick={toggleNav}/>
+        <FaBars id='showNav' onClick={toggleNav}/>
+        <FaTimes id='hideNav' onClick={toggleNav}/>
+        {/* {userInfo.username ? <h4>{userInfo.username}</h4> : <BarLoader width={50}/>}  */}
     </nav>
 
     {showMnav &&

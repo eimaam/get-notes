@@ -16,6 +16,7 @@ export default function AuthProvider({ children }) {
     const navigate = useNavigate()
     const DocRef = collection(database, "userDetails")
 
+    const [loading, setLoading] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
     const [user, setUser] = useState({})
 

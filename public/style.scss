@@ -198,7 +198,6 @@ label{
 
         .accordion{
             padding-block: 1rem;
-            cursor: pointer;
 
             h2{
                 border-top: 1px solid $--secondary;
@@ -210,11 +209,17 @@ label{
 
                 &::after{
                     content: "+";
+                    cursor: pointer;
                 }
             }
 
             .notes--detail{
                 padding-block: 1rem;
+
+                a{
+                    color: black;
+                    font-size: 1rem;
+                }
 
                 h3{
                     font-family: $--Noto;
@@ -222,11 +227,16 @@ label{
                     padding-block: 0.5rem;
 
                     &::before{
-                        content: "*";
+                        content: "/ ";
                     }
 
                     span{
-                        font-size: 1.2rem;
+                        font-size: 1.1rem;
+                    }
+
+                    i{
+                        margin-left: 1rem;
+                        text-transform: lowercase;
                     }
                 }
             }

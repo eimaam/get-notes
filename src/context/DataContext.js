@@ -1,4 +1,4 @@
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
@@ -20,6 +20,7 @@ export default function DataProvider({ children }) {
     // NAV show and hide state manager
     const [showMnav, setShowMnav] = useState(false);
 
+    const [otherNotes, setOtherNotes] = useState([])
 
     const { user } = useAuth()
     const [userInfo, setUserInfo] = useState({})
@@ -28,22 +29,19 @@ export default function DataProvider({ children }) {
         const data = await getDoc(doc(database, "userDetails", user.email))
         .then(res => {
             setUserInfo(res.data())
-            console.log(res.data())
+            // console.log(res.data())
         })
         .catch(err => toast.error(err.message))
     }
     
-    // const fetchNotes = async () => {
-    //     const data = await getDoc(doc(database, "noteDetails", ))
-    // }
-  
+    
   
     const value = {
         userInfo,
         fetchUserDetail,
         setUserInfo,
         setShowMnav,
-        showMnav
+        showMnav,
     }
 
     return (

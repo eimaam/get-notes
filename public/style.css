@@ -216,7 +216,6 @@ label {
 }
 #home .accordion--container .accordion {
   padding-block: 1rem;
-  cursor: pointer;
 }
 #home .accordion--container .accordion h2 {
   border-top: 1px solid #fcccb4;
@@ -228,9 +227,14 @@ label {
 }
 #home .accordion--container .accordion h2::after {
   content: "+";
+  cursor: pointer;
 }
 #home .accordion--container .accordion .notes--detail {
   padding-block: 1rem;
+}
+#home .accordion--container .accordion .notes--detail a {
+  color: black;
+  font-size: 1rem;
 }
 #home .accordion--container .accordion .notes--detail h3 {
   font-family: "Noto Sans JP", sans-serif;
@@ -238,10 +242,14 @@ label {
   padding-block: 0.5rem;
 }
 #home .accordion--container .accordion .notes--detail h3::before {
-  content: "*";
+  content: "/ ";
 }
 #home .accordion--container .accordion .notes--detail h3 span {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+}
+#home .accordion--container .accordion .notes--detail h3 i {
+  margin-left: 1rem;
+  text-transform: lowercase;
 }
 
 nav, #mNav {

@@ -6,11 +6,13 @@ import { auth } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
+import { PulseLoader } from "react-spinners"
 
 
 export default function Login() {
   const { userInfo } = useData()
-  const { logInWithPopUp, navigate } = useAuth();
+  const { logInWithPopUp, navigate, loading, setLoading } = useAuth();
+
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
@@ -51,11 +53,24 @@ export default function Login() {
     })
   }
   
+  useEffect(()=>{
+    if(loading!==null){
+      setTimeout(()=>{
+          setLoading(false)
+      },5000)
+  }
+},[loading])
 
   return (
-    <div id='login'>
+      <div id='login'>
+        { loading 
+        ? 
+        <div>
+          <PulseLoader />
+        </div>
+      :
       <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="Username">
+      <label htmlFor="Username">
           Email Address:
         </label>
         <input
@@ -82,7 +97,9 @@ export default function Login() {
         <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
         <p>or</p>
         <button onClick={logInWithPopUp}>Sign up with <FaGoogle /></button>
-      </form>
-    </div>
-  )
-}
+        </form>
+      }
+        </div>
+        )
+      }
+      

@@ -25,6 +25,7 @@ export default function Upload() {
     courseCode: "",
     noteName: ""
   })
+
   const [file, setFile] = useState("")
   const [fileURL, setFileURL] = useState("")
   const [uploadProgress, setUploadProgress] = useState("")
@@ -42,7 +43,8 @@ export default function Upload() {
   //handle file upload change
   function handleFile(e){
     setFile(e.target.files[0])
-  } 
+  }
+
   // handle file upload
   function uploadFile(e){
     if(!file){
@@ -83,6 +85,7 @@ export default function Upload() {
 
   // UPLOAD NOTE + NOTE DETAILS
   const noteRef = collection(database, "noteDetails") //Note reference in firebase database
+
   const uploadNote = async (e) => {
     e.preventDefault()
     uploadFile() //Calling the function for handling file upload
@@ -108,7 +111,7 @@ export default function Upload() {
     <div id='upload' onClick={() => setShowMnav(false)}>
       <form action="" onSubmit={uploadNote}>
         <label htmlFor="category">Category:</label>
-        <select name='category' onChange={(e) => handleChange(e)}>
+        <select name='category' onChange={(e) => handleChange(e)} required>
             <option name='category' value="Computer Engineering" onChange={(e) => handleChange(e)}>Computer Engineering</option>
             <option name='category' value="Electrical &amp; Electronics Engineering" onChange={(e) => handleChange(e)}>Electrical &amp; Electronics Engineering</option>
             <option name='category' value="Others" onChange={(e) => handleChange(e)}>Others</option>
@@ -128,10 +131,17 @@ export default function Upload() {
         type="text" 
         placeholder='Course Code of Note' 
         onChange={(e) => handleChange(e)}
+        required
         />
 
         <label htmlFor="Note Title">Name/Title of Note:</label>
-        <input name='noteName' type="text" placeholder='e.g NOTE V' onChange={(e) => handleChange(e)}/>
+        <input 
+        name='noteName' 
+        type="text" 
+        placeholder='e.g NOTE V' 
+        onChange={(e) => handleChange(e)}
+        required
+        />
         <br />
         <input type="submit" name="" id="" value="UPLOAD"/>        
         {uploadProgress > 1 && <p>Uploading... {uploadProgress} % done</p>}
