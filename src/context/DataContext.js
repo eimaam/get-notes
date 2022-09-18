@@ -26,12 +26,15 @@ export default function DataProvider({ children }) {
     const [userInfo, setUserInfo] = useState({})
 
     const fetchUserDetail = async() => {
-        const data = await getDoc(doc(database, "userDetails", user.email))
-        .then(res => {
-            setUserInfo(res.data())
-            // console.log(res.data())
-        })
-        .catch(err => toast.error(err.message))
+        try{
+            const data = await getDoc(doc(database, "userDetails", user.email))
+            .then(res => {
+                setUserInfo(res.data())
+            })
+        }
+        catch(err){
+            console.log(err.message)
+        }
     }
     
     

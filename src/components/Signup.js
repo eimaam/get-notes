@@ -25,6 +25,8 @@ export default function Signup() {
     password: '',
     confirmPassword: '',
   })
+  
+  
 
   function handleChange(e){
     const {name, value} = e.target
@@ -35,11 +37,35 @@ export default function Signup() {
     console.log(data)
     )
   }
+  
+  const [notFocused, setNotFocused] = useState(false)
+
+  const usernameRegex = /^[a-z0-9_\.]+$/;
+  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const passwordRegex =  /^[A-Za-z]\w{6,14}$/
+  var isValid;
+
+  // const [error, setError] = useState({
+  //   username: "",
+  //   password: '',
+  //   email: ''
+  // })
+
+  
+
+  // useEffect(() => {
+  //   if(valid == null){
+  //     setTimeout(() => {
+  //       setValid(null)
+  //     }, 1000);
+  //   }
+  // }, [handleChange])
 
   function signUp(e){
     e.preventDefault()
     if(data.password != data.confirmPassword){
-      return toast.error('Passwords do not match')
+      return toast.info('Passwords do not match')
+        // setError('Passwords do not match')
     }else{
       createUserWithEmailAndPassword(auth, data.email, data.password)
           .then(res => {
@@ -65,68 +91,79 @@ export default function Signup() {
             })
     }
   }
+
  
 
   return (
     <div id='signup' onClick={() => setShowMnav(false)}>
       <form onSubmit={signUp}>
-        <label htmlFor="Username">
-          Username:
-        </label>
-        <input
-        name='username'
-        type="text" 
-        id='username' 
-        placeholder='Username' 
-        value={data.username}
-        onChange={(e) => handleChange(e)}
-        />
-        
-        <label htmlFor="Username">
-          Email:
-        </label>
-        <input
-        name='email'
-        type="email" 
-        id='email' 
-        placeholder='Email Address' 
-        value={data.email}
-        onChange={(e) => handleChange(e)}
-        />
+        <div>
+          <label htmlFor="Username">
+            Username
+          </label>
+          <input
+          name='username'
+          type="text" 
+          id='username' 
+          placeholder='Username' 
+          value={data.username}
+          onChange={handleChange}
+          onBlur={() => setNotFocused(true)}
+          />
+          {/* {notFocused && (valid.username ? setValid({username: ""}) : "Usernames can only use letters, numbers, underscores(_), and periods(.).")} */}
+        </div>
 
-        <label htmlFor="Passowrd">
-          Password:
-        </label>
-        <input
-        name='password'
-        type="password" 
-        id='password' 
-        placeholder='Password' 
-        value={data.password}
-        onChange={(e) => handleChange(e)}
-        />
+        <div>
+          <label htmlFor="Username">
+            Email
+          </label>
+          <input
+          name='email'
+          type="email" 
+          id='email' 
+          placeholder='Email Address' 
+          value={data.email}
+          onChange={handleChange}
+          />
+        </div>
 
-        <label htmlFor="Confirm Passowrd">
-          Confirm Password:
-        </label>
-        <input
-        name='confirmPassword'
-        type="password" 
-        id='confirmPassword' 
-        placeholder='Re-enter Password' 
-        value={data.confirmPassword}
-        onChange={(e) => handleChange(e)}
-        />
-        
+        <div>
+          <label htmlFor="Passowrd">
+            Password
+          </label>
+          <input
+          name='password'
+          type="password" 
+          id='password' 
+          placeholder='Password' 
+          value={data.password}
+          onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="Confirm Passowrd">
+            Confirm Password
+          </label>
+          <input
+          name='confirmPassword'
+          type="password" 
+          id='confirmPassword' 
+          placeholder='Re-enter Password' 
+          value={data.confirmPassword}
+          onChange={handleChange}
+          />
+        </div>
+        {/* <p>{error}</p> */}
         <input 
         type="submit" 
         value="SIGN UP"
         />
         <input 
         type="submit" 
-        value="LOG IN with G"
+        value="LOG IN with Gmail"
         />
-        <p>Have an account already? <Link to="/login"> LOG IN </Link></p>
+        <p>Have an account already? <Link to="/login"><b>LOG IN</b> </Link></p>
       </form>
     </div>
   )

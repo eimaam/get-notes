@@ -123,7 +123,7 @@ i {
   text-transform: lowercase;
 }
 
-input,
+input, button,
 select,
 textarea {
   width: 80%;
@@ -137,7 +137,7 @@ textarea {
   resize: none;
 }
 @media only screen and (max-width: 1000px) {
-  input,
+  input, button,
 select,
 textarea {
     width: 100%;
@@ -145,7 +145,7 @@ textarea {
   }
 }
 
-input[type=submit] {
+input[type=submit], button[type=submit] {
   font-family: "Blinker", sans-serif;
   background-color: #fcccb4;
   color: #344648;
@@ -153,7 +153,7 @@ input[type=submit] {
   cursor: pointer;
 }
 @media only screen and (max-width: 1000px) {
-  input[type=submit] {
+  input[type=submit], button[type=submit] {
     font-weight: 100;
   }
 }
@@ -173,13 +173,12 @@ input[type=submit] {
 button {
   font-family: "Blinker", sans-serif;
   font-size: 1rem;
-  width: 80%;
   border: 0;
   background-color: #fcccb4;
-  font-weight: 1000;
   text-transform: uppercase;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
+  color: black;
   cursor: pointer;
 }
 @media only screen and (max-width: 1000px) {
@@ -190,6 +189,7 @@ button {
 
 label {
   font-size: 1.1rem;
+  text-align: left;
 }
 @media only screen and (max-width: 1000px) {
   label {
@@ -311,9 +311,10 @@ nav, #mNav {
   }
 }
 nav ul, #mNav ul {
+  margin: auto;
   text-transform: uppercase;
   font-family: "Blinker", sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #fcccb4;
 }
 @media only screen and (max-width: 1000px) {
@@ -333,6 +334,7 @@ nav .nav--buttons--container, #mNav .nav--buttons--container {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding-block: 1rem;
 }
 nav .nav--buttons--container button, #mNav .nav--buttons--container button {
   width: 100%;
@@ -432,10 +434,22 @@ nav #hideNav, #mNav #hideNav {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  justify-content: flex-start;
+  text-align: left;
   width: 50%;
   padding: 5rem 2rem;
   background-color: #344648;
+}
+#signup form div, #upload form div, #login form div {
+  margin: auto;
+  width: 80%;
+}
+@media only screen and (max-width: 1000px) {
+  #signup form div, #upload form div, #login form div {
+    width: 100%;
+  }
+}
+#signup form div input, #upload form div input, #login form div input, #signup form div button, #upload form div button, #login form div button {
+  width: 100%;
 }
 @media only screen and (max-width: 1000px) {
   #signup form, #upload form, #login form {

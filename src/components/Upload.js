@@ -112,10 +112,10 @@ export default function Upload() {
       <form action="" onSubmit={uploadNote}>
         <label htmlFor="category">Category:</label>
         <select name='category' onChange={(e) => handleChange(e)} required>
-            <option name='category' value="Computer Engineering" onChange={(e) => handleChange(e)}>Computer Engineering</option>
-            <option name='category' value="Electrical &amp; Electronics Engineering" onChange={(e) => handleChange(e)}>Electrical &amp; Electronics Engineering</option>
-            <option name='category' value="Others" onChange={(e) => handleChange(e)}>Others</option>
-            <option name='category' value="choose note category" selected disabled>Choose note category</option>
+            <option value="Computer Engineering">Computer Engineering</option>
+            <option value="Electrical &amp; Electronics Engineering">Electrical &amp; Electronics Engineering</option>
+            <option value="Others" >Others</option>
+            <option value="choose note category" selected disabled>Choose note category</option>
         </select>
         <label htmlFor="File ">File/Note:</label>
         <input 
@@ -125,7 +125,6 @@ export default function Upload() {
         onChange={(e) => handleFile(e)}
         />
 
-        <label htmlFor="course code">Course Code:</label>
         <input 
         name='courseCode' 
         type="text" 
@@ -137,7 +136,6 @@ export default function Upload() {
         required
         />
 
-        <label htmlFor="Note Title">Name/Title of Note:</label>
         <input 
         name='noteName' 
         type="text" 

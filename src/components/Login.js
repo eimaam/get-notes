@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, setPersistence, browserLocalPersistence} from 'firebase/auth'
-import { FaGoogle } from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-toastify';
 import { auth } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
@@ -72,33 +72,37 @@ export default function Login() {
         </div>
       :
       <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="Username">
-            Email Address:
-          </label>
-          <input
-          name='email'
-          type="email" 
-          id='email' 
-          placeholder='Email Address' 
-          value={data.email}
-          onChange={(e) => handleChange(e)}
-          />
+        <div>
+            <label htmlFor="Passowrd">
+              Username
+            </label>
+            <input
+            name='email'
+            type="email" 
+            id='email' 
+            placeholder='Email Address' 
+            value={data.email}
+            onChange={(e) => handleChange(e)}
+            />
+        </div>
 
-          <label htmlFor="Passowrd">
-            Password:
-          </label>
-          <input
-          name='password'
-          type="password" 
-          id='password' 
-          placeholder='Password' 
-          value={data.password}
-          onChange={(e) => handleChange(e)}
-          />
+        <div>
+            <label htmlFor="Passowrd">
+              Password
+            </label>
+            <input
+            name='password'
+            type="password" 
+            id='password' 
+            placeholder='Password' 
+            value={data.password}
+            onChange={(e) => handleChange(e)}
+            />
+        </div>
           <input type="submit" value="LOGIN"/>
           <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
           <p>or</p>
-          <button onClick={logInWithPopUp}>Sign up with <FaGoogle /></button>
+          <button onClick={logInWithPopUp}>Sign up with <FcGoogle /></button>
         </form>
       }
         </div>

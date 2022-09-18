@@ -47,13 +47,14 @@ export default function Nav() {
             <li>Upload Notes</li>
           </NavLink>
         </ul>
-        <div className='nav--buttons--container'>
-          <button onClick={logOut}>Sign out</button>
-          <button><Link to='/user/settings'> settings</Link></button>
-        </div>
+        {user &&
+          <div className='nav--buttons--container'>
+            <button onClick={logOut}>Sign out</button>
+            <button><Link to='/user/settings'> settings</Link></button>
+          </div>
+        }
         <FaBars id='showNav' onClick={toggleNav}/>
         <FaTimes id='hideNav' onClick={toggleNav}/>
-        {/* {userInfo.username ? <h4>{userInfo.username}</h4> : <BarLoader width={50}/>}  */}
     </nav>
 
     {showMnav &&
@@ -63,10 +64,12 @@ export default function Nav() {
           <NavLink to="/"><li>GET NOTES</li></NavLink>
           <NavLink to="/upload"><li>Upload Notes</li></NavLink>
       </ul>
-      <div className='nav--buttons--container'>
-        <button onClick={logOut}>Sign out</button>
-        <button><Link to="/user/settings"> settings</Link></button>
-      </div>
+      {user &&
+          <div className='nav--buttons--container'>
+            <button onClick={logOut}>Sign out</button>
+            <button><Link to='/user/settings'> settings</Link></button>
+          </div>
+      }
     </div>
     }
     </React.StrictMode>
