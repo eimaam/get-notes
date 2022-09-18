@@ -40,7 +40,7 @@
 html, body {
   margin: auto;
   scroll-behavior: smooth;
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "PT Mono", monospace;
   width: 100%;
   height: 100%;
   background-color: rgb(224, 224, 224);
@@ -74,13 +74,13 @@ span, p {
 }
 
 h1 {
-  font-family: "Righteous", cursive;
+  font-family: "Blinker", sans-serif;
   text-transform: uppercase;
   font-size: 6vw;
 }
 
 h2 {
-  font-family: "Righteous", cursive;
+  font-family: "Blinker", sans-serif;
   font-size: 2rem;
   text-transform: uppercase;
 }
@@ -91,7 +91,7 @@ h2 {
 }
 
 h3 {
-  font-family: "Righteous", cursive;
+  font-family: "Blinker", sans-serif;
   text-transform: Capitalize;
 }
 @media only screen and (max-width: 1000px) {
@@ -102,7 +102,7 @@ h3 {
 
 h4 {
   text-transform: uppercase;
-  font-family: "Righteous", cursive;
+  font-family: "Blinker", sans-serif;
   font-size: 1rem;
 }
 @media only screen and (max-width: 1000px) {
@@ -117,6 +117,10 @@ p {
 
 span {
   color: #fcccb4;
+}
+
+i {
+  text-transform: lowercase;
 }
 
 input,
@@ -142,7 +146,7 @@ textarea {
 }
 
 input[type=submit] {
-  font-family: "Righteous", cursive;
+  font-family: "Blinker", sans-serif;
   background-color: #fcccb4;
   color: #344648;
   font-weight: 1000;
@@ -154,11 +158,23 @@ input[type=submit] {
   }
 }
 
-button {
-  font-family: "Righteous", cursive;
+::-moz-placeholder {
   font-size: 1rem;
-  width: 120px;
-  border: none;
+}
+
+:-ms-input-placeholder {
+  font-size: 1rem;
+}
+
+::placeholder {
+  font-size: 1rem;
+}
+
+button {
+  font-family: "Blinker", sans-serif;
+  font-size: 1rem;
+  width: 80%;
+  border: 0;
   background-color: #fcccb4;
   font-weight: 1000;
   text-transform: uppercase;
@@ -173,12 +189,22 @@ button {
 }
 
 label {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 @media only screen and (max-width: 1000px) {
   label {
     font-size: 1rem;
   }
+}
+
+.loader {
+  margin: auto;
+  width: 100% !important;
+  height: 100vh !important;
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 #home {
@@ -190,6 +216,7 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 85%;
   align-self: center;
   margin-block: 25vh;
   height: 100%;
@@ -235,9 +262,11 @@ label {
 #home .accordion--container .accordion .notes--detail a {
   color: black;
   font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: normal;
 }
 #home .accordion--container .accordion .notes--detail h3 {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "PT Mono", monospace;
   letter-spacing: 2px;
   padding-block: 0.5rem;
 }
@@ -250,6 +279,7 @@ label {
 #home .accordion--container .accordion .notes--detail h3 i {
   margin-left: 1rem;
   text-transform: lowercase;
+  font-weight: 100;
 }
 
 nav, #mNav {
@@ -282,7 +312,7 @@ nav, #mNav {
 }
 nav ul, #mNav ul {
   text-transform: uppercase;
-  font-family: "Righteous", cursive;
+  font-family: "Blinker", sans-serif;
   font-size: 2rem;
   color: #fcccb4;
 }
@@ -303,6 +333,12 @@ nav .nav--buttons--container, #mNav .nav--buttons--container {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+nav .nav--buttons--container button, #mNav .nav--buttons--container button {
+  width: 100%;
+}
+nav .nav--buttons--container button a, #mNav .nav--buttons--container button a {
+  color: black;
 }
 @media only screen and (max-width: 1000px) {
   nav .nav--buttons--container, #mNav .nav--buttons--container {
@@ -383,7 +419,7 @@ nav #hideNav, #mNav #hideNav {
   align-items: center;
   gap: 1rem;
   color: rgb(224, 224, 224);
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "PT Mono", monospace;
 }
 @media only screen and (max-width: 1000px) {
   #signup, #upload, #login {

@@ -129,8 +129,11 @@ export default function Upload() {
         <input 
         name='courseCode' 
         type="text" 
-        placeholder='Course Code of Note' 
+        placeholder='Course Code' 
         onChange={(e) => handleChange(e)}
+        maxLength={6}
+        pattern="XXX000"
+        title='Course Code should be in the form XXX000 e.g CPE111'
         required
         />
 

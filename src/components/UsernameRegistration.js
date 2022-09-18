@@ -15,6 +15,9 @@ export default function UsernameRegistration() {
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
+        if(userInfo.username){
+            navigate('../')
+        }
         if(!data){
           navigate('../login')
         }
@@ -35,9 +38,9 @@ export default function UsernameRegistration() {
   }
 
   // Add Username
-  function addUsername(e){
+  const addUsername = async (e) => {
     e.preventDefault()
-    updateDoc(doc(DocRef, user.email), {
+    await updateDoc(doc(DocRef, user.email), {
         username: data.username,
       })
       toast.info("Profile Updated!")

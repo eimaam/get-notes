@@ -3,8 +3,9 @@ import { createContext } from 'react'
 import { database, auth, googleProvider } from '../firebaseConfig'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
-import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { browserLocalPersistence, onAuthStateChanged, setPersistence, signInWithPopup, signOut } from 'firebase/auth'
 import { toast } from 'react-toastify'
+import { useData } from './DataContext'
 
 const AuthContext = createContext()
 
@@ -16,15 +17,17 @@ export default function AuthProvider({ children }) {
     const navigate = useNavigate()
     const DocRef = collection(database, "userDetails")
 
+    const [message, setMessage] = useState('')
+    const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
     const [user, setUser] = useState({})
 
     const getData = async () => {
+        setLoading(true)
         onAuthStateChanged(auth, async data => {
             if(data){
                 setIsLogged(true)
-
                 try{
                     const document = await getDoc(doc(database, "userDetails", data.email))
                     if(!document.exists()){
@@ -38,7 +41,8 @@ export default function AuthProvider({ children }) {
                 }
             }
             setUser(data)
-            console.log(data)
+            setLoading(false)
+            // console.log(data)
         })
     }
 
@@ -47,8 +51,9 @@ export default function AuthProvider({ children }) {
         getData()
     }, [])
 
-    const logInWithPopUp = () => {
-        signInWithPopup(auth, googleProvider)
+    const logInWithPopUp = async () => {
+        await setPersistence(auth, browserLocalPersistence)
+        await signInWithPopup(auth, googleProvider)
         .then(res => {
             setUser({
                 email: res.email
@@ -57,7 +62,7 @@ export default function AuthProvider({ children }) {
         })
         .catch(err => {
             if(err.code == 'auth/popup-blocked'){
-                toast.error(err.code)
+                toast.error('Pop-up blocked by browser!')
             }else{
                 toast.error(err.message)
             }
@@ -71,7 +76,11 @@ export default function AuthProvider({ children }) {
             localStorage.clear()
             toast.info("LOGGED OUT!")
         })
-        navigate('../login')
+        if(!user){
+            navigate('../login')
+        }else{
+            navigate('../')
+        }
     }
 
     
@@ -81,7 +90,11 @@ const value = {
     DocRef,
     logInWithPopUp,
     logOut,
-    navigate
+    navigate,
+    message,
+    setMessage,
+    error,
+    setError
 }
 
   return (

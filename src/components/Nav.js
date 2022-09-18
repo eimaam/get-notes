@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { RiMenuUnfoldLine, RiMenuFoldLine } from "react-icons/ri"
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
@@ -49,7 +49,7 @@ export default function Nav() {
         </ul>
         <div className='nav--buttons--container'>
           <button onClick={logOut}>Sign out</button>
-          <button>settings</button>
+          <button><Link to='/user/settings'> settings</Link></button>
         </div>
         <FaBars id='showNav' onClick={toggleNav}/>
         <FaTimes id='hideNav' onClick={toggleNav}/>
@@ -65,7 +65,7 @@ export default function Nav() {
       </ul>
       <div className='nav--buttons--container'>
         <button onClick={logOut}>Sign out</button>
-        <button>settings</button>
+        <button><Link to="/user/settings"> settings</Link></button>
       </div>
     </div>
     }

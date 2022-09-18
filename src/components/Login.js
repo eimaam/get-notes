@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged} from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, setPersistence, browserLocalPersistence} from 'firebase/auth'
 import { FaGoogle } from 'react-icons/fa'
 import { toast } from 'react-toastify';
 import { auth } from '../firebaseConfig';
@@ -37,29 +37,31 @@ export default function Login() {
   }
 
   // Sign in with Email and Password
-  function handleSubmit(e){
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    signInWithEmailAndPassword(auth, data.email, data.password)
-    .then(res => {
-      console.log(res.user)
-      toast.success("LOGGED IN")
-      
-      return setTimeout(() => {
-        navigate('../') 
-      }, 3000);
-    })
-    .catch(err => {
-      toast.error(err.message)
-    })
-  }
+    try{
+      await setPersistence(auth, browserLocalPersistence)
+       
+      await signInWithEmailAndPassword(auth, data.email, data.password)
+        .then((res)=> console.log(res.user))
+          toast.success("LOGGED IN")
+          return setTimeout(() => {
+            navigate('../') 
+          }, 3000);
+      }
+      catch(err){
+        toast.error(err.message)
+      }
+    }
   
-  useEffect(()=>{
-    if(loading!==null){
-      setTimeout(()=>{
-          setLoading(false)
-      },5000)
-  }
-},[loading])
+  
+//   useEffect(()=>{
+//     if(loading!==null){
+//       setTimeout(()=>{
+//           setLoading(false)
+//       },5000)
+//   }
+// },[loading])
 
   return (
       <div id='login'>
@@ -70,33 +72,33 @@ export default function Login() {
         </div>
       :
       <form action="" onSubmit={handleSubmit}>
-      <label htmlFor="Username">
-          Email Address:
-        </label>
-        <input
-        name='email'
-        type="email" 
-        id='email' 
-        placeholder='Email Address' 
-        value={data.email}
-        onChange={(e) => handleChange(e)}
-        />
+        <label htmlFor="Username">
+            Email Address:
+          </label>
+          <input
+          name='email'
+          type="email" 
+          id='email' 
+          placeholder='Email Address' 
+          value={data.email}
+          onChange={(e) => handleChange(e)}
+          />
 
-        <label htmlFor="Passowrd">
-          Passowrd:
-        </label>
-        <input
-        name='password'
-        type="password" 
-        id='password' 
-        placeholder='Password' 
-        value={data.password}
-        onChange={(e) => handleChange(e)}
-        />
-        <input type="submit" value="LOGIN"/>
-        <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
-        <p>or</p>
-        <button onClick={logInWithPopUp}>Sign up with <FaGoogle /></button>
+          <label htmlFor="Passowrd">
+            Password:
+          </label>
+          <input
+          name='password'
+          type="password" 
+          id='password' 
+          placeholder='Password' 
+          value={data.password}
+          onChange={(e) => handleChange(e)}
+          />
+          <input type="submit" value="LOGIN"/>
+          <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
+          <p>or</p>
+          <button onClick={logInWithPopUp}>Sign up with <FaGoogle /></button>
         </form>
       }
         </div>

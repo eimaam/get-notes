@@ -5,10 +5,10 @@ import { useData } from '../context/DataContext'
 import { auth } from '../firebaseConfig'
 import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import { database } from '../firebaseConfig'
-import { DotLoader } from 'react-spinners'
+import { RingLoader } from 'react-spinners'
 
 export default function Home() {
-    const { navigate, user } = useAuth()
+    const { navigate, user, loading } = useAuth()
     const { userInfo, setShowMnav, } = useData();
 
     // state to manage accordions
@@ -93,7 +93,7 @@ export default function Home() {
     <div id='home' className="notes--container" onClick={() => setShowMnav(false)}>
         {!userInfo.username ? <div>
             <p>Loading Notes...</p>
-            <DotLoader />
+            <RingLoader />
             </div>
         :
         <div className='accordion--container'>
@@ -108,8 +108,8 @@ export default function Home() {
                     return <h3>
                                 <a href={notes.url}>
                                     <span>{notes.CourseCode}: </span> 
-                                    {notes.noteName}
-                                    <i>(by: {notes.uploadedBy})</i>
+                                    {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                    <i>({notes.uploadedBy})</i>
                                 </a>
                             </h3>
                         })
@@ -130,8 +130,8 @@ export default function Home() {
                         return <h3>
                                     <a href={notes.url}>
                                         <span>{notes.CourseCode}: </span> 
-                                        {notes.noteName}
-                                        <i>(by: {notes.uploadedBy})</i>
+                                        {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                        <i>( {notes.uploadedBy})</i>
                                     </a>
                                 </h3>
                         })
@@ -151,8 +151,8 @@ export default function Home() {
                     return <h3>
                                 <a href={notes.url}>
                                     <span>{notes.CourseCode}: </span> 
-                                    {notes.noteName}
-                                    <i>(by: {notes.uploadedBy})</i>
+                                    {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                    <i>( {notes.uploadedBy})</i>
                                 </a>
                             </h3>
                     })

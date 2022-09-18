@@ -95,7 +95,7 @@ export default function Signup() {
         />
 
         <label htmlFor="Passowrd">
-          Passowrd:
+          Password:
         </label>
         <input
         name='password'
@@ -107,7 +107,7 @@ export default function Signup() {
         />
 
         <label htmlFor="Confirm Passowrd">
-          Confirm Passowrd:
+          Confirm Password:
         </label>
         <input
         name='confirmPassword'
