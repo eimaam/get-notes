@@ -92,7 +92,7 @@ useEffect(() => {
         </React.StrictMode>
         }
         {!show && <button onClick={() => setShow(true)}>Change Password</button>}
-        <button disabled>Change username <i>(coming soon...)</i></button>
+        <button type='button' disabled>Change username <i>(coming soon...)</i></button>
         <p>{message}</p>
         <p>{error}</p>
       </form>

@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, setDoc, Timestamp, updateDoc } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
@@ -45,42 +45,30 @@ export default function Upload() {
     setFile(e.target.files[0])
   }
 
-  // handle file upload
-  function uploadFile(e){
-    if(!file){
-      toast.error('Pls add a File first!')
-    }
-    const uploadTask = uploadBytesResumable(storageRef, file)
-    uploadTask.on("state_changed", (snapshot) => {
-          const uploadProgress = Math.round(
-              (snapshot.bytesTransferred/snapshot.totalBytes) * 100
-          );
-          // update upload progress
-          setUploadProgress(uploadProgress);
-      },
-      (err) => console.log(err),
-      () => {
-        // download url
-        getDownloadURL(uploadTask.snapshot.ref)
-        .then((url) => {
-            setFileURL(url);
-        });
-      }
-  ); 
-  }
-
-  // const uploadNote = async (e) => {
-  //   e.preventDefault()
-  //   const document = await getDoc(doc(database, "noteDetails", data.category))
-  //   if(!document.exists()){
-  //     setDoc(doc(database, "noteDetails", data.category), {
-  //       category: data.category,
-  //       CourseCode: data.courseCode,
-  //       noteName: data.noteName,
-  //       uploadedBy: userInfo.username
-  //     })
+  // // handle file upload
+  // const uploadFile = async (e) => {
+  //   if(!file){
+  //     toast.error('Pls add a File first!')
   //   }
-  //   toast.success("Note Uploaded!")
+  //   const uploadTask = uploadBytesResumable(storageRef, file)
+  //   uploadTask.on("state_changed", (snapshot) => {
+  //         const percentage = Math.round(
+  //             (snapshot.bytesTransferred/snapshot.totalBytes) * 100
+  //         );
+  //         // update upload progress
+  //         setUploadProgress(percentage);
+  //     },
+  //     (err) => console.log(err),
+
+  //     async () => {
+  //       // download url
+  //       await getDownloadURL(uploadTask.snapshot.ref)
+  //       .then((url) => {
+  //           setFileURL(url);
+  //       });
+  //       console.log(fileURL)
+  //     }
+  // ); 
   // }
 
   // UPLOAD NOTE + NOTE DETAILS
@@ -88,9 +76,29 @@ export default function Upload() {
 
   const uploadNote = async (e) => {
     e.preventDefault()
-    uploadFile() //Calling the function for handling file upload
+    if(!file){
+      toast.error('Pls add a File first!')
+    }
+    const uploadTask = uploadBytesResumable(storageRef, file)
+    uploadTask.on("state_changed", (snapshot) => {
+          const percentage = Math.round(
+              (snapshot.bytesTransferred/snapshot.totalBytes) * 100
+          );
+          // update upload progress
+          setUploadProgress(percentage);
+      },
+      (err) => console.log(err),
+      async () => {
+        // download url
+        const URL = await getDownloadURL(uploadTask.snapshot.ref)
+        // .then((url) => {
+        // });
+        setFileURL(URL);
+        console.log(fileURL)
+      }
+    )
+    
     // function to handle File/Note details
-    setTimeout(async () => {
       const document = await getDoc(doc(noteRef))
       if(!document.exists()){
         await addDoc(noteRef, {
@@ -98,20 +106,18 @@ export default function Upload() {
           CourseCode: data.courseCode,
           noteName: data.noteName,
           uploadedBy: userInfo.username,
-          url: fileURL
+          url: fileURL,
+          uploadDate: Timestamp.now().toDate()
         })
       } 
-    }, 5000);
-    if(uploadProgress == 100){
-      toast.success('Note Uploaded')
     }
-  }
+  
 
   return (
     <div id='upload' onClick={() => setShowMnav(false)}>
       <form action="" onSubmit={uploadNote}>
         <label htmlFor="category">Category:</label>
-        <select name='category' onChange={(e) => handleChange(e)} required>
+        <select name='category' onChange={handleChange} required>
             <option value="Computer Engineering">Computer Engineering</option>
             <option value="Electrical &amp; Electronics Engineering">Electrical &amp; Electronics Engineering</option>
             <option value="Others" >Others</option>
@@ -129,9 +135,9 @@ export default function Upload() {
         name='courseCode' 
         type="text" 
         placeholder='Course Code' 
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
         maxLength={6}
-        pattern="XXX000"
+        pattern="[a-z]{3}[0-9]{3}"
         title='Course Code should be in the form XXX000 e.g CPE111'
         required
         />
@@ -140,7 +146,7 @@ export default function Upload() {
         name='noteName' 
         type="text" 
         placeholder='e.g NOTE V' 
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
         required
         />
         <br />

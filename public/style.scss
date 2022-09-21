@@ -132,15 +132,21 @@ textarea{
     font-family: inherit;
     font-size: 1.2rem;
     padding: 0.8rem 0.5rem;
-    @include border;
+    border: 0px solid $--primary;
+    border-radius: 0.3rem;
     background-color: $--bgColor;
     color: var(--default);
     resize: none;
+    
+    &:hover{
+        @include border;
+    }
 
     @include mobile(1000px){
         width: 100%;
         font-size: 16px;
     }
+
 }
 input[type=submit]{
     font-family: $--Blinker;
@@ -239,6 +245,7 @@ label{
                     font-size: 1rem;
                     text-transform: capitalize;
                     font-weight: normal;
+                    letter-spacing: normal;
                 }
 
                 h3{
@@ -252,6 +259,7 @@ label{
 
                     span{
                         font-size: 1.1rem;
+                        text-transform: uppercase;
                     }
 
                     i{

@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 // import { useAuth } from '../context/AuthContext';
-import { setDoc, doc, collection, addDoc } from 'firebase/firestore';
-import { auth, database } from "../firebaseConfig"
+import { setDoc, doc } from 'firebase/firestore';
+import { auth } from "../firebaseConfig"
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
 import { useData } from '../context/DataContext';
 
 export default function Signup() {
-  const { user, setUser, DocRef, navigate} = useAuth();
+  const { setUser, DocRef, navigate} = useAuth();
   const { setShowMnav } = useData();
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
       data && navigate('../')
     })
-  },[])
+  }, [])
   
   const [data, setData] = useState({
     username: '',
@@ -38,12 +38,12 @@ export default function Signup() {
     )
   }
   
-  const [notFocused, setNotFocused] = useState(false)
+  // const [notFocused, setNotFocused] = useState(false)
 
-  const usernameRegex = /^[a-z0-9_\.]+$/;
-  const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const passwordRegex =  /^[A-Za-z]\w{6,14}$/
-  var isValid;
+  // const usernameRegex = /^[a-z0-9_\.]+$/;
+  // const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  // const passwordRegex =  /^[A-Za-z]\w{6,14}$/
+  // var isValid;
 
   // const [error, setError] = useState({
   //   username: "",
@@ -63,7 +63,7 @@ export default function Signup() {
 
   function signUp(e){
     e.preventDefault()
-    if(data.password != data.confirmPassword){
+    if(data.password !== data.confirmPassword){
       return toast.info('Passwords do not match')
         // setError('Passwords do not match')
     }else{
@@ -108,7 +108,8 @@ export default function Signup() {
           placeholder='Username' 
           value={data.username}
           onChange={handleChange}
-          onBlur={() => setNotFocused(true)}
+          // onBlur={() => setNotFocused(true)}
+          required
           />
           {/* {notFocused && (valid.username ? setValid({username: ""}) : "Usernames can only use letters, numbers, underscores(_), and periods(.).")} */}
         </div>

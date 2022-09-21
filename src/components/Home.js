@@ -53,7 +53,7 @@ export default function Home() {
         // function to FetchEEE Notes
         const fetchEEENotes = async () => {
             try{
-                const q = query(collection(database, "noteDetails"), where("category", "==", "Electrical Engineering"))
+                const q = query(collection(database, "noteDetails"), where("category", "==", "Electrical & Electronics Engineering"))
                 await onSnapshot(q,snapShot => {
                     setEEENotes(snapShot.docs.map(data => ({
                     ...data.data(),
@@ -102,7 +102,7 @@ export default function Home() {
                 {showCPE && 
                 <div id='details' className='notes--detail'>
                     {/* map through the cpeNOTES state and display the Notes name */}
-                    {cpeNotes.length > 1 
+                    {cpeNotes.length > 0 
                     ?
                    cpeNotes.map((notes) => {
                     return <h3>
@@ -124,14 +124,14 @@ export default function Home() {
                 {showEEE && 
                 <div className='notes--detail'>
                     {/* map through the `cpe`NOTES state and display the Notes if available */}
-                    {eeeNotes.length > 1 
-                    ? 
-                        eeeNotes.map((notes) => {
+                    {eeeNotes.length > 0
+                    ?
+                    eeeNotes.map((notes) => {
                         return <h3>
                                     <a href={notes.url}>
                                         <span>{notes.CourseCode}: </span> 
                                         {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                        <i>( {notes.uploadedBy})</i>
+                                        <i>({notes.uploadedBy})</i>
                                     </a>
                                 </h3>
                         })
@@ -145,7 +145,7 @@ export default function Home() {
                 <h2>Other Notes</h2>
                 {showOthers && 
                 <div id='details' className='notes--detail'>
-                    {otherNotes.length > 1 
+                    {otherNotes.length > 0 
                     ?  
                    otherNotes.map((notes) => {
                     return <h3>

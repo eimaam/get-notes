@@ -38,7 +38,7 @@ export default function AuthProvider({ children }) {
                 }
                 catch(err){
                     toast.error(err.message)
-                }
+                }                
             }
             setUser(data)
             setLoading(false)

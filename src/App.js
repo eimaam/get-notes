@@ -9,8 +9,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from './components/Home';
 import Footer from './components/Footer';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import { RingLoader } from "react-spinners"
 import AuthProvider, { useAuth } from './context/AuthContext';
 import DataProvider, { useData } from './context/DataContext';
@@ -51,7 +52,7 @@ function App() {
           </Routes>
         </DataProvider>
       </AuthProvider>
-      <ToastContainer 
+      <ToastContainer
       autoClose={3000}
       />
       </div>

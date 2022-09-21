@@ -130,11 +130,17 @@ textarea {
   font-family: inherit;
   font-size: 1.2rem;
   padding: 0.8rem 0.5rem;
-  border: 1px solid #fbe0c3;
+  border: 0px solid #fbe0c3;
   border-radius: 0.3rem;
   background-color: #7d8e95;
   color: var(--default);
   resize: none;
+}
+input:hover, button:hover,
+select:hover,
+textarea:hover {
+  border: 1px solid #fbe0c3;
+  border-radius: 0.3rem;
 }
 @media only screen and (max-width: 1000px) {
   input, button,
@@ -264,6 +270,7 @@ label {
   font-size: 1rem;
   text-transform: capitalize;
   font-weight: normal;
+  letter-spacing: normal;
 }
 #home .accordion--container .accordion .notes--detail h3 {
   font-family: "PT Mono", monospace;
@@ -275,6 +282,7 @@ label {
 }
 #home .accordion--container .accordion .notes--detail h3 span {
   font-size: 1.1rem;
+  text-transform: uppercase;
 }
 #home .accordion--container .accordion .notes--detail h3 i {
   margin-left: 1rem;

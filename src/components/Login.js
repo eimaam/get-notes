@@ -50,7 +50,7 @@ export default function Login() {
           }, 3000);
       }
       catch(err){
-        toast.error(err.message)
+        toast.error("Network error... Check your Internet connection")
       }
     }
   
@@ -83,6 +83,7 @@ export default function Login() {
             placeholder='Email Address' 
             value={data.email}
             onChange={(e) => handleChange(e)}
+            required
             />
         </div>
 
@@ -97,6 +98,7 @@ export default function Login() {
             placeholder='Password' 
             value={data.password}
             onChange={(e) => handleChange(e)}
+            required
             />
         </div>
           <input type="submit" value="LOGIN"/>
