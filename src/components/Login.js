@@ -50,7 +50,13 @@ export default function Login() {
           }, 3000);
       }
       catch(err){
-        toast.error("Network error... Check your Internet connection")
+        if(err.code === 'auth/wrong-password'){
+          toast.error('Wrong Password')
+        }else if(err.code === 'auth/too-many-requests'){
+          toast.error('Too many trials! You will have to reset your password to access this site!')
+        }else{
+          toast.error(err.message)
+        }
       }
     }
   
@@ -103,6 +109,7 @@ export default function Login() {
         </div>
           <input type="submit" value="LOGIN"/>
           <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
+          <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
           <p>or</p>
           <button onClick={logInWithPopUp}>Sign up with <FcGoogle /></button>
         </form>

@@ -20,6 +20,7 @@ import ErrorPage from './ErrorPage';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import UserSettings from './UserSettings';
+import ResetPass from './ResetPass';
 
 
 function App() {
@@ -30,26 +31,32 @@ function App() {
       setLoading(false)
     }, 2500);
   }, [])
+
+  const [showNav, setShowNav] = useState(true)
+  
   return (
     <Router>
       {loading ? <div className='loader'>
                     <RingLoader loading={loading} className='test'/>
                   </div>
                   :
-      <div>
+                  <div>
       <AuthProvider>
         <DataProvider>
-          <Nav />
-          <Footer />
+          {showNav && 
+            <Nav />
+          }
           <Routes >
             <Route exact path="/" element={<Home />} />  
             <Route path="/signup" element={<Signup />} />  
-            <Route exact path="/login" element={<Login />}    />
-            <Route exact path="/addusername" element={<UsernameRegistration />}    />
+            <Route path="/login" element={<Login />}    />
+            <Route path="/addusername" element={<UsernameRegistration />}    />
             <Route path="/upload" element={<Upload />}    />
             <Route path="/user/settings" element={<UserSettings />}    />
-            <Route path="*" element={<ErrorPage />}    />
+            <Route exact path="/reset" element={<ResetPass Nav={setShowNav} />}    />
+            <Route path="*" element={<ErrorPage Nav={setShowNav} />}    />
           </Routes>
+            <Footer />
         </DataProvider>
       </AuthProvider>
       <ToastContainer

@@ -157,6 +157,8 @@ input[type=submit]{
 
     @include mobile(1000px){
         font-weight: 100;
+        -webkit-border-radius:0;
+        -webkit-appearance: none; 
     }
 }
 ::placeholder{
@@ -196,6 +198,9 @@ label{
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+}
+.error{
+    color: red;
 }
 
 // COMPONENTS STYLING starts here
@@ -430,6 +435,12 @@ nav{
 // LOGIN Component
 #login{
     @extend #signup;
+}
+
+// reset password component
+#resetPass{
+    @extend #signup;
+    width: 100%;
 }
 
 // UPLOAD component
