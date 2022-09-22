@@ -59,6 +59,8 @@ export default function Login() {
         }else if(err.code === 'auth/user-not-found'){
           toast.error('User not found!')
           setError('User not found!')
+        }else if(err.code === 'auth/network-request-failed'){
+          setError('Sorry...! Something went wrong. Check your internet connection')
         }
         else{
           console.log(err.message)

@@ -431,7 +431,7 @@ nav{
         }
 
         @include mobile(1000px){
-            width: 95%;
+            width: 85%;
         }
     }
 }
@@ -462,5 +462,9 @@ footer{
     p{
         margin: auto;
         text-align: center;
+
+        @include mobile(1000px){
+            font-size: 0.8rem;
+        }
     }
 }

@@ -474,7 +474,7 @@ nav #hideNav, #mNav #hideNav {
 }
 @media only screen and (max-width: 1000px) {
   #signup form, #upload form, #resetPass form, #login form {
-    width: 95%;
+    width: 85%;
   }
 }
 
@@ -488,4 +488,9 @@ footer {
 footer p {
   margin: auto;
   text-align: center;
+}
+@media only screen and (max-width: 1000px) {
+  footer p {
+    font-size: 0.8rem;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useData } from '../context/DataContext';
 
 export default function Signup() {
-  const { setUser, DocRef, navigate} = useAuth();
+  const { logInWithPopUp, setUser, DocRef, navigate} = useAuth();
   const { setShowMnav } = useData();
 
   useEffect(() => {
@@ -163,6 +163,7 @@ export default function Signup() {
         <input 
         type="submit" 
         value="LOG IN with Gmail"
+        onClick={logInWithPopUp}
         />
         <p>Have an account already? <Link to="/login"><b>LOG IN</b> </Link></p>
       </form>
