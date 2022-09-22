@@ -202,6 +202,9 @@ label{
 .error{
     color: red;
 }
+.success{
+    color: green;
+}
 
 // COMPONENTS STYLING starts here
 // HOME Component
@@ -259,7 +262,7 @@ label{
                     padding-block: 0.5rem;
 
                     &::before{
-                        content: "/ ";
+                        content: "/";
                     }
 
                     span{

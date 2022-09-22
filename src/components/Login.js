@@ -11,7 +11,7 @@ import { PulseLoader } from "react-spinners"
 
 export default function Login() {
   const { userInfo } = useData()
-  const { logInWithPopUp, navigate, loading, setLoading } = useAuth();
+  const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
 
 
   useEffect(() => {
@@ -52,10 +52,17 @@ export default function Login() {
       catch(err){
         if(err.code === 'auth/wrong-password'){
           toast.error('Wrong Password')
+          setError('Wrong Password')
         }else if(err.code === 'auth/too-many-requests'){
           toast.error('Too many trials! You will have to reset your password to access this site!')
-        }else{
-          toast.error(err.message)
+          setError('Too many trials! You will have to reset your password to access this site!')
+        }else if(err.code === 'auth/user-not-found'){
+          toast.error('User not found!')
+          setError('User not found!')
+        }
+        else{
+          console.log(err.message)
+          toast.error('Retry...')
         }
       }
     }
@@ -80,15 +87,15 @@ export default function Login() {
       <form action="" onSubmit={handleSubmit}>
         <div>
             <label htmlFor="Passowrd">
-              Username
+              Email:
             </label>
             <input
             name='email'
             type="email" 
             id='email' 
-            placeholder='Email Address' 
+            placeholder='yourAddress@example.com' 
             value={data.email}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             required
             />
         </div>
@@ -101,13 +108,14 @@ export default function Login() {
             name='password'
             type="password" 
             id='password' 
-            placeholder='Password' 
+            placeholder='Your Password' 
             value={data.password}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             required
             />
         </div>
           <input type="submit" value="LOGIN"/>
+          <p className='error'>{error}</p>
           <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
           <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
           <p>or</p>

@@ -107,7 +107,9 @@ export default function Home() {
                    cpeNotes.map((notes) => {
                     return <h3>
                                 <a href={notes.url}>
-                                    <span>{notes.CourseCode}: </span> 
+                                    <span>
+                                        {notes.CourseCode}: 
+                                    </span> 
                                     {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
                                     <i>({notes.uploadedBy})</i>
                                 </a>
@@ -121,7 +123,7 @@ export default function Home() {
             </div>
             <div className='accordion' onClick={() => setShowEEE(!showEEE)}>
                 <h2>Electrical &amp; Electronics Engineering</h2>
-                {showEEE && 
+                {!showEEE && 
                 <div className='notes--detail'>
                     {/* map through the `cpe`NOTES state and display the Notes if available */}
                     {eeeNotes.length > 0

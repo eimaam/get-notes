@@ -121,7 +121,7 @@ export default function Upload() {
             <option value="Computer Engineering">Computer Engineering</option>
             <option value="Electrical &amp; Electronics Engineering">Electrical &amp; Electronics Engineering</option>
             <option value="Others" >Others</option>
-            <option value="choose note category" selected disabled>Choose note category</option>
+            <option value="choose note category" defaultValue='choose note category' selected disabled>Choose note category</option>
         </select>
         <label htmlFor="File ">File/Note:</label>
         <input 

@@ -36,11 +36,12 @@ function App() {
   
   return (
     <Router>
-      {loading ? <div className='loader'>
+      {/* {loading ? <div className='loader'>
                     <RingLoader loading={loading} className='test'/>
                   </div>
-                  :
-                  <div>
+                  : */}
+                  {loading && 
+      <div>
       <AuthProvider>
         <DataProvider>
           {showNav && 

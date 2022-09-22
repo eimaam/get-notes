@@ -219,6 +219,10 @@ label {
   color: red;
 }
 
+.success {
+  color: green;
+}
+
 #home {
   width: 80%;
   height: 100vh;
@@ -284,7 +288,7 @@ label {
   padding-block: 0.5rem;
 }
 #home .accordion--container .accordion .notes--detail h3::before {
-  content: "/ ";
+  content: "/";
 }
 #home .accordion--container .accordion .notes--detail h3 span {
   font-size: 1.1rem;
