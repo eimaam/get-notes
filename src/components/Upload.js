@@ -116,42 +116,56 @@ export default function Upload() {
   return (
     <div id='upload' onClick={() => setShowMnav(false)}>
       <form action="" onSubmit={uploadNote}>
-        <label htmlFor="category">Category:</label>
-        <select name='category' onChange={handleChange} required>
-            <option value="Computer Engineering">Computer Engineering</option>
-            <option value="Electrical &amp; Electronics Engineering">Electrical &amp; Electronics Engineering</option>
-            <option value="Others" >Others</option>
-            <option value="choose note category" defaultValue='choose note category' selected disabled>Choose note category</option>
-        </select>
-        <label htmlFor="File ">File/Note:</label>
-        <input 
-        type="file" 
-        name='file' 
-        accept=".doc,.docx,.pdf,.ppt,.pptx,.txt,image/*,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
-        onChange={(e) => handleFile(e)}
-        />
+        <div>
+          <label htmlFor="category">Category:</label>
+          <select name='category' onChange={handleChange} required>
+              <option value="Computer Engineering">Computer Engineering</option>
+              <option value="Electrical &amp; Electronics Engineering">Electrical &amp; Electronics Engineering</option>
+              <option value="Others" >Others</option>
+              <option value="choose note category" defaultValue='choose note category' selected disabled>Choose note category</option>
+          </select>
+        </div>
 
-        <input 
-        name='courseCode' 
-        type="text" 
-        placeholder='Course Code' 
-        onChange={handleChange}
-        maxLength={6}
-        pattern="[a-z]{3}[0-9]{3}"
-        title='Course Code should be in the form XXX000 e.g CPE111'
-        required
-        />
+        <div>
+          <label htmlFor="File ">File/Note:</label>
+          <input 
+          type="file" 
+          name='file' 
+          accept=".doc,.docx,.pdf,.ppt,.pptx,.txt,image/*,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
+          onChange={(e) => handleFile(e)}
+          />
+        </div>
 
-        <input 
-        name='noteName' 
-        type="text" 
-        placeholder='e.g NOTE V' 
-        onChange={handleChange}
-        required
-        />
+        <div>
+          <label htmlFor="course code">
+            Course Code:
+          </label>
+          <input 
+          name='courseCode' 
+          type="text" 
+          placeholder='Course Code xxx111' 
+          onChange={handleChange}
+          maxLength={6}
+          pattern="[a-z]{3}[0-9]{3}"
+          title='Course Code should be in the form XXX000 e.g CPE111'
+          required
+          />
+        </div>
+        <div>
+          <label htmlFor="note name">
+            Title of Note:
+          </label>
+          <input 
+          name='noteName' 
+          type="text" 
+          placeholder='e.g NOTE V' 
+          onChange={handleChange}
+          required
+          />
+        </div>
         <br />
-        <input type="submit" name="" id="" value="UPLOAD"/>        
         {uploadProgress > 1 && <p>Uploading... {uploadProgress} % done</p>}
+        <input type="submit" name="" id="" value="UPLOAD"/>        
       </form>
     </div>
   )

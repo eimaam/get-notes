@@ -225,8 +225,9 @@ label {
 
 #home {
   width: 80%;
-  height: 100vh;
+  height: 95vh;
   float: right;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -415,8 +416,9 @@ nav #hideNav, #mNav #hideNav {
 
 #main {
   width: 80%;
-  height: 100vh;
+  height: 95vh;
   float: right;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -431,8 +433,9 @@ nav #hideNav, #mNav #hideNav {
 
 #signup, #upload, #resetPass, #login {
   width: 80%;
-  height: 100vh;
+  height: 95vh;
   float: right;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -454,7 +457,7 @@ nav #hideNav, #mNav #hideNav {
   gap: 1rem;
   text-align: left;
   width: 50%;
-  padding: 5rem 2rem;
+  padding: 2rem;
   background-color: #344648;
 }
 #signup form div, #upload form div, #resetPass form div, #login form div {
@@ -466,17 +469,13 @@ nav #hideNav, #mNav #hideNav {
     width: 100%;
   }
 }
-#signup form div input, #upload form div input, #resetPass form div input, #login form div input, #signup form div button, #upload form div button, #resetPass form div button, #login form div button {
+#signup form div input, #upload form div input, #resetPass form div input, #login form div input, #signup form div button, #upload form div button, #resetPass form div button, #login form div button, #signup form div select, #upload form div select, #resetPass form div select, #login form div select {
   width: 100%;
 }
 @media only screen and (max-width: 1000px) {
   #signup form, #upload form, #resetPass form, #login form {
     width: 95%;
   }
-}
-
-#resetPass {
-  width: 100%;
 }
 
 footer {

@@ -123,7 +123,7 @@ export default function Home() {
             </div>
             <div className='accordion' onClick={() => setShowEEE(!showEEE)}>
                 <h2>Electrical &amp; Electronics Engineering</h2>
-                {!showEEE && 
+                {showEEE && 
                 <div className='notes--detail'>
                     {/* map through the `cpe`NOTES state and display the Notes if available */}
                     {eeeNotes.length > 0

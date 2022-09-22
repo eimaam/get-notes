@@ -8,7 +8,7 @@ import { useData } from './context/DataContext';
 
 
 
-export default function ResetPass(props) {
+export default function ResetPass() {
     const { navigate, setError, error, message, setMessage } = useAuth()
 
   useEffect(() => {
@@ -62,22 +62,22 @@ useEffect(() => {
     if(message != ""){
         setTimeout(() => {
             setMessage('')
-        }, 2500);
+        }, 5000);
     }
 }, [message])
 useEffect(() => {
     if(error != ""){
         setTimeout(() => {
             setError('')
-        }, 2500);
+        }, 5000);
     }
 }, [error])
 
 
   return (
       <div id='resetPass'>
-        {/* remove navigation bar */}
-        {props.Nav(false)}
+        {/* remove navigation bar
+        {props.Nav(false)} */}
       <form action="" onSubmit={resetPass}>
         <label htmlFor="Username">
           Enter registered Email:

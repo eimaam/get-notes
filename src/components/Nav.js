@@ -38,7 +38,7 @@ export default function Nav() {
   return (
     <React.StrictMode>
     <nav id='nav'>
-        {userInfo.username ? <h3>{userInfo.username}</h3> : <h3></h3>}
+        {user && <h3>{userInfo.username}</h3>}
         <ul>
           <NavLink to="/">
             <li>GET NOTES</li>
@@ -57,9 +57,10 @@ export default function Nav() {
         <FaTimes id='hideNav' onClick={toggleNav}/>
     </nav>
 
+{/* MOBILE NAVIGATION MENU */}
     {showMnav &&
     <div id='mNav'>
-      {userInfo.username ? <h3>{userInfo.username}</h3> : <h3></h3>}
+      {user && <h3>{userInfo.username}</h3>}
       <ul>
           <NavLink to="/"><li>GET NOTES</li></NavLink>
           <NavLink to="/upload"><li>Upload Notes</li></NavLink>

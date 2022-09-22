@@ -117,9 +117,9 @@ export default function Login() {
           <input type="submit" value="LOGIN"/>
           <p className='error'>{error}</p>
           <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
-          <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
           <p>or</p>
           <button onClick={logInWithPopUp}>Sign up with <FcGoogle /></button>
+          <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
         </form>
       }
         </div>

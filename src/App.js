@@ -33,20 +33,26 @@ function App() {
   }, [])
 
   const [showNav, setShowNav] = useState(true)
+
   
   return (
     <Router>
-      {/* {loading ? <div className='loader'>
-                    <RingLoader loading={loading} className='test'/>
-                  </div>
-                  : */}
-                  {loading && 
+      {loading 
+      
+      ?
+
+      <div className='loader'>
+        <RingLoader loading={loading} className='test'/>
+      </div>
+      
+      :
+
       <div>
       <AuthProvider>
         <DataProvider>
-          {showNav && 
+          {/* {showNav &&  */}
             <Nav />
-          }
+          {/* } */}
           <Routes >
             <Route exact path="/" element={<Home />} />  
             <Route path="/signup" element={<Signup />} />  
@@ -54,10 +60,14 @@ function App() {
             <Route path="/addusername" element={<UsernameRegistration />}    />
             <Route path="/upload" element={<Upload />}    />
             <Route path="/user/settings" element={<UserSettings />}    />
-            <Route exact path="/reset" element={<ResetPass Nav={setShowNav} />}    />
-            <Route path="*" element={<ErrorPage Nav={setShowNav} />}    />
+            <Route exact path="/reset" element={<ResetPass />}    />
+            <Route path="*" element={<ErrorPage />}    />
+            {/* <Route exact path="/reset" element={<ResetPass Nav={setShowNav} />}    />
+            <Route path="*" element={<ErrorPage Nav={setShowNav} />}    /> */}
           </Routes>
-            <Footer />
+          
+          <Footer />
+
         </DataProvider>
       </AuthProvider>
       <ToastContainer
