@@ -324,8 +324,19 @@ nav, #mNav {
     padding: 0.5rem;
   }
 }
+nav h3, #mNav h3 {
+  padding-block: 1rem;
+}
 @media only screen and (max-width: 1000px) {
   nav h3, #mNav h3 {
+    display: none;
+  }
+}
+nav i, #mNav i {
+  padding-block: 1rem;
+}
+@media only screen and (max-width: 1000px) {
+  nav i, #mNav i {
     display: none;
   }
 }

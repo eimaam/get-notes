@@ -91,7 +91,7 @@ export default function Home() {
 
   return (
     <div id='home' className="notes--container" onClick={() => setShowMnav(false)}>
-        {!userInfo.username ? <div>
+        {!user ? <div>
             <p>Loading Notes...</p>
             <RingLoader />
             </div>

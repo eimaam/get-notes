@@ -304,6 +304,15 @@ nav{
         padding: 0.5rem;
     }
     h3{
+        padding-block: 1rem;
+
+        @include mobile(1000px){
+            display: none;
+        }
+    }
+    i{
+        padding-block: 1rem;
+        
         @include mobile(1000px){
             display: none;
         }

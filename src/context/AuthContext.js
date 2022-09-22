@@ -74,6 +74,7 @@ export default function AuthProvider({ children }) {
 
     const logOut = () => {
         setIsLogged(false)
+        setUser(null)
         signOut(auth)
         .then(() => {
             localStorage.clear()
