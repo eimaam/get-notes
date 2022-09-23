@@ -8,9 +8,10 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
 import { useData } from '../context/DataContext';
+import { BeatLoader } from 'react-spinners'
 
 export default function Signup() {
-  const { logInWithPopUp, setUser, DocRef, navigate} = useAuth();
+  const { logInWithPopUp, setUser, DocRef, navigate, loading, setLoading} = useAuth();
   const { setShowMnav } = useData();
 
   useEffect(() => {
@@ -63,14 +64,16 @@ export default function Signup() {
 
   function signUp(e){
     e.preventDefault()
+      setLoading(false)        
+      
     if(data.password !== data.confirmPassword){
-      return toast.info('Passwords do not match')
-        // setError('Passwords do not match')
+      return toast.error('Passwords do not match')
+      // setError('Passwords do not match')
     }else{
       createUserWithEmailAndPassword(auth, data.email, data.password)
-          .then(res => {
-              setUser({
-                username: data.username,
+      .then(res => {
+        setUser({
+          username: data.username,
                 email: data.email
               })
               setDoc(doc(DocRef, data.email), {
@@ -79,17 +82,18 @@ export default function Signup() {
               })
               toast.info("SIGNED UP SUCCESSFULLY")
               return navigate('../login')
-          })
+            })
           .catch(err => {
               if(err.code === 'auth/weak-password'){
                 toast.error('Weak Password! Password should be at least 6 characters')
               }else if(err.code === 'auth/email-already-in-use'){
-                  toast.error('Account already exist!')
+                toast.error('Account already exist!')
               }else{
-                  toast.error(err.code)
+                toast.error(err.code)
               }
             })
-    }
+          }
+    setLoading(true)
   }
 
  
@@ -155,11 +159,14 @@ export default function Signup() {
           onChange={handleChange}
           />
         </div>
-        {/* <p>{error}</p> */}
-        <input 
-        type="submit" 
-        value="SIGN UP"
-        />
+        {loading && <button><BeatLoader color='#fff'/></button>}
+        {!loading 
+        && 
+          <input 
+          type="submit" 
+          value="SIGN UP"
+          />
+        }
         <input 
         type="submit" 
         value="LOG IN with Gmail"

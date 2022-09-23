@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
+import {onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
 import { toast } from 'react-toastify';
 import { auth } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
-import userEvent from '@testing-library/user-event';
-import { useData } from './context/DataContext';
+import { BeatLoader } from 'react-spinners'
 
 
 
 export default function ResetPass() {
-    const { navigate, setError, error, message, setMessage } = useAuth()
+    const { navigate, setError, error, message, setMessage, loading, setLoading } = useAuth()
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
@@ -37,25 +36,26 @@ export default function ResetPass() {
 //   reset password
 const resetPass = async (e) => {
     e.preventDefault()
+    setLoading(true)
     try{
         await sendPasswordResetEmail(auth, data.email)
         .then(() => {
-            setMessage('Password reset link sent! Check your Inbox or Spam Folder')
-            toast.info('Password reset link sent! Check your Inbox or Spam Folder')
+            setMessage('Password reset link sent! Check your Inbox or SPAM Folder')
+            toast.info('Password reset link sent! Check your Inbox or SPAM Folder')
         })
     }
     catch(err){
         if(err.code === "auth/invalid-email"){
             toast.error('Invalid or Incorrect email')
             setError('Invalid or Incorrect email')
-        }else if(err.code === 'auth/user-not-found'){
+        }else if(err.code == 'auth/user-not-found'){
             toast.error('User not found!')
             setError('User not found!')
         }else{
-            toast.error(err.code)
             console.log(err.code)
         }
     }
+    setLoading(false)
 }
 
 useEffect(() => {
@@ -90,9 +90,10 @@ useEffect(() => {
         onChange={(e) => handleChange(e)}
         required
         />
-        <input type="submit" value="Change Password"/>
-        <p>{message}</p>
-        <p>{error}</p>
+        {loading && <button><BeatLoader color='#fff'/></button>}
+        {!loading && <input type="submit" value="Change Password"/>}
+        <p className='success'>{message}</p>
+        <p className='error'>{error}</p>
       </form>
     </div>
   )

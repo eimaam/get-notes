@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'firebase/firestore'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { createContext } from 'react'
@@ -20,8 +20,6 @@ export default function DataProvider({ children }) {
     // NAV show and hide state manager
     const [showMnav, setShowMnav] = useState(false);
 
-    const [otherNotes, setOtherNotes] = useState([])
-
     const { user } = useAuth()
     const [userInfo, setUserInfo] = useState({})
 
@@ -36,6 +34,7 @@ export default function DataProvider({ children }) {
             console.log(err.message)
         }
     }
+
     
     
   

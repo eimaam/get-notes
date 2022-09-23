@@ -46,14 +46,21 @@ const resetPass = async (e) => {
         })
     }
     catch(err){
-        if(err.code == "auth/invalid-email"){
-            toast.error('Invalid or Incorrect email')
-            setError('Invalid or Incorrect email')
-        }
+      if(err.code === "auth/invalid-email"){
+        toast.error('Invalid or Incorrect email')
+        setError('Invalid or Incorrect email')
+      }else if(err.code == 'auth/user-not-found'){
+          toast.error('User not found!')
+          setError('User not found!')
+      }else{
         toast.error(err.code)
         setError(err.code)
         console.log(err.code)
     }
+  }
+  return setData({
+    email: ''
+  })
 }
 
 useEffect(() => {
@@ -93,8 +100,8 @@ useEffect(() => {
         }
         {!show && <button onClick={() => setShow(true)}>Change Password</button>}
         <button type='button' disabled>Change username <i>(coming soon...)</i></button>
-        <p>{message}</p>
-        <p>{error}</p>
+        <p className='success'>{message}</p>
+        <p className='error'>{error}</p>
       </form>
     </div>
   )

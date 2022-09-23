@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { createContext } from 'react'
 import { database, auth, googleProvider } from '../firebaseConfig'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import { browserLocalPersistence, onAuthStateChanged, setPersistence, signInWithPopup, signOut } from 'firebase/auth'
 import { toast } from 'react-toastify'
-import { useData } from './DataContext'
 
 const AuthContext = createContext()
 
@@ -16,6 +15,7 @@ export const useAuth = () => {
 export default function AuthProvider({ children }) {
     const navigate = useNavigate()
     const DocRef = collection(database, "userDetails")
+
 
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
@@ -42,7 +42,6 @@ export default function AuthProvider({ children }) {
             }
             setUser(data)
             setLoading(false)
-            // console.log(data)
         })
     }
 
@@ -72,7 +71,7 @@ export default function AuthProvider({ children }) {
         })
     }
 
-    const logOut = () => {
+    const logOut = async () => {
         setIsLogged(false)
         setUser(null)
         signOut(auth)
@@ -88,6 +87,7 @@ export default function AuthProvider({ children }) {
     }
 
     
+    
 const value = {
     user,
     setUser,
@@ -98,7 +98,9 @@ const value = {
     message,
     setMessage,
     error,
-    setError
+    setError,
+    loading,
+    setLoading,
 }
 
   return (

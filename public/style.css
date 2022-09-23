@@ -43,13 +43,13 @@ html, body {
   font-family: "PT Mono", monospace;
   width: 100%;
   height: 100%;
-  background-color: rgb(224, 224, 224);
+  background-color: #c5c1c0;
   line-height: 1.6;
   word-wrap: break-word;
 }
 
 a {
-  color: #fcccb4;
+  color: #e3dcda;
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
@@ -116,7 +116,7 @@ p {
 }
 
 span {
-  color: #fcccb4;
+  color: #e3dcda;
 }
 
 i {
@@ -130,16 +130,16 @@ textarea {
   font-family: inherit;
   font-size: 1.2rem;
   padding: 0.8rem 0.5rem;
-  border: 0px solid #fbe0c3;
+  border: 0px solid #f7ce3e;
   border-radius: 0.3rem;
-  background-color: #7d8e95;
-  color: var(--default);
+  background-color: #c5c1c0;
+  color: #1a2930;
   resize: none;
 }
 input:hover, button:hover,
 select:hover,
 textarea:hover {
-  border: 1px solid #fbe0c3;
+  border: 1px solid #f7ce3e;
   border-radius: 0.3rem;
 }
 @media only screen and (max-width: 1000px) {
@@ -153,8 +153,8 @@ textarea {
 
 input[type=submit], button[type=submit] {
   font-family: "Blinker", sans-serif;
-  background-color: #fcccb4;
-  color: #344648;
+  background-color: #f7ce3e;
+  color: #1a2930;
   font-weight: 1000;
   cursor: pointer;
 }
@@ -182,7 +182,7 @@ button {
   font-family: "Blinker", sans-serif;
   font-size: 1rem;
   border: 0;
-  background-color: #fcccb4;
+  background-color: #f7ce3e;
   text-transform: uppercase;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
@@ -220,7 +220,7 @@ label {
 }
 
 .success {
-  color: green;
+  color: #f7ce3e;
 }
 
 #home {
@@ -250,8 +250,9 @@ label {
 }
 #home .accordion--container {
   width: 70%;
-  background-color: #7d8e95;
+  background-color: #1a2930;
   padding: 3rem 1rem;
+  border-radius: 0.5rem;
 }
 @media only screen and (max-width: 1000px) {
   #home .accordion--container {
@@ -261,23 +262,28 @@ label {
 #home .accordion--container .accordion {
   padding-block: 1rem;
 }
-#home .accordion--container .accordion h2 {
-  border-top: 1px solid #fcccb4;
-  border-bottom: 1px solid #fcccb4;
-  padding-block: 0.5rem;
-  color: #fcccb4;
+#home .accordion--container .accordion .accordion--tab {
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid #e3dcda;
+  border-bottom: 1px solid #e3dcda;
+  padding-block: 0.5rem;
+  align-items: center;
 }
-#home .accordion--container .accordion h2::after {
-  content: "+";
-  cursor: pointer;
+#home .accordion--container .accordion .accordion--tab h2 {
+  color: #e3dcda;
+}
+#home .accordion--container .accordion .accordion--tab h2:last-child {
+  color: #f7ce3e;
+}
+#home .accordion--container .accordion p {
+  color: #f7ce3e;
 }
 #home .accordion--container .accordion .notes--detail {
   padding-block: 1rem;
 }
 #home .accordion--container .accordion .notes--detail a {
-  color: black;
+  color: #e3dcda;
   font-size: 1rem;
   text-transform: capitalize;
   font-weight: normal;
@@ -290,10 +296,12 @@ label {
 }
 #home .accordion--container .accordion .notes--detail h3::before {
   content: "/";
+  color: #f7ce3e;
 }
 #home .accordion--container .accordion .notes--detail h3 span {
   font-size: 1.1rem;
   text-transform: uppercase;
+  color: #f7ce3e;
 }
 #home .accordion--container .accordion .notes--detail h3 i {
   margin-left: 1rem;
@@ -306,7 +314,7 @@ nav, #mNav {
   left: 0;
   width: 20%;
   height: 100vh;
-  background-color: #7d8e95;
+  background-color: #1a2930;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -326,6 +334,7 @@ nav, #mNav {
 }
 nav h3, #mNav h3 {
   padding-block: 1rem;
+  color: #e3dcda;
 }
 @media only screen and (max-width: 1000px) {
   nav h3, #mNav h3 {
@@ -345,7 +354,7 @@ nav ul, #mNav ul {
   text-transform: uppercase;
   font-family: "Blinker", sans-serif;
   font-size: 1.8rem;
-  color: #fcccb4;
+  color: #e3dcda;
 }
 @media only screen and (max-width: 1000px) {
   nav ul, #mNav ul {
@@ -355,8 +364,8 @@ nav ul, #mNav ul {
 nav li, #mNav li {
   padding: 1rem;
   margin-block: 2rem;
-  border-top: 1px solid #fbe0c3;
-  border-bottom: 1px solid #fbe0c3;
+  border-top: 1px solid #f7ce3e;
+  border-bottom: 1px solid #f7ce3e;
 }
 nav .nav--buttons--container, #mNav .nav--buttons--container {
   display: flex;
@@ -380,7 +389,7 @@ nav .nav--buttons--container button a, #mNav .nav--buttons--container button a {
 nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
   font-size: 1.5rem;
   align-self: center;
-  color: #fcccb4;
+  color: #e3dcda;
   font-weight: 900;
 }
 nav #showNav, #mNav #showNav {
@@ -452,7 +461,7 @@ nav #hideNav, #mNav #hideNav {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  color: rgb(224, 224, 224);
+  color: #fff;
   font-family: "PT Mono", monospace;
 }
 @media only screen and (max-width: 1000px) {
@@ -467,9 +476,13 @@ nav #hideNav, #mNav #hideNav {
   align-items: center;
   gap: 1rem;
   text-align: left;
-  width: 50%;
+  width: 60%;
   padding: 2rem;
-  background-color: #344648;
+  background-color: #1a2930;
+  border-radius: 0.5rem;
+}
+#signup form a, #upload form a, #resetPass form a, #login form a {
+  font-weight: bolder;
 }
 #signup form div, #upload form div, #resetPass form div, #login form div {
   margin: auto;
@@ -486,6 +499,7 @@ nav #hideNav, #mNav #hideNav {
 @media only screen and (max-width: 1000px) {
   #signup form, #upload form, #resetPass form, #login form {
     width: 85%;
+    padding: 1rem;
   }
 }
 
@@ -494,11 +508,12 @@ footer {
   bottom: 0;
   margin: auto;
   width: 100%;
-  background-color: #7d8e95;
+  background-color: #1a2930;
 }
 footer p {
   margin: auto;
   text-align: center;
+  color: #fff;
 }
 @media only screen and (max-width: 1000px) {
   footer p {

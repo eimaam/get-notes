@@ -6,12 +6,12 @@ import { auth } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
-import { PulseLoader } from "react-spinners"
+import { PulseLoader, BeatLoader } from "react-spinners"
 
 
 export default function Login() {
-  const { userInfo } = useData()
   const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
+  const { userInfo } = useData()
 
 
   useEffect(() => {
@@ -39,15 +39,14 @@ export default function Login() {
   // Sign in with Email and Password
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     try{
       await setPersistence(auth, browserLocalPersistence)
-       
       await signInWithEmailAndPassword(auth, data.email, data.password)
-        .then((res)=> console.log(res.user))
+        .then((res) => {
           toast.success("LOGGED IN")
-          return setTimeout(() => {
-            navigate('../') 
-          }, 3000);
+          navigate('../') 
+        })
       }
       catch(err){
         if(err.code === 'auth/wrong-password'){
@@ -67,25 +66,20 @@ export default function Login() {
           toast.error('Retry...')
         }
       }
+      setLoading(false)
     }
   
   
 //   useEffect(()=>{
-//     if(loading!==null){
+//     if(error!==''){
 //       setTimeout(()=>{
-//           setLoading(false)
-//       },5000)
+//           setError('')
+//       }, 3000)
 //   }
-// },[loading])
+// },[error])
 
   return (
       <div id='login'>
-        { loading 
-        ? 
-        <div>
-          <PulseLoader />
-        </div>
-      :
       <form action="" onSubmit={handleSubmit}>
         <div>
             <label htmlFor="Passowrd">
@@ -116,15 +110,17 @@ export default function Login() {
             required
             />
         </div>
-          <input type="submit" value="LOGIN"/>
+
+          {loading && <button><BeatLoader color='#fff'/></button>}
+          {!loading && <input type="submit" value="LOG IN"/>}
+          {/* error message */}
           <p className='error'>{error}</p>
           <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
           <p>or</p>
           <button onClick={logInWithPopUp}>Sign up with <FcGoogle /></button>
           <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
-        </form>
-      }
-        </div>
+      </form>
+      </div>
         )
       }
       
