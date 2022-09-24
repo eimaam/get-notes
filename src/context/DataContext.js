@@ -17,12 +17,13 @@ export const useData = () => {
 
 export default function DataProvider({ children }) {
 
-    // NAV show and hide state manager
-    const [showMnav, setShowMnav] = useState(false);
+    // NAV hide state manager: managing hide navigation bar on clicking outside of the nav
+    const [hideNav, setHideNav] = useState(true);
 
     const { user } = useAuth()
     const [userInfo, setUserInfo] = useState({})
 
+    // fetch all all data linked to logged in user and save in userInfo state
     const fetchUserDetail = async() => {
         try{
             const data = await getDoc(doc(database, "userDetails", user.email))
@@ -42,8 +43,8 @@ export default function DataProvider({ children }) {
         userInfo,
         fetchUserDetail,
         setUserInfo,
-        setShowMnav,
-        showMnav,
+        setHideNav,
+        hideNav,
     }
 
     return (

@@ -5,11 +5,13 @@ import { auth } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
 import userEvent from '@testing-library/user-event';
 import { useData } from './context/DataContext';
+import { useParams } from 'react-router-dom';
 
 
 
 export default function UserSettings() {
-    const { navigate, setError, error, message, setMessage } = useAuth()
+  const { navigate, setError, error, message, setMessage } = useAuth()
+  const { setHideNav } = useData()
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
@@ -80,7 +82,7 @@ useEffect(() => {
 
 
   return (
-    <div id='login'>
+    <div id='login' onClick={() => setHideNav(true)}>
       <form action="" onSubmit={resetPass}>
         {show &&
         <React.StrictMode>

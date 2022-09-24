@@ -224,7 +224,7 @@ label {
 }
 
 #home {
-  width: 80%;
+  width: 85%;
   height: 95vh;
   float: right;
   margin: 0;
@@ -294,10 +294,6 @@ label {
   letter-spacing: 2px;
   padding-block: 0.5rem;
 }
-#home .accordion--container .accordion .notes--detail h3::before {
-  content: "/";
-  color: #f7ce3e;
-}
 #home .accordion--container .accordion .notes--detail h3 span {
   font-size: 1.1rem;
   text-transform: uppercase;
@@ -312,7 +308,7 @@ label {
 nav, #mNav {
   position: fixed;
   left: 0;
-  width: 20%;
+  width: 15%;
   height: 100vh;
   background-color: #1a2930;
   display: flex;
@@ -335,6 +331,7 @@ nav, #mNav {
 nav h3, #mNav h3 {
   padding-block: 1rem;
   color: #e3dcda;
+  text-transform: lowercase;
 }
 @media only screen and (max-width: 1000px) {
   nav h3, #mNav h3 {
@@ -350,6 +347,7 @@ nav i, #mNav i {
   }
 }
 nav ul, #mNav ul {
+  width: 100%;
   margin: auto;
   text-transform: uppercase;
   font-family: "Blinker", sans-serif;
@@ -366,6 +364,9 @@ nav li, #mNav li {
   margin-block: 2rem;
   border-top: 1px solid #f7ce3e;
   border-bottom: 1px solid #f7ce3e;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 nav .nav--buttons--container, #mNav .nav--buttons--container {
   display: flex;
@@ -373,12 +374,17 @@ nav .nav--buttons--container, #mNav .nav--buttons--container {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 50%;
   padding-block: 1rem;
+  margin: auto;
 }
-nav .nav--buttons--container button, #mNav .nav--buttons--container button {
+nav .nav--buttons--container button, #mNav .nav--buttons--container button, nav .nav--buttons--container .nav--buttons--Link, #mNav .nav--buttons--container .nav--buttons--Link {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-nav .nav--buttons--container button a, #mNav .nav--buttons--container button a {
+nav .nav--buttons--container button a, #mNav .nav--buttons--container button a, nav .nav--buttons--container .nav--buttons--Link a, #mNav .nav--buttons--container .nav--buttons--Link a {
   color: black;
 }
 @media only screen and (max-width: 1000px) {
@@ -405,13 +411,15 @@ nav #hideNav, #mNav #hideNav {
 }
 
 #mNav {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   display: grid;
   position: fixed;
-  width: auto;
   inset: 0 50% 0 0;
   align-items: center;
   justify-content: space-around;
-  padding: 0;
+  padding: 1rem;
   margin: 0;
   z-index: 1;
 }
@@ -424,9 +432,12 @@ nav #hideNav, #mNav #hideNav {
 }
 #mNav ul li {
   font-size: 1.2rem;
+  width: 100%;
 }
 #mNav .nav--buttons--container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
 #mNav #close {
   position: absolute;
@@ -435,7 +446,7 @@ nav #hideNav, #mNav #hideNav {
 }
 
 #main {
-  width: 80%;
+  width: 85%;
   height: 95vh;
   float: right;
   margin: 0;
@@ -452,7 +463,7 @@ nav #hideNav, #mNav #hideNav {
 }
 
 #signup, #upload, #resetPass, #login {
-  width: 80%;
+  width: 85%;
   height: 95vh;
   float: right;
   margin: 0;

@@ -74,8 +74,8 @@ export default function Signup() {
       .then(res => {
         setUser({
           username: data.username,
-                email: data.email
-              })
+          email: data.email
+            })
               setDoc(doc(DocRef, data.email), {
                 email: data.email,
                 username: data.username,

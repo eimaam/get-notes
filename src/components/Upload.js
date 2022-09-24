@@ -11,7 +11,7 @@ import { auth, database, storage } from '../firebaseConfig'
 
 export default function Upload() {
   const { navigate, loading, setLoading } = useAuth()
-  const { userInfo, setShowMnav } = useData()
+  const { userInfo, setHideNav } = useData()
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
@@ -104,7 +104,7 @@ export default function Upload() {
     
 
   return (
-    <div id='upload' onClick={() => setShowMnav(false)}>
+    <div id='upload' onClick={() => setHideNav(true)}>
       <form action="" onSubmit={uploadNote}>
         <div>
           <label htmlFor="category">Category:</label>

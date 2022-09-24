@@ -18,7 +18,7 @@
     }
 }
 @mixin containerDesktop{
-    width: 80%;
+    width: 85%;
     height: 95vh;
     float: right;
     margin: 0;
@@ -270,11 +270,6 @@ label{
                     letter-spacing: 2px;
                     padding-block: 0.5rem;
 
-                    &::before{
-                        content: "/";
-                        color: $--primary;
-                    }
-
                     span{
                         font-size: 1.1rem;
                         text-transform: uppercase;
@@ -300,7 +295,7 @@ label{
 nav{
     position: fixed;
     left: 0;
-    width: 20%;
+    width: 15%;
     height: 100vh;
     background-color: $--main;
     @include flex(column);
@@ -317,6 +312,7 @@ nav{
     h3{
         padding-block: 1rem;
         color: $--secondary;
+        text-transform: lowercase;
 
         @include mobile(1000px){
             display: none;
@@ -331,6 +327,7 @@ nav{
     }
 
     ul{
+        width: 100%;
         margin: auto;
         text-transform: uppercase;
         font-family: $--Blinker;
@@ -347,13 +344,23 @@ nav{
         margin-block: 2rem;
         border-top: 1px solid $--primary;
         border-bottom: 1px solid $--primary;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem
     }
 
     .nav--buttons--container{
         @include flex(column);
+        width: 50%;
         padding-block: 1rem;
-        button{
+        margin: auto;
+        
+        button, .nav--buttons--Link{
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
             a{
                 color: black;
             }
@@ -383,15 +390,16 @@ nav{
 // Mobile Nav
 #mNav{
     @extend nav;
+    width: max-content;
     display: grid;
     position: fixed;
-    width: auto;
     inset: 0 50% 0 0;
     align-items: center;
     justify-content: space-around;
-    padding: 0;
+    padding: 1rem;
     margin: 0;
     z-index: 1;
+
     h3{
         display: block;
         text-align: center;
@@ -399,15 +407,17 @@ nav{
 
     ul{
         display: block;
-        
 
         li{
             font-size: 1.2rem;
+            width: 100%;
         }
     }
 
     .nav--buttons--container{
-        display: grid;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
     }
 
     #close{

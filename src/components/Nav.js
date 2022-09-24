@@ -6,11 +6,11 @@ import { useData } from '../context/DataContext';
 import { useEffect } from 'react';
 import { auth } from '../firebaseConfig';
 import { BarLoader } from "react-spinners"
-import { FaBars, FaTimes } from 'react-icons/fa';
-
+import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt } from 'react-icons/fa';
+import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
+import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
 export default function Nav() {
-  const { userInfo, fetchUserDetail, setShowMnav, showMnav } = useData();
-  // const [showMnav, setShowMnav] = useState(false);
+  const { userInfo, fetchUserDetail, setHideNav, hideNav } = useData();
   const { logOut, user, isLogged } = useAuth();
   
   useEffect(() => {
@@ -24,37 +24,50 @@ export default function Nav() {
     const mNav = document.getElementById("mNav");
     const closeNav = document.getElementById("hideNav");
  
+    // switching between toggle icons on click from display block to display none
     if(hamburger.style.display != "none"){
-        setShowMnav(true)
+        setHideNav(!hideNav)
         hamburger.style.display = "none"
         closeNav.style.display = "block"
     }else{
-        setShowMnav(false)
+        setHideNav(true)
         hamburger.style.display = "block"
         closeNav.style.display = "none"
     }
   }
+// //
 
   return (
     <React.StrictMode>
     <nav id='nav'>
-      {user && userInfo.username ? <h3>@{userInfo.username}</h3> 
+      {user && userInfo.username ? <h3><FaUser />  : @{userInfo.username}</h3> 
       : 
       user && <i>{userInfo.email}</i>
       }
         {/* {user && <h3>{userInfo.username}</h3>} */}
         <ul>
           <NavLink to="/">
-            <li>GET NOTES</li>
+            <li>
+              <TbBookDownload /> 
+              GET NOTES
+            </li>
           </NavLink>
           <NavLink to="/upload">
-            <li>Upload Notes</li>
+            <li><TbBookUpload /> Upload Notes</li>
           </NavLink>
         </ul>
         {user &&
           <div className='nav--buttons--container'>
-            <button onClick={logOut}>Sign out</button>
-            <button><Link to='/user/settings'> settings</Link></button>
+            <button onClick={logOut}>
+              Sign out 
+              <FaSignOutAlt />
+            </button>
+            <button>
+              <Link to='/user/settings' className='nav--buttons--Link'>  
+                settings 
+                <FaUserCog />
+              </Link>
+            </button>
           </div>
         }
         <FaBars id='showNav' onClick={toggleNav}/>
@@ -62,20 +75,32 @@ export default function Nav() {
     </nav>
 
 {/* MOBILE NAVIGATION MENU */}
-    {showMnav &&
+    {!hideNav &&
     <div id='mNav'>
-      {user && userInfo.username ? <h3>@{userInfo.username}</h3> 
+      {user && userInfo.username ? <h3><FaUser /> @{userInfo.username}</h3> 
       :  
       user && <i>{userInfo.email}</i>
       }
       <ul>
-          <NavLink to="/"><li>GET NOTES</li></NavLink>
-          <NavLink to="/upload"><li>Upload Notes</li></NavLink>
+          <NavLink to="/">
+            <li><TbBookDownload /> GET NOTES</li>
+          </NavLink>
+          <NavLink to="/upload">
+          <li><TbBookUpload /> UPLOAD NOTES </li>
+          </NavLink>
       </ul>
       {user &&
           <div className='nav--buttons--container'>
-            <button onClick={logOut}>Sign out</button>
-            <button><Link to='/user/settings'> settings</Link></button>
+            <button onClick={logOut}>
+              Sign out 
+              <FaSignOutAlt />
+            </button>
+            <button>
+              <Link to='/user/settings' className='nav--buttons--Link'> 
+                settings 
+                <FaUserCog /> 
+              </Link>
+              </button>
           </div>
       }
     </div>

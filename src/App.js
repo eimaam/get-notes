@@ -37,16 +37,18 @@ function App() {
   
   return (
     <Router>
+      {/* turned loader to enable app data from AuthContext to load before displaying */}
       {loading 
       
       ?
 
+      // loader from react-spinners
       <div className='loader'>
         <RingLoader loading={loading} className='test'/>
       </div>
       
       :
-
+        
       <div>
       <AuthProvider>
         <DataProvider>
@@ -59,11 +61,9 @@ function App() {
             <Route path="/login" element={<Login />}    />
             <Route path="/addusername" element={<UsernameRegistration />}    />
             <Route path="/upload" element={<Upload />}    />
-            <Route path="/:user/settings" element={<UserSettings />}    />
+            <Route path="/user/settings" element={<UserSettings />}    />
             <Route exact path="/reset" element={<ResetPass />}    />
             <Route path="*" element={<ErrorPage />}    />
-            {/* <Route exact path="/reset" element={<ResetPass Nav={setShowNav} />}    />
-            <Route path="*" element={<ErrorPage Nav={setShowNav} />}    /> */}
           </Routes>
           
           <Footer />

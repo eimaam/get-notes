@@ -7,10 +7,11 @@ import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'fire
 import { database } from '../firebaseConfig'
 import { RingLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
+import { GiWhiteBook } from 'react-icons/gi'
 
 export default function Home() {
     const { navigate, user, loading } = useAuth()
-    const { userInfo, setShowMnav, } = useData();
+    const { userInfo, setHideNav, hideNav } = useData();
 
     // state to manage accordions
     const [showCPE, setShowCPE] = useState(false)
@@ -90,7 +91,7 @@ export default function Home() {
     
 
   return (
-    <div id='home' className="notes--container" onClick={() => setShowMnav(false)}>
+    <div id='home' className="notes--container" onClick={() => setHideNav(true)}>
         {!user ? <div>
             <p>Loading Notes...</p>
             <RingLoader />
@@ -99,7 +100,7 @@ export default function Home() {
         <div className='accordion--container'>
             <div id='header' className='accordion' onClick={() => setShowCPE(!showCPE)} >
                 <div className='accordion--tab'>
-                    <h2>Computer Engineering </h2>
+                    <h2> Computer Engineering </h2>
                     {!showCPE && <h2><IoIosArrowForward /></h2>}
                     {showCPE && <h2><IoIosArrowDown /></h2>}
                 </div>
@@ -112,7 +113,7 @@ export default function Home() {
                     return <h3 key={index}>
                                 <a href={notes.url}>
                                     <span>
-                                        {notes.CourseCode}: 
+                                        <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
                                     </span> 
                                     {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
                                     <i>({notes.uploadedBy})</i>
@@ -139,7 +140,9 @@ export default function Home() {
                     eeeNotes.map((notes, index) => {
                         return <h3 key={index}>
                                     <a href={notes.url} >
-                                        <span>{notes.CourseCode}: </span> 
+                                        <span>
+                                            <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
+                                        </span> 
                                         {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
                                         <i>({notes.uploadedBy})</i>
                                     </a>
@@ -164,7 +167,9 @@ export default function Home() {
                    otherNotes.map((notes, index) => {
                     return <h3 key={index}>
                                 <a href={notes.url}>
-                                    <span>{notes.CourseCode}: </span> 
+                                    <span>
+                                        <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
+                                    </span> 
                                     {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
                                     <i>({notes.uploadedBy})</i>
                                 </a>
