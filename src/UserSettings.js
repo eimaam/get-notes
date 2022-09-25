@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
 import { toast } from 'react-toastify';
-import { auth } from './firebaseConfig';
+import { auth, database } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
 import userEvent from '@testing-library/user-event';
 import { useData } from './context/DataContext';
 import { useParams } from 'react-router-dom';
+import { collection, doc, onSnapshot, query, setDoc, where } from 'firebase/firestore';
 
 
 
 export default function UserSettings() {
-  const { navigate, setError, error, message, setMessage } = useAuth()
+  const {userName} = useParams();
+  const { navigate, setError, error, message, setMessage, loading, setLoading, DocRef, user } = useAuth()
   const { setHideNav } = useData()
 
   useEffect(() => {
@@ -21,12 +23,15 @@ export default function UserSettings() {
     })
 }, [])
 
+
     const [show, setShow] = useState(false)
 
 
     const [data, setData] = useState({
         email: '',
     })
+
+    const [regUsernames, setRegUsernames] = useState([])
 
   function handleChange(e){
     const {name, value} = e.target
@@ -72,6 +77,7 @@ useEffect(() => {
         }, 4000);
     }
 }, [message])
+
 useEffect(() => {
     if(error != ""){
         setTimeout(() => {
@@ -81,12 +87,81 @@ useEffect(() => {
 }, [error])
 
 
+// //-------------------TO USE THIS WHEN I ENABLE USERNAME CHANGING OF USERNAME ----------------------------- //
+// //-------------------TO USE THIS WHEN I ENABLE USERNAME CHANGING OF USERNAME ----------------------------- //
+
+//   // setting inputted username to the variable in order to capture and check on sign up if it exist in database 
+//   // and also use it for useEffect error boundary
+
+//   function handleUsername(e){
+//     const {name, value} = e.target
+//     setData(prevData => ({
+//       ...prevData,
+//       [name]: value.toLowerCase()
+//     }))
+//   }
+//   const username = data.username;
+  
+//   // regular expression for USERNAME
+//   const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{4,18}$/;
+
+  
+// // get list of usernames from database that matches one entered by new user on sign up and save to regUsernames state 
+// useEffect(() => {
+//   const checkUsername = async () => {
+//     try{
+//       const q = query(collection(database, "userDetails"), where("username", "==", data.username))
+//       await onSnapshot(q,snapShot => {
+//         setRegUsernames(snapShot.docs.map(data => ({
+//           ...data.data(),
+//           id: data.id
+//         })))
+//       })
+      
+//     }
+//     catch(err){
+//       console.log(err.message)
+//     }
+//   }
+//   checkUsername()
+// }, [username])
+
+// // check if the username entered by new user matches another in the database
+// // if regUsernames' length is greater than 0 that means username entered matches one from the database
+// const takenUsername = regUsernames.length > 0 && regUsernames[0].username
+
+// const updateUsername = async (e) => {
+//   e.preventDefault()
+//   setLoading(false)
+//   if(data.username === takenUsername){
+//     setLoading(false)
+//     return toast.error('Username taken!')
+//     // check if username matches requested format from username regular expression usernameRegex
+//   }else if(!usernameRegex.test(data.username)){
+//     setError('Username must be at least 3 character long, not starting with a number and can\'t end with \'.\'')
+//     return toast.error('Username format not supported')
+//   }else{
+//     try{
+//       await setDoc(doc(DocRef, user.email), {
+//         username: username
+//       })
+//     }
+//     catch(err){
+//       console.log(err.code)
+//     }
+//   }
+//   setLoading(true)
+// }
+
+
+
+
   return (
     <div id='login' onClick={() => setHideNav(true)}>
       <form action="" onSubmit={resetPass}>
         {show &&
         <React.StrictMode>
-        <label htmlFor="Username">
+        <label htmlFor="Registered Email">
           Re-enter your registered Email:
         </label>
         <input

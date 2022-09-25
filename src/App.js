@@ -61,7 +61,7 @@ function App() {
             <Route path="/login" element={<Login />}    />
             <Route path="/addusername" element={<UsernameRegistration />}    />
             <Route path="/upload" element={<Upload />}    />
-            <Route path="/user/settings" element={<UserSettings />}    />
+            <Route path="/:userName/settings" element={<UserSettings />}    />
             <Route exact path="/reset" element={<ResetPass />}    />
             <Route path="*" element={<ErrorPage />}    />
           </Routes>

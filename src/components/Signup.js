@@ -47,11 +47,13 @@ useEffect(() => {
     setData(prevData => ({
       ...prevData,
       [name]: value.toLowerCase(),
-    }),
+    })
     )
     console.log(data)
   }
 
+  // const passwordRegex =  /^[A-Za-z]\w{6,14}$/
+  
   // setting inputted username to the variable in order to capture and check on sign up if it exist in database 
   // and also use it for useEffect error boundary
   const username = data.username;
@@ -59,9 +61,7 @@ useEffect(() => {
   // regular expression for USERNAME
   const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{4,18}$/;
 
-  // const [notFocused, setNotFocused] = useState(false)
 
-  // const passwordRegex =  /^[A-Za-z]\w{6,14}$/
 
   
 // get list of usernames from database that matches one entered by new user on sign up and save to regUsernames state 
@@ -95,7 +95,6 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
     if(data.username === takenUsername){
       setLoading(false)
       return toast.error('Username taken!')
-      // setError('Passwords do not match')
       // check if username matches requested format from username regular expression usernameRegex
     }else if(!usernameRegex.test(data.username)){
       setError('Username must be at least 3 character long, not starting with a number and can\'t end with \'.\'')
@@ -111,14 +110,14 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           username: username,
           email: data.email
             })
-              setDoc(doc(DocRef, data.email), {
-                email: data.email,
-                username: username,
-              })
-              toast.info("SIGNED UP SUCCESSFULLY")
-              return navigate('../login')
+            setDoc(doc(DocRef, data.email), {
+              email: data.email,
+              username: username,
             })
-          .catch(err => {
+            toast.info("SIGNED UP SUCCESSFULLY")
+            return navigate('../login')
+            })
+            .catch(err => {
               if(err.code === 'auth/weak-password'){
                 setLoading(false)
                 toast.error('Weak Password! Password should be at least 6 characters')

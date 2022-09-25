@@ -23,6 +23,7 @@ export default function DataProvider({ children }) {
     const { user } = useAuth()
     const [userInfo, setUserInfo] = useState({})
 
+
     // fetch all all data linked to logged in user and save in userInfo state
     const fetchUserDetail = async() => {
         try{
@@ -38,6 +39,9 @@ export default function DataProvider({ children }) {
             console.log(err.message)
         }
     }
+
+
+    
 
     
     

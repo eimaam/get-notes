@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useParams } from "react-router-dom"
 import { RiMenuUnfoldLine, RiMenuFoldLine } from "react-icons/ri"
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
@@ -9,7 +9,10 @@ import { BarLoader } from "react-spinners"
 import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt } from 'react-icons/fa';
 import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
 import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
+
+
 export default function Nav() {
+  const {userName} = useParams()
   const { userInfo, fetchUserDetail, setHideNav, hideNav } = useData();
   const { logOut, user, isLogged } = useAuth();
   
@@ -65,7 +68,7 @@ export default function Nav() {
               <FaSignOutAlt />
             </button>
             <button>
-              <Link to='/user/settings' className='nav--buttons--Link'>  
+              <Link to={userInfo.username+'/settings'} className='nav--buttons--Link'>  
                 settings 
                 <FaUserCog />
               </Link>

@@ -8,6 +8,7 @@ import { database } from '../firebaseConfig'
 import { RingLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
+import { useParams } from 'react-router-dom'
 
 export default function Home() {
     const { navigate, user, loading } = useAuth()
@@ -91,11 +92,17 @@ export default function Home() {
 
   return (
     <div id='home' className="notes--container" onClick={() => setHideNav(true)}>
-        {!user ? <div>
+        {!user 
+        
+        ? 
+        
+        <div>
             <p>Loading Notes...</p>
             <RingLoader />
-            </div>
+        </div>
+
         :
+
         <div className='accordion--container'>
             <div id='header' className='accordion' onClick={() => setShowCPE(!showCPE)} >
                 <div className='accordion--tab'>
