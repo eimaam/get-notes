@@ -11,7 +11,7 @@ import { PulseLoader, BeatLoader } from "react-spinners"
 
 export default function Login() {
   const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
-  const { userInfo } = useData()
+  const { userInfo, setHideNav } = useData()
 
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function Login() {
 // },[error])
 
   return (
-      <div id='login'>
+      <div id='login' onClick={() => setHideNav(true)}>
       <form action="" onSubmit={handleSubmit}>
         <div>
             <label htmlFor="Passowrd">
@@ -115,9 +115,11 @@ export default function Login() {
           {!loading && <input type="submit" value="LOG IN"/>}
           {/* error message */}
           <p className='error'>{error}</p>
-          <p>Don't have an account yet? <Link to="/signup">SIGN UP!</Link></p>
+          <p>Don't have an account yet? <Link to="/signup" style={{color: '#f7ce3e'}}>SIGN UP!</Link></p>
           <p>or</p>
-          <button onClick={logInWithPopUp}>Sign up with <FcGoogle /></button>
+          <button onClick={logInWithPopUp} className='flex'>
+            Sign up with <FcGoogle />
+          </button>
           <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
       </form>
       </div>

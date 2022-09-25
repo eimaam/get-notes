@@ -32,6 +32,9 @@ export default function DataProvider({ children }) {
             })
         }
         catch(err){
+            if(err.message === 'Failed to get document because the client is offline.'){
+                toast.error('Couldn\'t load NOTES. You appear to be OFFLINE!')
+            }
             console.log(err.message)
         }
     }

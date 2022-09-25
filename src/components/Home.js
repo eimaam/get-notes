@@ -1,9 +1,9 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useData } from '../context/DataContext'
 import { auth } from '../firebaseConfig'
-import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'firebase/firestore'
+import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import { database } from '../firebaseConfig'
 import { RingLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
@@ -11,7 +11,7 @@ import { GiWhiteBook } from 'react-icons/gi'
 
 export default function Home() {
     const { navigate, user, loading } = useAuth()
-    const { userInfo, setHideNav, hideNav } = useData();
+    const { setHideNav } = useData();
 
     // state to manage accordions
     const [showCPE, setShowCPE] = useState(false)
@@ -23,7 +23,6 @@ export default function Home() {
     const [cpeNotes, setCPENotes] = useState([])
     const [eeeNotes, setEEENotes] = useState([])
 
-    // const [arrow, setArrow] = useState(<IoIosArrowForward />)
 
     // check status of User session - logged or not
     useEffect(() => {
@@ -37,7 +36,7 @@ export default function Home() {
     
     // FETCH Notes on load
     useEffect(() => {
-        // function to Fetch CPE Notes
+        // function to Fetch Notes in CPE category
         const fetchCPENotes = async () => {
             try{
                 const q = query(collection(database, "noteDetails"), where("category", "==", "Computer Engineering"))
@@ -53,7 +52,7 @@ export default function Home() {
         };
         }
         
-        // function to FetchEEE Notes
+        // function to Fetch Notes in EEE category
         const fetchEEENotes = async () => {
             try{
                 const q = query(collection(database, "noteDetails"), where("category", "==", "Electrical & Electronics Engineering"))

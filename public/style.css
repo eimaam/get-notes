@@ -205,6 +205,13 @@ label {
   }
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 .loader {
   margin: auto;
   width: 100% !important;
@@ -221,6 +228,17 @@ label {
 
 .success {
   color: #f7ce3e;
+}
+
+.Toastify .Toastify__close-button {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.Toastify .Toastify__close-button--light {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 #home {
@@ -269,6 +287,7 @@ label {
   border-bottom: 1px solid #e3dcda;
   padding-block: 0.5rem;
   align-items: center;
+  cursor: pointer;
 }
 #home .accordion--container .accordion .accordion--tab h2 {
   color: #e3dcda;
@@ -329,6 +348,9 @@ nav, #mNav {
   }
 }
 nav h3, #mNav h3 {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   padding-block: 1rem;
   color: #e3dcda;
   text-transform: lowercase;

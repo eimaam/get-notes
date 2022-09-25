@@ -65,6 +65,7 @@ useEffect(() => {
         }, 5000);
     }
 }, [message])
+
 useEffect(() => {
     if(error != ""){
         setTimeout(() => {
@@ -76,8 +77,6 @@ useEffect(() => {
 
   return (
       <div id='resetPass'>
-        {/* remove navigation bar
-        {props.Nav(false)} */}
       <form action="" onSubmit={resetPass}>
         <label htmlFor="Username">
           Enter registered Email:

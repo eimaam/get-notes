@@ -149,6 +149,7 @@ textarea{
     }
 
 }
+
 input[type=submit]{
     font-family: $--Blinker;
     background-color: $--primary;
@@ -191,6 +192,12 @@ label{
         font-size: 1rem;
     }
 }
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 .loader{
     margin: auto;
     width: 100% !important;
@@ -205,6 +212,16 @@ label{
 }
 .success{
     color: $--primary;
+}
+
+// setting toastify width
+.Toastify{
+    .Toastify__close-button{
+        width: max-content;
+    }
+    .Toastify__close-button--light{
+        width: max-content;
+    }
 }
 
 // COMPONENTS STYLING starts here
@@ -240,6 +257,7 @@ label{
                 border-bottom: 1px solid $--secondary;
                 padding-block: 0.5rem;
                 align-items: center;
+                cursor: pointer;
                 
                 h2{
                     color: $--secondary;
@@ -310,6 +328,7 @@ nav{
         padding: 0.5rem;
     }
     h3{
+        width: max-content;
         padding-block: 1rem;
         color: $--secondary;
         text-transform: lowercase;

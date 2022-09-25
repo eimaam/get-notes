@@ -69,14 +69,14 @@ useEffect(() => {
     if(message != ""){
         setTimeout(() => {
             setMessage('')
-        }, 2500);
+        }, 4000);
     }
 }, [message])
 useEffect(() => {
     if(error != ""){
         setTimeout(() => {
             setError('')
-        }, 2500);
+        }, 4000);
     }
 }, [error])
 
