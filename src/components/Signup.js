@@ -59,7 +59,7 @@ useEffect(() => {
   const username = data.username;
   
   // regular expression for USERNAME
-  const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{4,18}$/;
+  const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{4,16}$/;
 
 
 
@@ -151,6 +151,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           onChange={handleChange}
           min={3}
           max={16}
+          title="min of 3 characters and max of 16."
           required
           />
         </div>
