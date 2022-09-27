@@ -34,7 +34,6 @@ export default function Home() {
         })
     }, [])
 
-    console.log(process.env)
     // FETCH Notes on load
     useEffect(() => {
         // function to Fetch Notes in CPE category
