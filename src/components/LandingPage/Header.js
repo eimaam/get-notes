@@ -9,6 +9,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 // ..
 
 
@@ -33,7 +34,7 @@ export default function Header(){
             <span>&nbsp;</span>
             <span>&nbsp;</span>
             <button>
-              <a href='https://getnotes.eimaam.dev/signup'> get started</a>
+              <Link to='/signup'> get started</Link>
             </button>
         </div>
             <img src={heroImage2} alt="web designer" data-aos="fade-right"/>
