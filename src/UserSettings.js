@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
+import { onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
 import { toast } from 'react-toastify';
 import { auth, database } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
 import userEvent from '@testing-library/user-event';
 import { useData } from './context/DataContext';
 import { useParams } from 'react-router-dom';
-import { collection, doc, onSnapshot, query, setDoc, where } from 'firebase/firestore';
 
 
 
 export default function UserSettings() {
-  const {userName} = useParams();
-  const { navigate, setError, error, message, setMessage, loading, setLoading, DocRef, user } = useAuth()
+  const { userName } = useParams();
+  const { navigate, setError, error, message, setMessage } = useAuth()
   const { setHideNav } = useData()
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import ProcedureCard from './ProcedureCard'
 import { data } from "./procedures"
-import { BsChevronDoubleRight, BsChevronDoubleDown } from "react-icons/bs"
 
 // AOS import
 import AOS from 'aos';

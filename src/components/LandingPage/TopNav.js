@@ -3,11 +3,10 @@ import { Link } from "react-router-dom"
 import { useAuth } from '../../context/AuthContext'
 import { FaBars, FaTimes } from "react-icons/fa"
 import { useData } from '../../context/DataContext'
-import { HashLink, NavHashLink } from 'react-router-hash-link'
+import { HashLink } from 'react-router-hash-link'
 
 export default function TopNav() {
     const { user } = useAuth()
-    const { hideNav, setHideNav} = useData()
 
     // Mobile Navigation toggle
   function toggleNav(){    

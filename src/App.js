@@ -42,7 +42,7 @@ function App(props) {
   return (
     <Router>
       {/* turned loader to enable app data from AuthContext to load before displaying */}
-      {/* {loading 
+      {loading 
       
       ?
 
@@ -51,7 +51,7 @@ function App(props) {
         <PropagateLoader loading={loading} className='test'/>
       </div>
       
-      : */}
+      :
         
       <div>
       <AuthProvider>
@@ -85,7 +85,7 @@ function App(props) {
       autoClose={3000}
       />
       </div>
-  // }
+  }
     </Router>
 
   );

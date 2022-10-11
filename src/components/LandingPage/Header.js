@@ -1,15 +1,14 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { HashLink } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 
-import heroImage from "../../assets/web_design.svg"
-import heroImage1 from "../../assets/338-Open-tabs.svg"
+// hero image import
 import heroImage2 from "../../assets/167-Work-From-Home.svg"
 
 // AOS import
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import { useEffect } from 'react';
-import { HashLink } from 'react-router-hash-link';
-import { Link } from 'react-router-dom';
 // ..
 
 

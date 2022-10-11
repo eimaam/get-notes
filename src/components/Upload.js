@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import { addDoc, collection, doc, getDoc, setDoc, Timestamp, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, Timestamp } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import React, { useEffect } from 'react'
 import { useState } from 'react'

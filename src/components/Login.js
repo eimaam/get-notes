@@ -6,12 +6,12 @@ import { auth } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
-import { PulseLoader, BeatLoader } from "react-spinners"
+import { BeatLoader } from "react-spinners"
 
 
 export default function Login(props) {
   const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
-  const { userInfo, setHideNav } = useData()
+  const { setHideNav } = useData()
 
 
   useEffect(() => {

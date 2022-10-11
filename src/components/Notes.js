@@ -8,11 +8,9 @@ import { database } from '../firebaseConfig'
 import { PropagateLoader, RingLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
-import { useParams } from 'react-router-dom'
-import { BsJustify } from 'react-icons/bs'
 
 export default function Notes(props) {
-    const { navigate, user, loading } = useAuth()
+    const { navigate, user } = useAuth()
     const { setHideNav } = useData();
 
     // state to manage accordions
