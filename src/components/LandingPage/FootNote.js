@@ -19,8 +19,8 @@ export default function FootNote() {
             </ul>
             <ul>
                 <li>More From Tech Desk:</li>
-                <li>Whats-Link</li>
-                <li>Daily Quotes</li>
+                <li><a href="https://whats-link-eimaam.vercel.app" rel='noopener noreferrer' target="_blank">Whats-Link</a></li>
+                <li><a href="https://get-quotes-eimaam.vercel.app" rel='noopener noreferrer' target="_blank">Daily Quotes</a></li>
                 <li>Tub-Vidz</li>
             </ul>
         </div>
