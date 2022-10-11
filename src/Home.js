@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Feedback from './components/LandingPage/Feedback'
 import HowTo from './components/LandingPage/how-to/HowTo'
 import Header from './components/LandingPage/Header'

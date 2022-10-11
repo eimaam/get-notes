@@ -60,7 +60,7 @@ export default function AuthProvider({ children }) {
             return navigate('../addusername')
         })
         .catch(err => {
-            if(err.code == 'auth/popup-blocked'){
+            if(err.code === 'auth/popup-blocked'){
                 toast.error('Pop-up blocked by browser!')
             }else if(err.code === 'auth/internal-error'){
                 toast.error('Internal error... Check your internet connection & retry!')

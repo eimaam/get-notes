@@ -17,7 +17,7 @@ export default function ResetPass(props) {
           navigate('../notes')
         }
     })
-}, [])
+}, [props.showNav])
 
     // const [show, setShow] = useState(false)
 
@@ -49,7 +49,7 @@ const resetPass = async (e) => {
         if(err.code === "auth/invalid-email"){
             toast.error('Invalid or Incorrect email')
             setError('Invalid or Incorrect email')
-        }else if(err.code == 'auth/user-not-found'){
+        }else if(err.code === 'auth/user-not-found'){
             toast.error('User not found!')
             setError('User not found!')
         }else{
@@ -60,7 +60,7 @@ const resetPass = async (e) => {
 }
 
 useEffect(() => {
-    if(message != ""){
+    if(message !== ""){
         setTimeout(() => {
             setMessage('')
         }, 5000);
@@ -68,7 +68,7 @@ useEffect(() => {
 }, [message])
 
 useEffect(() => {
-    if(error != ""){
+    if(error !== ""){
         setTimeout(() => {
             setError('')
         }, 5000);

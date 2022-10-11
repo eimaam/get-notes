@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
 import { toast } from 'react-toastify';
-import { auth, database } from './firebaseConfig';
+import { auth } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
-import userEvent from '@testing-library/user-event';
 import { useData } from './context/DataContext';
 import { useParams } from 'react-router-dom';
 
@@ -30,7 +29,7 @@ export default function UserSettings() {
         email: '',
     })
 
-    const [regUsernames, setRegUsernames] = useState([])
+    // const [regUsernames, setRegUsernames] = useState([])
 
   function handleChange(e){
     const {name, value} = e.target
@@ -55,7 +54,7 @@ const resetPass = async (e) => {
       if(err.code === "auth/invalid-email"){
         toast.error('Invalid or Incorrect email')
         setError('Invalid or Incorrect email')
-      }else if(err.code == 'auth/user-not-found'){
+      }else if(err.code === 'auth/user-not-found'){
           toast.error('User not found!')
           setError('User not found!')
       }else{
@@ -69,7 +68,7 @@ const resetPass = async (e) => {
 }
 
 useEffect(() => {
-    if(message != ""){
+    if(message !== ""){
         setTimeout(() => {
             setMessage('')
         }, 4000);
@@ -77,7 +76,7 @@ useEffect(() => {
 }, [message])
 
 useEffect(() => {
-    if(error != ""){
+    if(error !== ""){
         setTimeout(() => {
             setError('')
         }, 4000);

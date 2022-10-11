@@ -24,7 +24,7 @@ export default function Signup(props) {
     onAuthStateChanged(auth, data => {
       data && navigate('../notes')
     })
-  }, [])
+  }, [props.showNav])
     
 // clear error message after 5 seconds
 useEffect(() => {

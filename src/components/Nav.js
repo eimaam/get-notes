@@ -10,7 +10,6 @@ import { RiHome4Line } from 'react-icons/ri';
 
 
 export default function Nav() {
-  const { userName } = useParams()
 
   const { userInfo, fetchUserDetail, setHideNav, hideNav } = useData();
   const { logOut, user } = useAuth();
@@ -23,7 +22,7 @@ export default function Nav() {
 // Mobile Navigation toggle
   function toggleNav(){    
     const hamburger = document.getElementById("showNav") 
-    const mNav = document.getElementById("mNav");
+    // const mNav = document.getElementById("mNav");
     const closeNav = document.getElementById("hideNav");
  
     // switching between toggle icons on click from display block to display none

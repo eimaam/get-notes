@@ -158,7 +158,7 @@ export default function Upload() {
         {uploadProgress > 1 && <p>Checking File... {uploadProgress}% done!</p>}
         {uploadProgress === 100 && <p>Now click on UPLOAD</p>}
 
-        {uploadProgress != '' && uploadProgress < 100 && <button><BeatLoader color='#344648' /></button>}
+        {uploadProgress !== '' && uploadProgress < 100 && <button><BeatLoader color='#344648' /></button>}
         {uploadProgress > 1 ? '' : <button onClick={uploadFile}>check file </button>}
         {uploadProgress == 100 && <input type="submit" value="UPLOAD" />}
         {loading && <BeatLoader color='#fff'/>}

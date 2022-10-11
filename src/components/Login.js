@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, setPersistence, browserLocalPersistence} from 'firebase/auth'
+import { signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence} from 'firebase/auth'
 import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-toastify';
 import { auth } from '../firebaseConfig';

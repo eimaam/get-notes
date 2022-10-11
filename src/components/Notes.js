@@ -5,7 +5,7 @@ import { useData } from '../context/DataContext'
 import { auth } from '../firebaseConfig'
 import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import { database } from '../firebaseConfig'
-import { PropagateLoader, RingLoader } from 'react-spinners'
+import { PropagateLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 
@@ -32,7 +32,7 @@ export default function Notes(props) {
                 navigate('../login')
             }
         })
-    }, [])
+    }, [props.showNav])
 
     // FETCH Notes on load
     useEffect(() => {

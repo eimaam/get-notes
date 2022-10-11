@@ -5,23 +5,22 @@ import Nav from './components/Nav';
 import Signup from './components/Signup';
 import Upload from './components/Upload';
 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Notes from './components/Notes';
 import Footer from './components/Footer';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { PropagateLoader, RingLoader } from "react-spinners"
-import AuthProvider, { useAuth } from './context/AuthContext';
-import DataProvider, { useData } from './context/DataContext';
+import { PropagateLoader } from "react-spinners"
+import AuthProvider from './context/AuthContext';
+import DataProvider from './context/DataContext';
 import UsernameRegistration from './components/UsernameRegistration';
 import ErrorPage from './ErrorPage';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import UserSettings from './UserSettings';
 import ResetPass from './ResetPass';
-import Header from "./components/LandingPage/Header"
 import Home from './Home';
 
 
