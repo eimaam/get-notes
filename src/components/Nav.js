@@ -6,9 +6,10 @@ import { useData } from '../context/DataContext';
 import { useEffect } from 'react';
 import { auth } from '../firebaseConfig';
 import { BarLoader } from "react-spinners"
-import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt, FaHome } from 'react-icons/fa';
 import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
-import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
+import { RiHome4Line } from 'react-icons/ri';
+// import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
 
 
 export default function Nav() {
@@ -49,9 +50,14 @@ export default function Nav() {
       : 
       user && <i>{userInfo.email}</i>
       }
-        {/* {user && <h3>{userInfo.username}</h3>} */}
         <ul>
           <NavLink to="/">
+            <li>
+              <RiHome4Line /> 
+              HOME
+            </li>
+          </NavLink>
+          <NavLink to="/notes">
             <li>
               <TbBookDownload /> 
               GET NOTES
@@ -75,6 +81,10 @@ export default function Nav() {
             </button>
           </div>
         }
+          <div className='support'>
+            <p>Contact Support:</p>
+            <p>1leadtechie@gmail.com</p>
+          </div>
         <FaBars id='showNav' onClick={toggleNav}/>
         <FaTimes id='hideNav' onClick={toggleNav}/>
     </nav>
@@ -84,11 +94,17 @@ export default function Nav() {
     <div id='mNav'>
       {user 
       && 
-      userInfo.username ? <h3><FaUser /> : @{userInfo.username}</h3> 
+      userInfo.username ? <div><h3><FaUser /> : @{userInfo.username}</h3> </div>
       :  
       user && <i>{userInfo.email}</i>
       }
       <ul>
+          <NavLink to="/">
+            <li>
+              <RiHome4Line /> 
+              HOME
+            </li>
+          </NavLink>
           <NavLink to="/">
             <li><TbBookDownload /> GET NOTES</li>
           </NavLink>
@@ -108,6 +124,10 @@ export default function Nav() {
                 <FaUserCog /> 
               </Link>
               </button>
+              <div>
+                <p>Contact Support:</p>
+                <p>1leadtechie@gmail.com</p>
+              </div>
           </div>
       }
     </div>

@@ -99,7 +99,7 @@ export default function Upload() {
         toast.success('Note Added!')
         setLoading(false)
       }
-      
+      navigate('../notes')
     }
     
 

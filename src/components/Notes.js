@@ -10,7 +10,7 @@ import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 import { useParams } from 'react-router-dom'
 
-export default function Home() {
+export default function Notes(props) {
     const { navigate, user, loading } = useAuth()
     const { setHideNav } = useData();
 
@@ -27,6 +27,7 @@ export default function Home() {
 
     // check status of User session - logged or not
     useEffect(() => {
+        props.showNav(true)
         onAuthStateChanged(auth, data => {
             if(!data){
                 navigate('../login')
@@ -90,7 +91,7 @@ export default function Home() {
     
 
   return (
-    <div id='home' className="notes--container" onClick={() => setHideNav(true)}>
+    <div id='notes' className="notes--container" onClick={() => setHideNav(true)}>
         {!user 
         
         ? 
@@ -122,6 +123,7 @@ export default function Home() {
                                     </span> 
                                     {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
                                     <i>({notes.uploadedBy})</i>
+                                    <button>Download</button>
                                 </a>
                             </h3>
                         })

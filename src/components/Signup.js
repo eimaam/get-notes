@@ -11,7 +11,7 @@ import { useData } from '../context/DataContext';
 import { BeatLoader } from 'react-spinners'
 import { FcGoogle } from 'react-icons/fc';
 
-export default function Signup() {
+export default function Signup(props) {
   const { logInWithPopUp, setUser, DocRef, navigate, loading, setLoading, error, setError} = useAuth();
   const { setHideNav } = useData();
 
@@ -20,8 +20,9 @@ export default function Signup() {
 
 
   useEffect(() => {
+    props.showNav(false)
     onAuthStateChanged(auth, data => {
-      data && navigate('../')
+      data && navigate('../notes')
     })
   }, [])
     
@@ -59,7 +60,7 @@ useEffect(() => {
   const username = data.username;
   
   // regular expression for USERNAME
-  const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{4,16}$/;
+  const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{2,16}$/;
 
 
 
@@ -97,7 +98,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       return toast.error('Username taken!')
       // check if username matches requested format from username regular expression usernameRegex
     }else if(!usernameRegex.test(data.username)){
-      setError('Username must be at least 3 character long, not starting with a number and can\'t end with \'.\'')
+      setError('Username must be at least 3 characters long, not starting with a number and can\'t end with \'.\'')
       return toast.error('Username format not supported')
     }else if(data.password !== data.confirmPassword){
       setLoading(false)
@@ -149,8 +150,6 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           placeholder='Username' 
           value={data.username}
           onChange={handleChange}
-          min={3}
-          max={16}
           title="min of 3 characters and max of 16."
           required
           />

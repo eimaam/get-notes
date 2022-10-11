@@ -1,0 +1,42 @@
+import React from 'react'
+
+import heroImage from "../../assets/web_design.svg"
+import heroImage1 from "../../assets/338-Open-tabs.svg"
+import heroImage2 from "../../assets/167-Work-From-Home.svg"
+
+// AOS import
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { useEffect } from 'react';
+import { HashLink } from 'react-router-hash-link';
+// ..
+
+
+
+export default function Header(){
+
+  useEffect(() => {
+    AOS.init({delay: 200})
+  }, [])
+
+
+  return (
+    <header>
+        <div className='info' data-aos="fade-left">
+            <h1>All your NOTES and more in one environment!</h1>
+            <p>Stressed bout losing access to download your shared Notes or losing them on your device? 
+            <br />getNOTES solves all that and more.  Get free access to your needed Lecture notes and more arranged perfectly for YOU all in one environment.
+            <br/>...from your comfort zone!</p>
+            <button>
+              <HashLink to='#howTo'> SEE HOW TO</HashLink>
+            </button>
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+            <button>
+              <a href='/signup'> get started</a>
+            </button>
+        </div>
+            <img src={heroImage2} alt="web designer" data-aos="fade-right"/>
+    </header>
+  )
+}

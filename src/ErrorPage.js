@@ -1,8 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 
-export default function ErrorPage() {
+export default function ErrorPage(props) {
+  useEffect(() => {
+    props.showNav(false)
+  })
   return (
     <div id='home' style={{backgroundColor: "red"}}>
         <h1>PAGE BROKEN or DOES NOT EXIST...</h1>

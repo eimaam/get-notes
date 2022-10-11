@@ -9,15 +9,16 @@ import { useData } from '../context/DataContext';
 import { PulseLoader, BeatLoader } from "react-spinners"
 
 
-export default function Login() {
+export default function Login(props) {
   const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
   const { userInfo, setHideNav } = useData()
 
 
   useEffect(() => {
+    props.showNav(false)
     onAuthStateChanged(auth, data => {
         if(data){
-          navigate('../')
+          navigate('../notes')
         }
     })
 }, [])
@@ -45,7 +46,7 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, data.email, data.password)
         .then((res) => {
           toast.success("LOGGED IN")
-          navigate('../') 
+          navigate('../notes') 
         })
       }
       catch(err){

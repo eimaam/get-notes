@@ -62,7 +62,6 @@ const resetPass = async (e) => {
       }else{
         toast.error(err.code)
         setError(err.code)
-        console.log(err.code)
     }
   }
   return setData({
@@ -157,7 +156,7 @@ useEffect(() => {
 
 
   return (
-    <div id='login' onClick={() => setHideNav(true)}>
+    <div id='userSettings' onClick={() => setHideNav(true)}>
       <form action="" onSubmit={resetPass}>
         {show &&
         <React.StrictMode>

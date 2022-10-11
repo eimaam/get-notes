@@ -40,7 +40,7 @@
 html, body {
   margin: auto;
   scroll-behavior: smooth;
-  font-family: "PT Mono", monospace;
+  font-family: "Space Grotesk", sans-serif;
   width: 100%;
   height: 100%;
   background-color: #c5c1c0;
@@ -74,27 +74,37 @@ span, p {
 }
 
 h1 {
-  font-family: "Blinker", sans-serif;
-  text-transform: uppercase;
-  font-size: 6vw;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700 !important;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 h2 {
-  font-family: "Blinker", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2rem;
   text-transform: uppercase;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+  }
+}
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  h2 {
+    font-size: 1.7rem;
   }
 }
 
 h3 {
-  font-family: "Blinker", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   text-transform: Capitalize;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   h3 {
     font-size: 1rem;
   }
@@ -102,10 +112,10 @@ h3 {
 
 h4 {
   text-transform: uppercase;
-  font-family: "Blinker", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   h4 {
     font-size: 0.8rem;
   }
@@ -142,7 +152,7 @@ textarea:hover {
   border: 1px solid #f7ce3e;
   border-radius: 0.3rem;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   input, button,
 select,
 textarea {
@@ -152,13 +162,13 @@ textarea {
 }
 
 input[type=submit], button[type=submit] {
-  font-family: "Blinker", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   background-color: #f7ce3e;
   color: #1a2930;
   font-weight: 1000;
   cursor: pointer;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   input[type=submit], button[type=submit] {
     font-weight: 100;
     -webkit-border-radius: 0;
@@ -179,7 +189,10 @@ input[type=submit], button[type=submit] {
 }
 
 button {
-  font-family: "Blinker", sans-serif;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
   border: 0;
   background-color: #f7ce3e;
@@ -189,7 +202,11 @@ button {
   color: black;
   cursor: pointer;
 }
-@media only screen and (max-width: 1000px) {
+button:hover {
+  background-color: #1a2930;
+  color: #fff;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   button {
     font-weight: 100;
   }
@@ -199,7 +216,7 @@ label {
   font-size: 1.1rem;
   text-align: left;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   label {
     font-size: 1rem;
   }
@@ -220,6 +237,7 @@ label {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  flex-direction: column;
 }
 
 .error {
@@ -241,8 +259,226 @@ label {
   width: max-content;
 }
 
-#home {
-  width: 85%;
+header {
+  width: 80%;
+  margin: auto;
+  margin-block: 5rem;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  header img {
+    width: 70%;
+  }
+}
+header div {
+  padding: 1rem;
+}
+header .info * {
+  padding-block: 0.5rem;
+}
+header .info h1 {
+  width: 100%;
+  line-height: normal;
+  text-transform: none;
+  color: #f7ce3e;
+  text-shadow: 2px 2px 2px #1a2930;
+}
+header .info p {
+  font-size: 1.1rem;
+  line-height: 2;
+}
+header .info button {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+header .info button:hover {
+  background-color: #1a2930;
+  color: white;
+}
+header .info button a {
+  color: #1a2930;
+}
+header .info button a:hover {
+  background-color: #1a2930;
+  color: white;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  header {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 85%;
+  }
+  header .info * {
+    padding-block: 0.1rem;
+  }
+  header .info h2 {
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 1px #1a2930;
+  }
+  header .info button {
+    font-weight: normal;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+  }
+}
+
+section, .how--to {
+  width: 70%;
+  margin: auto;
+  margin-block: 2rem;
+  border-radius: 1rem;
+  background-color: #1a2930;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-evenly;
+  color: #fff;
+}
+section a, .how--to a {
+  color: inherit;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  section, .how--to {
+    width: 85%;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  section *, .how--to * {
+    text-align: center;
+  }
+}
+
+.card1, .card5, .card4, .card3, .card2 {
+  background-color: #f7ce3e;
+  width: 350px;
+  height: 260px;
+  border-top-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  padding: 1rem;
+  margin: 2rem auto;
+  transition: all 300ms;
+}
+.card1:hover, .card5:hover, .card4:hover, .card3:hover, .card2:hover {
+  transform: scale(1.05);
+}
+@media only screen and (max-width: 500px) {
+  .card1, .card5, .card4, .card3, .card2 {
+    width: 100%;
+    margin: auto;
+  }
+}
+.card1 *, .card5 *, .card4 *, .card3 *, .card2 * {
+  padding-block: 0.1rem;
+  text-align: justify;
+}
+.card1 h3, .card5 h3, .card4 h3, .card3 h3, .card2 h3 {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.5rem;
+}
+.card1 h2, .card5 h2, .card4 h2, .card3 h2, .card2 h2 {
+  font-size: 1.5rem;
+  color: #1a2930;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .card1 h2, .card5 h2, .card4 h2, .card3 h2, .card2 h2 {
+    font-size: 1.2rem;
+  }
+}
+.card1 p, .card5 p, .card4 p, .card3 p, .card2 p {
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .card1 p, .card5 p, .card4 p, .card3 p, .card2 p {
+    font-size: 1rem;
+  }
+}
+
+.card2 {
+  background-color: #e3dcda;
+}
+.card2 h2 {
+  color: #f7ce3e;
+}
+.card2 h3, .card2 p {
+  color: #1a2930;
+}
+
+.card3 {
+  background-color: #c5c1c0;
+}
+.card3 h2, .card3 p {
+  color: #1a2930;
+}
+.card3 h3 {
+  color: #f7ce3e;
+}
+
+.card5 {
+  background-color: #fff;
+}
+.card5 h2 {
+  color: #1a2930;
+}
+.card5 h3 {
+  color: #f7ce3e;
+}
+.card5 p {
+  color: #1a2930;
+}
+
+.how--to {
+  justify-content: center;
+  background-color: #1a2930;
+  flex-wrap: wrap;
+}
+.how--to > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.how--to > div .arrow--right {
+  font-size: 2rem;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .how--to > div .arrow--right {
+    display: none;
+  }
+}
+.how--to > div .arrow--down {
+  font-size: 2rem;
+  display: none;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .how--to > div .arrow--down {
+    display: block;
+  }
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .how--to > div {
+    flex-direction: column;
+  }
+}
+
+#notes {
+  width: 80%;
   height: 95vh;
   float: right;
   margin: 0;
@@ -251,36 +487,36 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  width: 85%;
+  width: 80%;
   align-self: center;
   margin-block: 25vh;
   height: 100%;
 }
-@media only screen and (max-width: 1000px) {
-  #home {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes {
     width: 100%;
   }
 }
-@media only screen and (max-width: 1000px) {
-  #home {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes {
     width: 100%;
   }
 }
-#home .accordion--container {
+#notes .accordion--container {
   width: 70%;
   background-color: #1a2930;
   padding: 3rem 1rem;
   border-radius: 0.5rem;
 }
-@media only screen and (max-width: 1000px) {
-  #home .accordion--container {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes .accordion--container {
     width: 90%;
   }
 }
-#home .accordion--container .accordion {
+#notes .accordion--container .accordion {
   padding-block: 1rem;
 }
-#home .accordion--container .accordion .accordion--tab {
+#notes .accordion--container .accordion .accordion--tab {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid #e3dcda;
@@ -289,36 +525,41 @@ label {
   align-items: center;
   cursor: pointer;
 }
-#home .accordion--container .accordion .accordion--tab h2 {
+#notes .accordion--container .accordion .accordion--tab h2 {
   color: #e3dcda;
 }
-#home .accordion--container .accordion .accordion--tab h2:last-child {
+#notes .accordion--container .accordion .accordion--tab h2:last-child {
   color: #f7ce3e;
 }
-#home .accordion--container .accordion p {
+#notes .accordion--container .accordion p {
   color: #f7ce3e;
 }
-#home .accordion--container .accordion .notes--detail {
+#notes .accordion--container .accordion .notes--detail {
   padding-block: 1rem;
 }
-#home .accordion--container .accordion .notes--detail a {
+#notes .accordion--container .accordion .notes--detail button {
+  padding: 1rem;
+  font: 0.7rem;
+}
+#notes .accordion--container .accordion .notes--detail a {
   color: #e3dcda;
   font-size: 1rem;
   text-transform: capitalize;
   font-weight: normal;
   letter-spacing: normal;
 }
-#home .accordion--container .accordion .notes--detail h3 {
-  font-family: "PT Mono", monospace;
+#notes .accordion--container .accordion .notes--detail h3 {
+  font-family: "Space Grotesk", sans-serif;
   letter-spacing: 2px;
   padding-block: 0.5rem;
+  border: solid red;
 }
-#home .accordion--container .accordion .notes--detail h3 span {
+#notes .accordion--container .accordion .notes--detail h3 span {
   font-size: 1.1rem;
   text-transform: uppercase;
   color: #f7ce3e;
 }
-#home .accordion--container .accordion .notes--detail h3 i {
+#notes .accordion--container .accordion .notes--detail h3 i {
   margin-left: 1rem;
   text-transform: lowercase;
   font-weight: 100;
@@ -327,7 +568,7 @@ label {
 nav, #mNav {
   position: fixed;
   left: 0;
-  width: 15%;
+  width: 20%;
   height: 100vh;
   background-color: #1a2930;
   display: flex;
@@ -335,10 +576,11 @@ nav, #mNav {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  justify-content: space-around;
+  justify-content: center;
+  padding-block: 2rem;
   z-index: 9;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav, #mNav {
     display: block;
     top: 0;
@@ -351,11 +593,10 @@ nav h3, #mNav h3 {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  padding-block: 1rem;
   color: #e3dcda;
   text-transform: lowercase;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav h3, #mNav h3 {
     display: none;
   }
@@ -363,7 +604,7 @@ nav h3, #mNav h3 {
 nav i, #mNav i {
   padding-block: 1rem;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav i, #mNav i {
     display: none;
   }
@@ -372,23 +613,33 @@ nav ul, #mNav ul {
   width: 100%;
   margin: auto;
   text-transform: uppercase;
-  font-family: "Blinker", sans-serif;
-  font-size: 1.8rem;
+  font-family: "Space Grotesk", sans-serif;
   color: #e3dcda;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav ul, #mNav ul {
     display: none;
   }
 }
-nav li, #mNav li {
-  padding: 1rem;
+nav ul li, #mNav ul li {
+  width: 100%;
+  padding: 1rem 0.5rem;
   margin-block: 2rem;
-  border-top: 1px solid #f7ce3e;
-  border-bottom: 1px solid #f7ce3e;
+  border-top: 1px solid #c5c1c0;
+  border-bottom: 1px solid #c5c1c0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+nav ul li:hover, #mNav ul li:hover {
+  color: #f7ce3e;
+}
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  nav ul li, #mNav ul li {
+    font-size: 1.3rem;
+  }
 }
 nav .nav--buttons--container, #mNav .nav--buttons--container {
   display: flex;
@@ -397,7 +648,6 @@ nav .nav--buttons--container, #mNav .nav--buttons--container {
   align-items: center;
   gap: 1rem;
   width: 50%;
-  padding-block: 1rem;
   margin: auto;
 }
 nav .nav--buttons--container button, #mNav .nav--buttons--container button, nav .nav--buttons--container .nav--buttons--Link, #mNav .nav--buttons--container .nav--buttons--Link {
@@ -409,10 +659,23 @@ nav .nav--buttons--container button, #mNav .nav--buttons--container button, nav 
 nav .nav--buttons--container button a, #mNav .nav--buttons--container button a, nav .nav--buttons--container .nav--buttons--Link a, #mNav .nav--buttons--container .nav--buttons--Link a {
   color: black;
 }
-@media only screen and (max-width: 1000px) {
+nav .nav--buttons--container button a:hover, #mNav .nav--buttons--container button a:hover, nav .nav--buttons--container .nav--buttons--Link a:hover, #mNav .nav--buttons--container .nav--buttons--Link a:hover {
+  color: #fff;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav .nav--buttons--container, #mNav .nav--buttons--container {
     display: none;
   }
+}
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  nav .nav--buttons--container, #mNav .nav--buttons--container {
+    width: 100%;
+    padding-inline: 2rem;
+  }
+}
+nav p, #mNav p {
+  color: #fff;
+  text-align: center;
 }
 nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
   font-size: 1.5rem;
@@ -423,7 +686,7 @@ nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
 nav #showNav, #mNav #showNav {
   display: none;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav #showNav, #mNav #showNav {
     display: block;
   }
@@ -441,13 +704,14 @@ nav #hideNav, #mNav #hideNav {
   inset: 0 50% 0 0;
   align-items: center;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 1.5rem;
   margin: 0;
   z-index: 1;
 }
 #mNav h3 {
   display: block;
   text-align: center;
+  margin: auto;
 }
 #mNav ul {
   display: block;
@@ -467,8 +731,76 @@ nav #hideNav, #mNav #hideNav {
   left: 0;
 }
 
+#top--nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1a2930;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
+#top--nav #showNavIcon, #top--nav #hideNavIcon {
+  display: none;
+  z-index: 10000;
+  color: #fff !important;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+#top--nav div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+#top--nav div ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+#top--nav div ul li {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.3rem;
+}
+#top--nav div ul li:last-child {
+  padding-inline: 0.7rem;
+  border: 1px solid #e3dcda;
+  border-radius: 0.5rem;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #top--nav {
+    flex-direction: column;
+    justify-content: center;
+  }
+  #top--nav #showNavIcon {
+    display: block;
+    margin-left: 0;
+  }
+  #top--nav div {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+  }
+  #top--nav div ul {
+    margin: auto;
+    width: 100%;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+  }
+  #top--nav div ul:first-child {
+    display: none;
+  }
+}
+
 #main {
-  width: 85%;
+  width: 80%;
   height: 95vh;
   float: right;
   margin: 0;
@@ -478,14 +810,14 @@ nav #hideNav, #mNav #hideNav {
   align-items: center;
   gap: 1rem;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
   #main {
     width: 100%;
   }
 }
 
-#signup, #upload, #resetPass, #login {
-  width: 85%;
+#signup, #upload, #userSettings, #resetPass, #login {
+  width: 80%;
   height: 95vh;
   float: right;
   margin: 0;
@@ -494,62 +826,125 @@ nav #hideNav, #mNav #hideNav {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 100%;
   color: #fff;
-  font-family: "PT Mono", monospace;
+  font-family: "Space Grotesk", sans-serif;
 }
-@media only screen and (max-width: 1000px) {
-  #signup, #upload, #resetPass, #login {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #signup, #upload, #userSettings, #resetPass, #login {
     width: 100%;
   }
 }
-#signup form, #upload form, #resetPass form, #login form {
+#signup form, #upload form, #userSettings form, #resetPass form, #login form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   text-align: left;
-  width: 60%;
+  width: 50%;
   padding: 2rem;
   background-color: #1a2930;
   border-radius: 0.5rem;
 }
-#signup form a, #upload form a, #resetPass form a, #login form a {
+#signup form a, #upload form a, #userSettings form a, #resetPass form a, #login form a {
   font-weight: bolder;
 }
-#signup form div, #upload form div, #resetPass form div, #login form div {
+#signup form div, #upload form div, #userSettings form div, #resetPass form div, #login form div {
   margin: auto;
   width: 80%;
 }
-@media only screen and (max-width: 1000px) {
-  #signup form div, #upload form div, #resetPass form div, #login form div {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #signup form div, #upload form div, #userSettings form div, #resetPass form div, #login form div {
     width: 100%;
   }
 }
-#signup form div input, #upload form div input, #resetPass form div input, #login form div input, #signup form div button, #upload form div button, #resetPass form div button, #login form div button, #signup form div select, #upload form div select, #resetPass form div select, #login form div select {
+#signup form div input, #upload form div input, #userSettings form div input, #resetPass form div input, #login form div input, #signup form div button, #upload form div button, #userSettings form div button, #resetPass form div button, #login form div button, #signup form div select, #upload form div select, #userSettings form div select, #resetPass form div select, #login form div select {
   width: 100%;
 }
-@media only screen and (max-width: 1000px) {
-  #signup form, #upload form, #resetPass form, #login form {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #signup form, #upload form, #userSettings form, #resetPass form, #login form {
     width: 85%;
     padding: 1rem;
   }
 }
 
-footer {
+#login {
+  width: 100%;
+}
+
+#resetPass {
+  width: 100%;
+}
+
+#userSettings {
+  width: 80%;
+}
+
+#upload {
+  width: 80%;
+}
+
+footer, .header--footer {
+  width: 100%;
   position: fixed;
   bottom: 0;
   margin: auto;
-  width: 100%;
+  margin-top: 3rem;
   background-color: #1a2930;
 }
-footer p {
+footer div:first-child, .header--footer div:first-child {
+  width: 85%;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+footer ul, .header--footer ul {
+  font-size: 1rem;
+}
+footer ul a, .header--footer ul a {
+  color: inherit;
+  text-transform: none;
+}
+footer ul li, .header--footer ul li {
+  color: #fff;
+  line-height: 2;
+}
+footer ul li:first-child, .header--footer ul li:first-child {
+  color: #f7ce3e;
+  text-transform: uppercase;
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+footer p, .header--footer p {
   margin: auto;
   text-align: center;
   color: #fff;
 }
-@media only screen and (max-width: 1000px) {
-  footer p {
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  footer p, .header--footer p {
     font-size: 0.8rem;
+  }
+}
+footer a, .header--footer a {
+  text-transform: inherit;
+}
+
+.header--footer {
+  position: initial;
+  margin-top: 5rem;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .header--footer div:first-child {
+    width: 90%;
+    justify-content: space-between;
+    gap: 2rem;
   }
 }/*# sourceMappingURL=style.css.map */

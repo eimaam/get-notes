@@ -7,13 +7,14 @@ import { BeatLoader } from 'react-spinners'
 
 
 
-export default function ResetPass() {
+export default function ResetPass(props) {
     const { navigate, setError, error, message, setMessage, loading, setLoading } = useAuth()
 
   useEffect(() => {
+  props.showNav(false)
     onAuthStateChanged(auth, data => {
         if(data){
-          navigate('../')
+          navigate('../notes')
         }
     })
 }, [])
