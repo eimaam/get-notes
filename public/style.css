@@ -83,6 +83,11 @@ h1 {
     font-size: 2rem;
   }
 }
+@media only screen and (max-width: 280px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
 
 h2 {
   font-family: "Space Grotesk", sans-serif;
@@ -92,6 +97,11 @@ h2 {
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   h2 {
     font-size: 1.15rem;
+  }
+}
+@media only screen and (max-width: 280px) {
+  h2 {
+    font-size: 1rem;
   }
 }
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
@@ -109,6 +119,11 @@ h3 {
     font-size: 1rem;
   }
 }
+@media only screen and (max-width: 280px) {
+  h3 {
+    font-size: 0.85rem;
+  }
+}
 
 h4 {
   text-transform: uppercase;
@@ -123,6 +138,11 @@ h4 {
 
 p {
   text-align: justify;
+}
+@media only screen and (max-width: 280px) {
+  p {
+    font-size: 0.8rem;
+  }
 }
 
 span {
@@ -272,7 +292,7 @@ header {
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   header img {
-    width: 70%;
+    width: 60%;
   }
 }
 header div {
@@ -292,6 +312,11 @@ header .info p {
   font-size: 1.1rem;
   line-height: 2;
 }
+@media only screen and (max-width: 280px) {
+  header .info p {
+    font-size: 0.8rem;
+  }
+}
 header .info button {
   font-weight: bolder;
   font-size: 1.2rem;
@@ -307,6 +332,11 @@ header .info button a:hover {
   background-color: #1a2930;
   color: white;
 }
+@media only screen and (max-width: 280px) {
+  header .info button {
+    font-size: 0.8rem;
+  }
+}
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   header {
     display: flex;
@@ -314,7 +344,13 @@ header .info button a:hover {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    width: 85%;
+    width: 90%;
+    gap: 0rem;
+  }
+  header .info {
+    padding: 0;
+    margin: 0;
+    margin-top: -2rem;
   }
   header .info * {
     padding-block: 0.1rem;
@@ -351,7 +387,7 @@ section a, .how--to a {
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   section, .how--to {
-    width: 85%;
+    width: 90%;
     flex-direction: column;
     padding: 1rem;
   }
@@ -375,8 +411,18 @@ section a, .how--to a {
 }
 @media only screen and (max-width: 500px) {
   .card1, .card5, .card4, .card3, .card2 {
-    width: 100%;
+    width: 90%;
     margin: auto;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .card1, .card5, .card4, .card3, .card2 {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .card1, .card5, .card4, .card3, .card2 {
+    height: auto;
   }
 }
 .card1 *, .card5 *, .card4 *, .card3 *, .card2 * {
@@ -537,32 +583,39 @@ section a, .how--to a {
 #notes .accordion--container .accordion .notes--detail {
   padding-block: 1rem;
 }
-#notes .accordion--container .accordion .notes--detail button {
-  padding: 1rem;
-  font: 0.7rem;
+#notes .accordion--container .accordion .notes--detail > div {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 0.7rem;
 }
-#notes .accordion--container .accordion .notes--detail a {
-  color: #e3dcda;
-  font-size: 1rem;
-  text-transform: capitalize;
-  font-weight: normal;
-  letter-spacing: normal;
-}
-#notes .accordion--container .accordion .notes--detail h3 {
-  font-family: "Space Grotesk", sans-serif;
-  letter-spacing: 2px;
-  padding-block: 0.5rem;
-  border: solid red;
-}
-#notes .accordion--container .accordion .notes--detail h3 span {
-  font-size: 1.1rem;
-  text-transform: uppercase;
+#notes .accordion--container .accordion .notes--detail > div h3 {
   color: #f7ce3e;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-right: 1rem;
 }
-#notes .accordion--container .accordion .notes--detail h3 i {
-  margin-left: 1rem;
-  text-transform: lowercase;
-  font-weight: 100;
+#notes .accordion--container .accordion .notes--detail > div h3 span {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes .accordion--container .accordion .notes--detail > div h3 h3 {
+    font-size: 0.8rem;
+  }
+}
+#notes .accordion--container .accordion .notes--detail > div button {
+  padding: 1px 0.3rem;
+}
+#notes .accordion--container .accordion .notes--detail > div button a {
+  color: #1a2930;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  padding: 1px 0.3rem;
+}
+#notes .accordion--container .accordion .notes--detail > div button a:hover {
+  color: #fff;
 }
 
 nav, #mNav {
@@ -677,6 +730,11 @@ nav p, #mNav p {
   color: #fff;
   text-align: center;
 }
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  nav p, #mNav p {
+    display: none;
+  }
+}
 nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
   font-size: 1.5rem;
   align-self: center;
@@ -699,6 +757,7 @@ nav #hideNav, #mNav #hideNav {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  height: 100vh;
   display: grid;
   position: fixed;
   inset: 0 50% 0 0;
@@ -729,6 +788,9 @@ nav #hideNav, #mNav #hideNav {
   position: absolute;
   top: 0;
   left: 0;
+}
+#mNav p {
+  display: block;
 }
 
 #top--nav {
@@ -835,6 +897,11 @@ nav #hideNav, #mNav #hideNav {
     width: 100%;
   }
 }
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #signup, #upload, #userSettings, #resetPass, #login {
+    width: 100% !important;
+  }
+}
 #signup form, #upload form, #userSettings form, #resetPass form, #login form {
   display: flex;
   flex-direction: column;
@@ -846,6 +913,7 @@ nav #hideNav, #mNav #hideNav {
   padding: 2rem;
   background-color: #1a2930;
   border-radius: 0.5rem;
+  margin: auto;
 }
 #signup form a, #upload form a, #userSettings form a, #resetPass form a, #login form a {
   font-weight: bolder;
@@ -864,7 +932,7 @@ nav #hideNav, #mNav #hideNav {
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #signup form, #upload form, #userSettings form, #resetPass form, #login form {
-    width: 85%;
+    width: 90%;
     padding: 1rem;
   }
 }
@@ -943,8 +1011,12 @@ footer a, .header--footer a {
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   .header--footer div:first-child {
+    margin: auto;
     width: 90%;
     justify-content: space-between;
     gap: 2rem;
+  }
+  .header--footer li:first-child {
+    font-size: 1rem !important;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -124,12 +124,12 @@ export default function Nav() {
                 <FaUserCog /> 
               </Link>
               </button>
-              <div>
-                <p>Contact Support:</p>
-                <p>1leadtechie@gmail.com</p>
-              </div>
           </div>
-      }
+        }
+          <div>
+            <p>Contact Support:</p>
+            <p>1leadtechie@gmail.com</p>
+          </div>
     </div>
     }
     </React.StrictMode>

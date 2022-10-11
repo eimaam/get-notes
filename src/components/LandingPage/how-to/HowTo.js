@@ -16,9 +16,8 @@ export default function HowTo() {
 
   // mapping through data to create procedure cards 
     const cards = data.map((item, index) => {
-        return <div data-aos="zoom-in-up">
+        return <div key={index}>
                   <ProcedureCard 
-                    key={index}
                     position={`0${index+1}`}
                     title={item.title}
                     detail={item.detail}

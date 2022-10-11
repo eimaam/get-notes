@@ -11,8 +11,9 @@ export default function ProcedureCard({position, title, detail, className}) {
 
   }, [])
 
+  // generated random number for use to set different className for cards
   const random = Math.floor(Math.random() * (6-1) + 1)
-  console.log(random)
+
   return (
     <div className={`card${random}`} data-aos="zoom-in-up">
         <h3>

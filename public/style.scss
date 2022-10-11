@@ -103,6 +103,9 @@ h1{
     @include mobile(){
         font-size: 2rem;
     }
+    @include screenSize(280px){
+        font-size: 1.5rem;
+    }
 }
 h2{
     font-family: $--Blinker;
@@ -111,6 +114,10 @@ h2{
 
     @include mobile(){
         font-size: 1.15rem;
+    }
+
+    @include screenSize(280px){
+        font-size: 1rem;
     }
 
     @include tablet(){
@@ -125,6 +132,10 @@ h3{
     @include mobile(){
         font-size: 1rem;
     }
+
+    @include screenSize(280px){
+        font-size: 0.85rem;
+    }
 }
 h4{
     text-transform: uppercase;
@@ -137,6 +148,10 @@ h4{
 }
 p{
     text-align: justify;
+
+    @include screenSize(280px){
+        font-size: 0.8rem;
+    }
 }
 span{
     color: $--secondary;
@@ -268,7 +283,7 @@ header{
         // width: 100%;
 
         @include mobile(){
-            width: 70%;
+            width: 60%;
         }
     }
 
@@ -293,6 +308,10 @@ header{
         p{
             font-size: 1.1rem;
             line-height: 2;
+
+            @include screenSize(280px){
+                font-size: 0.8rem;
+            }
         }
     
         button{
@@ -312,6 +331,10 @@ header{
                     color: white;
                 }
             }
+
+            @include screenSize(280px){
+                font-size: 0.8rem;
+            }
     
             
         }
@@ -320,9 +343,13 @@ header{
 
     @include mobile(){
         @include flex(column-reverse);
-        width: 85%;
+        width: 90%;
+        gap: 0rem;
 
         .info{
+            padding: 0;
+            margin: 0;
+            margin-top: -2rem;
             *{
                 padding-block: 0.1rem;
             }
@@ -360,7 +387,7 @@ section{
     }
 
     @include mobile(){
-        width: 85%;
+        width: 90%;
         flex-direction: column;
         padding: 1rem;
 
@@ -385,8 +412,16 @@ section{
     }
 
     @include screenSize(500px){
-        width: 100%;
+        width: 90%;
         margin: auto;
+    }
+
+    @include screenSize(280px){
+        width: 100%;
+    }
+
+    @include mobile(){
+        height: auto;
     }
     
 
@@ -542,38 +577,49 @@ section{
 
             .notes--detail{
                 padding-block: 1rem;
+                
+                & > div{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-block: 0.7rem;
 
-                button{
-                    padding: 1rem;
-                    font: 0.7rem;
-                }
-
-                a{
-                    color: $--secondary;
-                    font-size: 1rem;
-                    text-transform: capitalize;
-                    font-weight: normal;
-                    letter-spacing: normal;
-                }
-
-                h3{
-                    font-family: $--Noto;
-                    letter-spacing: 2px;
-                    padding-block: 0.5rem;
-                    border: solid red;
-
-                    span{
-                        font-size: 1.1rem;
-                        text-transform: uppercase;
+                    h3{
                         color: $--primary;
-                    }
+                        letter-spacing: 2px;
+                        text-transform: uppercase;
+                        margin-right: 1rem;
 
-                    i{
-                        margin-left: 1rem;
-                        text-transform: lowercase;
-                        font-weight: 100;
+                        span{
+                            color: $--default;
+                            font-size: 1rem;
+                            font-weight: normal;
+                            text-transform: capitalize;
+                        }
+
+                        @include mobile(){
+                            h3{
+                                font-size: 0.8rem;
+                            }
+                        }
+                    }
+                    
+                    
+                    button{
+                        padding: 1px 0.3rem;
+                        
+                        a{
+                            color: $--main;
+                            font-size: 0.8rem;
+                            text-transform: capitalize;
+                            padding: 1px 0.3rem;
+                            
+                            &:hover{
+                                color: $--default;
+                            }
+                        }
                     }
                 }
+
                 
             }
         }
@@ -685,6 +731,10 @@ nav{
     p{
         color: $--default;
         text-align: center;
+
+        @include mobile(){
+            display: none;
+        }
     }
 
 
@@ -708,6 +758,7 @@ nav{
 #mNav{
     @extend nav;
     width: max-content;
+    height: 100vh;
     display: grid;
     position: fixed;
     inset: 0 50% 0 0;
@@ -742,6 +793,10 @@ nav{
         position: absolute;
         top: 0;
         left: 0;
+    }
+
+    p{
+        display: block;
     }
     
 }
@@ -830,6 +885,10 @@ nav{
     width: 100%;
     color: $--default;
     font-family: $--Noto;
+
+    @include mobile(){
+        width: 100% !important;
+    }
     
     form{
         @include flex(column);
@@ -838,6 +897,7 @@ nav{
         padding: 2rem;
         background-color: $--main;
         border-radius: 0.5rem;
+        margin: auto;
 
         a{
             font-weight: bolder;
@@ -857,7 +917,7 @@ nav{
         }
 
         @include mobile(){
-            width: 85%;
+            width: 90%;
             padding: 1rem;
         }
     }
@@ -949,9 +1009,14 @@ footer{
 
     @include mobile(){
         div:first-child{
+            margin: auto;
             width: 90%;
             justify-content: space-between;
             gap: 2rem;
+        }
+
+        li:first-child{
+            font-size: 1rem !important;
         }
     }
 }

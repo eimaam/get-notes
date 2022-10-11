@@ -23,10 +23,10 @@ export default function Header(){
   return (
     <header>
         <div className='info' data-aos="fade-left">
-            <h1>All your NOTES and more in one environment!</h1>
-            <p>Stressed bout losing access to download your shared Notes or losing them on your device? 
-            <br />getNOTES solves all that and more.  Get free access to your needed Lecture notes and more arranged perfectly for YOU all in one environment.
-            <br/>...from your comfort zone!</p>
+            <h1>All your NOTES &amp; more in one environment!</h1>
+            <p>Stressed about losing access to downloading your shared Notes or losing them on your device? 
+            <br />getNOTES solves all that &amp; more.  Get free access to your needed Lecture notes &amp; more arranged perfectly for YOU all in one environment.
+            </p>
             <button>
               <HashLink to='#howTo'> SEE HOW TO</HashLink>
             </button>

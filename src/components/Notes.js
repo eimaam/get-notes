@@ -5,10 +5,11 @@ import { useData } from '../context/DataContext'
 import { auth } from '../firebaseConfig'
 import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import { database } from '../firebaseConfig'
-import { RingLoader } from 'react-spinners'
+import { PropagateLoader, RingLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 import { useParams } from 'react-router-dom'
+import { BsJustify } from 'react-icons/bs'
 
 export default function Notes(props) {
     const { navigate, user, loading } = useAuth()
@@ -89,6 +90,13 @@ export default function Notes(props) {
         fetchEEENotes()
     }, [user])
     
+    const mystyle = {
+        margin: "auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+    }
 
   return (
     <div id='notes' className="notes--container" onClick={() => setHideNav(true)}>
@@ -96,9 +104,9 @@ export default function Notes(props) {
         
         ? 
         
-        <div>
-            <p>Loading Notes...</p>
-            <RingLoader />
+        <div style={mystyle}>
+            <h3>Loading Notes...</h3>
+            <PropagateLoader />
         </div>
 
         :
@@ -116,16 +124,16 @@ export default function Notes(props) {
                     {cpeNotes.length > 0 
                     ?
                    cpeNotes.map((notes, index) => {
-                    return <h3 key={index}>
-                                <a href={notes.url}>
-                                    <span>
-                                        <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
-                                    </span> 
-                                    {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                    <i>({notes.uploadedBy})</i>
-                                    <button>Download</button>
-                                </a>
-                            </h3>
+                    return <div key={index}>
+                                <h3>
+                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
+                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName} <i>({notes.uploadedBy})</i></span>
+                                </h3> 
+                                
+                                <button>
+                                    <a href={notes.url}>Download</a>
+                                </button>
+                            </div>
                         })
                         :
                         <p>NO NOTES</p>
@@ -145,17 +153,18 @@ export default function Notes(props) {
                     {eeeNotes.length > 0
                     ?
                     eeeNotes.map((notes, index) => {
-                        return <h3 key={index}>
-                                    <a href={notes.url} >
-                                        <span>
-                                            <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
-                                        </span> 
-                                        {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                        <i>({notes.uploadedBy})</i>
-                                    </a>
-                                </h3>
+                        return <div key={index}>
+                                <h3>
+                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
+                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName} <i>({notes.uploadedBy})</i></span>
+                                </h3> 
+                                
+                                <button>
+                                    <a href={notes.url}>Download</a>
+                                </button>
+                            </div>
                         })
-                    :
+                        :
                     <p>NO NOTES</p>
                     }
                 </div>
@@ -172,16 +181,17 @@ export default function Notes(props) {
                     {otherNotes.length > 0 
                     ?  
                    otherNotes.map((notes, index) => {
-                    return <h3 key={index}>
-                                <a href={notes.url}>
-                                    <span>
-                                        <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
-                                    </span> 
-                                    {notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                    <i>({notes.uploadedBy})</i>
-                                </a>
-                            </h3>
-                    })
+                    return <div key={index}>
+                                <h3>
+                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
+                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName} <i>({notes.uploadedBy})</i></span>
+                                </h3> 
+                                
+                                <button>
+                                    <a href={notes.url}>Download</a>
+                                </button>
+                            </div>
+                        })
                     :
                     <p>NO NOTES</p>
                     }

@@ -1,9 +1,9 @@
 import React from 'react'
-import { NavLink, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useAuth } from '../../context/AuthContext'
 import { FaBars, FaTimes } from "react-icons/fa"
 import { useData } from '../../context/DataContext'
-import { NavHashLink } from 'react-router-hash-link'
+import { HashLink, NavHashLink } from 'react-router-hash-link'
 
 export default function TopNav() {
     const { user } = useAuth()
@@ -33,14 +33,14 @@ export default function TopNav() {
             <FaTimes id='hideNavIcon' onClick={toggleNav}/>
         <div id='mNavHeader'>
             <ul>
-                <li><NavLink to="/">Home</NavLink></li>
+                <li><Link to="/">Home</Link></li>
             </ul>
             <ul>
-                <li><NavHashLink smooth to="#howTo">HOw-to</NavHashLink></li>
+                <li><HashLink smooth to="#howTo">HOw-to</HashLink></li>
                 <li><a href='mailto:imamddahir@gmail.com?subject=Feedback on getNOTES'>Contact us</a></li>
-                <li><NavHashLink to="#feedback">Feedback</NavHashLink></li>
-                {!user && <li><NavLink to="/login">sign-in</NavLink></li>}
-                {user && <li><NavLink to="/notes" >get NOTES</NavLink></li>}
+                <li><HashLink to="#feedback">Feedback</HashLink></li>
+                {!user && <li><Link to="/login">sign-in</Link></li>}
+                {user && <li><Link to="/notes" >get NOTES</Link></li>}
             </ul>
         </div>
     </div>

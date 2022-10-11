@@ -42,18 +42,16 @@ function App(props) {
   return (
     <Router>
       {/* turned loader to enable app data from AuthContext to load before displaying */}
-      {loading 
+      {/* {loading 
       
       ?
 
       // loader from react-spinners
       <div className='loader'>
         <PropagateLoader loading={loading} className='test'/>
-        <br />
-        <h3>Loading Notes...</h3>
       </div>
       
-      :
+      : */}
         
       <div>
       <AuthProvider>
@@ -87,7 +85,7 @@ function App(props) {
       autoClose={3000}
       />
       </div>
-  }
+  // }
     </Router>
 
   );
