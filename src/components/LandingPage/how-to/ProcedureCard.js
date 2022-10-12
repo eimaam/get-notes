@@ -15,7 +15,7 @@ export default function ProcedureCard({position, title, detail, className}) {
   const random = Math.floor(Math.random() * (6-1) + 1)
 
   return (
-    <div className={`card${random}`} data-aos="zoom-in-up">
+    <div className={`card${random}`} data-aos="zoom-in-up" data-aos-easing="ease-out">
         <h3>
             {position}
         </h3>

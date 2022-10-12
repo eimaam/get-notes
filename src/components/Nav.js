@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, useParams } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { useEffect } from 'react';
@@ -51,13 +51,13 @@ export default function Nav() {
           <NavLink to="/">
             <li>
               <RiHome4Line /> 
-              HOME
+              Home
             </li>
           </NavLink>
           <NavLink to="/notes">
             <li>
               <TbBookDownload /> 
-              GET NOTES
+              Get Notes
             </li>
           </NavLink>
           <NavLink to="/upload">
@@ -99,14 +99,14 @@ export default function Nav() {
           <NavLink to="/">
             <li>
               <RiHome4Line /> 
-              HOME
+              Home
             </li>
           </NavLink>
           <NavLink to="/">
-            <li><TbBookDownload /> GET NOTES</li>
+            <li><TbBookDownload /> Get Notes</li>
           </NavLink>
           <NavLink to="/upload">
-          <li><TbBookUpload /> UPLOAD NOTES </li>
+          <li><TbBookUpload /> Upload Notes </li>
           </NavLink>
       </ul>
       {user &&

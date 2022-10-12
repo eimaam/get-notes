@@ -27,18 +27,36 @@ export default function Upload() {
     noteName: ""
   })
 
+  // state manager for uploaded file
   const [file, setFile] = useState("")
+  // state to save file URL
   const [fileURL, setFileURL] = useState("")
+  // state to manage/save file type before upload
+  const [fileType, setFileType] = useState("")
+
   const [uploadProgress, setUploadProgress] = useState("")
   const storageRef = ref(storage, `/notes/${file.name}`)
 
+  // function to get file type from added file
+  function getFileType(){
+    if(file){
+      const fileType = file.name.split(".").pop()
+      setFileType(fileType)
+    }
+  }
+
+  // runs everytime file input is changed to get the current file type
+  useEffect(() => {
+    getFileType()
+  }, [file])
+
+  // handle form change
   function handleChange(e){
     const {name, value} = e.target
     setData(prevData => ({
       ...prevData,
       [name]: value
     }))
-    console.log(data)
   }
   
   //handle file upload change
@@ -73,6 +91,7 @@ export default function Upload() {
   );
   }
 
+
   
   // UPLOAD NOTE + NOTE DETAILS
   const noteRef = collection(database, "noteDetails") //Note reference in firebase database
@@ -93,6 +112,7 @@ export default function Upload() {
           CourseCode: data.courseCode,
           noteName: data.noteName,
           uploadedBy: userInfo.username ? userInfo.username : '',
+          type: fileType,
           url: fileURL,
           uploadDate: Timestamp.now().toDate()
         })

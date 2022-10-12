@@ -34,7 +34,7 @@ export default function TopNav() {
                 <li><Link to="/">Home</Link></li>
             </ul>
             <ul>
-                <li><HashLink smooth to="#howTo">HOw-to</HashLink></li>
+                <li><HashLink smooth to="#howTo">How-to</HashLink></li>
                 <li><a href='mailto:imamddahir@gmail.com?subject=Feedback on getNOTES'>Contact us</a></li>
                 <li><HashLink to="#feedback">Feedback</HashLink></li>
                 {!user && <li><Link to="/login">sign-in</Link></li>}

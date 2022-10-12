@@ -11,7 +11,7 @@ export default function Feedback() {
     AOS.init({delay: 250})
   }, [])
   return (
-    <section id='feedback' data-aos="fade-up">
+    <section id='feedback' data-aos="fade-up" data-aos-easing="ease-out">
         <div>
             <h2>Got question(s)? Enquiries? or a Feedback?</h2>
             <p>We'd love to hear from you! Use the button to reach us.</p>

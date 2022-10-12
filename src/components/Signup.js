@@ -28,7 +28,7 @@ export default function Signup(props) {
     
 // clear error message after 5 seconds
 useEffect(() => {
-  if(error != ''){
+  if(error !== ''){
     setTimeout(() => {
       setError('')
     }, 5000);

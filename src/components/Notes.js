@@ -124,8 +124,12 @@ export default function Notes(props) {
                    cpeNotes.map((notes, index) => {
                     return <div key={index}>
                                 <h3>
-                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
-                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName} <i>({notes.uploadedBy})</i></span>
+                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp;
+                                     {/* Reduce note title/name to max 40 chars  */}
+                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                        <small><i> ({notes.type})</i></small> 
+                                        <i>({notes.uploadedBy})</i>
+                                </span>
                                 </h3> 
                                 
                                 <button>
@@ -154,7 +158,10 @@ export default function Notes(props) {
                         return <div key={index}>
                                 <h3>
                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
-                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName} <i>({notes.uploadedBy})</i></span>
+                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                        <small><i> ({notes.type})</i></small> 
+                                        <i>({notes.uploadedBy})</i>
+                                    </span>
                                 </h3> 
                                 
                                 <button>
@@ -182,7 +189,10 @@ export default function Notes(props) {
                     return <div key={index}>
                                 <h3>
                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
-                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName} <i>({notes.uploadedBy})</i></span>
+                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                        <small><i> ({notes.type})</i></small> 
+                                        <i>({notes.uploadedBy})</i>
+                                    </span>
                                 </h3> 
                                 
                                 <button>
