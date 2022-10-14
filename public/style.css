@@ -544,11 +544,6 @@ section a, .how--to a {
     width: 100%;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
-  #notes {
-    width: 100%;
-  }
-}
 #notes .accordion--container {
   width: 70%;
   background-color: #1a2930;
@@ -575,51 +570,57 @@ section a, .how--to a {
 #notes .accordion--container .accordion .accordion--tab h2 {
   color: #e3dcda;
 }
-#notes .accordion--container .accordion .accordion--tab h2:last-child {
-  color: #f7ce3e;
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes .accordion--container .accordion .accordion--tab h2 {
+    font-size: 1rem;
+  }
 }
-#notes .accordion--container .accordion p {
+#notes .accordion--container .accordion .accordion--tab h2:last-child {
   color: #f7ce3e;
 }
 #notes .accordion--container .accordion .notes--detail {
   padding-block: 1rem;
 }
+#notes .accordion--container .accordion .notes--detail p {
+  color: #f7ce3e;
+}
 #notes .accordion--container .accordion .notes--detail > div {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-block: 0.7rem;
+  border: 1px solid #c5c1c0;
+  padding: 0.2rem;
+  margin-block: 1rem;
 }
-#notes .accordion--container .accordion .notes--detail > div h3 {
-  color: #f7ce3e;
-  letter-spacing: 2px;
+#notes .accordion--container .accordion .notes--detail > div p {
   text-transform: uppercase;
-  margin-right: 1rem;
-}
-#notes .accordion--container .accordion .notes--detail > div h3 span {
-  color: #fff;
-  font-size: 1rem;
-  font-weight: normal;
-  text-transform: capitalize;
-}
-#notes .accordion--container .accordion .notes--detail > div h3 small {
   color: #f7ce3e;
-  margin-right: 3rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
-  #notes .accordion--container .accordion .notes--detail > div h3 h3 {
-    font-size: 0.8rem;
-  }
+#notes .accordion--container .accordion .notes--detail > div span {
+  text-transform: capitalize !important;
 }
-#notes .accordion--container .accordion .notes--detail > div button {
+#notes .accordion--container .accordion .notes--detail > div div:last-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: end;
+}
+#notes .accordion--container .accordion .notes--detail > div div:last-child small {
+  color: white;
+}
+#notes .accordion--container .accordion .notes--detail > div div:last-child button {
   padding: 1px 0.3rem;
 }
-#notes .accordion--container .accordion .notes--detail > div button a {
+#notes .accordion--container .accordion .notes--detail > div div:last-child button a {
   color: #1a2930;
   font-size: 0.8rem;
   text-transform: capitalize;
   padding: 1px 0.3rem;
 }
-#notes .accordion--container .accordion .notes--detail > div button a:hover {
+#notes .accordion--container .accordion .notes--detail > div div:last-child button a:hover {
   color: #fff;
 }
 

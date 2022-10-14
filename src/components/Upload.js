@@ -8,6 +8,9 @@ import { BeatLoader } from 'react-spinners'
 import { useAuth } from '../context/AuthContext'
 import { useData } from '../context/DataContext'
 import { auth, database, storage } from '../firebaseConfig'
+// AOS import
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 export default function Upload() {
   const { navigate, loading, setLoading } = useAuth()
@@ -36,6 +39,27 @@ export default function Upload() {
 
   const [uploadProgress, setUploadProgress] = useState("")
   const storageRef = ref(storage, `/notes/${file.name}`)
+
+  // DATE: creating date format Day/Month
+    // get timestamp from Firebase
+    const stamp = Timestamp.now().toDate()
+    
+    let day = stamp.getDate()
+    let monthByIndex = stamp.getMonth();
+    let fullYear = stamp.getFullYear();
+    let month = monthByIndex+1;
+    // add 0 to beginning of Month 1-9
+    if(month <= 9){
+        month = `0${month}`
+    }
+    // convert year to string to easily extract only last two figures eg. 2022 == 22
+    const year = fullYear.toString().slice(2,4)
+
+    // final date format
+    const date = `${day}/${month}/${year}`
+
+    // end of date formatting
+
 
   // function to get file type from added file
   function getFileType(){
@@ -114,7 +138,8 @@ export default function Upload() {
           uploadedBy: userInfo.username ? userInfo.username : '',
           type: fileType,
           url: fileURL,
-          uploadDate: Timestamp.now().toDate()
+          uploadDate: date,
+          timestamp: Timestamp.toDate()
         })
         toast.success('Note Added!')
         setLoading(false)
@@ -124,7 +149,7 @@ export default function Upload() {
     
 
   return (
-    <div id='upload' onClick={() => setHideNav(true)}>
+    <div id='upload' onClick={() => setHideNav(true)} data-aos="fade">
       <form action="" onSubmit={uploadNote}>
         <div>
           <label htmlFor="category">Category:</label>
@@ -168,7 +193,8 @@ export default function Upload() {
           <input 
           name='noteName' 
           type="text" 
-          placeholder='e.g NOTE V' 
+          placeholder='e.g NOTE V'
+          maxLength={50} 
           onChange={handleChange}
           required
           />

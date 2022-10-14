@@ -7,6 +7,9 @@ import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
 import { BeatLoader } from "react-spinners"
+// AOS import
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 
 export default function Login(props) {
@@ -80,7 +83,7 @@ export default function Login(props) {
 // },[error])
 
   return (
-      <div id='login' onClick={() => setHideNav(true)}>
+      <div id='login' onClick={() => setHideNav(true)} data-aos="flip-up" data-aos-easing="ease-in">
       <form action="" onSubmit={handleSubmit}>
         <div>
             <label htmlFor="Passowrd">

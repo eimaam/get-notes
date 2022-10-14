@@ -8,6 +8,10 @@ import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
 import { RiHome4Line } from 'react-icons/ri';
 // import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
 
+// AOS import
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+
 
 export default function Nav() {
 
@@ -47,7 +51,7 @@ export default function Nav() {
       : 
       user && <i>{userInfo.email}</i>
       }
-        <ul>
+        <ul data-aos="fade" data-aos-easing="ease-out">
           <NavLink to="/">
             <li>
               <RiHome4Line /> 
@@ -80,7 +84,7 @@ export default function Nav() {
         }
           <div className='support'>
             <p>Contact Support:</p>
-            <p>1leadtechie@gmail.com</p>
+            <p><Link to='mailto:imamddahir@gmail.com?subject=Feedback on getNOTES'>1LEADTECHIE@GMAIL.COM</Link></p>
           </div>
         <FaBars id='showNav' onClick={toggleNav}/>
         <FaTimes id='hideNav' onClick={toggleNav}/>
@@ -88,7 +92,7 @@ export default function Nav() {
 
 {/* MOBILE NAVIGATION MENU */}
     {!hideNav &&
-    <div id='mNav'>
+    <div id='mNav' >
       {user 
       && 
       userInfo.username ? <div><h3><FaUser /> : @{userInfo.username}</h3> </div>
@@ -102,7 +106,7 @@ export default function Nav() {
               Home
             </li>
           </NavLink>
-          <NavLink to="/">
+          <NavLink to="/notes">
             <li><TbBookDownload /> Get Notes</li>
           </NavLink>
           <NavLink to="/upload">

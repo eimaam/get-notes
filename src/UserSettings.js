@@ -5,6 +5,9 @@ import { auth } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
 import { useData } from './context/DataContext';
 import { useParams } from 'react-router-dom';
+// AOS import
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 
 
@@ -154,7 +157,7 @@ useEffect(() => {
 
 
   return (
-    <div id='userSettings' onClick={() => setHideNav(true)}>
+    <div id='userSettings' onClick={() => setHideNav(true)} data-aos="fade" data-aos-easing="ease-in">
       <form action="" onSubmit={resetPass}>
         {show &&
         <React.StrictMode>

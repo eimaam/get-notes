@@ -4,6 +4,9 @@ import { toast } from 'react-toastify';
 import { auth } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
 import { BeatLoader } from 'react-spinners'
+// AOS import
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 
 
@@ -77,7 +80,7 @@ useEffect(() => {
 
 
   return (
-      <div id='resetPass'>
+      <div id='resetPass' data-aos="fade" data-aos-easing="ease-out" >
       <form action="" onSubmit={resetPass}>
         <label htmlFor="Username">
           Enter registered Email:

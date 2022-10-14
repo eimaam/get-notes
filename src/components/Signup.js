@@ -10,6 +10,9 @@ import { useEffect } from 'react';
 import { useData } from '../context/DataContext';
 import { BeatLoader } from 'react-spinners'
 import { FcGoogle } from 'react-icons/fc';
+// AOS import
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 export default function Signup(props) {
   const { logInWithPopUp, setUser, DocRef, navigate, loading, setLoading, error, setError} = useAuth();
@@ -137,7 +140,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
 
  
   return (
-    <div id='signup' onClick={() => setHideNav(true)}>
+    <div id='signup' onClick={() => setHideNav(true)} data-aos="fade" data-aos-easing="ease-out">
       <form onSubmit={signUp}>
         <div>
           <label htmlFor="Username">

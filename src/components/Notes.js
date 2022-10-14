@@ -3,13 +3,19 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useData } from '../context/DataContext'
 import { auth } from '../firebaseConfig'
-import { collection, onSnapshot, query, where } from 'firebase/firestore'
+import { collection, onSnapshot, query, Timestamp, where } from 'firebase/firestore'
 import { database } from '../firebaseConfig'
 import { PropagateLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 
+// AOS import
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+
 export default function Notes(props) {
+
+
     const { navigate, user } = useAuth()
     const { setHideNav } = useData();
 
@@ -87,7 +93,8 @@ export default function Notes(props) {
         fetchCPENotes()
         fetchEEENotes()
     }, [user])
-    
+
+    // style: place the Note loader animation in center
     const mystyle = {
         margin: "auto",
         display: "flex",
@@ -97,7 +104,7 @@ export default function Notes(props) {
     }
 
   return (
-    <div id='notes' className="notes--container" onClick={() => setHideNav(true)}>
+    <div id='notes' className="notes--container" onClick={() => setHideNav(true)} data-aos="flip-right" data-aos-easing="ease-out">
         {!user 
         
         ? 
@@ -123,18 +130,20 @@ export default function Notes(props) {
                     ?
                    cpeNotes.map((notes, index) => {
                     return <div key={index}>
-                                <h3>
+                                <p>
                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                      {/* Reduce note title/name to max 40 chars  */}
-                                <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                        <small><i> ({notes.type})</i></small> 
-                                        <i>({notes.uploadedBy})</i>
-                                </span>
-                                </h3> 
-                                
-                                <button>
-                                    <a href={notes.url}>Download</a>
-                                </button>
+                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                            <small><i> ({notes.type})</i></small> 
+                                    </span>
+                                </p>
+                                <div>
+                                    <small>Upload Date: {notes.uploadDate}</small>
+                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                    <button>
+                                        <a href={notes.url}>Download</a>
+                                    </button>
+                                </div>
                             </div>
                         })
                         :
@@ -156,17 +165,20 @@ export default function Notes(props) {
                     ?
                     eeeNotes.map((notes, index) => {
                         return <div key={index}>
-                                <h3>
-                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
+                                <p>
+                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp;
+                                     {/* Reduce note title/name to max 40 chars  */}
                                     <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                        <small><i> ({notes.type})</i></small> 
-                                        <i>({notes.uploadedBy})</i>
+                                            <small><i> ({notes.type})</i></small> 
                                     </span>
-                                </h3> 
-                                
-                                <button>
-                                    <a href={notes.url}>Download</a>
-                                </button>
+                                </p>
+                                <div>
+                                    <small>Upload Date: {notes.uploadDate}</small>
+                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                    <button>
+                                        <a href={notes.url}>Download</a>
+                                    </button>
+                                </div>
                             </div>
                         })
                         :
@@ -187,17 +199,20 @@ export default function Notes(props) {
                     ?  
                    otherNotes.map((notes, index) => {
                     return <div key={index}>
-                                <h3>
-                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp; 
+                                <p>
+                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp;
+                                     {/* Reduce note title/name to max 40 chars  */}
                                     <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                        <small><i> ({notes.type})</i></small> 
-                                        <i>({notes.uploadedBy})</i>
+                                            <small><i> ({notes.type})</i></small> 
                                     </span>
-                                </h3> 
-                                
-                                <button>
-                                    <a href={notes.url}>Download</a>
-                                </button>
+                                </p>
+                                <div>
+                                    <small>Upload Date: {notes.uploadDate}</small>
+                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                    <button>
+                                        <a href={notes.url}>Download</a>
+                                    </button>
+                                </div>
                             </div>
                         })
                     :

@@ -536,10 +536,6 @@ section{
     align-self: center;
     margin-block: 25vh;
     height: 100%;
-
-    @include mobile(){
-        width: 100%;
-    }
     
     .accordion--container{
         width: 70%;
@@ -565,6 +561,10 @@ section{
                 
                 h2{
                     color: $--secondary;
+
+                    @include mobile(){
+                        font-size: 1rem;
+                    }
                 }
 
                 & h2:last-child{
@@ -572,58 +572,56 @@ section{
                 }
             }
 
-            p{
-                color: $--primary;
-            }
-
             .notes--detail{
                 padding-block: 1rem;
+
+                p{
+                    color: $--primary;
+                }
                 
                 & > div{
                     display: flex;
+                    flex-direction: column;
                     justify-content: space-between;
                     margin-block: 0.7rem;
+                    border: 1px solid $--bgColor;
+                    padding: 0.2rem;
+                    margin-block: 1rem;
 
-                    h3{
-                        color: $--primary;
-                        letter-spacing: 2px;
+                    
+                    p{
                         text-transform: uppercase;
-                        margin-right: 1rem;
-
-                        span{
-                            color: $--default;
-                            font-size: 1rem;
-                            font-weight: normal;
-                            text-transform: capitalize;
-                        }
-
-                        small{
-                            color: $--primary;
-                            margin-right: 3rem;
-                        }
-
-                        @include mobile(){
-                            h3{
-                                font-size: 0.8rem;
-                            }
-                        }
+                        color: $--primary   
                     }
                     
-                    
-                    button{
-                        padding: 1px 0.3rem;
+                    span{
+                        text-transform: capitalize !important;
+                    }
+
+                    div:last-child{
+                        @include flex(row);
+                        justify-content: end;
                         
-                        a{
-                            color: $--main;
-                            font-size: 0.8rem;
-                            text-transform: capitalize;
+                        small{
+                            color: white;
+                        }
+
+                        button{
                             padding: 1px 0.3rem;
                             
-                            &:hover{
-                                color: $--default;
+                            a{
+                                color: $--main;
+                                font-size: 0.8rem;
+                                text-transform: capitalize;
+                                padding: 1px 0.3rem;
+                                
+                                &:hover{
+                                    color: $--default;
+                                }
                             }
                         }
                     }
+                    
                 }
 
                 
