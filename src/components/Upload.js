@@ -8,6 +8,7 @@ import { BeatLoader } from 'react-spinners'
 import { useAuth } from '../context/AuthContext'
 import { useData } from '../context/DataContext'
 import { auth, database, storage } from '../firebaseConfig'
+import { PropagateLoader } from "react-spinners"
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
@@ -22,10 +23,11 @@ export default function Upload() {
           navigate('../login')
         }
     })
+    console.log(userInfo)
+
 }, [])
 
   const [data, setData] = useState({
-    category: "",
     courseCode: "",
     noteName: ""
   })
@@ -94,7 +96,6 @@ export default function Upload() {
     if(!file){
       toast.error('Pls add a File first!')
     }
-    
     const uploadTask = uploadBytesResumable(storageRef, file)
     uploadTask.on("state_changed", (snapshot) => {
           const percentage = Math.round(
@@ -114,8 +115,6 @@ export default function Upload() {
       }
   );
   }
-
-
   
   // UPLOAD NOTE + NOTE DETAILS
   const noteRef = collection(database, "noteDetails") //Note reference in firebase database
@@ -123,23 +122,18 @@ export default function Upload() {
   const uploadNote = async (e) => {
     e.preventDefault()
     setLoading(true)
-    if(data.category === ''){
-      toast.error('Pls select a Note category!')
-      setLoading(false)
-      return;
-    }
     // function to handle File/Note details
       const document = await getDoc(doc(noteRef))
       if(!document.exists()){
         await addDoc(noteRef, {
-          category: data.category,
+          category: userInfo.department,
           CourseCode: data.courseCode,
+          level: userInfo.level,
           noteName: data.noteName,
           uploadedBy: userInfo.username ? userInfo.username : '',
           type: fileType,
           url: fileURL,
           uploadDate: date,
-          timestamp: Timestamp.toDate()
         })
         toast.success('Note Added!')
         setLoading(false)
@@ -152,13 +146,23 @@ export default function Upload() {
     <div id='upload' onClick={() => setHideNav(true)} data-aos="fade">
       <form action="" onSubmit={uploadNote}>
         <div>
-          <label htmlFor="category">Category:</label>
-          <select defaultValue='Choose Note Category' name='category' onChange={handleChange} required>
-              <option>Computer Engineering</option>
-              <option>Electrical &amp; Electronics Engineering</option>
-              <option>Others</option>
-              <option defaultValue='' disabled>Choose Note Category</option>
-          </select>
+          <label htmlFor="department">Category:</label>
+          <input 
+          name='department' 
+          type="text" 
+          value={userInfo.department}
+          disabled
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="level">Category:</label>
+          <input 
+          name='level' 
+          type="text" 
+          value={userInfo.level}
+          disabled
+          />
         </div>
 
         <div>
@@ -181,7 +185,7 @@ export default function Upload() {
           placeholder='Course Code xxx111' 
           onChange={handleChange}
           maxLength={6}
-          pattern="[a-z]{3}[0-9]{3}"
+          pattern="[a-zA-Z]{3}[0-9]{3}"
           title='Course Code should be in the form XXX000 e.g CPE111'
           required
           />

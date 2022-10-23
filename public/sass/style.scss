@@ -543,6 +543,10 @@ section{
         padding: 3rem 1rem;
         border-radius: 0.5rem;
 
+        p{
+            color: white;
+        }
+
         @include mobile(){
             width: 90%;
         }
@@ -574,26 +578,32 @@ section{
 
             .notes--detail{
                 padding-block: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
 
-                p{
-                    color: $--primary;
+                #Level1, #Level2,#Level3,#Level4,#Level5{
+                    display: none;                   
                 }
-                
-                & > div{
+
+                h2{
+                    font-size: 1.15rem;
+                }
+
+                .level{
+                    @extend .accordion--tab;
+                }
+
+
+                .note--title{
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
-                    margin-block: 0.7rem;
-                    border: 1px solid $--bgColor;
-                    padding: 0.2rem;
-                    margin-block: 1rem;
-
                     
                     p{
                         text-transform: uppercase;
                         color: $--primary   
                     }
-                    
+                
                     span{
                         text-transform: capitalize !important;
                     }
@@ -621,9 +631,11 @@ section{
                             }
                         }
                     }
-                    
                 }
 
+                p{
+                    color: $--primary;
+                }
                 
             }
         }

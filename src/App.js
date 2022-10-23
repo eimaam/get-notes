@@ -15,13 +15,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { PropagateLoader } from "react-spinners"
 import AuthProvider from './context/AuthContext';
 import DataProvider from './context/DataContext';
-import UsernameRegistration from './components/UsernameRegistration';
 import ErrorPage from './ErrorPage';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import UserSettings from './UserSettings';
 import ResetPass from './ResetPass';
 import Home from './Home';
+import AddData from './components/AddData';
 
 
 function App(props) {
@@ -65,7 +65,7 @@ function App(props) {
 
             {/* PROTECTED ROUTES: Only logged in Users can access  */}
             <Route exact path="/notes" element={<Notes showNav={setShowNav}/>} />  
-            <Route path="/addusername" element={<UsernameRegistration />}    />
+            <Route path="/addusername" element={<AddData />}    />
             <Route path="/upload" element={<Upload />}    />
             <Route path="/:userName/settings" element={<UserSettings />}    />
             {/* Protected Route end... */}

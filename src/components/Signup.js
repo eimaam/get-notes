@@ -40,6 +40,8 @@ useEffect(() => {
 
   const [data, setData] = useState({
     username: '',
+    department: '',
+    level: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -103,20 +105,33 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
     }else if(!usernameRegex.test(data.username)){
       setError('Username must be at least 3 characters long, not starting with a number and can\'t end with \'.\'')
       return toast.error('Username format not supported')
+      // check to confirm passwords match
     }else if(data.password !== data.confirmPassword){
       setLoading(false)
       setError('Passwords do not match')
       return toast.error('Passwords do not match')
+      // create User Database if all conditions are met
+    }else if(data.department === ""){
+      setLoading(false)
+      setError('Select Department')
+      return toast.error('Select Department')
+    }else if(data.level === ""){
+      setLoading(false)
+      setError('Select Level')
+      return toast.error('Select Level')
     }else{
       createUserWithEmailAndPassword(auth, data.email, data.password)
       .then(res => {
         setUser({
           username: username,
-          email: data.email
+          email: data.email,
+          department: data.department,
             })
             setDoc(doc(DocRef, data.email), {
               email: data.email,
               username: username,
+              department: data.department,
+              level: data.level,
             })
             toast.info("SIGNED UP SUCCESSFULLY")
             return navigate('../login')
@@ -157,9 +172,37 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           required
           />
         </div>
+        
+        <div>
+          <label htmlFor="Department">
+            Department
+          </label>
+          <select defaultValue="Select Department" name="department" onChange={handleChange} required>
+            <option defaultValue="" disabled>Select Department</option>
+            <option value="Agricultural Engineering">Agricultural Engineering</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+            <option value="Computer Engineering">Computer Engineering</option>
+            <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+          </select>
+        </div>
+        
+        <div>
+          <label htmlFor="Department">
+            Level
+          </label>
+          <select defaultValue="Select Level" name="level" onChange={handleChange} required>
+            <option defaultValue="" disabled>Select Level</option>
+            <option value="100">100 Level</option>
+            <option value="100">200 Level</option>
+            <option value="100">300 Level</option>
+            <option value="100">400 Level</option>
+            <option value="100">500 Level</option>
+          </select>
+        </div>
 
         <div>
-          <label htmlFor="Username">
+          <label htmlFor="Email">
             Email
           </label>
           <input

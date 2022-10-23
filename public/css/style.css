@@ -550,6 +550,9 @@ section a, .how--to a {
   padding: 3rem 1rem;
   border-radius: 0.5rem;
 }
+#notes .accordion--container p {
+  color: white;
+}
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes .accordion--container {
     width: 90%;
@@ -558,7 +561,7 @@ section a, .how--to a {
 #notes .accordion--container .accordion {
   padding-block: 1rem;
 }
-#notes .accordion--container .accordion .accordion--tab {
+#notes .accordion--container .accordion .accordion--tab, #notes .accordion--container .accordion .notes--detail .level {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid #e3dcda;
@@ -567,40 +570,41 @@ section a, .how--to a {
   align-items: center;
   cursor: pointer;
 }
-#notes .accordion--container .accordion .accordion--tab h2 {
+#notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
   color: #e3dcda;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
-  #notes .accordion--container .accordion .accordion--tab h2 {
+  #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
     font-size: 1rem;
   }
 }
-#notes .accordion--container .accordion .accordion--tab h2:last-child {
+#notes .accordion--container .accordion .accordion--tab h2:last-child, #notes .accordion--container .accordion .notes--detail .level h2:last-child {
   color: #f7ce3e;
 }
 #notes .accordion--container .accordion .notes--detail {
   padding-block: 1rem;
-}
-#notes .accordion--container .accordion .notes--detail p {
-  color: #f7ce3e;
-}
-#notes .accordion--container .accordion .notes--detail > div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-block: 0.7rem;
-  border: 1px solid #c5c1c0;
-  padding: 0.2rem;
-  margin-block: 1rem;
 }
-#notes .accordion--container .accordion .notes--detail > div p {
+#notes .accordion--container .accordion .notes--detail #Level1, #notes .accordion--container .accordion .notes--detail #Level2, #notes .accordion--container .accordion .notes--detail #Level3, #notes .accordion--container .accordion .notes--detail #Level4, #notes .accordion--container .accordion .notes--detail #Level5 {
+  display: none;
+}
+#notes .accordion--container .accordion .notes--detail h2 {
+  font-size: 1.15rem;
+}
+#notes .accordion--container .accordion .notes--detail .note--title {
+  display: flex;
+  flex-direction: column;
+}
+#notes .accordion--container .accordion .notes--detail .note--title p {
   text-transform: uppercase;
   color: #f7ce3e;
 }
-#notes .accordion--container .accordion .notes--detail > div span {
+#notes .accordion--container .accordion .notes--detail .note--title span {
   text-transform: capitalize !important;
 }
-#notes .accordion--container .accordion .notes--detail > div div:last-child {
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -608,20 +612,23 @@ section a, .how--to a {
   gap: 1rem;
   justify-content: end;
 }
-#notes .accordion--container .accordion .notes--detail > div div:last-child small {
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child small {
   color: white;
 }
-#notes .accordion--container .accordion .notes--detail > div div:last-child button {
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child button {
   padding: 1px 0.3rem;
 }
-#notes .accordion--container .accordion .notes--detail > div div:last-child button a {
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child button a {
   color: #1a2930;
   font-size: 0.8rem;
   text-transform: capitalize;
   padding: 1px 0.3rem;
 }
-#notes .accordion--container .accordion .notes--detail > div div:last-child button a:hover {
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child button a:hover {
   color: #fff;
+}
+#notes .accordion--container .accordion .notes--detail p {
+  color: #f7ce3e;
 }
 
 nav, #mNav {
