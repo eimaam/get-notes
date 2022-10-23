@@ -81,7 +81,7 @@ export default function Upload() {
     const {name, value} = e.target
     setData(prevData => ({
       ...prevData,
-      [name]: value
+      [name]: value.toLowerCase()
     }))
   }
   

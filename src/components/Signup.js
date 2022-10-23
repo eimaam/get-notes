@@ -55,7 +55,6 @@ useEffect(() => {
       [name]: value.toLowerCase(),
     })
     )
-    console.log(data)
   }
 
   // const passwordRegex =  /^[A-Za-z]\w{6,14}$/

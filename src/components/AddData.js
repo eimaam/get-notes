@@ -24,7 +24,7 @@ export default function AddData() {
     })
     setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 4000)
 }, [])
 
   const [data, setData] = useState({
@@ -37,7 +37,7 @@ export default function AddData() {
     const {name, value} = e.target
     setData(prevData => ({
       ...prevData,
-      [name]: value,
+      [name]: value.toLowerCase(),
     })
     )
   }

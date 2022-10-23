@@ -16,27 +16,21 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 export default function Notes(props) {
 
 
-    const { navigate, user } = useAuth()
+    const { navigate, user, loading, setLoading } = useAuth()
     const { userInfo, setHideNav } = useData();
 
     // state to manage accordions
+    const [showOtherNotes, setShowOtherNotes] = useState(false)
     const [showCPE, setShowCPE] = useState(false)
-    const [showEEE, setShowEEE] = useState(false)
-    const [showOthers, setShowOthers] = useState(false)
 
     // State to save notes based on category
-    const [otherNotes, setOtherNotes] = useState([])
-    const [cpeNotes, setCPENotes] = useState([])
     const [cpeNotes100, setCPENotes100] = useState([])
     const [cpeNotes200, setCPENotes200] = useState([])
     const [cpeNotes300, setCPENotes300] = useState([])
     const [cpeNotes400, setCPENotes400] = useState([])
     const [cpeNotes500, setCPENotes500] = useState([])
+    const [otherNotes, setOtherNotes] = useState([])
     
-
-    const [eeeNotes, setEEENotes] = useState([])
-
-
     // check status of User session - logged or not
     useEffect(() => {
         props.showNav(true)
@@ -48,9 +42,9 @@ export default function Notes(props) {
     }, [props.showNav])
 
     // function to Fetch Notes in CPE category
-    const fetchCPENotes = async (level, setLevel) => {
+    const fetchNotes = async (level, setLevel) => {
         try{
-            const q = query(collection(database, "noteDetails"), where("category", "==", "Computer Engineering"), where("level", "==", `${level}`))
+            const q = query(collection(database, "noteDetails"), where("category", "==", `${userInfo.department}`), where("level", "==", `${level}`))
             await onSnapshot(q,snapShot => {
                 setLevel(snapShot.docs.map(data => ({
                 ...data.data(),
@@ -64,47 +58,53 @@ export default function Notes(props) {
 
     }
 
-    // FETCH Notes on load
-    useEffect(() => {
-        
-        
-        // function to Fetch Notes in EEE category
-        const fetchEEENotes = async () => {
-            try{
-                const q = query(collection(database, "noteDetails"), where("category", "==", "Electrical & Electronics Engineering"))
-                await onSnapshot(q,snapShot => {
-                    setEEENotes(snapShot.docs.map(data => ({
-                    ...data.data(),
-                    id: data.id
-                })))
-            })
-        }
-        catch(err){
-            console.log(err.message)
-        };
-        }
-
-        const fetchOtherNotes = async () => {
-            try{
-            const q = query(collection(database, "noteDetails"), where("category", "==", "Others"))
+    // function to Fetch Other Notes (a general category) 
+    const fetchOtherNotes = async () => {
+        try{
+            const q = query(collection(database, "noteDetails"), where("category", "==", "others"))
             await onSnapshot(q,snapShot => {
                 setOtherNotes(snapShot.docs.map(data => ({
-                    ...data.data(),
-                    id: data.id
-                })))
-            })
-        }
-        catch(err){
-            console.log(err.message)
-        }
+                ...data.data(),
+                id: data.id
+            })))
+        })
+    }
+    catch(err){
+        console.log(err.message)
+    };
 
-        }
-        fetchCPENotes(100, setCPENotes100)
-        fetchCPENotes(200, setCPENotes200)
-        fetchCPENotes(300, setCPENotes300)
-        fetchCPENotes(400, setCPENotes400)
-        fetchCPENotes(500, setCPENotes500)
-    }, [user])
+    }
+
+    // FETCH Notes on load
+    useEffect(() => {
+        setLoading(true)
+        fetchNotes(100, setCPENotes100)
+        fetchNotes(200, setCPENotes200)
+        fetchNotes(300, setCPENotes300)
+        fetchNotes(400, setCPENotes400)
+        fetchNotes(500, setCPENotes500)
+        fetchOtherNotes()
+
+        setTimeout(() => {
+            setLoading(false)
+        }, 4000);
+    }, [userInfo])
+
+    
+    // display Levels 
+    function showCategory(cat, setCat){
+        !cat ? setCat(true) : setCat(false)
+    }
+    
+    // function to show or hide each levels list of notes
+    function toggleLevelNotes(id){
+        let level = document.getElementById(id)
+        
+        level.style.display != "block" 
+        ? level.style.display = "block" 
+        : level.style.display = "none"
+    }
+
 
     // style to centralize the Note loader animation in center
     const mystyle = {
@@ -115,23 +115,9 @@ export default function Notes(props) {
         alignItems: "center",
     }
 
-    // display Levels 
-    function showCategory(cat, setCat){
-        !cat ? setCat(true) : setCat(false)
-    }
-
-    // function to show or hide each levels list of notes
-    function toggleLevelNotes(id){
-        let level = document.getElementById(id)
-
-        level.style.display != "block" 
-        ? level.style.display = "block" 
-        : level.style.display = "none"
-    }
-
   return (
     <div id='notes' className="notes--container" onClick={() => setHideNav(true)} data-aos="flip-right" data-aos-easing="ease-out">
-        {!user 
+        {!user && loading 
         
         ? 
         
@@ -143,11 +129,9 @@ export default function Notes(props) {
         :
 
         <div className='accordion--container'>
-            {userInfo.department === 'Computer Engineering' 
-            &&
             <div id='header' className='accordion' >
                 <div className='accordion--tab' onClick={(e) => showCategory(showCPE, setShowCPE)}>
-                    <h2> Computer Engineering </h2>
+                    <h2> {userInfo.department} Notes</h2>
                     {!showCPE && <h2><IoIosArrowForward /></h2>}
                     {showCPE && <h2><IoIosArrowDown /></h2>}
                 </div>
@@ -257,6 +241,7 @@ export default function Notes(props) {
                                 }
                             </div>
                     </div>
+
                     {/* 400 
                         level
                             notes */}
@@ -292,6 +277,7 @@ export default function Notes(props) {
                                 }
                             </div>
                     </div>
+                    
                     {/* 500 
                         level
                             notes */}
@@ -331,47 +317,51 @@ export default function Notes(props) {
                 </div>
                 }
             </div>
-            }
-            
-            {userInfo.department === 'Electrical & Electronics Engineering' 
-            && 
-            <div className='accordion' onClick={() => setShowEEE(!showEEE)}>
-                <div className='accordion--tab'>
-                    <h2>Electrical &amp; Electronics Engineering</h2>
-                    {!showEEE && <h2 ><IoIosArrowForward /></h2>}
-                    {showEEE && <h2><IoIosArrowDown /></h2>}
+
+            {/* OTHER 
+                        NOTES */}
+            <div id='header' className='accordion' >
+                <div className='accordion--tab' onClick={(e) => showCategory(showOtherNotes, setShowOtherNotes)}>
+                    <h2> Other Notes: Time Table, Annoucements etc.</h2>
+                    {!showOtherNotes && <h2><IoIosArrowForward /></h2>}
+                    {showOtherNotes && <h2><IoIosArrowDown /></h2>}
                 </div>
-                {showEEE && 
-                <div className='notes--detail'>
-                    {/* map through the `cpe`NOTES state and display the Notes if available */}
-                    {eeeNotes.length > 0
-                    ?
-                    eeeNotes.map((notes, index) => {
-                        return <div key={index}>
-                                <p>
-                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp;
-                                     {/* Reduce note title/name to max 40 chars  */}
-                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
-                                            <small><i> ({notes.type})</i></small> 
-                                    </span>
-                                </p>
-                                <div>
-                                    <small>Upload Date: {notes.uploadDate}</small>
-                                    <small>Uploaded By: ({notes.uploadedBy})</small>
-                                    <button>
-                                        <a href={notes.url}>Download</a>
-                                    </button>
-                                </div>
+                {showOtherNotes && 
+                <div>
+                    <div className='notes--detail'>
+                            <div id='Level1'>
+                                {otherNotes.length > 0 
+                                    ?
+                                otherNotes.map((notes, index) => {
+                                    return <div key={index} className="note--title">
+                                                <p>
+                                                    <GiWhiteBook /> {notes.CourseCode}:&nbsp;
+                                                    {/* Reduce note title/name to max 40 chars  */}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                            <small><i> ({notes.type})</i></small> 
+                                                    </span>
+                                                </p>
+                                                <div>
+                                                    <small>Upload Date: {notes.uploadDate}</small>
+                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <button>
+                                                        <a href={notes.url}>Download</a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            })
+                                            :
+                                        <p>NO NOTE ADDED YET</p>
+                                }
                             </div>
-                        })
-                        :
-                    <p>NO NOTES</p>
-                    }
+                    </div>
+                    
+                    {/* end of levels */}
                 </div>
                 }
             </div>
-        }
-        <p>Click to Expand</p>
+           
+        {!showCPE && <p>Click to Expand</p>}
         </div>
     }
     </div>
