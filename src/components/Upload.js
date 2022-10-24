@@ -29,7 +29,8 @@ export default function Upload() {
 
   const [data, setData] = useState({
     courseCode: "",
-    noteName: ""
+    noteName: "",
+    category: ""
   })
 
   // state manager for uploaded file
@@ -83,6 +84,7 @@ export default function Upload() {
       ...prevData,
       [name]: value.toLowerCase()
     }))
+
   }
   
   //handle file upload change
@@ -126,9 +128,10 @@ export default function Upload() {
       const document = await getDoc(doc(noteRef))
       if(!document.exists()){
         await addDoc(noteRef, {
-          category: userInfo.department,
-          CourseCode: data.courseCode,
+          department: userInfo.department,
           level: userInfo.level,
+          category: data.category,
+          CourseCode: data.courseCode,
           noteName: data.noteName,
           uploadedBy: userInfo.username ? userInfo.username : '',
           type: fileType,
@@ -146,7 +149,7 @@ export default function Upload() {
     <div id='upload' onClick={() => setHideNav(true)} data-aos="fade">
       <form action="" onSubmit={uploadNote}>
         <div>
-          <label htmlFor="department">Category:</label>
+          <label htmlFor="department">Department:</label>
           <input 
           name='department' 
           type="text" 
@@ -156,7 +159,7 @@ export default function Upload() {
         </div>
         
         <div>
-          <label htmlFor="level">Category:</label>
+          <label htmlFor="level">Level:</label>
           <input 
           name='level' 
           type="text" 
@@ -176,20 +179,30 @@ export default function Upload() {
         </div>
 
         <div>
+          <label htmlFor="Note Category">Select Note Category:</label>
+          <select defaultValue="Select Category" name="category" onChange={handleChange}  required>
+            <option defaultValue="" disabled>Select Category</option>
+            <option value={userInfo.department}>Departmental Note</option>
+            <option value="Others">Other Notes: Assignments, Past Questions, Summary etc</option>
+            {userInfo.username === "capacity01" ? <option value="Extras">Extras: Time Table, Annoucements etc. </option> :  <option value="Extras">Extras: Time Table, Annoucements etc. </option>}
+          </select>
+        </div>
+
+        {data.category != 'extras' && <div>
           <label htmlFor="course code">
             Course Code:
           </label>
           <input 
           name='courseCode' 
           type="text" 
-          placeholder='Course Code xxx111' 
+          placeholder='Course Code XXX111' 
           onChange={handleChange}
           maxLength={6}
           pattern="[a-zA-Z]{3}[0-9]{3}"
           title='Course Code should be in the form XXX000 e.g CPE111'
           required
           />
-        </div>
+        </div>}
         <div>
           <label htmlFor="note name">
             Title of Note:
@@ -197,7 +210,7 @@ export default function Upload() {
           <input 
           name='noteName' 
           type="text" 
-          placeholder='e.g NOTE V'
+          placeholder='e.g Engineering Economics NOTE I'
           maxLength={50} 
           onChange={handleChange}
           required

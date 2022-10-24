@@ -587,7 +587,8 @@ section a, .how--to a {
   flex-direction: column;
   justify-content: space-between;
 }
-#notes .accordion--container .accordion .notes--detail #Level1, #notes .accordion--container .accordion .notes--detail #Level2, #notes .accordion--container .accordion .notes--detail #Level3, #notes .accordion--container .accordion .notes--detail #Level4, #notes .accordion--container .accordion .notes--detail #Level5 {
+#notes .accordion--container .accordion .notes--detail #Level1, #notes .accordion--container .accordion .notes--detail #Level2, #notes .accordion--container .accordion .notes--detail #Level3, #notes .accordion--container .accordion .notes--detail #Level4, #notes .accordion--container .accordion .notes--detail #Level5,
+#notes .accordion--container .accordion .notes--detail #others1, #notes .accordion--container .accordion .notes--detail #others2, #notes .accordion--container .accordion .notes--detail #others3, #notes .accordion--container .accordion .notes--detail #others4, #notes .accordion--container .accordion .notes--detail #others5 {
   display: none;
 }
 #notes .accordion--container .accordion .notes--detail h2 {
@@ -596,6 +597,9 @@ section a, .how--to a {
 #notes .accordion--container .accordion .notes--detail .note--title {
   display: flex;
   flex-direction: column;
+  margin-block: 1rem;
+  border-left: solid #c5c1c0;
+  padding-inline: 0.5rem;
 }
 #notes .accordion--container .accordion .notes--detail .note--title p {
   text-transform: uppercase;

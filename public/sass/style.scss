@@ -582,7 +582,8 @@ section{
                 flex-direction: column;
                 justify-content: space-between;
 
-                #Level1, #Level2,#Level3,#Level4,#Level5{
+                #Level1, #Level2,#Level3,#Level4,#Level5, 
+                #others1, #others2, #others3, #others4, #others5 {
                     display: none;                   
                 }
 
@@ -598,10 +599,14 @@ section{
                 .note--title{
                     display: flex;
                     flex-direction: column;
+                    margin-block: 1rem;
+                    border-left: solid $--bgColor;
+                    padding-inline: 0.5rem;
+
                     
                     p{
                         text-transform: uppercase;
-                        color: $--primary   
+                        color: $--primary   ;
                     }
                 
                     span{

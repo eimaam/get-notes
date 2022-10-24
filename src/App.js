@@ -75,9 +75,9 @@ function App(props) {
             <Route path="/reset" element={<ResetPass showNav={setShowNav}/>}    />
             <Route path="*" element={<ErrorPage showNav={setShowNav}/>}    />
           </Routes>
-          {showNav && 
+          {/* {showNav && 
           <Footer />
-          }
+          } */}
         </DataProvider>
       </AuthProvider>
       <ToastContainer

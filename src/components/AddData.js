@@ -140,10 +140,10 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         <select defaultValue="Select Level" name="level" onChange={handleChange} required>
           <option defaultValue="" disabled>Select Level</option>
           <option value="100">100</option>
-          <option value="100">200</option>
-          <option value="100">300</option>
-          <option value="100">400</option>
-          <option value="100">500</option>
+          <option value="200">200</option>
+          <option value="300">300</option>
+          <option value="400">400</option>
+          <option value="500">500</option>
         </select>
         <p className='error'>{error}</p>
         <input type="submit" value="UPDATE PROFILE"/>
