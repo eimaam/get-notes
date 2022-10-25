@@ -1,3 +1,114 @@
+#notes {
+  width: 80%;
+  height: 95vh;
+  float: right;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 80%;
+  align-self: center;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes {
+    width: 100%;
+  }
+}
+#notes .accordion--container {
+  width: 70%;
+  background-color: #1a2930;
+  padding: 3rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+#notes .accordion--container p {
+  color: white;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes .accordion--container {
+    width: 90%;
+  }
+}
+#notes .accordion--container .accordion {
+  padding-block: 1rem;
+}
+#notes .accordion--container .accordion .accordion--tab, #notes .accordion--container .accordion .notes--detail .level {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e3dcda;
+  border-bottom: 1px solid #e3dcda;
+  padding-block: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+#notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
+  color: #e3dcda;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
+    font-size: 1rem;
+  }
+}
+#notes .accordion--container .accordion .accordion--tab h2:last-child, #notes .accordion--container .accordion .notes--detail .level h2:last-child {
+  color: #f7ce3e;
+}
+#notes .accordion--container .accordion .notes--detail {
+  padding-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#notes .accordion--container .accordion .notes--detail #Level1, #notes .accordion--container .accordion .notes--detail #Level2, #notes .accordion--container .accordion .notes--detail #Level3, #notes .accordion--container .accordion .notes--detail #Level4, #notes .accordion--container .accordion .notes--detail #Level5,
+#notes .accordion--container .accordion .notes--detail #others1, #notes .accordion--container .accordion .notes--detail #others2, #notes .accordion--container .accordion .notes--detail #others3, #notes .accordion--container .accordion .notes--detail #others4, #notes .accordion--container .accordion .notes--detail #others5 {
+  display: none;
+}
+#notes .accordion--container .accordion .notes--detail h2 {
+  font-size: 1.15rem;
+}
+#notes .accordion--container .accordion .notes--detail .note--title {
+  display: flex;
+  flex-direction: column;
+  margin-block: 1rem;
+  border-left: solid #c5c1c0;
+  padding-inline: 0.5rem;
+}
+#notes .accordion--container .accordion .notes--detail .note--title p {
+  text-transform: uppercase;
+  color: #f7ce3e;
+}
+#notes .accordion--container .accordion .notes--detail .note--title span {
+  text-transform: capitalize !important;
+}
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: end;
+}
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child small {
+  color: white;
+}
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child button {
+  padding: 1px 0.3rem;
+}
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child button a {
+  color: #1a2930;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  padding: 1px 0.3rem;
+}
+#notes .accordion--container .accordion .notes--detail .note--title div:last-child button a:hover {
+  color: #fff;
+}
+#notes .accordion--container .accordion .notes--detail p {
+  color: #f7ce3e;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -524,117 +635,6 @@ section a, .how--to a {
   }
 }
 
-#notes {
-  width: 80%;
-  height: 95vh;
-  float: right;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  width: 80%;
-  align-self: center;
-}
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
-  #notes {
-    width: 100%;
-  }
-}
-#notes .accordion--container {
-  width: 70%;
-  background-color: #1a2930;
-  padding: 3rem 1rem;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-}
-#notes .accordion--container p {
-  color: white;
-}
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
-  #notes .accordion--container {
-    width: 90%;
-  }
-}
-#notes .accordion--container .accordion {
-  padding-block: 1rem;
-}
-#notes .accordion--container .accordion .accordion--tab, #notes .accordion--container .accordion .notes--detail .level {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #e3dcda;
-  border-bottom: 1px solid #e3dcda;
-  padding-block: 0.5rem;
-  align-items: center;
-  cursor: pointer;
-}
-#notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
-  color: #e3dcda;
-}
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
-  #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
-    font-size: 1rem;
-  }
-}
-#notes .accordion--container .accordion .accordion--tab h2:last-child, #notes .accordion--container .accordion .notes--detail .level h2:last-child {
-  color: #f7ce3e;
-}
-#notes .accordion--container .accordion .notes--detail {
-  padding-block: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-#notes .accordion--container .accordion .notes--detail #Level1, #notes .accordion--container .accordion .notes--detail #Level2, #notes .accordion--container .accordion .notes--detail #Level3, #notes .accordion--container .accordion .notes--detail #Level4, #notes .accordion--container .accordion .notes--detail #Level5,
-#notes .accordion--container .accordion .notes--detail #others1, #notes .accordion--container .accordion .notes--detail #others2, #notes .accordion--container .accordion .notes--detail #others3, #notes .accordion--container .accordion .notes--detail #others4, #notes .accordion--container .accordion .notes--detail #others5 {
-  display: none;
-}
-#notes .accordion--container .accordion .notes--detail h2 {
-  font-size: 1.15rem;
-}
-#notes .accordion--container .accordion .notes--detail .note--title {
-  display: flex;
-  flex-direction: column;
-  margin-block: 1rem;
-  border-left: solid #c5c1c0;
-  padding-inline: 0.5rem;
-}
-#notes .accordion--container .accordion .notes--detail .note--title p {
-  text-transform: uppercase;
-  color: #f7ce3e;
-}
-#notes .accordion--container .accordion .notes--detail .note--title span {
-  text-transform: capitalize !important;
-}
-#notes .accordion--container .accordion .notes--detail .note--title div:last-child {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  justify-content: end;
-}
-#notes .accordion--container .accordion .notes--detail .note--title div:last-child small {
-  color: white;
-}
-#notes .accordion--container .accordion .notes--detail .note--title div:last-child button {
-  padding: 1px 0.3rem;
-}
-#notes .accordion--container .accordion .notes--detail .note--title div:last-child button a {
-  color: #1a2930;
-  font-size: 0.8rem;
-  text-transform: capitalize;
-  padding: 1px 0.3rem;
-}
-#notes .accordion--container .accordion .notes--detail .note--title div:last-child button a:hover {
-  color: #fff;
-}
-#notes .accordion--container .accordion .notes--detail p {
-  color: #f7ce3e;
-}
-
 nav, #mNav {
   position: fixed;
   left: 0;
@@ -918,7 +918,6 @@ nav #hideNav, #mNav #hideNav {
   }
 }
 #signup .confirm, #upload .confirm, #userSettings .confirm, #resetPass .confirm, #login .confirm {
-  border: solid red;
   display: inline;
 }
 #signup .confirm input, #upload .confirm input, #userSettings .confirm input, #resetPass .confirm input, #login .confirm input, #signup .confirm button, #upload .confirm button, #userSettings .confirm button, #resetPass .confirm button, #login .confirm button {

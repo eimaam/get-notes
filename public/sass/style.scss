@@ -1,52 +1,13 @@
 @import './variables';
+@import './mixins';
+@import './notesPage';
 
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
-@mixin flex($direction){
-    display: flex;
-    flex-direction: $direction;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-@mixin screenSize($size){
-    @media only screen and (max-width: $size){
-        @content;
-    }
-}
-@mixin mobile(){
-    @media only screen and (min-width: 280px) and (max-width: 1000px){
-        @content;
-    }
-}
-@mixin tablet(){
-    @media only screen and (min-width: 1001px) and (max-width: 1500px){
-        @content;
-    }
-}
-@mixin containerDesktop{
-    width: 80%;
-    height: 95vh;
-    float: right;
-    margin: 0;
-    @include flex(column);
 
-    @include mobile(){
-        width: 100%;
-    }
-}
-
-@mixin containerMobile{
-    width: 100%;
-}
-
-@mixin border{
-    border: 1px solid $--primary;
-    border-radius: 0.3rem;
-}
 @keyframes slideInFromLeft {
     0% {
       transform: translateX(-100%);
@@ -530,127 +491,7 @@ section{
         }
     }
 }
-// HOME Component
-#notes{
-    @include containerDesktop;
-    width: 80%;
-    align-self: center;
-    // margin-block: 25vh;
-    // height: 100vh;
-    
-    .accordion--container{
-        width: 70%;
-        background-color: $--main;
-        padding: 3rem 1rem;
-        border-radius: 0.5rem;
-        display: flex;
-        flex-direction: column;
 
-        p{
-            color: white;
-        }
-
-        @include mobile(){
-            width: 90%;
-        }
-
-        .accordion{
-            padding-block: 1rem;
-
-            .accordion--tab{
-                display: flex;
-                justify-content: space-between;
-                border-top: 1px solid $--secondary;
-                border-bottom: 1px solid $--secondary;
-                padding-block: 0.5rem;
-                align-items: center;
-                cursor: pointer;
-                
-                h2{
-                    color: $--secondary;
-
-                    @include mobile(){
-                        font-size: 1rem;
-                    }
-                }
-
-                & h2:last-child{
-                    color: $--primary;
-                }
-            }
-
-            .notes--detail{
-                padding-block: 1rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-
-                #Level1, #Level2,#Level3,#Level4,#Level5, 
-                #others1, #others2, #others3, #others4, #others5 {
-                    display: none;                   
-                }
-
-                h2{
-                    font-size: 1.15rem;
-                }
-
-                .level{
-                    @extend .accordion--tab;
-                }
-
-
-                .note--title{
-                    display: flex;
-                    flex-direction: column;
-                    margin-block: 1rem;
-                    border-left: solid $--bgColor;
-                    padding-inline: 0.5rem;
-
-                    
-                    p{
-                        text-transform: uppercase;
-                        color: $--primary   ;
-                    }
-                
-                    span{
-                        text-transform: capitalize !important;
-                    }
-
-                    div:last-child{
-                        @include flex(row);
-                        justify-content: end;
-                        
-                        small{
-                            color: white;
-                        }
-
-                        button{
-                            padding: 1px 0.3rem;
-                            
-                            a{
-                                color: $--main;
-                                font-size: 0.8rem;
-                                text-transform: capitalize;
-                                padding: 1px 0.3rem;
-                                
-                                &:hover{
-                                    color: $--default;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                p{
-                    color: $--primary;
-                }
-                
-            }
-        }
-        
-        
-    }
-}
 
 // NAV Styling
 // Desktop Nav
@@ -916,7 +757,6 @@ nav{
     }
 
     .confirm{
-        border: solid red;
         display: inline;
         
 

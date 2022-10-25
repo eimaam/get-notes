@@ -50,6 +50,12 @@ catch(err){
 
 useEffect(() => {
   setLoading(true)
+  if(!user){
+    return navigate('./login')
+  }
+  if(userInfo.student === "yes"){
+    return navigate('./notes')
+  }
   fetchNotes("agricultural engineering", setCpeNotes)
   fetchNotes("civil engineering", setCweNotes)
   fetchNotes("chemical engineering", setCheNotes)
@@ -62,7 +68,7 @@ useEffect(() => {
       setLoading(false)
   }, 4000);
 
-}, [])
+}, [user])
 
 
 // style to centralize the Note loader animation in center

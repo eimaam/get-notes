@@ -1,0 +1,45 @@
+@import './variables';
+
+
+@mixin flex($direction){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+@mixin screenSize($size){
+    @media only screen and (max-width: $size){
+        @content;
+    }
+}
+@mixin mobile(){
+    @media only screen and (min-width: 280px) and (max-width: 1000px){
+        @content;
+    }
+}
+@mixin tablet(){
+    @media only screen and (min-width: 1001px) and (max-width: 1500px){
+        @content;
+    }
+}
+@mixin containerDesktop{
+    width: 80%;
+    height: 95vh;
+    float: right;
+    margin: 0;
+    @include flex(column);
+
+    @include mobile(){
+        width: 100%;
+    }
+}
+
+@mixin containerMobile{
+    width: 100%;
+}
+
+@mixin border{
+    border: 1px solid $--primary;
+    border-radius: 0.3rem;
+}

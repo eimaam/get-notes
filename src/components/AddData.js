@@ -9,24 +9,30 @@ import { BeatLoader } from 'react-spinners';
 
 
 export default function AddData(props) {
-    const { userInfo } = useData();
+    const { userInfo, fetchUserDetail } = useData();
   const { user, navigate, DocRef, error, setError, loading, setLoading } = useAuth();
 
+  // check if user is logged in or nah
   useEffect(() => {
-    props.showNav(false)
-    setLoading(true)
     onAuthStateChanged(auth, data => {
-        if(userInfo.username){
-            navigate('../notes')
-        }
         if(!data){
           navigate('../login')
         }
     })
-    setTimeout(() => {
-      setLoading(false)
-    }, 4000)
-}, [props.showNav])
+}, [])
+
+  useEffect(() => {
+    props.showNav(false)
+    setLoading(true)
+    fetchUserDetail()
+
+    if(userInfo.username != undefined){
+        navigate('./notes')
+      }else{
+        setLoading(false)
+      }    
+
+  }, [userInfo])
 
   //state to save Student or not confirmation - Check if a user 
   const [studentSelection, setStudentSelection] = useState("")
@@ -88,10 +94,10 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
     }else if(!usernameRegex.test(data.username)){
       setError('Username must be at least 3 characters long, not starting with a number and can\'t end with \'.\'')
       return toast.error('Username format not supported')
-    }else if(data.department === ""){
+    }else if(studentSelection === "yes" && data.department === ""){
       setError('Select Department')
       return toast.error('Select Department')
-    }else if(data.level === ""){
+    }else if(studentSelection === "yes" && data.level === ""){
       setError('Oops! You forgot Level')
       return toast.error('Oops! You forgot Level')
     }else{
@@ -136,6 +142,8 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
 
   }
 
+
+// component body
   return (
     <div id='login'>
       {loading 
@@ -153,13 +161,14 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
               <br />
               <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
               <label htmlFor="">NO</label>
+              <br />
         </form>
       }
 
       {/* form to display if user is registering as a student */}
       {studentSelection === "yes" 
       &&     
-      <form action="" onSubmit={addData}>
+      <form action="" onSubmit={addData} data-aos="fade-up" data-aos-easing="ease-out">
         <label htmlFor="Username">
           Username:
         </label>
@@ -179,9 +188,11 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         <select defaultValue="Select Department" name="department" onChange={handleChange} required>
           <option defaultValue="" disabled>Select Department</option>
           <option value="Agricultural Engineering">Agricultural Engineering</option>
+          <option value="Civil Engineering">Civil & Water Resources Engineering</option>
           <option value="Chemical Engineering">Chemical Engineering</option>
           <option value="Computer Engineering">Computer Engineering</option>
           <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+          <option value="Food Science Technology">Food Science Technology</option>
           <option value="Mechanical Engineering">Mechanical Engineering</option>
         </select>
         
@@ -204,7 +215,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       {/* form to display if user is not a student */}
       {studentSelection === "no"
       &&
-      <form action="" onSubmit={addData}>
+      <form action="" onSubmit={addData} data-aos="fade-up" data-aos-easing="ease-out">
         <label htmlFor="Username">
           Username:
         </label>

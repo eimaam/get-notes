@@ -21,14 +21,14 @@ export default function DataProvider({ children }) {
     // NAV hide state manager: managing hide navigation bar on clicking outside of the nav
     const [hideNav, setHideNav] = useState(true);
 
-    const { user } = useAuth()
+    const { user, loading, setLoading} = useAuth()
     const [userInfo, setUserInfo] = useState({})
 
 
     // fetch all all data linked to logged in user and save in userInfo state
-    const fetchUserDetail = async() => {
+    const fetchUserDetail = () => {
         try{
-            const data = await getDoc(doc(database, "userDetails", user.email))
+            const data =  getDoc(doc(database, "userDetails", user.email))
             .then(res => {
                 setUserInfo(res.data())
             })
@@ -40,6 +40,10 @@ export default function DataProvider({ children }) {
             console.log(err.message)
         }
     }
+
+    useEffect(() => {
+        fetchUserDetail()
+    }, [user])
 
 
     

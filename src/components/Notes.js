@@ -17,7 +17,7 @@ export default function Notes(props) {
 
 
     const { navigate, user, loading, setLoading } = useAuth()
-    const { userInfo, setHideNav } = useData();
+    const { userInfo, setHideNav, fetchUserDetail } = useData();
 
     // state to manage accordions: setting show and hide
     const [showLectureNotes, setShowLectureNotes] = useState(false)
@@ -43,21 +43,27 @@ export default function Notes(props) {
     
     // check status of User session - logged or not
     useEffect(() => {
-        setLoading(true)
-        props.showNav(true)
-        // check if user's logged and display data else
-        // send user to login page
         onAuthStateChanged(auth, data => {
             if(!data){
-                navigate('../login')
-            }else if(!userInfo.username){
-                navigate('./addusername')
+              navigate('../login')
             }
         })
+    }, [])
 
-        setTimeout(() => {
-        }, 4000);
-    }, [props.showNav])
+    // check if user has username
+    useEffect(() => {
+        setLoading(true)
+        props.showNav(true)
+        fetchUserDetail()
+        
+        if(userInfo.username != undefined){
+            userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
+        }else if(userInfo.username === undefined){
+            setLoading(false)
+            navigate('./addusername')
+        }
+        
+    }, [userInfo, props.showNav])
 
     // function to Fetch Notes in based on Department category
     const fetchNotes = async (level, setLevel) => {
@@ -113,10 +119,6 @@ export default function Notes(props) {
     // FETCH Notes on load
     useEffect(() => {
         setLoading(true)
-        
-        // check if user is a student or not to determine the Notes to display
-        userInfo.student === "no" && navigate('./not-student')
-
         fetchNotes(100, setLectureNotes100)
         fetchNotes(200, setLectureNotes200)
         fetchNotes(300, setLectureNotes300)
@@ -134,7 +136,7 @@ export default function Notes(props) {
         setTimeout(() => {
             userInfo.student && setLoading(false)
         }, 5000);
-    }, [userInfo])
+    }, [])
     
     
     // display Levels 

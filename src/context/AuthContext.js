@@ -61,12 +61,13 @@ useEffect(() => {
         getData()
     }, [])
 
+    // log in with gmail -- pop up
     const logInWithPopUp = async () => {
         // await setPersistence(auth, browserLocalPersistence)
         await signInWithPopup(auth, googleProvider)
         .then(res => {
             setUser({
-                email: res.email
+                email: res.email,
             })
             return navigate('../addusername')
         })
