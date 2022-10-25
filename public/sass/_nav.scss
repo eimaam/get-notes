@@ -1,0 +1,173 @@
+// NAV Styling
+// Desktop Nav
+nav{
+    position: fixed;
+    left: 0;
+    width: 20%;
+    height: 100vh;
+    background-color: $--main;
+    @include flex(column);
+    justify-content: center;
+    padding-block: 2rem;
+    z-index: 9;
+
+    @include mobile(){
+        display: block;
+        top: 0;
+        height: auto;
+        width: 100%;
+        padding: 0.5rem;
+    }
+    h3{
+        width: max-content;
+        color: $--secondary;
+        text-transform: lowercase;
+
+        @include mobile(){
+            display: none;
+        }
+    }
+    i{
+        padding-block: 1rem;
+        
+        @include mobile(){
+            display: none;
+        }
+    }
+
+    ul{
+        width: 100%;
+        margin: auto;
+        font-family: $--Blinker;
+        color: $--secondary;
+        
+        @include mobile(){
+            display: none;
+        }
+        
+        li{
+            width: 100%;
+            padding: 1rem 0.5rem;
+            margin-block: 2rem;
+            border-top: 1px solid $--bgColor;
+            border-bottom: 1px solid $--bgColor;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            
+            
+            &:hover{
+                color: $--primary;
+            }
+            
+            @include tablet(){
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .nav--buttons--container{
+        @include flex(column);
+        width: 50%;
+        margin: auto;
+        
+        button, .nav--buttons--Link{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            a{
+                color: black;
+
+                &:hover{
+                    color: $--default;
+                }
+            }
+        }
+
+        @include mobile(){
+            display: none;
+        }
+        @include tablet(){
+            width: 100%;
+            padding-inline: 2rem;
+        }
+    }
+
+    p{
+        color: $--default;
+        text-align: center;
+
+        @include mobile(){
+            display: none;
+        }
+    }
+
+
+    #hideNav, #showNav{
+        font-size: 1.5rem;
+        align-self: center;
+        color: $--secondary;
+        font-weight: 900;
+    }
+    #showNav{
+        display: none;
+        @include mobile(){
+            display: block;
+        }
+    }
+    #hideNav{
+        display: none
+    }
+}
+// Mobile Nav
+#mNav{
+    @extend nav;
+    width: 50%;
+    height: 100vh;
+    display: grid;
+    position: fixed;
+    inset: 0 50% 0 0;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.5rem;
+    margin: 0;
+    z-index: 1;
+    opacity: 7;
+
+
+    h3{
+        display: block;
+        text-align: center;
+        margin: auto;
+    }
+
+    ul{
+        display: block;
+
+        li{
+            font-size: 1.2rem;
+            width: 100%;
+        }
+    }
+
+    .nav--buttons--container{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    #close{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    p{
+        display: block;
+    }
+    
+}
