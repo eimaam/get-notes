@@ -62,7 +62,7 @@ useEffect(() => {
     }, [])
 
     const logInWithPopUp = async () => {
-        await setPersistence(auth, browserLocalPersistence)
+        // await setPersistence(auth, browserLocalPersistence)
         await signInWithPopup(auth, googleProvider)
         .then(res => {
             setUser({

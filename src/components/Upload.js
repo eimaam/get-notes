@@ -23,8 +23,6 @@ export default function Upload() {
           navigate('../login')
         }
     })
-    console.log(userInfo)
-
 }, [])
 
   const [data, setData] = useState({
@@ -147,6 +145,12 @@ export default function Upload() {
 
   return (
     <div id='upload' onClick={() => setHideNav(true)} data-aos="fade">
+      {userInfo.student === "no" 
+      ?
+      <form>
+        <div>Oops! THIS CHANNEL IS ONLY OPEN TO ENGINEERING STUDENTS OF THE UNIVERSITY OF MAIDUGURI!</div>
+      </form> 
+      :
       <form action="" onSubmit={uploadNote}>
         <div>
           <label htmlFor="department">Department:</label>
@@ -226,6 +230,7 @@ export default function Upload() {
         {uploadProgress == 100 && <input type="submit" value="UPLOAD" />}
         {loading && <BeatLoader color='#fff'/>}
       </form>
+      }
     </div>
   )
 }

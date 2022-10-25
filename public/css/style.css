@@ -536,8 +536,6 @@ section a, .how--to a {
   gap: 1rem;
   width: 80%;
   align-self: center;
-  margin-block: 25vh;
-  height: 100%;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes {
@@ -549,6 +547,8 @@ section a, .how--to a {
   background-color: #1a2930;
   padding: 3rem 1rem;
   border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 #notes .accordion--container p {
   color: white;
@@ -916,6 +916,30 @@ nav #hideNav, #mNav #hideNav {
   #signup, #upload, #userSettings, #resetPass, #login {
     width: 100% !important;
   }
+}
+#signup .confirm, #upload .confirm, #userSettings .confirm, #resetPass .confirm, #login .confirm {
+  border: solid red;
+  display: inline;
+}
+#signup .confirm input, #upload .confirm input, #userSettings .confirm input, #resetPass .confirm input, #login .confirm input, #signup .confirm button, #upload .confirm button, #userSettings .confirm button, #resetPass .confirm button, #login .confirm button {
+  width: 50px;
+  margin: 0.5rem;
+  height: 1rem;
+  border: 0;
+}
+#signup .confirm button, #upload .confirm button, #userSettings .confirm button, #resetPass .confirm button, #login .confirm button {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 1rem;
+  margin: 1rem;
+}
+#signup .confirm label, #upload .confirm label, #userSettings .confirm label, #resetPass .confirm label, #login .confirm label {
+  font-size: 1.5rem;
+  margin: 0.5rem;
 }
 #signup form, #upload form, #userSettings form, #resetPass form, #login form {
   display: flex;

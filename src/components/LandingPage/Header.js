@@ -33,7 +33,7 @@ export default function Header(){
             <span>&nbsp;</span>
             <span>&nbsp;</span>
             <button>
-              <Link to='/signup'> get started</Link>
+              <Link to='/login'> get started</Link>
             </button>
         </div>
             <img src={heroImage2} alt="web designer" data-aos="fade-right" data-aos-easing="ease-in"/>

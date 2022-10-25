@@ -8,11 +8,12 @@ import { useData } from '../context/DataContext';
 import { BeatLoader } from 'react-spinners';
 
 
-export default function AddData() {
+export default function AddData(props) {
     const { userInfo } = useData();
   const { user, navigate, DocRef, error, setError, loading, setLoading } = useAuth();
 
   useEffect(() => {
+    props.showNav(false)
     setLoading(true)
     onAuthStateChanged(auth, data => {
         if(userInfo.username){
@@ -25,7 +26,10 @@ export default function AddData() {
     setTimeout(() => {
       setLoading(false)
     }, 4000)
-}, [])
+}, [props.showNav])
+
+  //state to save Student or not confirmation - Check if a user 
+  const [studentSelection, setStudentSelection] = useState("")
 
   const [data, setData] = useState({
     username: '',
@@ -95,19 +99,66 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         username: username,
         department: data.department,
         level: data.level,
+        student: studentSelection,
       })
     }
       toast.info("Profile Updated!")
       return navigate('../notes')
   }
+
   
+  
+  // Handle student or not selection state 
+  function handleStudentSelection(e){
+    
+    // check if a user is a student or not
+    // if student, value is store as yes else stored as no
+    const notStudentOption = document.getElementById('notStudent')
+    const studentOption = document.getElementById('student')
+
+    if(studentOption.checked){
+      notStudentOption.disabled = true
+      return setStudentSelection("yes")
+    }else{
+      notStudentOption.disabled = false 
+      setStudentSelection("") 
+    } 
+
+    if(notStudentOption.checked){
+      studentOption.disabled = true
+      setStudentSelection(notStudentOption.value) 
+    }else{
+      studentOption.disabled = false
+      setStudentSelection("") 
+    }
+
+    console.log(studentSelection)
+
+  }
 
   return (
     <div id='login'>
-      {loading ? <BeatLoader /> 
+      {loading 
       
-      : 
+      ? 
       
+      <BeatLoader /> 
+      
+      :
+
+        <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
+            <h3>Are you an Engineering Student of the University of Maiduguri?</h3>
+              <input type="checkbox" value="yes" name='student' id='student' onChange={handleStudentSelection}/>
+              <label htmlFor="" >YES</label>
+              <br />
+              <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
+              <label htmlFor="">NO</label>
+        </form>
+      }
+
+      {/* form to display if user is registering as a student */}
+      {studentSelection === "yes" 
+      &&     
       <form action="" onSubmit={addData}>
         <label htmlFor="Username">
           Username:
@@ -149,6 +200,27 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         <input type="submit" value="UPDATE PROFILE"/>
       </form>
       }
-    </div>
+
+      {/* form to display if user is not a student */}
+      {studentSelection === "no"
+      &&
+      <form action="" onSubmit={addData}>
+        <label htmlFor="Username">
+          Username:
+        </label>
+        <input
+        name='username'
+        type="text" 
+        id='username' 
+        placeholder='Username' 
+        value={data.username}
+        min={3}
+        onChange={(e) => handleChange(e)}
+        />
+        <p className='error'>{error}</p>
+        <input type="submit" value="UPDATE PROFILE"/>
+      </form>
+      }
+      </div>
   )
 }

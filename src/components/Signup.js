@@ -38,7 +38,12 @@ useEffect(() => {
   }
 }, [error])
 
+  //state to save Student or not confirmation - Check if a user 
+  const [studentSelection, setStudentSelection] = useState("")
+
+  // state to save all user sign up info
   const [data, setData] = useState({
+    student: studentSelection,
     username: '',
     department: '',
     level: '',
@@ -47,6 +52,38 @@ useEffect(() => {
     confirmPassword: '',
   })
   
+
+  // Handle student or not selection state 
+  function handleStudentSelection(e){
+    
+    // check if a user is a student or not
+    // if student, value is store as yes else stored as no
+
+    const notStudentOption = document.getElementById('notStudent')
+    const studentOption = document.getElementById('student')
+
+    if(studentOption.checked){
+      notStudentOption.disabled = true
+      return setStudentSelection("yes")
+    }else{
+      notStudentOption.disabled = false 
+      setStudentSelection("") 
+    } 
+
+    if(notStudentOption.checked){
+      studentOption.disabled = true
+      setStudentSelection(notStudentOption.value) 
+    }else{
+      studentOption.disabled = false
+      setStudentSelection("") 
+    }
+
+    console.log(studentSelection)
+
+  }
+
+
+
   // Handle input change
   function handleChange(e){
     const {name, value} = e.target
@@ -65,7 +102,6 @@ useEffect(() => {
   
   // regular expression for USERNAME
   const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{2,16}$/;
-
 
 
   
@@ -110,11 +146,11 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       setError('Passwords do not match')
       return toast.error('Passwords do not match')
       // create User Database if all conditions are met
-    }else if(data.department === ""){
+    }else if(studentSelection === "yes" && data.department === ""){
       setLoading(false)
       setError('Select Department')
       return toast.error('Select Department')
-    }else if(data.level === ""){
+    }else if(studentSelection === "yes" && data.level === ""){
       setLoading(false)
       setError('Select Level')
       return toast.error('Select Level')
@@ -131,6 +167,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
               username: username,
               department: data.department,
               level: data.level,
+              student: studentSelection,
             })
             toast.info("SIGNED UP SUCCESSFULLY")
             return navigate('../login')
@@ -154,8 +191,18 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
 
  
   return (
-    <div id='signup' onClick={() => setHideNav(true)} data-aos="fade" data-aos-easing="ease-out">
-      <form onSubmit={signUp}>
+    <div id='signup' onClick={() => setHideNav(true)} data-aos="fade-down" data-aos-easing="ease-out">
+      <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
+          <h3>Are you an Engineering Student of the University of Maiduguri?</h3>
+            <input type="checkbox" value="yes" name='student' id='student' onChange={handleStudentSelection}/>
+            <label htmlFor="" >YES</label>
+            <br />
+            <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
+            <label htmlFor="">NO</label>
+        </form>
+      {studentSelection === "yes"
+      && 
+      <form onSubmit={signUp} data-aos="fade-up" data-aos-easing="ease-out">
         <div>
           <label htmlFor="Username">
             Username
@@ -171,7 +218,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           required
           />
         </div>
-        
+
         <div>
           <label htmlFor="Department">
             Department
@@ -179,9 +226,11 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           <select defaultValue="Select Department" name="department" onChange={handleChange} required>
             <option defaultValue="" disabled>Select Department</option>
             <option value="Agricultural Engineering">Agricultural Engineering</option>
+            <option value="Civil Engineering">Civil & Water Resources Engineering</option>
             <option value="Chemical Engineering">Chemical Engineering</option>
             <option value="Computer Engineering">Computer Engineering</option>
             <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+            <option value="Food Science Technology">Food Science Technology</option>
             <option value="Mechanical Engineering">Mechanical Engineering</option>
           </select>
         </div>
@@ -255,6 +304,83 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         </button>
         <p>Have an account already? <Link to="/login" style={{color: '#f7ce3e'}}><b>LOG IN</b> </Link></p>
       </form>
+      }
+      {studentSelection === "no"
+      &&
+      <form onSubmit={signUp} data-aos="fade-up" data-aos-easing="ease-out">
+          <div>
+            <label htmlFor="Username">
+              Username
+            </label>
+            <input
+            name='username'
+            type="text" 
+            id='username' 
+            placeholder='Username' 
+            value={data.username}
+            onChange={handleChange}
+            title="min of 3 characters and max of 16."
+            required
+            />
+          </div>
+  
+          <div>
+            <label htmlFor="Email">
+              Email
+            </label>
+            <input
+            name='email'
+            type="email" 
+            id='email' 
+            placeholder='Email Address' 
+            value={data.email}
+            onChange={handleChange}
+            required
+            />
+          </div>
+  
+          <div>
+            <label htmlFor="Passowrd">
+              Password
+            </label>
+            <input
+            name='password'
+            type="password" 
+            id='password' 
+            placeholder='Password' 
+            value={data.password}
+            onChange={handleChange}
+            required
+            />
+          </div>
+  
+          <div>
+            <label htmlFor="Confirm Passowrd">
+              Confirm Password
+            </label>
+            <input
+            name='confirmPassword'
+            type="password" 
+            id='confirmPassword' 
+            placeholder='Re-enter Password' 
+            value={data.confirmPassword}
+            onChange={handleChange}
+            required
+            />
+          </div>
+          <p className='error'>{error}</p>
+          {loading && <button><BeatLoader color='#fff'/></button>}
+          {!loading 
+          && 
+          <input type="submit" value="SIGN UP" />
+          }
+          <button onClick={logInWithPopUp} className='flex'>
+              Sign up with <FcGoogle />
+          </button>
+          <p>Have an account already? <Link to="/login" style={{color: '#f7ce3e'}}><b>LOG IN</b> </Link></p>
+      </form>
+      }
+
     </div>
   )
 }

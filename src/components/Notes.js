@@ -43,15 +43,23 @@ export default function Notes(props) {
     
     // check status of User session - logged or not
     useEffect(() => {
+        setLoading(true)
         props.showNav(true)
+        // check if user's logged and display data else
+        // send user to login page
         onAuthStateChanged(auth, data => {
             if(!data){
                 navigate('../login')
+            }else if(!userInfo.username){
+                navigate('./addusername')
             }
         })
+
+        setTimeout(() => {
+        }, 4000);
     }, [props.showNav])
 
-    // function to Fetch Notes in CPE category
+    // function to Fetch Notes in based on Department category
     const fetchNotes = async (level, setLevel) => {
         try{
             const q = query(collection(database, "noteDetails"), where("category", "==", `${userInfo.department}`), where("level", "==", `${level}`))
@@ -68,7 +76,7 @@ export default function Notes(props) {
 
     }
 
-    // function to Fetch Notes in CPE category
+    // function to Fetch Other Notes category
     const fetchOtherNotes = async (level, setLevel) => {
         try{
             const q = query(collection(database, "noteDetails"), where("category", "==", `others`), where("level", "==", `${level}`))
@@ -85,7 +93,7 @@ export default function Notes(props) {
 
     }
 
-    // function to Fetch Other Notes (a general category) 
+    // function to Fetch Extras category (a general category) 
     const fetchExtras = async () => {
         try{
             const q = query(collection(database, "noteDetails"), where("category", "==", "extras"))
@@ -105,6 +113,10 @@ export default function Notes(props) {
     // FETCH Notes on load
     useEffect(() => {
         setLoading(true)
+        
+        // check if user is a student or not to determine the Notes to display
+        userInfo.student === "no" && navigate('./not-student')
+
         fetchNotes(100, setLectureNotes100)
         fetchNotes(200, setLectureNotes200)
         fetchNotes(300, setLectureNotes300)
@@ -117,10 +129,11 @@ export default function Notes(props) {
         fetchOtherNotes(500, setOtherNotes500)
         fetchExtras()
 
+
         
         setTimeout(() => {
-            setLoading(false)
-        }, 4000);
+            userInfo.student && setLoading(false)
+        }, 5000);
     }, [userInfo])
     
     
@@ -137,7 +150,6 @@ export default function Notes(props) {
         ? level.style.display = "block" 
         : level.style.display = "none"
     }
-
 
     // style to centralize the Note loader animation in center
     const mystyle = {

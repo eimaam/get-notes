@@ -22,6 +22,7 @@ import UserSettings from './UserSettings';
 import ResetPass from './ResetPass';
 import Home from './Home';
 import AddData from './components/AddData';
+import { NotStudentNotes } from './components/NotStudentNotes';
 
 
 function App(props) {
@@ -65,7 +66,8 @@ function App(props) {
 
             {/* PROTECTED ROUTES: Only logged in Users can access  */}
             <Route exact path="/notes" element={<Notes showNav={setShowNav}/>} />  
-            <Route path="/addusername" element={<AddData />}    />
+            <Route exact path="/not-student" element={<NotStudentNotes showNav={setShowNav}/>} />  
+            <Route path="/addusername" element={<AddData showNav={setShowNav}/>}    />
             <Route path="/upload" element={<Upload />}    />
             <Route path="/:userName/settings" element={<UserSettings />}    />
             {/* Protected Route end... */}
