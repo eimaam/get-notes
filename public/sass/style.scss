@@ -3,6 +3,7 @@
 @import './notesPage';
 @import './nav';
 @import './homepage';
+@import './dashboard';
 
 *{
     box-sizing: border-box;
@@ -33,7 +34,7 @@ img{
     object-fit: cover;
 }
 ul{
-    list-style-type: none;
+    list-style-type: disc;
 }
 div,
 button,

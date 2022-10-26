@@ -110,11 +110,13 @@ export default function Upload() {
         // download url
         await getDownloadURL(uploadTask.snapshot.ref)
         .then((url) => {
-            setFileURL(url);
+            return setFileURL(url);
         });
       }
   );
   }
+
+  console.log(fileURL)
   
   // UPLOAD NOTE + NOTE DETAILS
   const noteRef = collection(database, "noteDetails") //Note reference in firebase database
@@ -139,12 +141,15 @@ export default function Upload() {
         toast.success('Note Added!')
         setLoading(false)
       }
+      setLoading(false)
       navigate('../notes')
+
     }
-    
+
+    setLoading(false)
 
   return (
-    <div id='upload' onClick={() => setHideNav(true)} data-aos="fade">
+    <div id='upload' onClick={() => setHideNav(true)} data-aos="fade" data-aos-easing="ease-out">
       {userInfo.student === "no" 
       ?
       <form>
@@ -173,16 +178,6 @@ export default function Upload() {
         </div>
 
         <div>
-          <label htmlFor="File ">File/Note:</label>
-          <input 
-          type="file" 
-          name='file' 
-          accept=".doc,.docx,.pdf,.ppt,.pptx,.txt,image/*,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
-          onChange={(e) => handleFile(e)}
-          />
-        </div>
-
-        <div>
           <label htmlFor="Note Category">Select Note Category:</label>
           <select defaultValue="Select Category" name="category" onChange={handleChange}  required>
             <option defaultValue="" disabled>Select Category</option>
@@ -191,6 +186,8 @@ export default function Upload() {
             {userInfo.username === "capacity01" ? <option value="Extras">Extras: Time Table, Annoucements etc. </option> :  <option value="Extras">Extras: Time Table, Annoucements etc. </option>}
           </select>
         </div>
+
+
 
         {data.category != 'extras' && <div>
           <label htmlFor="course code">
@@ -207,6 +204,17 @@ export default function Upload() {
           required
           />
         </div>}
+
+        <div>
+          <label htmlFor="File ">File/Note:</label>
+          <input 
+          type="file" 
+          name='file' 
+          accept=".doc,.docx,.pdf,.ppt,.pptx,.txt,image/*,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
+          onChange={(e) => handleFile(e)}
+          />
+        </div>
+
         <div>
           <label htmlFor="note name">
             Title of Note:

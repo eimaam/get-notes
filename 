@@ -1,0 +1,227 @@
+[33mcommit 9d509cc63cf22eb5c389e0611c66a1e09ea281e1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 25 16:22:39 2022 +0100
+
+    rearranged sass to minify css
+
+[33mcommit be1b61bad6370054c1b917faa947707f70da3aaa[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 25 15:21:58 2022 +0100
+
+    resolved issue in routing to notes page even without username registered
+
+[33mcommit 0c2a33110ecf69ef251f191522c3c011d97bc6fa[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 25 11:03:28 2022 +0100
+
+    created signup option for not students and a customized page for the category
+
+[33mcommit 2c6f9a9c7c820617c0607acc4a3b95dcce0e6151[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Mon Oct 24 20:05:10 2022 +0100
+
+    added feature to allow only admins add notes to 'extras' category
+
+[33mcommit 43e5c4c031729f1cb4d4bed428558ed65fefc21e[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sun Oct 23 21:57:05 2022 +0100
+
+    created other notes category
+
+[33mcommit cd834611ed361f79e7c713888b0b2153d0f174fc[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sun Oct 23 19:17:30 2022 +0100
+
+    Noted categorized based on level
+
+[33mcommit 820b3b002a3fec9f50392345b58831c7d6ba80b8[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Fri Oct 14 09:02:24 2022 +0100
+
+    added upload date to Notes & animations to pages
+
+[33mcommit 1260ac0a55b47269d49b517e5e427aec47984d27[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Wed Oct 12 23:07:41 2022 +0100
+
+    added file type to file upload
+
+[33mcommit 3d72678405153f267e44b76866fbe0938e6ab53f[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 22:13:28 2022 +0100
+
+    removed more unused declarations
+
+[33mcommit a74f64a48da9b4947b32453cd126fc2aeb3e4a24[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 21:59:40 2022 +0100
+
+    removed unused declarations
+
+[33mcommit 3bde4592168906f6304def85dc0695bb251f47ac[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 21:43:44 2022 +0100
+
+    removed netlify.toml
+
+[33mcommit dcd7442bb148b6e63facce93bf29f71982d18afd[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 21:38:35 2022 +0100
+
+    removed netlify.toml
+
+[33mcommit 4b60ea1dfd64309df15d9ff5a7d70e36dcc9e500[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 21:33:44 2022 +0100
+
+    added netlify.tmol setting for redirects
+
+[33mcommit 026bababb233fadac5b70274ec7f137fa777b985[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 21:29:55 2022 +0100
+
+    added netlify.tmol setting for redirects
+
+[33mcommit 6245483acd19dd2b0ce04b756c1bb778226f3229[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 21:20:21 2022 +0100
+
+    added netlify.tmol setting for redirects
+
+[33mcommit 32055b25e0d8b4d8060a1b191e9e5cfe02049cd6[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 20:58:05 2022 +0100
+
+    worked on responsiveness
+
+[33mcommit 4f2ee4c5ebf83cc6314dc1e42e96fa5b6b755054[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Oct 11 14:18:08 2022 +0100
+
+    added index page with documentation and changed site font
+
+[33mcommit 061cc875c17ed78efc14b6468420b2831119d727[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Sep 27 06:57:54 2022 +0100
+
+    consoled data removed
+
+[33mcommit 4ae2febe100d97d2b6e8bcfc1b2325bcaf1efbcf[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Sep 27 06:55:15 2022 +0100
+
+    Username length fixed
+
+[33mcommit 96fe7fc6931ae48d8b7d5be4b3a2b50b92ba4a76[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Tue Sep 27 06:37:49 2022 +0100
+
+    environment **
+
+[33mcommit f0d661a96f86b874d3fb153848429fdf6e9d4e47[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sun Sep 25 13:03:41 2022 +0100
+
+    personalized link for user profile settings
+
+[33mcommit 19482720f898660b073980ded42a1dede5efccf1[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sun Sep 25 08:53:29 2022 +0100
+
+    made Username registration unique and a strict format added
+
+[33mcommit 05eb5beb8a4af3055840cbce99efb93f71544b1f[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sat Sep 24 18:27:28 2022 +0100
+
+    added icons and changed navigation bar size
+
+[33mcommit 33650e2ee8e01e1f845ca715ae9e338a9392653a[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Fri Sep 23 12:51:20 2022 +0100
+
+    redesign
+
+[33mcommit e6adee3af773600aeb46c391ab13479cda742887[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Thu Sep 22 16:31:41 2022 +0100
+
+    home page rearranged
+
+[33mcommit 4e73eaf8a403d0b413ff03f817bbbccac68771a8[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Thu Sep 22 15:28:13 2022 +0100
+
+    security update...
+
+[33mcommit 7b0366fc6657ef97798bf26d68b062b17bbe32a6[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Thu Sep 22 14:57:53 2022 +0100
+
+    mobile design retouched
+
+[33mcommit 34a12268871fdc6f43286c0e0493b64cd5e2a52a[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Thu Sep 22 13:12:24 2022 +0100
+
+    resolved nav display on certain error and reset page
+
+[33mcommit f302369922c7e8bdb37bd9780965ec7256f785e3[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Thu Sep 22 09:16:18 2022 +0100
+
+    password reset page created
+
+[33mcommit 265fba15a1d2c5232b1646c2b3f4776f3d003c8c[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Thu Sep 22 08:48:51 2022 +0100
+
+    password reset page created
+
+[33mcommit d5617c1e5e918207c0e1c42ab97fd31f1c213f7f[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Wed Sep 21 14:58:16 2022 +0100
+
+    menu display redesigned based on authentication...
+
+[33mcommit 4f0479a2d0c36decf2f521bb3e3310c0a4a60feb[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sun Sep 18 13:06:29 2022 +0100
+
+    changed label alignment
+
+[33mcommit 1e0d88f398438c9e49774c7f0779e3e9bb2e9eb8[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sun Sep 18 01:00:52 2022 +0100
+
+    User Settings page added...
+
+[33mcommit df80e904f793e84f838b105ebd07e9e7991e688a[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Sat Sep 17 11:16:29 2022 +0100
+
+    displayed data...
+
+[33mcommit aaa31cb3514f6e89ce09a71d2d15260fe5d61077[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Wed Sep 14 20:47:07 2022 +0100
+
+    resolve error in file upload
+
+[33mcommit a97b711d1988e28564dfbd41aff68165551831a0[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Wed Sep 14 13:00:30 2022 +0100
+
+    signout button on mobile added
+
+[33mcommit 0d866e4be598a6f734f15d88592a696bc034af44[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Wed Sep 14 12:50:47 2022 +0100
+
+    Note upload made active
+
+[33mcommit a7ff82265f715fa7c8dcf8c608cf2bead55b6da4[m
+Author: eimaam <imamddahir@gmail.com>
+Date:   Wed Sep 14 02:40:00 2022 +0100
+
+    initialized authentication ... backend

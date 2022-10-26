@@ -23,6 +23,7 @@ import ResetPass from './ResetPass';
 import Home from './Home';
 import AddData from './components/AddData';
 import { NotStudentNotes } from './components/NotStudentNotes';
+import { AdminDashboard } from './components/Dashboard/AdminDashboard';
 
 
 function App(props) {
@@ -70,6 +71,7 @@ function App(props) {
             <Route path="/addusername" element={<AddData showNav={setShowNav}/>}    />
             <Route path="/upload" element={<Upload />}    />
             <Route path="/:userName/settings" element={<UserSettings />}    />
+            <Route path="/admin" element={<AdminDashboard showNav={setShowNav}/>}    />
             {/* Protected Route end... */}
 
             <Route path="/signup" element={<Signup showNav={setShowNav}/>} />  

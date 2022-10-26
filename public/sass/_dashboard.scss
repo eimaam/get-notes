@@ -1,0 +1,32 @@
+.dashboard{
+    margin: auto;
+
+    >div{
+        width: 80%;
+        margin: auto;
+        @include flex(column);
+
+        .cards--section{
+            text-align: center;
+        }
+
+        .flex{
+            flex-wrap: wrap;
+        }
+        
+        .dash--card{
+            width: 22rem;
+            height: 10rem;
+            padding: 1rem;
+            @include flex(row);
+            gap: 2rem;
+            background-color: $--main;
+            color: $--default;
+            @include border;
+            
+            .icon{
+                font-size: 3rem;
+            }
+        }
+    }
+}
