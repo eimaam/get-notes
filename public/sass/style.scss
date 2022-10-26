@@ -316,13 +316,16 @@ label{
 
 footer{
     width: 100%;
-    position: fixed;
-    bottom: 0;
     margin: auto;
-    margin-top: 3rem;
-    background-color: $--main;
+    background-image: url('../wave.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    // margin-top: 3rem;
+    // background-color: $--main;
 
     div:first-child{
+        margin: auto;
         width: 85%;
         padding-top: 3rem;
         @include flex(row);

@@ -1,6 +1,6 @@
 #notes {
   width: 80%;
-  height: 95vh;
+  min-height: 100vh;
   float: right;
   margin: 0;
   display: flex;
@@ -882,7 +882,7 @@ label {
 
 #main {
   width: 80%;
-  height: 95vh;
+  min-height: 100vh;
   float: right;
   margin: 0;
   display: flex;
@@ -899,7 +899,7 @@ label {
 
 #signup, #upload, #userSettings, #resetPass, #login {
   width: 80%;
-  height: 95vh;
+  min-height: 100vh;
   float: right;
   margin: 0;
   display: flex;
@@ -997,13 +997,14 @@ label {
 
 footer, .header--footer {
   width: 100%;
-  position: fixed;
-  bottom: 0;
   margin: auto;
-  margin-top: 3rem;
-  background-color: #1a2930;
+  background-image: url("../wave.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
 }
 footer div:first-child, .header--footer div:first-child {
+  margin: auto;
   width: 85%;
   padding-top: 3rem;
   display: flex;

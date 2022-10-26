@@ -25,10 +25,14 @@
 }
 @mixin containerDesktop{
     width: 80%;
-    height: 95vh;
+    min-height: 100vh;
     float: right;
     margin: 0;
     @include flex(column);
+
+    >div{
+        // border: solid green;
+    }
 
     @include mobile(){
         width: 100%;
