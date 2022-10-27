@@ -793,6 +793,7 @@ input[type=submit], button[type=submit] {
   font-weight: 1000;
   text-transform: capitalize;
   box-shadow: 2px 0 #d89d00;
+  border-radius: 0.5rem;
   border: 0px solid #ffbd0c;
   cursor: pointer;
 }
@@ -823,11 +824,10 @@ button {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  font-family: "Space Grotesk", sans-serif;
+  background-color: #ffbd0c;
   font-size: 1rem;
   font-weight: 400;
   border: 0;
-  background-color: #ffbd0c;
   text-transform: capitalize;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
@@ -1044,7 +1044,6 @@ footer ul a, .header--footer ul a {
   text-transform: none;
 }
 footer ul li, .header--footer ul li {
-  color: #fff;
   line-height: 2;
 }
 footer ul li:first-child, .header--footer ul li:first-child {
@@ -1053,11 +1052,11 @@ footer ul li:first-child, .header--footer ul li:first-child {
   font-family: "Space Grotesk", sans-serif;
   letter-spacing: 1px;
   font-size: 1.2rem;
+  font-weight: bold;
 }
 footer p, .header--footer p {
   margin: auto;
   text-align: center;
-  color: #fff;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   footer p, .header--footer p {

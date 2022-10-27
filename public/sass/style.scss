@@ -158,17 +158,17 @@ input[type=submit]{
 
 button{
     @extend input;
-    @extend input[type=submit];
     width: max-content;
-    // font-size: 1rem;
+    background-color: $--primary;
+    font-size: 1rem;
     font-weight: 400;
-    // border: 0;
-    // text-transform: capitalize;
+    border: 0;
+    text-transform: capitalize;
     padding: 0.6rem 1rem;
-    // border-radius: 0.5rem;
-    // color: $--secondary;
-    // box-shadow: 2px 0 $--extras;
-    // cursor: pointer;
+    border-radius: 0.5rem;
+    color: $--secondary;
+    box-shadow: 2px 0 $--extras;
+    cursor: pointer;
 
     &:hover{
         background-color: $--extras;
@@ -359,7 +359,6 @@ footer{
             text-transform: none;
         }
         li{
-            color: $--default;
             line-height: 2;
 
             &:first-child{
@@ -368,6 +367,7 @@ footer{
                 font-family: $--Blinker;
                 letter-spacing: 1px;
                 font-size: 1.2rem;
+                font-weight: bold;
             }
         }
 
@@ -377,7 +377,6 @@ footer{
     p{
         margin: auto;
         text-align: center;
-        color: $--default;
 
         @include mobile(){
             font-size: 0.8rem;
