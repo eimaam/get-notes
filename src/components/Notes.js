@@ -65,7 +65,7 @@ export default function Notes(props) {
                 setLoading(false)
             }, 5000);
         })
-    }, [])
+    }, [loading])
 
     // check if user has username
     useEffect(() => {

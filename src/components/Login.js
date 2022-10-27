@@ -86,7 +86,7 @@ export default function Login(props) {
       <div id='login' onClick={() => setHideNav(true)} data-aos="flip-up" data-aos-easing="ease-in">
       <form action="" onSubmit={handleSubmit}>
         <div>
-          <h2>Hello there!👋 Welcome back</h2>
+          <h2>Hello there!👋 </h2>
           <p>Enter your log in credentials to continue</p>
         </div>
         <div>

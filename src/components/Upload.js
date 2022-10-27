@@ -154,7 +154,7 @@ export default function Upload() {
         <div>Oops! THIS CHANNEL IS ONLY OPEN TO ENGINEERING STUDENTS OF THE UNIVERSITY OF MAIDUGURI!</div>
       </form> 
       :
-      <form action="" onSubmit={uploadNote}>
+      <form action="" onSubmit={uploadNote} style={{textAlign: "left"}}>
         <div>
           <label htmlFor="department">Department:</label>
           <input 
