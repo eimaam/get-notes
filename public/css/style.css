@@ -542,7 +542,7 @@ section a, .how--to a {
 #top--nav #showNavIcon, #top--nav #hideNavIcon {
   display: none;
   z-index: 10000;
-  color: #fff !important;
+  color: #1a2930 !important;
   font-size: 1.2rem;
   cursor: pointer;
 }
