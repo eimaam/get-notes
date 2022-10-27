@@ -5,7 +5,7 @@ import { useData } from '../context/DataContext'
 import { auth } from '../firebaseConfig'
 import { collection, onSnapshot, query, Timestamp, where } from 'firebase/firestore'
 import { database } from '../firebaseConfig'
-import { PropagateLoader } from 'react-spinners'
+import { PropagateLoader, PulseLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 
@@ -14,7 +14,6 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
 
 export default function Notes(props) {
-
 
     const { navigate, user, loading, setLoading } = useAuth()
     const { userInfo, setHideNav, fetchUserDetail } = useData();
@@ -40,32 +39,6 @@ export default function Notes(props) {
 
     // state to save extras
     const [extraNotes, setExtraNotes] = useState([])
-    
-    // check status of User session - logged or not
-    useEffect(() => {
-        setLoading(true)
-        onAuthStateChanged(auth, data => {
-            if(!data){
-              navigate('../login')
-            }else if(data){
-                fetchNotes(100, setLectureNotes100)
-                fetchNotes(200, setLectureNotes200)
-                fetchNotes(300, setLectureNotes300)
-                fetchNotes(400, setLectureNotes400)
-                fetchNotes(500, setLectureNotes500)
-                fetchOtherNotes(100, setOtherNotes100)
-                fetchOtherNotes(200, setOtherNotes200)
-                fetchOtherNotes(300, setOtherNotes300)
-                fetchOtherNotes(400, setOtherNotes400)
-                fetchOtherNotes(500, setOtherNotes500)
-                fetchExtras()
-            }
-
-            setTimeout(() => {
-                setLoading(false)
-            }, 5000);
-        })
-    }, [loading])
 
     // check if user has username
     useEffect(() => {
@@ -134,27 +107,37 @@ export default function Notes(props) {
 
     }
 
-    // // FETCH Notes on load
-    // useEffect(() => {
-    //     setLoading(true)
-    //     fetchNotes(100, setLectureNotes100)
-    //     fetchNotes(200, setLectureNotes200)
-    //     fetchNotes(300, setLectureNotes300)
-    //     fetchNotes(400, setLectureNotes400)
-    //     fetchNotes(500, setLectureNotes500)
-    //     fetchOtherNotes(100, setOtherNotes100)
-    //     fetchOtherNotes(200, setOtherNotes200)
-    //     fetchOtherNotes(300, setOtherNotes300)
-    //     fetchOtherNotes(400, setOtherNotes400)
-    //     fetchOtherNotes(500, setOtherNotes500)
-    //     fetchExtras()
+    // Function to get All notes
+    const getAllNotes = () => {
+        fetchNotes(100, setLectureNotes100)
+        fetchNotes(200, setLectureNotes200)
+        fetchNotes(300, setLectureNotes300)
+        fetchNotes(400, setLectureNotes400)
+        fetchNotes(500, setLectureNotes500)
+        fetchOtherNotes(100, setOtherNotes100)
+        fetchOtherNotes(200, setOtherNotes200)
+        fetchOtherNotes(300, setOtherNotes300)
+        fetchOtherNotes(400, setOtherNotes400)
+        fetchOtherNotes(500, setOtherNotes500)
+        fetchExtras()
+    }
 
-    //     setTimeout(() => {
-    //         setLoading(false)
-    //     }, 5000);
+    // check status of User session - logged or not
+    // Also load all notes
+    useEffect(() => {
+        setLoading(true)
+        onAuthStateChanged(auth, data => {
+            if(!data){
+              navigate('../login')
+            }else if(data){
+                getAllNotes()
+            }
 
-    // }, [])
-    
+            setTimeout(() => {
+                setLoading(false)
+            }, 5000);
+        })
+    }, [loading, getAllNotes()])
     
     // display Levels 
     function showCategory(cat, setCat){
@@ -177,6 +160,7 @@ export default function Notes(props) {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        color: "black",
     }
 
   return (
@@ -187,11 +171,11 @@ export default function Notes(props) {
         
         <div style={mystyle}>
             <h3>Loading Notes...</h3>
-            <PropagateLoader />
+            <PulseLoader />
         </div>
 
         :
-
+        <>
         <div className='accordion--container'>
             {/* Main 
                     Lecture 
@@ -232,7 +216,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -260,7 +244,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -268,7 +252,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -296,7 +280,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -304,7 +288,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -332,7 +316,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -340,7 +324,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -368,7 +352,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -376,7 +360,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -384,13 +368,14 @@ export default function Notes(props) {
                 </div>
                 }
             </div>
-            
-            {/* Other Notes: 
-                    Past Questions, 
-                            Assignments etc */}
+        </div>
+        {/* Other Notes
+                Past Q, Assignments etc 
+                        Category */}
+        <div className='accordion--container'>
             <div id='header' className='accordion' >
                 <div className='accordion--tab' onClick={(e) => showCategory(showOtherNotes, setShowOtherNotes)}>
-                    <h2> Past Questions, Assignments, Summary...</h2>
+                    <h2> Test Solutions, Past Questions, Assignments, Summary...</h2>
                     {!showOtherNotes && <h2><IoIosArrowForward /></h2>}
                     {showOtherNotes && <h2><IoIosArrowDown /></h2>}
                 </div>
@@ -416,7 +401,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -424,14 +409,14 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
                     
                     {/* 200 
                         level
-                           other notes */}
+                        other notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`others2`)}>
                                 <h2> 200 Level Notes </h2>
@@ -452,7 +437,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -460,7 +445,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -488,7 +473,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -496,7 +481,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -524,7 +509,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -532,7 +517,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -560,7 +545,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -568,7 +553,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                             :
-                                        <p>NO NOTE ADDED YET</p>
+                                        <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -576,9 +561,11 @@ export default function Notes(props) {
                 </div>
                 }
             </div>
+        </div>
 
-            {/* Extras: Time Table,
-                        Announcements etc.  */}
+        {/* Extras category
+                Calendars, Announcements etc */}
+        <div className='accordion--container'>
             <div id='header' className='accordion' >
                 <div className='accordion--tab' onClick={(e) => showCategory(showExtras, setShowExtras)}>
                     <h2> Extras: Time Table, Annoucements etc.</h2>
@@ -602,7 +589,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>
@@ -610,7 +597,7 @@ export default function Notes(props) {
                                             </div>
                                             })
                                     :
-                                <p>NO NOTE ADDED YET</p>
+                                <p>NO NOTE ADDED YET... Help us upload one. 😊</p>
                                 }
                             </div>
                     </div>
@@ -619,10 +606,12 @@ export default function Notes(props) {
                 </div>
                 }
             </div>
-           
-        {!showLectureNotes && <p style={{textAlign: "center", color: "#ffbd0c"}}>Click a group to Expand</p>}
         </div>
-    }
-    </div>
+
+
+
+        </>
+        }
+    </div>     
   )
 }

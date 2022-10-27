@@ -1,5 +1,5 @@
 #notes {
-  width: 80%;
+  width: 85%;
   min-height: 100vh;
   float: right;
   margin: 0;
@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  width: 80%;
+  border: solid red;
   align-self: center;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -47,6 +47,7 @@
 }
 #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
   color: #1a2930;
+  font-size: 1.5rem;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
@@ -66,14 +67,14 @@
 #notes .accordion--container .accordion .notes--detail #others1, #notes .accordion--container .accordion .notes--detail #others2, #notes .accordion--container .accordion .notes--detail #others3, #notes .accordion--container .accordion .notes--detail #others4, #notes .accordion--container .accordion .notes--detail #others5 {
   display: none;
 }
-#notes .accordion--container .accordion .notes--detail h2 {
+#notes .accordion--container .accordion .notes--detail .level h2 {
   font-size: 1.15rem;
 }
 #notes .accordion--container .accordion .notes--detail .note--title {
   display: flex;
   flex-direction: column;
   margin-block: 1rem;
-  border-left: solid #fff9eb;
+  border-left: solid #ffbd0c;
   padding-inline: 0.5rem;
 }
 #notes .accordion--container .accordion .notes--detail .note--title p {
@@ -114,7 +115,7 @@
 nav, #mNav {
   position: fixed;
   left: 0;
-  width: 20%;
+  width: 15%;
   height: 100vh;
   background-color: #fff;
   display: flex;
@@ -125,6 +126,7 @@ nav, #mNav {
   justify-content: center;
   padding-block: 2rem;
   z-index: 9;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav, #mNav {
@@ -176,7 +178,7 @@ nav ul li, #mNav ul li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 nav ul li:hover, #mNav ul li:hover {
@@ -376,7 +378,7 @@ header .info button a:hover {
   }
 }
 
-section, .how--to {
+.homepage--sizing, .how--to, #mini--section {
   width: 70%;
   margin: auto;
   margin-block: 2rem;
@@ -388,19 +390,25 @@ section, .how--to {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+#mini--section {
   justify-content: space-evenly;
   color: #1a2930;
 }
-section a, .how--to a {
+#mini--section a {
   color: inherit;
 }
+#mini--section div {
+  width: 60%;
+}
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
-  section, .how--to {
+  #mini--section {
     width: 90%;
     flex-direction: column;
     padding: 1rem;
   }
-  section *, .how--to * {
+  #mini--section * {
     text-align: center;
   }
 }
@@ -735,7 +743,7 @@ h1 {
 
 h2 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 2rem;
+  font-size: 1.7rem;
   text-transform: capitalize;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -932,7 +940,7 @@ label {
 }
 
 #main {
-  width: 80%;
+  width: 85%;
   min-height: 100vh;
   float: right;
   margin: 0;
@@ -941,6 +949,7 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border: solid red;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #main {
@@ -949,7 +958,7 @@ label {
 }
 
 #signup, #upload, #userSettings, #resetPass, #login {
-  width: 80%;
+  width: 85%;
   min-height: 100vh;
   float: right;
   margin: 0;
@@ -958,6 +967,7 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border: solid red;
   width: 100%;
   color: #1a2930;
   font-family: "Space Grotesk", sans-serif;
@@ -1044,15 +1054,15 @@ label {
 }
 
 #userSettings {
-  width: 80%;
+  width: 85%;
 }
 
 #upload {
-  width: 80%;
+  width: 85%;
 }
 
 footer, .header--footer {
-  width: 80%;
+  width: 85%;
   float: right;
   margin: auto;
   background-image: url("../wave.svg");

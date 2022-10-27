@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import Feedback from './components/LandingPage/Feedback'
 import HowTo from './components/LandingPage/how-to/HowTo'
 import Header from './components/LandingPage/Header'
 import FootNote from './components/LandingPage/FootNote'
 import TopNav from './components/LandingPage/TopNav'
 import { useAuth } from './context/AuthContext'
 import { BeatLoader } from 'react-spinners'
+import { Feedback } from './components/LandingPage/Feedback'
+import { CheckForum } from './components/LandingPage/CheckForum'
 
 
 
@@ -18,7 +19,7 @@ export default function Home(props) {
 
     setTimeout(() => {
       setLoading(false)
-    }, 2000);
+    }, 1100);
   }, [])
   
   return (
@@ -31,6 +32,7 @@ export default function Home(props) {
       <Header />
       <Feedback />
       <HowTo />
+      <CheckForum />
       <FootNote />
       </>
       }

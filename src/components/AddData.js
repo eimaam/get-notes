@@ -5,7 +5,7 @@ import { auth, database } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { collection, doc, query, updateDoc, onSnapshot, where } from 'firebase/firestore';
 import { useData } from '../context/DataContext';
-import { BeatLoader } from 'react-spinners';
+import { BeatLoader, PulseLoader } from 'react-spinners';
 
 
 export default function AddData(props) {
@@ -23,7 +23,6 @@ export default function AddData(props) {
 
   useEffect(() => {
     props.showNav(false)
-    setLoading(true)
     fetchUserDetail()
 
     if(userInfo.username != undefined){
@@ -150,7 +149,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       
       ? 
       
-      <BeatLoader /> 
+      <PulseLoader /> 
       
       :
 

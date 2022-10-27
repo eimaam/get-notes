@@ -101,8 +101,7 @@ header{
     
     
 }
-// feedback section
-section{
+.homepage--sizing{
     width: 70%;
     margin: auto;
     margin-block: 2rem;
@@ -110,11 +109,19 @@ section{
     background-color: $--main;
     padding: 2rem;
     @include flex(row);
+}
+// feedback section
+#mini--section{
+    @extend .homepage--sizing;
     justify-content: space-evenly;
     color: $--secondary;
 
     a{
         color: inherit;
+    }
+
+    div{
+        width: 60%;
     }
 
     @include mobile(){
@@ -230,7 +237,7 @@ section{
 }
 
 .how--to{
-    @extend section;
+    @extend .homepage--sizing;
     justify-content: center;
     background-color: $--main;
     flex-wrap: wrap;

@@ -56,7 +56,7 @@ h1{
 }
 h2{
     font-family: $--Blinker;
-    font-size: 2rem;
+    font-size: 1.7rem;
     text-transform: capitalize;
 
     @include mobile(){
@@ -318,18 +318,18 @@ label{
 // user settings component
 #userSettings{
     @extend #signup;
-    width: 80%;
+    width: 85%;
 }
 
 // UPLOAD component
 #upload{
     @extend #signup;
-    width: 80%;
+    width: 85%;
 
 }
 
 footer{
-    width: 80%;
+    width: 85%;
     float: right;
     margin: auto;
     background-image: url('../wave.svg');
