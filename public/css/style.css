@@ -963,7 +963,6 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  text-align: left;
   width: 40%;
   padding: 2rem;
   background-color: #fff;
@@ -973,6 +972,9 @@ label {
 }
 #signup form a, #upload form a, #userSettings form a, #resetPass form a, #login form a {
   font-weight: bolder;
+}
+#signup form p, #upload form p, #userSettings form p, #resetPass form p, #login form p {
+  text-align: center;
 }
 #signup form div, #upload form div, #userSettings form div, #resetPass form div, #login form div {
   margin: auto;

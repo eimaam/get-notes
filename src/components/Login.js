@@ -86,10 +86,9 @@ export default function Login(props) {
       <div id='login' onClick={() => setHideNav(true)} data-aos="flip-up" data-aos-easing="ease-in">
       <form action="" onSubmit={handleSubmit}>
         <div>
-          <h2>Hello there! 👋</h2>
+          <h2>Hello there!👋 Welcome back</h2>
           <p>Enter your log in credentials to continue</p>
         </div>
-        <br />
         <div>
             {/* <label htmlFor="Passowrd">
               Email:
@@ -119,17 +118,17 @@ export default function Login(props) {
             required
             />
         </div>
-
           {loading && <button><BeatLoader color='#fff'/></button>}
           {!loading && <input type="submit" value="Log in"/>}
+          
+          <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
           {/* error message */}
           <p className='error'>{error}</p>
-          <p>Don't have an account yet? <Link to="/signup" style={{color: '#f7ce3e'}}>SIGN UP!</Link></p>
+          <p>Don't have an account yet? <Link to="/signup" style={{color: '#ffbd0c'}}>SIGN UP!</Link></p>
           <p>or</p>
           <button onClick={logInWithPopUp} className='flex'>
             Sign up with <FcGoogle />
           </button>
-          <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
       </form>
       </div>
         )

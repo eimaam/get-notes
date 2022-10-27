@@ -138,6 +138,7 @@ input[type=submit]{
     font-weight: 1000;
     text-transform: capitalize;
     box-shadow: 2px 0 $--extras;
+    border-radius: 0.5rem;
     border: 0px solid $--primary;
     cursor: pointer;
 
@@ -157,18 +158,17 @@ input[type=submit]{
 
 button{
     @extend input;
+    @extend input[type=submit];
     width: max-content;
-    font-family: $--Blinker;
-    font-size: 1rem;
+    // font-size: 1rem;
     font-weight: 400;
-    border: 0;
-    background-color: $--primary;
-    text-transform: capitalize;
+    // border: 0;
+    // text-transform: capitalize;
     padding: 0.6rem 1rem;
-    border-radius: 0.5rem;
-    color: $--secondary;
-    box-shadow: 2px 0 $--extras;
-    cursor: pointer;
+    // border-radius: 0.5rem;
+    // color: $--secondary;
+    // box-shadow: 2px 0 $--extras;
+    // cursor: pointer;
 
     &:hover{
         background-color: $--extras;
@@ -267,17 +267,18 @@ label{
     
     form{
         @include flex(column);
-        text-align: left;
         width: 40%;
         padding: 2rem;
         background-color: $--main;
         border-radius: 0.5rem;
         margin: auto;
         text-align: center;
-        // box-shadow: 3px 3px $--extras;
 
         a{
             font-weight: bolder;
+        }
+        p{
+            text-align: center;
         }
 
         div{

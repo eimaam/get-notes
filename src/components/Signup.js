@@ -199,14 +199,14 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
             <br />
             <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
             <label htmlFor="">NO</label>
-        </form>
+      </form>
       {studentSelection === "yes"
       && 
       <form onSubmit={signUp} data-aos="fade-up" data-aos-easing="ease-out">
         <div>
-          <label htmlFor="Username">
+          {/* <label htmlFor="Username">
             Username
-          </label>
+          </label> */}
           <input
           name='username'
           type="text" 
@@ -222,9 +222,9 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         
 
         <div>
-          <label htmlFor="Email">
+          {/* <label htmlFor="Email">
             Email
-          </label>
+          </label> */}
           <input
           name='email'
           type="email" 
@@ -237,9 +237,9 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         </div>
 
         <div>
-          <label htmlFor="Passowrd">
+          {/* <label htmlFor="Passowrd">
             Password
-          </label>
+          </label> */}
           <input
           name='password'
           type="password" 
@@ -252,9 +252,9 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         </div>
 
         <div>
-          <label htmlFor="Confirm Passowrd">
+          {/* <label htmlFor="Confirm Passowrd">
             Confirm Password
-          </label>
+          </label> */}
           <input
           name='confirmPassword'
           type="password" 
@@ -265,11 +265,10 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           required
           />
         </div>
-        {data.confirmPassword != "" &&
         <div>
-          <label htmlFor="Department">
+          {/* <label htmlFor="Department">
             Department
-          </label>
+          </label> */}
           <select defaultValue="Select Department" name="department" onChange={handleChange} required>
             <option defaultValue="" disabled>Select Department</option>
             <option value="Agricultural Engineering">Agricultural Engineering</option>
@@ -281,13 +280,11 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
             <option value="Mechanical Engineering">Mechanical Engineering</option>
           </select>
         </div>
-        }
 
-        {data.confirmPassword != "" &&
         <div>
-          <label htmlFor="Department">
+          {/* <label htmlFor="Department">
             Level
-          </label>
+          </label> */}
           <select defaultValue="Select Level" name="level" onChange={handleChange} required>
             <option defaultValue="" disabled>Select Level</option>
             <option value="100">100 Level</option>
@@ -297,12 +294,11 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
             <option value="100">500 Level</option>
           </select>
         </div>
-        }
         <p className='error'>{error}</p>
         {loading && <button><BeatLoader color='#fff'/></button>}
         {!loading 
         && 
-        <input type="submit" value="SIGN UP" />
+        <input type="submit" value="Sign up" />
         }
         <button onClick={logInWithPopUp} className='flex'>
             Sign up with <FcGoogle />
@@ -314,9 +310,9 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       &&
       <form onSubmit={signUp} data-aos="fade-up" data-aos-easing="ease-out">
           <div>
-            <label htmlFor="Username">
+            {/* <label htmlFor="Username">
               Username
-            </label>
+            </label> */}
             <input
             name='username'
             type="text" 
@@ -330,9 +326,9 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           </div>
   
           <div>
-            <label htmlFor="Email">
+            {/* <label htmlFor="Email">
               Email
-            </label>
+            </label> */}
             <input
             name='email'
             type="email" 
@@ -345,9 +341,9 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           </div>
   
           <div>
-            <label htmlFor="Passowrd">
+            {/* <label htmlFor="Passowrd">
               Password
-            </label>
+            </label> */}
             <input
             name='password'
             type="password" 
@@ -360,9 +356,9 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           </div>
   
           <div>
-            <label htmlFor="Confirm Passowrd">
+            {/* <label htmlFor="Confirm Passowrd">
               Confirm Password
-            </label>
+            </label> */}
             <input
             name='confirmPassword'
             type="password" 
@@ -377,8 +373,11 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           {loading && <button><BeatLoader color='#fff'/></button>}
           {!loading 
           && 
-          <input type="submit" value="SIGN UP" />
+          <input type="submit" value="Sign up" />
           }
+          
+          <p>or</p>
+
           <button onClick={logInWithPopUp} className='flex'>
               Sign up with <FcGoogle />
           </button>
