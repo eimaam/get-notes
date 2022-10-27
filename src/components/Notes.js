@@ -46,21 +46,39 @@ export default function Notes(props) {
         onAuthStateChanged(auth, data => {
             if(!data){
               navigate('../login')
+            }else if(data){
+                setLoading(true)
+                fetchNotes(100, setLectureNotes100)
+                fetchNotes(200, setLectureNotes200)
+                fetchNotes(300, setLectureNotes300)
+                fetchNotes(400, setLectureNotes400)
+                fetchNotes(500, setLectureNotes500)
+                fetchOtherNotes(100, setOtherNotes100)
+                fetchOtherNotes(200, setOtherNotes200)
+                fetchOtherNotes(300, setOtherNotes300)
+                fetchOtherNotes(400, setOtherNotes400)
+                fetchOtherNotes(500, setOtherNotes500)
+                fetchExtras()
             }
+
+            setTimeout(() => {
+                setLoading(false)
+            }, 5000);
         })
     }, [])
 
     // check if user has username
     useEffect(() => {
-        setLoading(true)
-        props.showNav(true)
+        // setLoading(true)
         fetchUserDetail()
+        props.showNav(true)
         
         if(userInfo.username != undefined){
+            setLoading(true)
             userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
         }else if(userInfo.username === undefined){
-            setLoading(false)
-            navigate('./addusername')
+                setLoading(false)
+                navigate('./addusername')
         }
         
     }, [userInfo, props.showNav])
@@ -116,27 +134,26 @@ export default function Notes(props) {
 
     }
 
-    // FETCH Notes on load
-    useEffect(() => {
-        setLoading(true)
-        fetchNotes(100, setLectureNotes100)
-        fetchNotes(200, setLectureNotes200)
-        fetchNotes(300, setLectureNotes300)
-        fetchNotes(400, setLectureNotes400)
-        fetchNotes(500, setLectureNotes500)
-        fetchOtherNotes(100, setOtherNotes100)
-        fetchOtherNotes(200, setOtherNotes200)
-        fetchOtherNotes(300, setOtherNotes300)
-        fetchOtherNotes(400, setOtherNotes400)
-        fetchOtherNotes(500, setOtherNotes500)
-        fetchExtras()
+    // // FETCH Notes on load
+    // useEffect(() => {
+    //     setLoading(true)
+    //     fetchNotes(100, setLectureNotes100)
+    //     fetchNotes(200, setLectureNotes200)
+    //     fetchNotes(300, setLectureNotes300)
+    //     fetchNotes(400, setLectureNotes400)
+    //     fetchNotes(500, setLectureNotes500)
+    //     fetchOtherNotes(100, setOtherNotes100)
+    //     fetchOtherNotes(200, setOtherNotes200)
+    //     fetchOtherNotes(300, setOtherNotes300)
+    //     fetchOtherNotes(400, setOtherNotes400)
+    //     fetchOtherNotes(500, setOtherNotes500)
+    //     fetchExtras()
 
+    //     setTimeout(() => {
+    //         setLoading(false)
+    //     }, 5000);
 
-        
-        setTimeout(() => {
-            userInfo.student && setLoading(false)
-        }, 5000);
-    }, [])
+    // }, [])
     
     
     // display Levels 
@@ -148,7 +165,7 @@ export default function Notes(props) {
     function toggleLevelNotes(id){
         let level = document.getElementById(id)
         
-        level.style.display != "block" 
+        level.style.display !== "block" 
         ? level.style.display = "block" 
         : level.style.display = "none"
     }
@@ -189,7 +206,7 @@ export default function Notes(props) {
                 <div>
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`Level1`)}>
-                                <h2> 100 Level </h2>
+                                <h2> 100 Level Notes </h2>
                                 {showLectureNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showLectureNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -201,7 +218,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -225,7 +242,7 @@ export default function Notes(props) {
                             notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`Level2`)}>
-                                <h2> 200 Level </h2>
+                                <h2> 200 Level Notes </h2>
                                 {showLectureNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showLectureNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -237,7 +254,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -261,7 +278,7 @@ export default function Notes(props) {
                             notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`Level3`)}>
-                                <h2> 300 Level </h2>
+                                <h2> 300 Level Notes </h2>
                                 {showLectureNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showLectureNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -273,7 +290,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -297,7 +314,7 @@ export default function Notes(props) {
                             notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`Level4`)}>
-                                <h2> 400 Level </h2>
+                                <h2> 400 Level Notes </h2>
                                 {showLectureNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showLectureNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -309,7 +326,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -333,7 +350,7 @@ export default function Notes(props) {
                             notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`Level5`)}>
-                                <h2> 500 Level </h2>
+                                <h2> 500 Level Notes </h2>
                                 {showLectureNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showLectureNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -345,7 +362,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -381,7 +398,7 @@ export default function Notes(props) {
                 <div>
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`others1`)}>
-                                <h2> 100 Level </h2>
+                                <h2> 100 Level Notes </h2>
                                 {showOtherNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showOtherNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -393,7 +410,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -417,7 +434,7 @@ export default function Notes(props) {
                            other notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`others2`)}>
-                                <h2> 200 Level </h2>
+                                <h2> 200 Level Notes </h2>
                                 {showOtherNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showOtherNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -429,7 +446,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -453,7 +470,7 @@ export default function Notes(props) {
                             other notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`others3`)}>
-                                <h2> 300 Level </h2>
+                                <h2> 300 Level Notes </h2>
                                 {showOtherNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showOtherNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -465,7 +482,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -489,7 +506,7 @@ export default function Notes(props) {
                             other notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`others4`)}>
-                                <h2> 400 Level </h2>
+                                <h2> 400 Level Notes </h2>
                                 {showOtherNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showOtherNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -501,7 +518,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -525,7 +542,7 @@ export default function Notes(props) {
                             other notes */}
                     <div className='notes--detail'>
                             <div className='level' onClick={() => toggleLevelNotes(`others5`)}>
-                                <h2> 500 Level </h2>
+                                <h2> 500 Level Notes </h2>
                                 {showOtherNotes && <h2><IoIosArrowForward /></h2>}
                                 {!showOtherNotes && <h2><IoIosArrowDown /></h2>}
                             </div>
@@ -537,7 +554,7 @@ export default function Notes(props) {
                                                 <p>
                                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                                     {/* Reduce note title/name to max 40 chars  */}
-                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                    <span>{notes.noteName.length > 40 ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                             <small><i> ({notes.type})</i></small> 
                                                     </span>
                                                 </p>
@@ -580,7 +597,7 @@ export default function Notes(props) {
                                                     {/* Reduce note title/name to max 40 chars  */}
                                                     
                                                     <GiWhiteBook />{notes.noteName.length > 40 
-                                                            ? notes.noteName.slice(0,40) + '...' : notes.noteName}
+                                                            ? notes.noteName.slice(0,50) + '...' : notes.noteName}
                                                     <small><i> ({notes.type})</i></small> 
                                                 </p>
                                                 <div>
@@ -603,7 +620,7 @@ export default function Notes(props) {
                 }
             </div>
            
-        {!showLectureNotes && <p>Click to Expand</p>}
+        {!showLectureNotes && <p style={{textAlign: "center", color: "#ffbd0c"}}>Click a group to Expand</p>}
         </div>
     }
     </div>

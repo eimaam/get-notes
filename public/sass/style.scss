@@ -34,7 +34,7 @@ img{
     object-fit: cover;
 }
 ul{
-    list-style-type: disc;
+    list-style-type: none;
 }
 div,
 button,
@@ -113,10 +113,11 @@ textarea{
     font-family: inherit;
     font-size: 1.2rem;
     padding: 0.8rem 0.5rem;
-    border: 0px solid $--primary;
+    border: 1px solid $--primary;
     border-radius: 0.3rem;
-    background-color: $--bgColor;
-    color: $--main;
+    // background-color: $--bgColor;
+    color: $--secondary;
+    caret-color: $--primary;
     resize: none;
     
     &:hover{
@@ -133,9 +134,16 @@ textarea{
 input[type=submit]{
     font-family: $--Blinker;
     background-color: $--primary;
-    color: $--main;
+    color: $--secondary;
     font-weight: 1000;
+    text-transform: capitalize;
+    box-shadow: 2px 0 $--extras;
+    border: 0px solid $--primary;
     cursor: pointer;
+
+    &:hover{
+        background-color: $--extras;
+    }
 
     @include mobile(){
         font-weight: 100;
@@ -145,7 +153,6 @@ input[type=submit]{
 }
 ::placeholder{
     font-size: 1rem;
-
 }
 
 button{
@@ -159,11 +166,12 @@ button{
     text-transform: capitalize;
     padding: 0.6rem 1rem;
     border-radius: 0.5rem;
-    color: black;
+    color: $--secondary;
+    box-shadow: 2px 0 $--extras;
     cursor: pointer;
 
     &:hover{
-        background-color: $--main;
+        background-color: $--extras;
         color: $--default;
     }
 
@@ -227,8 +235,9 @@ label{
 #signup{
     @include containerDesktop;
     width: 100%;
-    color: $--default;
+    color: $--secondary;
     font-family: $--Noto;
+    background-color: $--bgColor2;
 
     @include mobile(){
         width: 100% !important;
@@ -259,11 +268,13 @@ label{
     form{
         @include flex(column);
         text-align: left;
-        width: 50%;
+        width: 40%;
         padding: 2rem;
         background-color: $--main;
         border-radius: 0.5rem;
         margin: auto;
+        text-align: center;
+        // box-shadow: 3px 3px $--extras;
 
         a{
             font-weight: bolder;
@@ -315,11 +326,12 @@ label{
 }
 
 footer{
-    width: 100%;
+    width: 80%;
+    float: right;
     margin: auto;
     background-image: url('../wave.svg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: bottom;
     // margin-top: 3rem;
     // background-color: $--main;
@@ -334,8 +346,13 @@ footer{
         flex-wrap: wrap;
     }
 
+    h4{
+        color: $--primary;
+    }
+
     ul{
         font-size: 1rem;
+
         a{
             color: inherit;
             text-transform: none;
@@ -373,7 +390,12 @@ footer{
 
 .header--footer{
     @extend footer;
-    position: initial;
+    width: 100%;
+    float: none;
+    background-image: url('../wave.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
     margin-top: 5rem;
 
     @include mobile(){

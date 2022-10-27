@@ -49,8 +49,9 @@ nav{
             width: 100%;
             padding: 1rem 0.5rem;
             margin-block: 2rem;
-            border-top: 1px solid $--bgColor;
-            border-bottom: 1px solid $--bgColor;
+            border-top: 1px solid $--secondary;
+            border-bottom: 1px solid $--secondary;
+            padding-left: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -79,11 +80,15 @@ nav{
             align-items: center;
             justify-content: space-evenly;
 
+            &:hover{
+                color: $--primary;
+            }
+
             a{
                 color: black;
 
                 &:hover{
-                    color: $--default;
+                    color: $--primary;
                 }
             }
         }
@@ -98,7 +103,6 @@ nav{
     }
 
     p{
-        color: $--default;
         text-align: center;
 
         @include mobile(){

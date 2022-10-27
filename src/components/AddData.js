@@ -29,9 +29,9 @@ export default function AddData(props) {
     if(userInfo.username != undefined){
         navigate('./notes')
       }else{
-        setLoading(false)
-      }    
-
+          setLoading(false)
+      }   
+      
   }, [userInfo])
 
   //state to save Student or not confirmation - Check if a user 

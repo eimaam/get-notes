@@ -86,9 +86,14 @@ export default function Login(props) {
       <div id='login' onClick={() => setHideNav(true)} data-aos="flip-up" data-aos-easing="ease-in">
       <form action="" onSubmit={handleSubmit}>
         <div>
-            <label htmlFor="Passowrd">
+          <h2>Hello there! 👋</h2>
+          <p>Enter your log in credentials to continue</p>
+        </div>
+        <br />
+        <div>
+            {/* <label htmlFor="Passowrd">
               Email:
-            </label>
+            </label> */}
             <input
             name='email'
             type="email" 
@@ -101,9 +106,9 @@ export default function Login(props) {
         </div>
 
         <div>
-            <label htmlFor="Passowrd">
+            {/* <label htmlFor="Passowrd">
               Password
-            </label>
+            </label> */}
             <input
             name='password'
             type="password" 
@@ -116,7 +121,7 @@ export default function Login(props) {
         </div>
 
           {loading && <button><BeatLoader color='#fff'/></button>}
-          {!loading && <input type="submit" value="LOG IN"/>}
+          {!loading && <input type="submit" value="Log in"/>}
           {/* error message */}
           <p className='error'>{error}</p>
           <p>Don't have an account yet? <Link to="/signup" style={{color: '#f7ce3e'}}>SIGN UP!</Link></p>

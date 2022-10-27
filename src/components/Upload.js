@@ -116,8 +116,6 @@ export default function Upload() {
   );
   }
 
-  console.log(fileURL)
-  
   // UPLOAD NOTE + NOTE DETAILS
   const noteRef = collection(database, "noteDetails") //Note reference in firebase database
 

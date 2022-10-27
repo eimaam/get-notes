@@ -219,35 +219,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           />
         </div>
 
-        <div>
-          <label htmlFor="Department">
-            Department
-          </label>
-          <select defaultValue="Select Department" name="department" onChange={handleChange} required>
-            <option defaultValue="" disabled>Select Department</option>
-            <option value="Agricultural Engineering">Agricultural Engineering</option>
-            <option value="Civil Engineering">Civil & Water Resources Engineering</option>
-            <option value="Chemical Engineering">Chemical Engineering</option>
-            <option value="Computer Engineering">Computer Engineering</option>
-            <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
-            <option value="Food Science Technology">Food Science Technology</option>
-            <option value="Mechanical Engineering">Mechanical Engineering</option>
-          </select>
-        </div>
         
-        <div>
-          <label htmlFor="Department">
-            Level
-          </label>
-          <select defaultValue="Select Level" name="level" onChange={handleChange} required>
-            <option defaultValue="" disabled>Select Level</option>
-            <option value="100">100 Level</option>
-            <option value="100">200 Level</option>
-            <option value="100">300 Level</option>
-            <option value="100">400 Level</option>
-            <option value="100">500 Level</option>
-          </select>
-        </div>
 
         <div>
           <label htmlFor="Email">
@@ -293,6 +265,39 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           required
           />
         </div>
+        {data.confirmPassword != "" &&
+        <div>
+          <label htmlFor="Department">
+            Department
+          </label>
+          <select defaultValue="Select Department" name="department" onChange={handleChange} required>
+            <option defaultValue="" disabled>Select Department</option>
+            <option value="Agricultural Engineering">Agricultural Engineering</option>
+            <option value="Civil Engineering">Civil & Water Resources Engineering</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+            <option value="Computer Engineering">Computer Engineering</option>
+            <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+            <option value="Food Science Technology">Food Science Technology</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+          </select>
+        </div>
+        }
+
+        {data.confirmPassword != "" &&
+        <div>
+          <label htmlFor="Department">
+            Level
+          </label>
+          <select defaultValue="Select Level" name="level" onChange={handleChange} required>
+            <option defaultValue="" disabled>Select Level</option>
+            <option value="100">100 Level</option>
+            <option value="100">200 Level</option>
+            <option value="100">300 Level</option>
+            <option value="100">400 Level</option>
+            <option value="100">500 Level</option>
+          </select>
+        </div>
+        }
         <p className='error'>{error}</p>
         {loading && <button><BeatLoader color='#fff'/></button>}
         {!loading 
@@ -302,7 +307,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         <button onClick={logInWithPopUp} className='flex'>
             Sign up with <FcGoogle />
         </button>
-        <p>Have an account already? <Link to="/login" style={{color: '#f7ce3e'}}><b>LOG IN</b> </Link></p>
+        <p>Have an account already? <Link to="/login" style={{color: '#f7ce3e'}}><b>Log in</b> </Link></p>
       </form>
       }
       {studentSelection === "no"

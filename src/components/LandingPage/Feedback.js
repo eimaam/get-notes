@@ -10,6 +10,7 @@ export default function Feedback() {
   useEffect(() => {
     AOS.init({delay: 250})
   }, [])
+  
   return (
     <section id='feedback' data-aos="fade-up" data-aos-easing="ease-out">
         <div>

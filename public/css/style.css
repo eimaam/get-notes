@@ -18,14 +18,15 @@
 }
 #notes .accordion--container {
   width: 70%;
-  background-color: #1a2930;
+  background-color: #fff;
   padding: 3rem 1rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 15px #d89d00;
 }
 #notes .accordion--container p {
-  color: white;
+  color: #1a2930;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes .accordion--container {
@@ -38,14 +39,14 @@
 #notes .accordion--container .accordion .accordion--tab, #notes .accordion--container .accordion .notes--detail .level {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #e3dcda;
-  border-bottom: 1px solid #e3dcda;
+  border-top: 1px solid #1a2930;
+  border-bottom: 1px solid #1a2930;
   padding-block: 0.5rem;
   align-items: center;
   cursor: pointer;
 }
 #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
-  color: #e3dcda;
+  color: #1a2930;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
@@ -53,7 +54,7 @@
   }
 }
 #notes .accordion--container .accordion .accordion--tab h2:last-child, #notes .accordion--container .accordion .notes--detail .level h2:last-child {
-  color: #f7ce3e;
+  color: #ffbd0c;
 }
 #notes .accordion--container .accordion .notes--detail {
   padding-block: 1rem;
@@ -72,12 +73,13 @@
   display: flex;
   flex-direction: column;
   margin-block: 1rem;
-  border-left: solid #c5c1c0;
+  border-left: solid #fff9eb;
   padding-inline: 0.5rem;
 }
 #notes .accordion--container .accordion .notes--detail .note--title p {
   text-transform: uppercase;
-  color: #f7ce3e;
+  color: #ffbd0c;
+  font-weight: bold;
 }
 #notes .accordion--container .accordion .notes--detail .note--title span {
   text-transform: capitalize !important;
@@ -91,13 +93,13 @@
   justify-content: end;
 }
 #notes .accordion--container .accordion .notes--detail .note--title div:last-child small {
-  color: white;
+  color: #1a2930;
 }
 #notes .accordion--container .accordion .notes--detail .note--title div:last-child button {
   padding: 1px 0.3rem;
 }
 #notes .accordion--container .accordion .notes--detail .note--title div:last-child button a {
-  color: #1a2930;
+  color: #fff;
   font-size: 0.8rem;
   text-transform: capitalize;
   padding: 1px 0.3rem;
@@ -106,7 +108,7 @@
   color: #fff;
 }
 #notes .accordion--container .accordion .notes--detail p {
-  color: #f7ce3e;
+  color: #ffbd0c;
 }
 
 nav, #mNav {
@@ -114,7 +116,7 @@ nav, #mNav {
   left: 0;
   width: 20%;
   height: 100vh;
-  background-color: #1a2930;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -137,7 +139,7 @@ nav h3, #mNav h3 {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  color: #e3dcda;
+  color: #1a2930;
   text-transform: lowercase;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -157,7 +159,7 @@ nav ul, #mNav ul {
   width: 100%;
   margin: auto;
   font-family: "Space Grotesk", sans-serif;
-  color: #e3dcda;
+  color: #1a2930;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav ul, #mNav ul {
@@ -168,8 +170,9 @@ nav ul li, #mNav ul li {
   width: 100%;
   padding: 1rem 0.5rem;
   margin-block: 2rem;
-  border-top: 1px solid #c5c1c0;
-  border-bottom: 1px solid #c5c1c0;
+  border-top: 1px solid #1a2930;
+  border-bottom: 1px solid #1a2930;
+  padding-left: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -177,7 +180,7 @@ nav ul li, #mNav ul li {
   font-weight: 600;
 }
 nav ul li:hover, #mNav ul li:hover {
-  color: #f7ce3e;
+  color: #ffbd0c;
 }
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
   nav ul li, #mNav ul li {
@@ -199,11 +202,14 @@ nav .nav--buttons--container button, #mNav .nav--buttons--container button, nav 
   align-items: center;
   justify-content: space-evenly;
 }
+nav .nav--buttons--container button:hover, #mNav .nav--buttons--container button:hover, nav .nav--buttons--container .nav--buttons--Link:hover, #mNav .nav--buttons--container .nav--buttons--Link:hover {
+  color: #ffbd0c;
+}
 nav .nav--buttons--container button a, #mNav .nav--buttons--container button a, nav .nav--buttons--container .nav--buttons--Link a, #mNav .nav--buttons--container .nav--buttons--Link a {
   color: black;
 }
 nav .nav--buttons--container button a:hover, #mNav .nav--buttons--container button a:hover, nav .nav--buttons--container .nav--buttons--Link a:hover, #mNav .nav--buttons--container .nav--buttons--Link a:hover {
-  color: #fff;
+  color: #ffbd0c;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav .nav--buttons--container, #mNav .nav--buttons--container {
@@ -217,7 +223,6 @@ nav .nav--buttons--container button a:hover, #mNav .nav--buttons--container butt
   }
 }
 nav p, #mNav p {
-  color: #fff;
   text-align: center;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -228,7 +233,7 @@ nav p, #mNav p {
 nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
   font-size: 1.5rem;
   align-self: center;
-  color: #e3dcda;
+  color: #1a2930;
   font-weight: 900;
 }
 nav #showNav, #mNav #showNav {
@@ -308,8 +313,8 @@ header .info h1 {
   width: 100%;
   line-height: normal;
   text-transform: none;
-  color: #f7ce3e;
-  text-shadow: 1px 1px 2px #1a2930;
+  color: #ffbd0c;
+  text-shadow: 1px 1px 2px #fff;
 }
 header .info p {
   font-size: 1.1rem;
@@ -325,14 +330,14 @@ header .info button {
   font-size: 1.2rem;
 }
 header .info button:hover {
-  background-color: #1a2930;
+  background-color: #fff;
   color: white;
 }
 header .info button a {
-  color: #1a2930;
+  color: #fff;
 }
 header .info button a:hover {
-  background-color: #1a2930;
+  background-color: #fff;
   color: white;
 }
 @media only screen and (max-width: 280px) {
@@ -360,7 +365,7 @@ header .info button a:hover {
   }
   header .info h2 {
     font-size: 1.4rem;
-    text-shadow: 1px 1px 1px #1a2930;
+    text-shadow: 1px 1px 1px #fff;
   }
   header .info button {
     font-weight: normal;
@@ -375,7 +380,7 @@ section, .how--to {
   margin: auto;
   margin-block: 2rem;
   border-radius: 1rem;
-  background-color: #1a2930;
+  background-color: #fff;
   padding: 2rem;
   display: flex;
   flex-direction: row;
@@ -400,7 +405,7 @@ section a, .how--to a {
 }
 
 .card1, .card5, .card4, .card3, .card2 {
-  background-color: #f7ce3e;
+  background-color: #ffbd0c;
   width: 350px;
   height: 260px;
   border-top-left-radius: 1.5rem;
@@ -440,7 +445,7 @@ section a, .how--to a {
 }
 .card1 h2, .card5 h2, .card4 h2, .card3 h2, .card2 h2 {
   font-size: 1.5rem;
-  color: #1a2930;
+  color: #fff;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   .card1 h2, .card5 h2, .card4 h2, .card3 h2, .card2 h2 {
@@ -458,41 +463,41 @@ section a, .how--to a {
 }
 
 .card2 {
-  background-color: #e3dcda;
+  background-color: #1a2930;
 }
 .card2 h2 {
-  color: #f7ce3e;
+  color: #ffbd0c;
 }
 .card2 h3, .card2 p {
-  color: #1a2930;
+  color: #fff;
 }
 
 .card3 {
-  background-color: #c5c1c0;
+  background-color: #fff9eb;
 }
 .card3 h2, .card3 p {
-  color: #1a2930;
+  color: #fff;
 }
 .card3 h3 {
-  color: #f7ce3e;
+  color: #ffbd0c;
 }
 
 .card5 {
   background-color: #fff;
 }
 .card5 h2 {
-  color: #1a2930;
+  color: #fff;
 }
 .card5 h3 {
-  color: #f7ce3e;
+  color: #ffbd0c;
 }
 .card5 p {
-  color: #1a2930;
+  color: #fff;
 }
 
 .how--to {
   justify-content: center;
-  background-color: #1a2930;
+  background-color: #fff;
   flex-wrap: wrap;
 }
 .how--to > div {
@@ -530,7 +535,7 @@ section a, .how--to a {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #1a2930;
+  background-color: #fff;
   padding: 0.5rem 1rem;
   z-index: 1000;
 }
@@ -563,7 +568,7 @@ section a, .how--to a {
 }
 #top--nav div ul li:last-child {
   padding-inline: 0.7rem;
-  border: 1px solid #e3dcda;
+  border: 1px solid #1a2930;
   border-radius: 0.5rem;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -622,9 +627,9 @@ section a, .how--to a {
   align-items: center;
   gap: 1rem;
   gap: 2rem;
-  background-color: #1a2930;
+  background-color: #fff;
   color: #fff;
-  border: 1px solid #f7ce3e;
+  border: 1px solid #ffbd0c;
   border-radius: 0.3rem;
 }
 .dashboard > div .dash--card .icon {
@@ -643,13 +648,13 @@ html, body {
   font-family: "Space Grotesk", sans-serif;
   width: 100%;
   height: 100%;
-  background-color: #c5c1c0;
+  background-color: #fff9eb;
   line-height: 1.6;
   word-wrap: break-word;
 }
 
 a {
-  color: #e3dcda;
+  color: #1a2930;
   text-decoration: none;
   text-transform: capitalize;
   cursor: pointer;
@@ -663,7 +668,7 @@ img {
 }
 
 ul {
-  list-style-type: disc;
+  list-style-type: none;
 }
 
 div,
@@ -746,7 +751,7 @@ p {
 }
 
 span {
-  color: #e3dcda;
+  color: #1a2930;
 }
 
 i {
@@ -760,16 +765,16 @@ textarea {
   font-family: inherit;
   font-size: 1.2rem;
   padding: 0.8rem 0.5rem;
-  border: 0px solid #f7ce3e;
+  border: 1px solid #ffbd0c;
   border-radius: 0.3rem;
-  background-color: #c5c1c0;
   color: #1a2930;
+  caret-color: #ffbd0c;
   resize: none;
 }
 input:hover, button:hover,
 select:hover,
 textarea:hover {
-  border: 1px solid #f7ce3e;
+  border: 1px solid #ffbd0c;
   border-radius: 0.3rem;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -783,10 +788,16 @@ textarea {
 
 input[type=submit], button[type=submit] {
   font-family: "Space Grotesk", sans-serif;
-  background-color: #f7ce3e;
+  background-color: #ffbd0c;
   color: #1a2930;
   font-weight: 1000;
+  text-transform: capitalize;
+  box-shadow: 2px 0 #d89d00;
+  border: 0px solid #ffbd0c;
   cursor: pointer;
+}
+input[type=submit]:hover, button[type=submit]:hover {
+  background-color: #d89d00;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   input[type=submit], button[type=submit] {
@@ -816,15 +827,16 @@ button {
   font-size: 1rem;
   font-weight: 400;
   border: 0;
-  background-color: #f7ce3e;
+  background-color: #ffbd0c;
   text-transform: capitalize;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
-  color: black;
+  color: #1a2930;
+  box-shadow: 2px 0 #d89d00;
   cursor: pointer;
 }
 button:hover {
-  background-color: #1a2930;
+  background-color: #d89d00;
   color: #fff;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -866,7 +878,7 @@ label {
 }
 
 .success {
-  color: #f7ce3e;
+  color: #ffbd0c;
 }
 
 .Toastify .Toastify__close-button {
@@ -908,8 +920,9 @@ label {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  color: #fff;
+  color: #1a2930;
   font-family: "Space Grotesk", sans-serif;
+  background-color: #f6f6f6;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #signup, #upload, #userSettings, #resetPass, #login {
@@ -951,11 +964,12 @@ label {
   align-items: center;
   gap: 1rem;
   text-align: left;
-  width: 50%;
+  width: 40%;
   padding: 2rem;
-  background-color: #1a2930;
+  background-color: #fff;
   border-radius: 0.5rem;
   margin: auto;
+  text-align: center;
 }
 #signup form a, #upload form a, #userSettings form a, #resetPass form a, #login form a {
   font-weight: bolder;
@@ -996,11 +1010,12 @@ label {
 }
 
 footer, .header--footer {
-  width: 100%;
+  width: 80%;
+  float: right;
   margin: auto;
   background-image: url("../wave.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: bottom;
 }
 footer div:first-child, .header--footer div:first-child {
@@ -1016,6 +1031,9 @@ footer div:first-child, .header--footer div:first-child {
   align-items: flex-start;
   flex-wrap: wrap;
 }
+footer h4, .header--footer h4 {
+  color: #ffbd0c;
+}
 footer ul, .header--footer ul {
   font-size: 1rem;
 }
@@ -1028,7 +1046,7 @@ footer ul li, .header--footer ul li {
   line-height: 2;
 }
 footer ul li:first-child, .header--footer ul li:first-child {
-  color: #f7ce3e;
+  color: #ffbd0c;
   text-transform: uppercase;
   font-family: "Space Grotesk", sans-serif;
   letter-spacing: 1px;
@@ -1049,7 +1067,12 @@ footer a, .header--footer a {
 }
 
 .header--footer {
-  position: initial;
+  width: 100%;
+  float: none;
+  background-image: url("../wave.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
   margin-top: 5rem;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {

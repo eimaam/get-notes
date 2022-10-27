@@ -8,6 +8,7 @@ export default function FootNote() {
                 <li>Quick Links:</li>
                 <li>HOW-TO</li>
                 <li>getNOTES</li>
+                <li>Upload Notes</li>
                 <li>SIGN IN</li>
                 <li>HOME</li>
             </ul>

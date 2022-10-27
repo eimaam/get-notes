@@ -13,9 +13,10 @@
         border-radius: 0.5rem;
         display: flex;
         flex-direction: column;
+        box-shadow: 15px #d89d00;
 
         p{
-            color: white;
+            color: $--secondary;
         }
 
         @include mobile(){
@@ -73,11 +74,11 @@
                     margin-block: 1rem;
                     border-left: solid $--bgColor;
                     padding-inline: 0.5rem;
-
                     
                     p{
                         text-transform: uppercase;
-                        color: $--primary   ;
+                        color: $--primary;
+                        font-weight: bold;
                     }
                 
                     span{
@@ -89,7 +90,7 @@
                         justify-content: end;
                         
                         small{
-                            color: white;
+                            color: $--secondary;
                         }
 
                         button{
