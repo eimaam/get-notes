@@ -170,6 +170,7 @@ section{
     h2{
         font-size: 1.5rem;
         color: $--main;
+        
         @include mobile(){
             font-size: 1.2rem;
         }
@@ -198,10 +199,10 @@ section{
 }
 .card3{
     @extend .card1;
-    background-color: $--bgColor;
+    background-color: $--bgColor2;
 
     h2,p{
-        color: $--main;
+        color: $--secondary;
     }
 
     h3{
@@ -213,7 +214,7 @@ section{
 }
 .card5{
     @extend .card1;
-    background-color: $--default;
+    background-color: $--extras;
 
     h2{
         color: $--main;
