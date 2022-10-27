@@ -37,7 +37,7 @@ header{
         }
     
         p{
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 2;
 
             @include screenSize(280px){
@@ -111,7 +111,7 @@ section{
     padding: 2rem;
     @include flex(row);
     justify-content: space-evenly;
-    color: $--default;
+    color: $--secondary;
 
     a{
         color: inherit;
@@ -270,6 +270,7 @@ section{
     background-color: $--main;
     padding: 0.5rem 1rem;
     z-index: 1000;
+    box-shadow: 0 5px 5px 5px rgb(0 0 0 / 5%);
 
     #showNavIcon, #hideNavIcon{
         display: none;

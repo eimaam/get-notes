@@ -13,7 +13,7 @@
         border-radius: 0.5rem;
         display: flex;
         flex-direction: column;
-        box-shadow: 15px #d89d00;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         p{
             color: $--secondary;
@@ -97,7 +97,7 @@
                             padding: 1px 0.3rem;
                             
                             a{
-                                color: $--main;
+                                color: $--secondary;
                                 font-size: 0.8rem;
                                 text-transform: capitalize;
                                 padding: 1px 0.3rem;

@@ -19,7 +19,7 @@ export default function Feedback() {
         </div>
         <button>
             <a href='mailto:imamddahir@gmail.com?subject="Feedback on getNOTES'> 
-            SEND A MAIL
+            Send us a mail
             </a>
         </button>
     </section>

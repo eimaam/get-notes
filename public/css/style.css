@@ -23,7 +23,7 @@
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 15px #d89d00;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #notes .accordion--container p {
   color: #1a2930;
@@ -99,7 +99,7 @@
   padding: 1px 0.3rem;
 }
 #notes .accordion--container .accordion .notes--detail .note--title div:last-child button a {
-  color: #fff;
+  color: #1a2930;
   font-size: 0.8rem;
   text-transform: capitalize;
   padding: 1px 0.3rem;
@@ -260,6 +260,7 @@ nav #hideNav, #mNav #hideNav {
   margin: 0;
   z-index: 1;
   opacity: 7;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #mNav h3 {
   display: block;
@@ -270,7 +271,7 @@ nav #hideNav, #mNav #hideNav {
   display: block;
 }
 #mNav ul li {
-  font-size: 1.2rem;
+  font-size: 1rem;
   width: 100%;
 }
 #mNav .nav--buttons--container {
@@ -317,7 +318,7 @@ header .info h1 {
   text-shadow: 1px 1px 2px #fff;
 }
 header .info p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 2;
 }
 @media only screen and (max-width: 280px) {
@@ -388,7 +389,7 @@ section, .how--to {
   align-items: center;
   gap: 1rem;
   justify-content: space-evenly;
-  color: #fff;
+  color: #1a2930;
 }
 section a, .how--to a {
   color: inherit;
@@ -538,6 +539,7 @@ section a, .how--to a {
   background-color: #fff;
   padding: 0.5rem 1rem;
   z-index: 1000;
+  box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.05);
 }
 #top--nav #showNavIcon, #top--nav #hideNavIcon {
   display: none;
@@ -1006,6 +1008,7 @@ label {
   border-radius: 0.5rem;
   margin: auto;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #signup form a, #upload form a, #userSettings form a, #resetPass form a, #login form a {
   font-weight: bolder;

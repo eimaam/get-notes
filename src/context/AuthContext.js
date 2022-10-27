@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 // AOS import
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { useData } from './DataContext'
 // ..
 
 const AuthContext = createContext()
@@ -18,10 +19,9 @@ export const useAuth = () => {
 
 export default function AuthProvider({ children }) {
 
-
-useEffect(() => {
+    useEffect(() => {
     AOS.init({delay: 300})
-  }, [])
+    }, [])
 
 
     const navigate = useNavigate()
