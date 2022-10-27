@@ -43,11 +43,11 @@ export default function Notes(props) {
     
     // check status of User session - logged or not
     useEffect(() => {
+        setLoading(true)
         onAuthStateChanged(auth, data => {
             if(!data){
               navigate('../login')
             }else if(data){
-                setLoading(true)
                 fetchNotes(100, setLectureNotes100)
                 fetchNotes(200, setLectureNotes200)
                 fetchNotes(300, setLectureNotes300)
