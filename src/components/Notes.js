@@ -224,7 +224,7 @@ export default function Notes(props) {
                                                 </p>
                                                 <div>
                                                     <small>Upload Date: {notes.uploadDate}</small>
-                                                    <small>Uploaded By: ({notes.uploadedBy})</small>
+                                                    <small>Uploaded By: {notes.uploadedBy}</small>
                                                     <button>
                                                         <a href={notes.url}>Download</a>
                                                     </button>

@@ -288,10 +288,10 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           <select defaultValue="Select Level" name="level" onChange={handleChange} required>
             <option defaultValue="" disabled>Select Level</option>
             <option value="100">100 Level</option>
-            <option value="100">200 Level</option>
-            <option value="100">300 Level</option>
-            <option value="100">400 Level</option>
-            <option value="100">500 Level</option>
+            <option value="200">200 Level</option>
+            <option value="300">300 Level</option>
+            <option value="400">400 Level</option>
+            <option value="500">500 Level</option>
           </select>
         </div>
         <p className='error'>{error}</p>

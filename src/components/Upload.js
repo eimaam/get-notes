@@ -144,7 +144,7 @@ export default function Upload() {
 
     }
 
-    setLoading(false)
+    // setLoading(false)
 
   return (
     <div id='upload' onClick={() => setHideNav(true)} data-aos="fade" data-aos-easing="ease-out">
@@ -179,13 +179,11 @@ export default function Upload() {
           <label htmlFor="Note Category">Select Note Category:</label>
           <select defaultValue="Select Category" name="category" onChange={handleChange}  required>
             <option defaultValue="" disabled>Select Category</option>
-            <option value={userInfo.department}>Departmental Note</option>
+            <option value={userInfo.department}>Lecture Note</option>
             <option value="Others">Other Notes: Assignments, Past Questions, Summary etc</option>
             {userInfo.username === "capacity01" ? <option value="Extras">Extras: Time Table, Annoucements etc. </option> :  <option value="Extras">Extras: Time Table, Annoucements etc. </option>}
           </select>
         </div>
-
-
 
         {data.category != 'extras' && <div>
           <label htmlFor="course code">

@@ -599,10 +599,10 @@ section a, .how--to a {
   }
 }
 
-.dashboard {
+#dashboard {
   margin: auto;
 }
-.dashboard > div {
+#dashboard > div {
   width: 80%;
   margin: auto;
   display: flex;
@@ -611,13 +611,13 @@ section a, .how--to a {
   align-items: center;
   gap: 1rem;
 }
-.dashboard > div .cards--section {
+#dashboard > div .cards--section {
   text-align: center;
 }
-.dashboard > div .flex {
+#dashboard > div .flex {
   flex-wrap: wrap;
 }
-.dashboard > div .dash--card {
+#dashboard > div .dash--card {
   width: 22rem;
   height: 10rem;
   padding: 1rem;
@@ -627,13 +627,50 @@ section a, .how--to a {
   align-items: center;
   gap: 1rem;
   gap: 2rem;
-  background-color: #fff;
+  background-color: #ffbd0c;
   color: #fff;
   border: 1px solid #ffbd0c;
   border-radius: 0.3rem;
 }
-.dashboard > div .dash--card .icon {
+#dashboard > div .dash--card .icon {
   font-size: 3rem;
+}
+#dashboard .form--section form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  margin: auto;
+  text-align: center;
+}
+#dashboard .form--section form a {
+  font-weight: bolder;
+}
+#dashboard .form--section form p {
+  text-align: center;
+}
+#dashboard .form--section form div {
+  margin: auto;
+  width: 80%;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #dashboard .form--section form div {
+    width: 100%;
+  }
+}
+#dashboard .form--section form div input, #dashboard .form--section form div button, #dashboard .form--section form div select {
+  width: 100%;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #dashboard .form--section form {
+    width: 90%;
+    padding: 1rem;
+  }
 }
 
 * {
@@ -1019,6 +1056,11 @@ footer, .header--footer {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  footer, .header--footer {
+    width: 100%;
+  }
 }
 footer div:first-child, .header--footer div:first-child {
   margin: auto;

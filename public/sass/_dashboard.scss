@@ -1,4 +1,4 @@
-.dashboard{
+#dashboard{
     margin: auto;
 
     >div{
@@ -20,12 +20,50 @@
             padding: 1rem;
             @include flex(row);
             gap: 2rem;
-            background-color: $--main;
+            background-color: $--primary;
             color: $--default;
             @include border;
             
             .icon{
                 font-size: 3rem;
+            }
+        }        
+    }
+
+    .form--section{
+        
+        form{
+            @include flex(column);
+            width: 100%;
+            padding: 2rem;
+            background-color: $--main;
+            border-radius: 0.5rem;
+            margin: auto;
+            text-align: center;
+    
+            a{
+                font-weight: bolder;
+            }
+            p{
+                text-align: center;
+            }
+    
+            div{
+                margin: auto;
+                width: 80%;
+                
+                @include mobile(){
+                    width: 100%;
+                }
+    
+                input, select{
+                    width: 100%;
+                }
+            }
+    
+            @include mobile(){
+                width: 90%;
+                padding: 1rem;
             }
         }
     }

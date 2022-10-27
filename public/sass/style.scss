@@ -337,6 +337,10 @@ footer{
     // margin-top: 3rem;
     // background-color: $--main;
 
+    @include mobile{
+        width: 100%;
+    }
+
     div:first-child{
         margin: auto;
         width: 85%;
