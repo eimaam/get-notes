@@ -8,7 +8,6 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  border: solid red;
   align-self: center;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
@@ -52,6 +51,7 @@
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
     font-size: 1rem;
+    color: red;
   }
 }
 #notes .accordion--container .accordion .accordion--tab h2:last-child, #notes .accordion--container .accordion .notes--detail .level h2:last-child {
@@ -69,6 +69,12 @@
 }
 #notes .accordion--container .accordion .notes--detail .level h2 {
   font-size: 1.15rem;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #notes .accordion--container .accordion .notes--detail .level h2 {
+    font: 0.8rem;
+    color: red;
+  }
 }
 #notes .accordion--container .accordion .notes--detail .note--title {
   display: flex;
@@ -299,7 +305,9 @@ header {
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+}
+header img {
+  width: 80%;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   header img {
@@ -316,7 +324,7 @@ header .info h1 {
   width: 100%;
   line-height: normal;
   text-transform: none;
-  color: #ffbd0c;
+  color: #1a2930;
   text-shadow: 1px 1px 2px #fff;
 }
 header .info p {
@@ -393,11 +401,16 @@ header .info button a:hover {
 }
 
 #mini--section {
+  background-color: #ffbd0c;
   justify-content: space-evenly;
   color: #1a2930;
 }
 #mini--section a {
   color: inherit;
+}
+#mini--section button {
+  background-color: #1a2930;
+  color: #fff;
 }
 #mini--section div {
   width: 60%;
@@ -410,6 +423,11 @@ header .info button a:hover {
   }
   #mini--section * {
     text-align: center;
+  }
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) and (min-width: 280px) and (max-width: 1000px) {
+  #mini--section div {
+    width: 100%;
   }
 }
 
@@ -537,6 +555,12 @@ header .info button a:hover {
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   .how--to > div {
     flex-direction: column;
+  }
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  .how--to {
+    width: 90%;
+    padding: 1rem;
   }
 }
 
@@ -708,6 +732,7 @@ a {
 }
 
 img {
+  margin: auto;
   display: block;
   max-width: 100%;
   -o-object-fit: cover;
@@ -949,7 +974,6 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  border: solid red;
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #main {
@@ -967,7 +991,6 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  border: solid red;
   width: 100%;
   color: #1a2930;
   font-family: "Space Grotesk", sans-serif;

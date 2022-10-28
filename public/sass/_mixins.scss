@@ -29,7 +29,6 @@
     float: right;
     margin: 0;
     @include flex(column);
-    border: solid red;
 
     >div{
         // border: solid green;

@@ -8,11 +8,10 @@ header{
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
 
     img{
-        // width: 100%;
-
+        width: 80%;
+        
         @include mobile(){
             width: 60%;
         }
@@ -32,7 +31,7 @@ header{
             width: 100%;
             line-height: normal;
             text-transform: none;
-            color: $--primary;
+            color: $--secondary;
             text-shadow: 1px 1px 2px $--main;
         }
     
@@ -113,13 +112,17 @@ header{
 // feedback section
 #mini--section{
     @extend .homepage--sizing;
+    background-color: $--primary;
     justify-content: space-evenly;
     color: $--secondary;
 
     a{
         color: inherit;
     }
-
+    button{
+        background-color: $--secondary;
+        color: $--main;
+    }
     div{
         width: 60%;
     }
@@ -131,6 +134,12 @@ header{
 
         *{
             text-align: center;
+        }
+
+        div{
+            @include mobile{
+                width: 100%;
+            }
         }
     }
 
@@ -265,6 +274,11 @@ header{
         @include mobile(){
             flex-direction: column;
         }
+    }
+
+    @include mobile{
+            width: 90%;
+            padding: 1rem;
     }
 }
 

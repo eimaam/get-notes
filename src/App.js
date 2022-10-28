@@ -6,13 +6,13 @@ import Signup from './components/Signup';
 import Upload from './components/Upload';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Notes from './components/Notes';
+import Notes from './components/NotesPage/Notes';
 import Footer from './components/Footer';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { PropagateLoader } from "react-spinners"
+import { PropagateLoader, PulseLoader } from "react-spinners"
 import AuthProvider from './context/AuthContext';
 import DataProvider from './context/DataContext';
 import ErrorPage from './ErrorPage';
@@ -49,7 +49,7 @@ function App(props) {
 
       // loader from react-spinners
       <div className='loader'>
-        <PropagateLoader loading={loading} className='test'/>
+        <PulseLoader loading={loading} className='test'/>
       </div>
       
       :

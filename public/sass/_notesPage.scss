@@ -40,6 +40,7 @@
 
                     @include mobile(){
                         font-size: 1rem;
+                        color: red;
                     }
                 }
 
@@ -64,6 +65,11 @@
 
                     h2{
                         font-size: 1.15rem;
+
+                        @include mobile{
+                            font: 0.8rem;
+                            color: red;
+                        }
                     }
                 }
 

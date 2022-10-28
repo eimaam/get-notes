@@ -5,7 +5,7 @@ import { auth, database } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { collection, doc, query, updateDoc, onSnapshot, where } from 'firebase/firestore';
 import { useData } from '../context/DataContext';
-import { BeatLoader, PulseLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 
 
 export default function AddData(props) {

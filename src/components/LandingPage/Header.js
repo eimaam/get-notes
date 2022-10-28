@@ -4,7 +4,7 @@ import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
 
 // hero image import
-import heroImage2 from "../../assets/167-Work-From-Home.svg"
+import heroImage2 from "../../assets/reading_online.png"
 
 // AOS import
 import AOS from 'aos';
@@ -37,7 +37,10 @@ export default function Header(){
               <Link to='/login'> get started</Link>
             </button>
         </div>
+        <div>
+
             <img src={heroImage2} alt="web designer" data-aos="fade-right" data-aos-easing="ease-in"/>
+        </div>
     </header>
   )
 }

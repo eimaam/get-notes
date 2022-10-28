@@ -4,7 +4,7 @@ import Header from './components/LandingPage/Header'
 import FootNote from './components/LandingPage/FootNote'
 import TopNav from './components/LandingPage/TopNav'
 import { useAuth } from './context/AuthContext'
-import { BeatLoader } from 'react-spinners'
+import { BeatLoader, PulseLoader } from 'react-spinners'
 import { Feedback } from './components/LandingPage/Feedback'
 import { CheckForum } from './components/LandingPage/CheckForum'
 
@@ -23,19 +23,13 @@ export default function Home(props) {
   }, [])
   
   return (
-    <div>
-      {loading 
-      ? <div className='loader'><BeatLoader /></div>
-      :
-      <>
+    <>
       <TopNav />
       <Header />
       <Feedback />
       <HowTo />
       <CheckForum />
       <FootNote />
-      </>
-      }
-    </div>
+    </>
   )
 }
