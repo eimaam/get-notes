@@ -4,6 +4,7 @@
 @import './nav';
 @import './homepage';
 @import './dashboard';
+@import './takeArest';
 
 *{
     box-sizing: border-box;
@@ -14,7 +15,7 @@
 html, body{
     margin: auto;
     scroll-behavior: smooth;
-    font-family: $--Noto;
+    font-family: $--SpaceGrotesk;
     width: 100%;
     height: 100%;
     background-color: $--bgColor;
@@ -44,19 +45,19 @@ span,p{
     margin: 0;
 }
 h1{
-    font-family: $--Blinker;
+    font-family: $--SpaceGrotesk;
     font-size: 3.5rem;
     font-weight: 700 !important;
 
     @include mobile(){
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     @include screenSize(280px){
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 }
 h2{
-    font-family: $--Blinker;
+    font-family: $--SpaceGrotesk;
     font-size: 1.7rem;
     text-transform: capitalize;
 
@@ -74,7 +75,7 @@ h2{
     
 }
 h3{
-    font-family: $--Blinker;
+    font-family: $--SpaceGrotesk;
     text-transform: Capitalize;
 
     @include mobile(){
@@ -87,7 +88,7 @@ h3{
 }
 h4{
     text-transform: uppercase;
-    font-family: $--Blinker;
+    font-family: $--SpaceGrotesk;
     font-size: 1rem;
 
     @include mobile(){
@@ -133,7 +134,7 @@ textarea{
 }
 
 input[type=submit]{
-    font-family: $--Blinker;
+    font-family: $--SpaceGrotesk;
     background-color: $--primary;
     color: $--secondary;
     font-weight: 1000;
@@ -237,7 +238,7 @@ label{
     @include containerDesktop;
     width: 100%;
     color: $--secondary;
-    font-family: $--Noto;
+    font-family: $--SpaceGrotesk;
     background-color: $--bgColor2;
 
     @include mobile(){
@@ -329,6 +330,24 @@ label{
 
 }
 
+.error--page{
+    width: 100%;
+    height: 100vh;
+    background-color: $--default;
+    @include flex(column);
+    
+    *{
+
+        text-align: center;
+    }
+
+    h1{
+        color: red;
+    }
+
+
+}
+
 footer{
     width: 85%;
     float: right;
@@ -371,7 +390,7 @@ footer{
             &:first-child{
                 color: $--primary;
                 text-transform: uppercase;
-                font-family: $--Blinker;
+                font-family: $--SpaceGrotesk;
                 letter-spacing: 1px;
                 font-size: 1.2rem;
                 font-weight: bold;

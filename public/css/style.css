@@ -130,7 +130,6 @@ nav, #mNav {
   justify-content: center;
   padding-block: 2rem;
   z-index: 9;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   nav, #mNav {
@@ -307,6 +306,11 @@ header {
 header div > img {
   width: 80%;
 }
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  header div > img {
+    width: 85%;
+  }
+}
 header div {
   padding: 1rem;
 }
@@ -332,17 +336,18 @@ header .info p {
 header .info button {
   font-weight: bolder;
   font-size: 1.2rem;
+  padding: 1rem;
 }
 header .info button:hover {
-  background-color: #fff;
-  color: white;
+  background-color: #1a2930;
 }
 header .info button a {
-  color: #fff;
+  color: #1a2930;
+  font-weight: bolder;
 }
 header .info button a:hover {
-  background-color: #fff;
-  color: white;
+  background-color: #1a2930;
+  color: #fff;
 }
 @media only screen and (max-width: 280px) {
   header .info button {
@@ -375,7 +380,6 @@ header .info button a:hover {
   header .info button {
     font-weight: normal;
     font-size: 1rem;
-    padding: 0.3rem 0.5rem;
     border-radius: 0.3rem;
   }
 }
@@ -701,6 +705,40 @@ header .info button a:hover {
   }
 }
 
+#games {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#games .title {
+  width: 100%;
+  background-color: #ffbd0c;
+  text-align: center;
+  padding-block: 1rem;
+}
+#games .games--section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  gap: 3rem;
+}
+#games .games--section .game--card {
+  padding: 3rem;
+  background-color: #1a2930;
+  margin: 2rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffbd0c;
+}
+#games .games--section .game--card iframe {
+  border-radius: 1rem;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -751,12 +789,12 @@ h1 {
 }
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 @media only screen and (max-width: 280px) {
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -1076,6 +1114,23 @@ label {
 
 #upload {
   width: 85%;
+}
+
+.error--page {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.error--page * {
+  text-align: center;
+}
+.error--page h1 {
+  color: red;
 }
 
 footer, .header--footer {

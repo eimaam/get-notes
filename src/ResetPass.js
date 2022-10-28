@@ -3,7 +3,7 @@ import {onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
 import { toast } from 'react-toastify';
 import { auth } from './firebaseConfig';
 import { useAuth } from './context/AuthContext';
-import { BeatLoader } from 'react-spinners'
+import { PulseLoader } from 'react-spinners'
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
@@ -93,7 +93,7 @@ useEffect(() => {
         onChange={(e) => handleChange(e)}
         required
         />
-        {loading && <button><BeatLoader color='#fff'/></button>}
+        {loading && <button><PulseLoader color='#fff'/></button>}
         {!loading && <input type="submit" value="Change Password"/>}
         <p className='success'>{message}</p>
         <p className='error'>{error}</p>

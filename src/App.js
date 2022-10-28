@@ -24,6 +24,7 @@ import Home from './Home';
 import AddData from './components/AddData';
 import { NotStudentNotes } from './components/NotStudentNotes';
 import { AdminDashboard } from './components/Dashboard/AdminDashboard';
+import { TakeARest } from './components/TakeARest';
 
 
 function App(props) {
@@ -71,6 +72,7 @@ function App(props) {
             <Route path="/addusername" element={<AddData showNav={setShowNav}/>}    />
             <Route path="/upload" element={<Upload />}    />
             <Route path="/:userName/settings" element={<UserSettings />}    />
+            <Route path="/games" element={<TakeARest showNav={setShowNav}/>}    />
             <Route path="/admin" element={<AdminDashboard showNav={setShowNav}/>}    />
             {/* Protected Route end... */}
 

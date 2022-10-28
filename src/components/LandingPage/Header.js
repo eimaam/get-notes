@@ -25,14 +25,9 @@ export default function Header(){
         <div className='info' data-aos="fade-left" data-aos-easing="ease-out">
             <h1>All your NOTES &amp; more in one environment!</h1>
             <p>Stress no more about losing access to downloading your shared Notes or losing them on your device(s) 
-            <br />getNOTES solves all that &amp; more.  Get free access to your needed Lecture notes &amp; more arranged perfectly for YOU all in one environment.
+            <br />getNOTES solves all that &amp; more.   Get free access to your needed Lecture notes &amp; more arranged perfectly for YOU all in one environment. 
             <br />Sign up as Student or Reader. Click <mark>Get started</mark> button.
             </p>
-            <button>
-              <HashLink to='#howTo'> SEE HOW TO</HashLink>
-            </button>
-            <span>&nbsp;</span>
-            <span>&nbsp;</span>
             <button>
               <Link to='/login'> get started</Link>
             </button>

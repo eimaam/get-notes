@@ -3,9 +3,10 @@ import { Link, NavLink } from "react-router-dom"
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { useEffect } from 'react';
-import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt} from 'react-icons/fa';
-import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
+import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt, FaGamepad} from 'react-icons/fa';
+import { TbBookDownload, TbBookUpload, TbDeviceGamepad } from 'react-icons/tb';
 import { RiHome4Line } from 'react-icons/ri';
+import { GrGamepad } from 'react-icons/gr';
 // import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
 
 // AOS import
@@ -67,6 +68,9 @@ export default function Nav() {
           <NavLink to="/upload">
             <li><TbBookUpload /> Upload Notes</li>
           </NavLink>
+          <NavLink to="/games">
+            <li><GrGamepad /> Take-A-Rest</li>
+          </NavLink>
         </ul>
         {user &&
           <div className='nav--buttons--container'>
@@ -110,7 +114,10 @@ export default function Nav() {
             <li><TbBookDownload /> Get Notes</li>
           </NavLink>
           <NavLink to="/upload">
-          <li><TbBookUpload /> Upload Notes </li>
+            <li><TbBookUpload /> Upload Notes </li>
+          </NavLink>
+          <NavLink to="/games">
+            <li><GrGamepad /> Take-A-Rest</li>
           </NavLink>
       </ul>
       {user &&

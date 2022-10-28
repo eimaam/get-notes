@@ -14,7 +14,7 @@ header{
         width: 80%;
         
         @include mobile(){
-            // width: 60%;
+            width: 85%;
         }
     }
 
@@ -48,18 +48,19 @@ header{
         button{
             font-weight: bolder;
             font-size: 1.2rem;
+            padding: 1rem;
 
             &:hover{
-                background-color: $--main;
-                    color: white;
+                background-color: $--secondary;
             }
 
             a{
-                color: $--main;
+                color: $--secondary;
+                font-weight: bolder;
 
                 &:hover{
-                    background-color: $--main;
-                    color: white;
+                    background-color: $--secondary;
+                    color: $--default;
                 }
             }
 
@@ -94,7 +95,6 @@ header{
             button{
                 font-weight: normal;
                 font-size: 1rem;
-                padding: 0.3rem 0.5rem;
                 border-radius: 0.3rem;
             }
         }
@@ -316,7 +316,7 @@ header{
             justify-content: space-between;
     
             li{
-                font-family: $--Blinker;
+                font-family: $--SpaceGrotesk;
                 font-size: 1.3rem;
     
                 &:last-child{

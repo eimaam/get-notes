@@ -1,0 +1,29 @@
+#games{
+    width: 100%;
+    @include flex(column);
+
+    .title{
+        width: 100%;
+        background-color: $--primary;
+        text-align: center;
+        padding-block: 1rem;
+    }
+
+    .games--section{
+        @include flex(row);
+        gap: 3rem;
+
+        .game--card{
+            padding: 3rem;
+            background-color: $--secondary;
+            margin: 2rem 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            color: $--primary;
+            
+            iframe{
+                border-radius: 1rem;
+            }
+        }
+    }
+}
