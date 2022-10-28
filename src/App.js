@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { PropagateLoader, PulseLoader } from "react-spinners"
+import { HashLoader, PropagateLoader, PulseLoader } from "react-spinners"
 import AuthProvider from './context/AuthContext';
 import DataProvider from './context/DataContext';
 import ErrorPage from './ErrorPage';
@@ -50,7 +50,7 @@ function App(props) {
 
       // loader from react-spinners
       <div className='loader'>
-        <PulseLoader loading={loading} className='test'/>
+        <HashLoader loading={loading} className='test'/>
       </div>
       
       :

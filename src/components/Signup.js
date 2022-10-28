@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-// import { useAuth } from '../context/AuthContext';
 import { setDoc, doc, query, collection, onSnapshot, where } from 'firebase/firestore';
 import { auth, database } from "../firebaseConfig"
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
 import { useData } from '../context/DataContext';
-import { BeatLoader } from 'react-spinners'
+import { HashLoader } from 'react-spinners'
 import { FcGoogle } from 'react-icons/fc';
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
@@ -137,8 +136,12 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       setLoading(false)
       return toast.error('Username taken!')
       // check if username matches requested format from username regular expression usernameRegex
+    }else if(data.username.length < 3){
+      // check if entered username is up to 3 characters
+      setError('Username must be at least 3 characters long')
+      return toast.error('Username must be at least 3 characters long')
     }else if(!usernameRegex.test(data.username)){
-      setError('Username must be at least 3 characters long, not starting with a number and can\'t end with \'.\'')
+      setError('Incorrect Username format.  Not supporting Username that starts with a number and can\'t end with \'.\'')
       return toast.error('Username format not supported')
       // check to confirm passwords match
     }else if(data.password !== data.confirmPassword){
@@ -295,7 +298,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           </select>
         </div>
         <p className='error'>{error}</p>
-        {loading && <button><BeatLoader color='#fff'/></button>}
+        {loading && <button><HashLoader color='#fff'/></button>}
         {!loading 
         && 
         <input type="submit" value="Sign up" />
@@ -370,7 +373,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
             />
           </div>
           <p className='error'>{error}</p>
-          {loading && <button><BeatLoader color='#fff'/></button>}
+          {loading && <button><HashLoader color='#fff'/></button>}
           {!loading 
           && 
           <input type="submit" value="Sign up" />

@@ -6,7 +6,7 @@ import { auth } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
-import { BeatLoader } from "react-spinners"
+import { HashLoader } from "react-spinners"
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
@@ -14,7 +14,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 export default function Login(props) {
   const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
-  const { setHideNav } = useData()
+  const { setHideNav, userInfo } = useData()
 
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function Login(props) {
       await setPersistence(auth, browserLocalPersistence)
       await signInWithEmailAndPassword(auth, data.email, data.password)
         .then((res) => {
-          toast.success("LOGGED IN")
+          toast.success(`Welcome ${userInfo.username}`)
           navigate('../notes') 
         })
       }
@@ -118,7 +118,7 @@ export default function Login(props) {
             required
             />
         </div>
-          {loading && <button><BeatLoader color='#fff'/></button>}
+          {loading && <button><HashLoader color='#fff'/></button>}
           {!loading && <input type="submit" value="Log in"/>}
           
           <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>

@@ -5,7 +5,7 @@ import { useData } from '../../context/DataContext'
 import { auth } from '../../firebaseConfig'
 import { collection, onSnapshot, query, Timestamp, where } from 'firebase/firestore'
 import { database } from '../../firebaseConfig'
-import { PulseLoader } from 'react-spinners'
+import { HashLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 import { NotesLayout } from './NotesLayout'
@@ -172,7 +172,7 @@ export default function Notes(props) {
         
         <div style={mystyle}>
             <h3>Loading Notes...</h3>
-            <PulseLoader />
+            <HashLoader />
         </div>
 
         :

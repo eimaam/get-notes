@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { useEffect } from 'react';
 import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt, FaGamepad} from 'react-icons/fa';
-import { TbBookDownload, TbBookUpload, TbDeviceGamepad } from 'react-icons/tb';
+import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
 import { RiHome4Line } from 'react-icons/ri';
 import { GrGamepad } from 'react-icons/gr';
 // import { RiUserSettingsLine, RiUser } from 'react-icons/ri';

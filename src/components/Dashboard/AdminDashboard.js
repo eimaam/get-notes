@@ -3,12 +3,11 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { FaBook, FaFile, FaUser } from 'react-icons/fa'
-import { PropagateLoader } from 'react-spinners'
 import { useAuth } from '../../context/AuthContext'
 import { useData } from '../../context/DataContext'
 import { auth, database, storage } from '../../firebaseConfig'
 import { toast } from 'react-toastify'
-import { BeatLoader } from 'react-spinners'
+import { HashLoader } from 'react-spinners'
 import { onAuthStateChanged } from 'firebase/auth'
 
 
@@ -420,10 +419,10 @@ export const AdminDashboard = (props) => {
             {uploadProgress > 1 && <p>Checking File... {uploadProgress}% done!</p>}
             {uploadProgress === 100 && <p>Now click on UPLOAD</p>}
 
-            {uploadProgress !== 0 && uploadProgress < 100 && <button><BeatLoader color='#344648' /></button>}
+            {uploadProgress !== 0 && uploadProgress < 100 && <button><HashLoader color='#344648' /></button>}
             {uploadProgress > 1 ? '' : <button onClick={uploadFile}>check file </button>}
             {uploadProgress == 100 && <input type="submit" value="UPLOAD" />}
-            {loading && <BeatLoader color='#fff'/>}
+            {loading && <HashLoader color='#fff'/>}
             </form>
         </div>
         </div>

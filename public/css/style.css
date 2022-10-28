@@ -717,7 +717,7 @@ header .info button a:hover {
   width: 100%;
   background-color: #ffbd0c;
   text-align: center;
-  padding-block: 1rem;
+  padding: 1rem;
 }
 #games * {
   text-align: center;

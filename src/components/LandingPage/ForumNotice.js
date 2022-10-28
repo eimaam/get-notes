@@ -1,7 +1,7 @@
 import React from 'react'
 import MiniSection from './MiniSection'
 
-export const CheckForum = () => {
+export const ForumNotice = () => {
   return (
     <MiniSection 
     title="We're building a forum! "

@@ -58,6 +58,9 @@ export const TakeARest = (props) => {
             <div>
                 <h2>Adding more Games to the Channel soon!</h2>
             </div>
+            <div>
+                <button><a href="/notes"> Go back to NOTES</a></button>
+            </div>
             <FootNote />
         </div>
     </div>

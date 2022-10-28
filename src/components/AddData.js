@@ -5,7 +5,7 @@ import { auth, database } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { collection, doc, query, updateDoc, onSnapshot, where } from 'firebase/firestore';
 import { useData } from '../context/DataContext';
-import { PulseLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 
 
 export default function AddData(props) {
@@ -149,7 +149,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       
       ? 
       
-      <PulseLoader /> 
+      <HashLoader /> 
       
       :
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
 
 // hero image import
@@ -16,7 +15,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 export default function Header(){
 
   useEffect(() => {
-    AOS.init({delay: 200, duration: 700})
+    AOS.init({delay: 700, duration: 700})
   }, [])
 
 
@@ -32,9 +31,8 @@ export default function Header(){
               <Link to='/login'> get started</Link>
             </button>
         </div>
-        <div>
-
-            <img src={heroImage2} alt="web designer" data-aos="fade-right" data-aos-easing="ease-in"/>
+        <div data-aos="fade-right" data-aos-easing="ease-in">
+            <img src={heroImage2} alt="web designer" />
         </div>
     </header>
   )

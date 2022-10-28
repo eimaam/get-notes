@@ -6,7 +6,7 @@ import TopNav from './components/LandingPage/TopNav'
 import { useAuth } from './context/AuthContext'
 import { BeatLoader, PulseLoader } from 'react-spinners'
 import { Feedback } from './components/LandingPage/Feedback'
-import { CheckForum } from './components/LandingPage/CheckForum'
+import { CheckForum, ForumNotice } from './components/LandingPage/ForumNotice'
 
 
 
@@ -14,12 +14,9 @@ import { CheckForum } from './components/LandingPage/CheckForum'
 export default function Home(props) {
   const { loading, setLoading } = useAuth()
   useEffect(() => {
-    setLoading(true)
     props.showNav(false)
 
-    setTimeout(() => {
-      setLoading(false)
-    }, 1100);
+    
   }, [])
   
   return (
@@ -28,7 +25,7 @@ export default function Home(props) {
       <Header />
       <Feedback />
       <HowTo />
-      <CheckForum />
+      <ForumNotice />
       <FootNote />
     </>
   )
