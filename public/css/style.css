@@ -719,24 +719,56 @@ header .info button a:hover {
   text-align: center;
   padding-block: 1rem;
 }
+#games * {
+  text-align: center;
+}
 #games .games--section {
+  width: 80%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   gap: 3rem;
 }
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #games .games--section {
+    width: 100%;
+  }
+}
+#games .games--section p {
+  text-transform: capitalize;
+}
 #games .games--section .game--card {
-  padding: 3rem;
+  width: 60%;
+  padding: 2rem;
   background-color: #1a2930;
   margin: 2rem 1rem;
   text-align: center;
   text-transform: uppercase;
   color: #ffbd0c;
+  border-radius: 1rem;
 }
 #games .games--section .game--card iframe {
   border-radius: 1rem;
+  width: 100%;
+  height: 350px;
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #games .games--section .game--card {
+    width: 95%;
+    padding: 1rem;
+  }
+}
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  #games .games--section {
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 280px) and (max-width: 1000px) {
+  #games .games--section {
+    flex-direction: column;
+  }
 }
 
 * {
