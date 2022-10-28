@@ -40,7 +40,6 @@
 
                     @include mobile(){
                         font-size: 1rem;
-                        color: red;
                     }
                 }
 
@@ -68,7 +67,6 @@
 
                         @include mobile{
                             font: 0.8rem;
-                            color: red;
                         }
                     }
                 }

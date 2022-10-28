@@ -206,8 +206,8 @@ export default function Notes(props) {
                             notes */}
                     <NotesLayout 
                         toggleFunc={toggleLevelNotes}
-                        level="100"
-                        id='Level1'
+                        level="200"
+                        id='Level2'
                         show={showLectureNotes}
                         noteSet={lectureNotes100}
                     />
@@ -263,7 +263,7 @@ export default function Notes(props) {
                 </div>
                 {showOtherNotes && 
                 <div>
-                    {/* 200 
+                    {/* 100 
                         level
                         other notes */}
                     <NotesLayout 

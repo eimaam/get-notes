@@ -7,7 +7,7 @@ export const NotesLayout = (props) => {
 
         <div className='notes--detail'>
             <div className='level' onClick={() => props.toggleFunc(`${props.id}`)}>
-                <h2> {props.level} Level Notes </h2>
+                <h4> {props.level} Level </h4>
                 {props.show && <h2><IoIosArrowForward /></h2>}
                 {!props.show && <h2><IoIosArrowDown /></h2>}
             </div>

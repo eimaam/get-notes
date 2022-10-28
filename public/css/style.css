@@ -51,7 +51,6 @@
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
     font-size: 1rem;
-    color: red;
   }
 }
 #notes .accordion--container .accordion .accordion--tab h2:last-child, #notes .accordion--container .accordion .notes--detail .level h2:last-child {
@@ -73,7 +72,6 @@
 @media only screen and (min-width: 280px) and (max-width: 1000px) {
   #notes .accordion--container .accordion .notes--detail .level h2 {
     font: 0.8rem;
-    color: red;
   }
 }
 #notes .accordion--container .accordion .notes--detail .note--title {
@@ -306,13 +304,8 @@ header {
   justify-content: center;
   align-items: center;
 }
-header img {
+header div > img {
   width: 80%;
-}
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
-  header img {
-    width: 60%;
-  }
 }
 header div {
   padding: 1rem;
@@ -364,7 +357,8 @@ header .info button a:hover {
     align-items: center;
     gap: 1rem;
     width: 90%;
-    gap: 0rem;
+    gap: 2rem;
+    margin-block: 4rem;
   }
   header .info {
     padding: 0;
