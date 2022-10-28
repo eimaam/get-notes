@@ -198,7 +198,6 @@ nav .nav--buttons--container, #mNav .nav--buttons--container {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  width: 50%;
   margin: auto;
 }
 nav .nav--buttons--container button, #mNav .nav--buttons--container button, nav .nav--buttons--container .nav--buttons--Link, #mNav .nav--buttons--container .nav--buttons--Link {
@@ -206,6 +205,7 @@ nav .nav--buttons--container button, #mNav .nav--buttons--container button, nav 
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 nav .nav--buttons--container button:hover, #mNav .nav--buttons--container button:hover, nav .nav--buttons--container .nav--buttons--Link:hover, #mNav .nav--buttons--container .nav--buttons--Link:hover {
   color: #ffbd0c;

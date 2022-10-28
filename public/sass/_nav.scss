@@ -71,7 +71,6 @@ nav{
 
     .nav--buttons--container{
         @include flex(column);
-        width: 50%;
         margin: auto;
         
         button, .nav--buttons--Link{
@@ -79,6 +78,7 @@ nav{
             display: flex;
             align-items: center;
             justify-content: space-evenly;
+            gap: 1rem;
 
             &:hover{
                 color: $--primary;

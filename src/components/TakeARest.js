@@ -27,30 +27,31 @@ export const TakeARest = (props) => {
         </div>
         <div className='games--section'>
             {/* <GameCard 
-            gameLink={<iframe  allow="fullscreen; autoplay; encrypted-media" src="https://play.idevgames.co.uk/embed/galactic-wars" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowFullScreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">Browser not compatible.</iframe>}
+            gameLink={<iframe  allow="fullscreen; encrypted-media" src="https://play.idevgames.co.uk/embed/galactic-wars" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowfullscreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">Browser not compatible.</iframe>}
             gameTitle="Galactic Wars"
             desc="Destroy all the enemies, collect energy capsules to upgrade your ship and face the destroyer galactus x without being destroyed to save our planet. Use Z to shoot and cursor keys to move"
             /> */}
             <GameCard 
-                gameLink={<iframe  allow="fullscreen; autoplay; encrypted-media" src="https://games.construct.net/1463/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowFullScreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
+                gameLink={<iframe  allow="fullscreen; encrypted-media" src="https://games.construct.net/1463/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowfullscreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
                             </iframe>}
                 gameTitle="Red Tie Runner"
                 desc="Use arrow keys to navigate and get credits"
             />
             <GameCard 
-                gameLink={<iframe  allow="fullscreen; autoplay; encrypted-media" src="https://games.construct.net/904/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowFullScreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
+                gameLink={<iframe  allow="fullscreen;  encrypted-media" src="https://games.construct.net/904/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowfullscreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
                         </iframe>}
                 gameTitle="Pixel Bear Adventure"
                 desc=""
             />
             <GameCard 
-                gameLink={<iframe  allow="fullscreen; autoplay; encrypted-media" src="https://games.construct.net/20988/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowFullScreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no"></iframe>}
+                gameLink={<iframe  allow="fullscreen;  encrypted-media" src="https://games.construct.net/20988/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowfullscreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
+                    </iframe>}
                 gameTitle="Mountain Bike Runner"
                 desc="Use arrow keys Up & Down to Move forward or backward respectively and arrow keys back and forward to balance"
             />
             
             <GameCard 
-                gameLink={<iframe  allow="fullscreen; autoplay; encrypted-media" src="https://games.construct.net/82/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowFullScreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
+                gameLink={<iframe  allow="fullscreen;  encrypted-media" src="https://games.construct.net/82/latest" frameBorder="0" allowFullScreen="true" msallowFullScreen="true" mozallowFullScreen="true" webkitallowfullscreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
                     </iframe>}
                 gameTitle="Tank Trouble 2"
                 desc="Use arrow keys to navigate and get to top of the Score Table"

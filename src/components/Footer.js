@@ -11,7 +11,7 @@ export default function Footer() {
         </div>
         <div>
           <p>All rights reserved.</p>
-          <p><a href="https://eimaam.dev" rel='noopener noreferrer'> Built with 🧡 by <a href="mailto:1leadtechie@gmail.com">Tech Desk Inc.</a> &copy; 2022</a></p>
+          <p>Built with 🧡 by <a href="mailto:1leadtechie@gmail.com">Tech Desk Inc.</a> &copy; 2022</p>
         </div>
 
     </footer>

@@ -56,19 +56,25 @@ useEffect(() => {
   if(userInfo.student === "yes"){
     return navigate('./notes')
   }
-  fetchNotes("agricultural engineering", setCpeNotes)
+  
+  fetchAllNotes()
+
+  setTimeout(() => {
+      setLoading(false)
+  }, 4000);
+
+}, [loading, fetchAllNotes(), user])
+
+
+const fetchAllNotes = () => {
+    fetchNotes("agricultural engineering", setCpeNotes)
   fetchNotes("civil engineering", setCweNotes)
   fetchNotes("chemical engineering", setCheNotes)
   fetchNotes("computer engineering", setCpeNotes)
   fetchNotes("electrical & electronics engineering", setEeeNotes)
   fetchNotes("food science technology", setFstNotes)
   fetchNotes("mechanical engineering", setMeeNotes)
-  
-  setTimeout(() => {
-      setLoading(false)
-  }, 4000);
-
-}, [user])
+}
 
 
 // style to centralize the Note loader animation in center
