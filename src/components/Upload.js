@@ -4,7 +4,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { HashLoader } from 'react-spinners'
+import { BeatLoader, HashLoader } from 'react-spinners'
 import { useAuth } from '../context/AuthContext'
 import { useData } from '../context/DataContext'
 import { auth, database, storage } from '../firebaseConfig'
@@ -228,10 +228,10 @@ export default function Upload() {
         {uploadProgress > 1 && <p>Checking File... {uploadProgress}% done!</p>}
         {uploadProgress === 100 && <p>Now click on UPLOAD</p>}
 
-        {uploadProgress !== '' && uploadProgress < 100 && <button><HashLoader color='#344648' /></button>}
+        {uploadProgress !== '' && uploadProgress < 100 && <button><BeatLoader color='#344648' /></button>}
         {uploadProgress > 1 ? '' : <button onClick={uploadFile}>check file </button>}
         {uploadProgress == 100 && <input type="submit" value="UPLOAD" />}
-        {loading && <HashLoader color='#fff'/>}
+        {loading && <BeatLoader color='#fff'/>}
       </form>
       }
     </div>

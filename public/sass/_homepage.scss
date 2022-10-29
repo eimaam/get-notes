@@ -9,12 +9,14 @@ header{
     justify-content: center;
     align-items: center;
 
-
-    div > img{
-        width: 80%;
+    div:last-child{
         
-        @include mobile(){
-            width: 85%;
+        img{
+            width: 80%;
+            
+            @include mobile(){
+                width: 85%;
+            }
         }
     }
 
@@ -73,11 +75,13 @@ header{
 
     }
 
+    // header mobile
     @include mobile(){
         @include flex(column-reverse);
         width: 90%;
         gap: 2rem;
-        margin-block: 4rem;
+        margin-top: 2rem;
+        height: auto;
 
         .info{
             padding: 0;

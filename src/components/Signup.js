@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
 import { useData } from '../context/DataContext';
-import { HashLoader } from 'react-spinners'
+import { BeatLoader, HashLoader } from 'react-spinners'
 import { FcGoogle } from 'react-icons/fc';
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
@@ -298,7 +298,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           </select>
         </div>
         <p className='error'>{error}</p>
-        {loading && <button><HashLoader color='#fff'/></button>}
+        {loading && <button><BeatLoader color='#fff'/></button>}
         {!loading 
         && 
         <input type="submit" value="Sign up" />

@@ -10,7 +10,7 @@
   gap: 1rem;
   align-self: center;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #notes {
     width: 100%;
   }
@@ -27,7 +27,7 @@
 #notes .accordion--container p {
   color: #1a2930;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #notes .accordion--container {
     width: 90%;
   }
@@ -48,7 +48,7 @@
   color: #1a2930;
   font-size: 1.5rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #notes .accordion--container .accordion .accordion--tab h2, #notes .accordion--container .accordion .notes--detail .level h2 {
     font-size: 1rem;
   }
@@ -69,7 +69,7 @@
 #notes .accordion--container .accordion .notes--detail .level h2 {
   font-size: 1.15rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #notes .accordion--container .accordion .notes--detail .level h2 {
     font: 0.8rem;
   }
@@ -131,7 +131,7 @@ nav, #mNav {
   padding-block: 2rem;
   z-index: 9;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   nav, #mNav {
     display: block;
     top: 0;
@@ -147,7 +147,7 @@ nav h3, #mNav h3 {
   color: #1a2930;
   text-transform: lowercase;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   nav h3, #mNav h3 {
     display: none;
   }
@@ -155,7 +155,7 @@ nav h3, #mNav h3 {
 nav i, #mNav i {
   padding-block: 1rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   nav i, #mNav i {
     display: none;
   }
@@ -166,7 +166,7 @@ nav ul, #mNav ul {
   font-family: "Space Grotesk", sans-serif;
   color: #1a2930;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   nav ul, #mNav ul {
     display: none;
   }
@@ -216,7 +216,7 @@ nav .nav--buttons--container button a, #mNav .nav--buttons--container button a, 
 nav .nav--buttons--container button a:hover, #mNav .nav--buttons--container button a:hover, nav .nav--buttons--container .nav--buttons--Link a:hover, #mNav .nav--buttons--container .nav--buttons--Link a:hover {
   color: #ffbd0c;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   nav .nav--buttons--container, #mNav .nav--buttons--container {
     display: none;
   }
@@ -230,7 +230,7 @@ nav .nav--buttons--container button a:hover, #mNav .nav--buttons--container butt
 nav p, #mNav p {
   text-align: center;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   nav p, #mNav p {
     display: none;
   }
@@ -244,7 +244,7 @@ nav #hideNav, #mNav #hideNav, nav #showNav, #mNav #showNav {
 nav #showNav, #mNav #showNav {
   display: none;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   nav #showNav, #mNav #showNav {
     display: block;
   }
@@ -303,11 +303,11 @@ header {
   justify-content: center;
   align-items: center;
 }
-header div > img {
+header div:last-child img {
   width: 80%;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
-  header div > img {
+@media only screen and (max-width: 1000px) {
+  header div:last-child img {
     width: 85%;
   }
 }
@@ -354,7 +354,7 @@ header .info button a:hover {
     font-size: 0.8rem;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   header {
     display: flex;
     flex-direction: column-reverse;
@@ -363,7 +363,8 @@ header .info button a:hover {
     gap: 1rem;
     width: 90%;
     gap: 2rem;
-    margin-block: 4rem;
+    margin-top: 2rem;
+    height: auto;
   }
   header .info {
     padding: 0;
@@ -413,7 +414,7 @@ header .info button a:hover {
 #mini--section div {
   width: 60%;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #mini--section {
     width: 90%;
     flex-direction: column;
@@ -423,7 +424,7 @@ header .info button a:hover {
     text-align: center;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) and (max-width: 1000px) {
   #mini--section div {
     width: 100%;
   }
@@ -453,7 +454,7 @@ header .info button a:hover {
     width: 100%;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .card1, .card5, .card4, .card3, .card2 {
     height: auto;
   }
@@ -472,7 +473,7 @@ header .info button a:hover {
   font-size: 1.5rem;
   color: #fff;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .card1 h2, .card5 h2, .card4 h2, .card3 h2, .card2 h2 {
     font-size: 1.2rem;
   }
@@ -481,7 +482,7 @@ header .info button a:hover {
   font-size: 1.1rem;
   font-weight: normal;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .card1 p, .card5 p, .card4 p, .card3 p, .card2 p {
     font-size: 1rem;
   }
@@ -536,7 +537,7 @@ header .info button a:hover {
 .how--to > div .arrow--right {
   font-size: 2rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .how--to > div .arrow--right {
     display: none;
   }
@@ -545,17 +546,17 @@ header .info button a:hover {
   font-size: 2rem;
   display: none;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .how--to > div .arrow--down {
     display: block;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .how--to > div {
     flex-direction: column;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .how--to {
     width: 90%;
     padding: 1rem;
@@ -603,7 +604,7 @@ header .info button a:hover {
   border: 1px solid #1a2930;
   border-radius: 0.5rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #top--nav {
     flex-direction: column;
     justify-content: center;
@@ -690,7 +691,7 @@ header .info button a:hover {
   margin: auto;
   width: 80%;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #dashboard .form--section form div {
     width: 100%;
   }
@@ -698,7 +699,7 @@ header .info button a:hover {
 #dashboard .form--section form div input, #dashboard .form--section form div button, #dashboard .form--section form div select {
   width: 100%;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #dashboard .form--section form {
     width: 90%;
     padding: 1rem;
@@ -731,7 +732,7 @@ header .info button a:hover {
   gap: 1rem;
   gap: 3rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #games .games--section {
     width: 100%;
   }
@@ -754,7 +755,7 @@ header .info button a:hover {
   width: 100%;
   height: 350px;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #games .games--section .game--card {
     width: 95%;
     padding: 1rem;
@@ -765,7 +766,7 @@ header .info button a:hover {
     flex-direction: column;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #games .games--section {
     flex-direction: column;
   }
@@ -819,7 +820,7 @@ h1 {
   font-size: 3.5rem;
   font-weight: 700 !important;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   h1 {
     font-size: 1.8rem;
   }
@@ -835,7 +836,7 @@ h2 {
   font-size: 1.7rem;
   text-transform: capitalize;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   h2 {
     font-size: 1.15rem;
   }
@@ -855,7 +856,7 @@ h3 {
   font-family: "Space Grotesk", sans-serif;
   text-transform: Capitalize;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   h3 {
     font-size: 1rem;
   }
@@ -871,7 +872,7 @@ h4 {
   font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   h4 {
     font-size: 0.8rem;
   }
@@ -913,7 +914,7 @@ textarea:hover {
   border: 1px solid #ffbd0c;
   border-radius: 0.3rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   input, button,
 select,
 textarea {
@@ -936,7 +937,7 @@ input[type=submit], button[type=submit] {
 input[type=submit]:hover, button[type=submit]:hover {
   background-color: #d89d00;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   input[type=submit], button[type=submit] {
     font-weight: 100;
     -webkit-border-radius: 0;
@@ -975,7 +976,7 @@ button:hover {
   background-color: #d89d00;
   color: #fff;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   button {
     font-weight: 100;
   }
@@ -985,7 +986,7 @@ label {
   font-size: 1.1rem;
   text-align: left;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   label {
     font-size: 1rem;
   }
@@ -1039,7 +1040,7 @@ label {
   align-items: center;
   gap: 1rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #main {
     width: 100%;
   }
@@ -1060,12 +1061,12 @@ label {
   font-family: "Space Grotesk", sans-serif;
   background-color: #f6f6f6;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #signup, #upload, #userSettings, #resetPass, #login {
     width: 100%;
   }
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #signup, #upload, #userSettings, #resetPass, #login {
     width: 100% !important;
   }
@@ -1117,7 +1118,7 @@ label {
   margin: auto;
   width: 80%;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #signup form div, #upload form div, #userSettings form div, #resetPass form div, #login form div {
     width: 100%;
   }
@@ -1125,7 +1126,7 @@ label {
 #signup form div input, #upload form div input, #userSettings form div input, #resetPass form div input, #login form div input, #signup form div button, #upload form div button, #userSettings form div button, #resetPass form div button, #login form div button, #signup form div select, #upload form div select, #userSettings form div select, #resetPass form div select, #login form div select {
   width: 100%;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   #signup form, #upload form, #userSettings form, #resetPass form, #login form {
     width: 90%;
     padding: 1rem;
@@ -1174,7 +1175,7 @@ footer, .header--footer {
   background-size: cover;
   background-position: bottom;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   footer, .header--footer {
     width: 100%;
   }
@@ -1217,7 +1218,7 @@ footer p, .header--footer p {
   margin: auto;
   text-align: center;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   footer p, .header--footer p {
     font-size: 0.8rem;
   }
@@ -1235,7 +1236,7 @@ footer a, .header--footer a {
   background-position: bottom;
   margin-top: 5rem;
 }
-@media only screen and (min-width: 280px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .header--footer div:first-child {
     margin: auto;
     width: 90%;

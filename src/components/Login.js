@@ -6,7 +6,7 @@ import { auth } from '../firebaseConfig';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
-import { HashLoader } from "react-spinners"
+import { HashLoader, BeatLoader } from "react-spinners"
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
@@ -90,9 +90,6 @@ export default function Login(props) {
           <p>Enter your log in credentials to continue</p>
         </div>
         <div>
-            {/* <label htmlFor="Passowrd">
-              Email:
-            </label> */}
             <input
             name='email'
             type="email" 
@@ -105,9 +102,6 @@ export default function Login(props) {
         </div>
 
         <div>
-            {/* <label htmlFor="Passowrd">
-              Password
-            </label> */}
             <input
             name='password'
             type="password" 
@@ -118,7 +112,7 @@ export default function Login(props) {
             required
             />
         </div>
-          {loading && <button><HashLoader color='#fff'/></button>}
+          {loading && <button><BeatLoader color='#fff'/></button>}
           {!loading && <input type="submit" value="Log in"/>}
           
           <p>Forgot Password? <Link to='/reset' className='error'>RESET NOW</Link></p>
