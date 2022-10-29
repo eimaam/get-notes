@@ -9,9 +9,9 @@ import { PropagateLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 
-export const NotStudentNotes = () => {
+export const NotStudentNotes = (props) => {
     const { navigate, user, loading, setLoading } = useAuth()
-    const { userInfo, setHideNav } = useData();
+    const { userInfo, setHideNav, fetchUserDetail } = useData();
 
     // save note states
     const [aeeNotes, setAeeNotes] = useState([])
@@ -47,6 +47,20 @@ catch(err){
 
 }
 
+useEffect(() => {
+    // setLoading(true)
+    fetchUserDetail()
+    props.showNav(true)
+    
+    if(userInfo.username != undefined){
+        setLoading(true)
+        userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
+    }else if(userInfo.username === undefined){
+            setLoading(false)
+            navigate('./addusername')
+    }
+    
+}, [userInfo, props.showNav])
 
 useEffect(() => {
   setLoading(true)
@@ -63,7 +77,7 @@ useEffect(() => {
       setLoading(false)
   }, 4000);
 
-}, [loading, fetchAllNotes(), user])
+}, [loading, user])
 
 
 const fetchAllNotes = () => {
