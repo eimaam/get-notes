@@ -1,0 +1,56 @@
+#forum{
+    margin: 0 auto;
+    width: 80%;
+    height: 100vh;
+    @include flex(column);
+    gap: 2rem;
+
+    h1{
+        text-align: center;
+    }
+
+    @include mobile{
+        width: 90%;
+        height: auto;
+        padding-block: 2rem;
+    }
+
+    .waitlist{
+        width: 80%;
+        @include flex(row);
+        background-color: $--primary;
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        margin: 0;
+
+        form{
+            width: 60%;
+            border: none;
+
+            input[type=submit]{
+                background-color: $--secondary;
+                color: $--default;
+            }
+
+            @include mobile{
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+        @include mobile{
+            flex-direction: column;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    form{
+        padding: 1rem;
+        border-radius: 1rem;
+        @include flex(column);
+        gap: 0.5rem;
+        @include border;
+    }
+}

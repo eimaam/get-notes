@@ -772,6 +772,74 @@ header .info button a:hover {
   }
 }
 
+#forum {
+  margin: 0 auto;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  gap: 2rem;
+}
+#forum h1 {
+  text-align: center;
+}
+@media only screen and (max-width: 1000px) {
+  #forum {
+    width: 90%;
+    height: auto;
+    padding-block: 2rem;
+  }
+}
+#forum .waitlist {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #ffbd0c;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  margin: 0;
+}
+#forum .waitlist form {
+  width: 60%;
+  border: none;
+}
+#forum .waitlist form input[type=submit], #forum .waitlist form button[type=submit] {
+  background-color: #1a2930;
+  color: #fff;
+}
+@media only screen and (max-width: 1000px) {
+  #forum .waitlist form {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #forum .waitlist {
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+#forum form {
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  gap: 0.5rem;
+  border: 1px solid #ffbd0c;
+  border-radius: 0.3rem;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
