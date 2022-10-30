@@ -116,7 +116,7 @@ header{
     @include flex(row);
 }
 // feedback section
-#mini--section{
+.mini--section{
     @extend .homepage--sizing;
     background-color: $--primary;
     justify-content: space-evenly;

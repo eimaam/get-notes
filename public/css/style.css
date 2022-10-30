@@ -385,7 +385,7 @@ header .info button a:hover {
   }
 }
 
-.homepage--sizing, .how--to, #mini--section {
+.homepage--sizing, .how--to, .mini--section {
   width: 70%;
   margin: auto;
   margin-block: 2rem;
@@ -399,33 +399,33 @@ header .info button a:hover {
   gap: 1rem;
 }
 
-#mini--section {
+.mini--section {
   background-color: #ffbd0c;
   justify-content: space-evenly;
   color: #1a2930;
 }
-#mini--section a {
+.mini--section a {
   color: inherit;
 }
-#mini--section button {
+.mini--section button {
   background-color: #1a2930;
   color: #fff;
 }
-#mini--section div {
+.mini--section div {
   width: 60%;
 }
 @media only screen and (max-width: 1000px) {
-  #mini--section {
+  .mini--section {
     width: 90%;
     flex-direction: column;
     padding: 1rem;
   }
-  #mini--section * {
+  .mini--section * {
     text-align: center;
   }
 }
 @media only screen and (max-width: 1000px) and (max-width: 1000px) {
-  #mini--section div {
+  .mini--section div {
     width: 100%;
   }
 }

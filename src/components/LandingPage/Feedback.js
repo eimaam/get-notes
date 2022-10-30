@@ -3,7 +3,8 @@ import MiniSection from './MiniSection'
 
 export const Feedback = () => {
   return (
-    <MiniSection 
+    <MiniSection
+    id="#feedback" 
     title="Got questions? Enquiries? or a Feedback?"
     description="We'd love to hear from you! Use the button to reach us."
     url='mailto:imamddahir@gmail.com?subject="Feedback on getNOTES'

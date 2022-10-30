@@ -6,6 +6,7 @@ export default function FootNote() {
         <div>
             <ul>
                 <li>Quick Links:</li>
+                <li><a href="/games"> Play Games </a></li>
                 <li>HOW-TO</li>
                 <li>getNOTES</li>
                 <li>Upload Notes</li>
