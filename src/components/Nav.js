@@ -7,6 +7,7 @@ import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt, FaGamepad} from 'reac
 import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
 import { RiHome4Line } from 'react-icons/ri';
 import { GrGamepad } from 'react-icons/gr';
+import { MdOutlineForum } from 'react-icons/md';
 // import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
 
 // AOS import
@@ -71,6 +72,9 @@ export default function Nav() {
           <NavLink to="/games">
             <li><GrGamepad /> Take-A-Rest</li>
           </NavLink>
+          <NavLink to="/forum">
+            <li><MdOutlineForum />Forum</li>
+          </NavLink>
         </ul>
         {user &&
           <div className='nav--buttons--container'>
@@ -118,6 +122,9 @@ export default function Nav() {
           </NavLink>
           <NavLink to="/games">
             <li><GrGamepad /> Take-A-Rest</li>
+          </NavLink>
+          <NavLink to="/forum">
+            <li><MdOutlineForum />Forum</li>
           </NavLink>
       </ul>
       {user &&
