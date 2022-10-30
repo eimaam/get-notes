@@ -9,12 +9,12 @@ export const data = [
     },
     {
         "title": "Notes Page...",
-        "detail": "You get logged in immediately if all details are correct. Notes are arranged based on the listed categories, click to expand a category. ",
+        "detail": "You get logged in immediately if all details are correct. Notes are arranged based on Levels in self-explanatory Group name. Click a Group to expand. ",
 
     },
     {
         "title": "Download Notes...",
-        "detail": "On the Notes Page, select category of Note to expand it, Click on the Download Button next to the Name of Note you wish to download. ✔️ ",
+        "detail": "Find a Note you need? Click the download button at the far right of a Note title to Open it in Browser or download to your Device  ✔️ ",
     },
     {
         "title": "To Upload Notes...",
