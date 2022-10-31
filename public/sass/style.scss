@@ -303,6 +303,8 @@ label{
         @include mobile(){
             width: 90%;
             padding: 1rem;
+            min-height: 50vh;
+            margin-block: 2rem;
         }
     }
 }

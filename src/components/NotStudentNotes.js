@@ -50,8 +50,6 @@ catch(err){
 useEffect(() => {
     // setLoading(true)
     fetchUserDetail()
-    props.showNav(true)
-    
     if(userInfo.username != undefined){
         setLoading(true)
         userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')

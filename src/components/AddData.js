@@ -22,7 +22,7 @@ export default function AddData(props) {
 }, [])
 
   useEffect(() => {
-    props.showNav(false)
+    // props.showNav(false)
     fetchUserDetail()
 
     if(userInfo.username != undefined){

@@ -22,7 +22,7 @@ export default function Signup(props) {
 
 
   useEffect(() => {
-    props.showNav(false)
+    // props.showNav(false)
     onAuthStateChanged(auth, data => {
       data && navigate('../notes')
     })
