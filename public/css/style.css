@@ -15,6 +15,9 @@
     width: 100%;
   }
 }
+#notes .accordion--container:first-of-type {
+  margin-top: 4rem;
+}
 #notes .accordion--container {
   width: 70%;
   background-color: #fff;
@@ -1202,6 +1205,8 @@ label {
   #signup form, #upload form, #userSettings form, #resetPass form, #login form {
     width: 90%;
     padding: 1rem;
+    min-height: 50vh;
+    margin-block: 2rem;
   }
 }
 
