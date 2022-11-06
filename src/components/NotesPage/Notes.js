@@ -45,7 +45,6 @@ export default function Notes(props) {
     useEffect(() => {
         // setLoading(true)
         fetchUserDetail()
-        props.showNav(true)
         
         if(userInfo.username != undefined){
             setLoading(true)
@@ -55,7 +54,7 @@ export default function Notes(props) {
                 navigate('./addusername')
         }
         
-    }, [userInfo, props.showNav])
+    }, [userInfo])
 
     // function to Fetch Notes in based on Department category
     const fetchNotes = async (level, setLevel) => {

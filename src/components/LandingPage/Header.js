@@ -15,7 +15,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 export default function Header(){
 
   useEffect(() => {
-    AOS.init({delay: 700, duration: 700})
+    AOS.init({delay: 700, duration: 700,})
   }, [])
 
 

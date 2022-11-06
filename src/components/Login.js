@@ -18,7 +18,7 @@ export default function Login(props) {
 
 
   useEffect(() => {
-    props.showNav(false)
+    // props.showNav(false)
     onAuthStateChanged(auth, data => {
         if(data){
           navigate('../notes')
