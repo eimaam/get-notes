@@ -27,7 +27,6 @@ import { AdminDashboard } from './components/Dashboard/AdminDashboard';
 import { TakeARest } from './components/TakeARest';
 import { Forum } from './components/Forum/Forum';
 import RouteWithNavBar from './Route/RouteWithNavBar';
-import RouteWithNoNavBar from './Route/RouteWithNoNavBar';
 
 
 function App(props) {
