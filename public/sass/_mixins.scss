@@ -24,7 +24,7 @@
     }
 }
 @mixin containerDesktop{
-    width: 80%;
+    width: 85%;
     min-height: 100vh;
     float: right;
     margin: 0;
@@ -33,7 +33,9 @@
     >div{
         // border: solid green;
     }
-
+    @include tablet{
+        width: 80%;
+    }
     @include mobile(){
         width: 100%;
     }
