@@ -6,7 +6,7 @@
 
         // game cards design component
         const GameCard = (props) => {
-            return <div className='game--card'>
+            return <div className='game--card' data-aos="fade-up">
                         {props.gameLink}
                         <h3>{props.gameTitle}</h3>
                         <p>{props.desc}</p>

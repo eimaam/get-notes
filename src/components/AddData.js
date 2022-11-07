@@ -8,7 +8,7 @@ import { useData } from '../contexts/DataContext';
 import { HashLoader } from 'react-spinners';
 
 
-export default function AddData(props) {
+export default function AddData() {
     const { userInfo, fetchUserDetail } = useData();
   const { user, navigate, DocRef, error, setError, loading, setLoading } = useAuth();
 
@@ -27,7 +27,7 @@ export default function AddData(props) {
    useEffect(() => {
     onAuthStateChanged(auth, data => {
         if(!data){
-          navigate('../login')
+          navigate('/login')
         }
     })
 }, [])
@@ -40,7 +40,6 @@ export default function AddData(props) {
       }else{
           setLoading(false)
       }   
-      
   }, [userInfo])
 
 
@@ -165,7 +164,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       :
 
         <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
-              <h3>We need few details about you: </h3>
+              <h3>We need few details about you...</h3>
               <p>Are you an Engineering Student of the University of Maiduguri?</p>
               <div className='flex'>
                 <div>

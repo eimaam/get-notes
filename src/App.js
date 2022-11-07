@@ -36,7 +36,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
-    AOS.init()
+    AOS.init({delay: 700, easing: 'ease-out'})
     setTimeout(() => {
       setLoading(false)
     }, 2500);

@@ -20,7 +20,7 @@ export default function Login() {
   useEffect(() => {
     onAuthStateChanged(auth, data => {
         if(data){
-          navigate('/welcome')
+          navigate('/notes')
         }
     })
 }, [])

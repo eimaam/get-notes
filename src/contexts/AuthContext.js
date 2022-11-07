@@ -53,6 +53,7 @@ export default function AuthProvider({ children }) {
                         console.log(err.message)
                     }                
                 }
+                setUser(data)
                 setLoading(false)
             })
             }

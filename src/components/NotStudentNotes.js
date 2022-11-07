@@ -63,21 +63,7 @@ useEffect(() => {
     })
     
 }, [userInfo])
-// useEffect(() => {
-//     fetchUserDetail()
-//     onAuthStateChanged(auth, data => {
-//         if(data){
-//             if(userInfo.username != undefined){
-//                 setLoading(true)
-//                 userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
-//             }else if(userInfo.username === undefined){
-//                 setLoading(false)
-//                 navigate('./addusername')
-//             }
-//         }
-//     })
-    
-// }, [auth])
+
 
 useEffect(() => {
   setLoading(true)

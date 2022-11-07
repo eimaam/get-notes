@@ -10,13 +10,9 @@ import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 import { NotesLayout } from './NotesLayout'
 
-// AOS import
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-
-
 export default function Notes() {
 
-    const { isLogged, setIsLogged, navigate, user, loading, setLoading } = useAuth()
+    const { isLogged, setIsLogged, navigate, user, setUser, loading, setLoading } = useAuth()
     const { userInfo, setHideNav, fetchUserDetail } = useData();
 
     // state to manage accordions: setting show and hide
@@ -46,9 +42,11 @@ export default function Notes() {
         // fetchUserDetail()
         if(userInfo.username != undefined){
             setLoading(true)
-            userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
+            // userInfo.student === "no" ? navigate('/not-student') : navigate('./notes')
         }else if(userInfo.username === undefined){
-            return navigate('/addusername')
+            navigate('/addusername')
+        }else if(userInfo.student === "no"){
+            navigate('/not-student')
         }
     }, [userInfo])
 
@@ -197,7 +195,7 @@ export default function Notes() {
                         level="200"
                         id='Level2'
                         show={showLectureNotes}
-                        noteSet={lectureNotes100}
+                        noteSet={lectureNotes200}
                     />
 
                     {/* 300 
@@ -219,7 +217,7 @@ export default function Notes() {
                         level="400"
                         id='Level4'
                         show={showLectureNotes}
-                        noteSet={lectureNotes100}
+                        noteSet={lectureNotes400}
                     />
                     
                     {/* 500 
@@ -230,7 +228,7 @@ export default function Notes() {
                         level="500"
                         id='Level5'
                         show={showLectureNotes}
-                        noteSet={lectureNotes100}
+                        noteSet={lectureNotes500}
                     />
                     {/* end of levels */}
                 </div>
@@ -291,7 +289,7 @@ export default function Notes() {
                         level="400"
                         id='others4'
                         show={showOtherNotes}
-                        noteSet={otherNotes300}
+                        noteSet={otherNotes400}
                     />
                     
                     {/* 500 
@@ -302,7 +300,7 @@ export default function Notes() {
                         level="500"
                         id='others5'
                         show={showOtherNotes}
-                        noteSet={otherNotes300}
+                        noteSet={otherNotes500}
                     />
                     {/* end of levels */}
                 </div>

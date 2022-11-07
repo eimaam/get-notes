@@ -110,21 +110,20 @@ export default function Nav() {
       <ul>
           <NavLink to="/">
             <li>
-              <RiHome4Line /> 
-              Home
+            🏠 Home
             </li>
           </NavLink>
           <NavLink to="/notes">
-            <li><TbBookDownload /> Get Notes</li>
+            <li>📚 Get Notes</li>
           </NavLink>
           <NavLink to="/upload">
-            <li><TbBookUpload /> Upload Notes </li>
+            <li>🚀 Upload Notes </li>
           </NavLink>
           <NavLink to="/games">
-            <li><GrGamepad /> Take-A-Rest</li>
+            <li>🎮 Take-A-Rest</li>
           </NavLink>
           <NavLink to="/forum">
-            <li><MdOutlineForum />Forum</li>
+            <li>💬 Forum</li>
           </NavLink>
       </ul>
       {user &&
