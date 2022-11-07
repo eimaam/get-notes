@@ -10,9 +10,7 @@ import error from "./assets/error.jpg"
 
 export default function ErrorPage(props) {
   useEffect(() => {
-    props.showNav(false)
     AOS.init({delay: 200, duration: 700})
-
   })
 
   return (

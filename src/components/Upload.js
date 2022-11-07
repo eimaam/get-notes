@@ -16,14 +16,6 @@ export default function Upload() {
   const { navigate, loading, setLoading } = useAuth()
   const { userInfo, setHideNav } = useData()
 
-  useEffect(() => {
-    onAuthStateChanged(auth, data => {
-        if(!data){
-          navigate('../login')
-        }
-    })
-}, [])
-
   const [data, setData] = useState({
     courseCode: "",
     noteName: "",

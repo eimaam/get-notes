@@ -12,8 +12,19 @@ export default function AddData(props) {
     const { userInfo, fetchUserDetail } = useData();
   const { user, navigate, DocRef, error, setError, loading, setLoading } = useAuth();
 
-  // check if user is logged in or nah
-  useEffect(() => {
+  // useEffect(() => {
+  //   fetchUserDetail()
+  //   onAuthStateChanged(auth, data => {
+  //   if(data && userInfo.username != undefined){
+  //     navigate('./notes')
+  //   }else{
+  //     setLoading(false)
+  //   }  
+  //   })   
+  // }, [userInfo])
+
+   // check if user is logged in or nah
+   useEffect(() => {
     onAuthStateChanged(auth, data => {
         if(!data){
           navigate('../login')
@@ -22,7 +33,6 @@ export default function AddData(props) {
 }, [])
 
   useEffect(() => {
-    // props.showNav(false)
     fetchUserDetail()
 
     if(userInfo.username != undefined){
@@ -32,6 +42,7 @@ export default function AddData(props) {
       }   
       
   }, [userInfo])
+
 
   //state to save Student or not confirmation - Check if a user 
   const [studentSelection, setStudentSelection] = useState("")
@@ -154,12 +165,18 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       :
 
         <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
-            <h3>Are you an Engineering Student of the University of Maiduguri?</h3>
-              <input type="checkbox" value="yes" name='student' id='student' onChange={handleStudentSelection}/>
-              <label htmlFor="" >YES</label>
-              <br />
-              <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
-              <label htmlFor="">NO</label>
+              <h3>We need few details about you: </h3>
+              <p>Are you an Engineering Student of the University of Maiduguri?</p>
+              <div className='flex'>
+                <div>
+                  <input type="checkbox" value="yes" name='student' id='student' onChange={handleStudentSelection}/>
+                  <label htmlFor="" >YES</label>
+                </div>
+                <div>
+                  <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
+                  <label htmlFor="">NO</label>
+                </div>
+              </div>
               <br />
         </form>
       }

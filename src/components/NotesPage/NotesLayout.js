@@ -15,7 +15,7 @@ export const NotesLayout = (props) => {
                 {props.noteSet.length > 0 
                     ?
                 props.noteSet.map((notes, index) => {
-                    return <div className="note--title">
+                    return <div className="note--title" key={index}>
                                 <p>
                                     <GiWhiteBook /> {notes.CourseCode}:&nbsp;
                                     {/* Reduce note title/name to max 50 chars  */}

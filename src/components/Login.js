@@ -9,22 +9,24 @@ import { useData } from '../context/DataContext';
 import { HashLoader, BeatLoader } from "react-spinners"
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { setUserId } from 'firebase/analytics';
 // ..
 
 
-export default function Login(props) {
-  const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
+export default function Login() {
+  const { user, setUser, logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
   const { setHideNav, userInfo } = useData()
 
 
   useEffect(() => {
-    // props.showNav(false)
     onAuthStateChanged(auth, data => {
         if(data){
-          navigate('../notes')
+          navigate('/welcome')
         }
     })
 }, [])
+
+console.log(user)
 
   const [data, setData] = useState({
     email: '',
@@ -48,8 +50,8 @@ export default function Login(props) {
       await setPersistence(auth, browserLocalPersistence)
       await signInWithEmailAndPassword(auth, data.email, data.password)
         .then((res) => {
-          toast.success(`Welcome ${userInfo.username}`)
-          navigate('../notes') 
+          toast.success(`Welcome...👋`)
+          navigate('/welcome') 
         })
       }
       catch(err){
@@ -84,10 +86,11 @@ export default function Login(props) {
 
   return (
       <div id='login' onClick={() => setHideNav(true)} data-aos="flip-up" data-aos-easing="ease-in">
+        {loading ? <BeatLoader /> : 
       <form action="" onSubmit={handleSubmit}>
         <div>
           <h2>Hello there!👋 </h2>
-          <p>Enter your log in credentials to continue</p>
+          <p>Enter your log in credentials to gain access </p>
         </div>
         <div>
             <input
@@ -124,6 +127,7 @@ export default function Login(props) {
             Sign up with <FcGoogle />
           </button>
       </form>
+          }
       </div>
         )
       }

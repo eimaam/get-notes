@@ -218,10 +218,7 @@ export const AdminDashboard = (props) => {
 
     }
     
-    console.log(numberOfCpe)
-
     useEffect(() => {
-        props.showNav(false)
         getTotalUsers()
         getTotalFiles()
         getDeptUsers()
@@ -290,13 +287,14 @@ export const AdminDashboard = (props) => {
                     <h2>Total Number of Users based on Department:</h2>
                     <div className='flex'>
                         {departments.map((item, index) => {
-                            return <div className='dash--card'>
+                            return (<div className='dash--card' key={index}>
                                 <h2><FaUser className='icon'/></h2>
                                 <div>
                                     <h2>100</h2>
                                     <h3>{item} Users </h3>
                                 </div>
                             </div>
+                            )
                         })}
                     </div>
                 </div>

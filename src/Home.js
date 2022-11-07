@@ -13,11 +13,6 @@ import { CheckForum, ForumNotice } from './components/LandingPage/ForumNotice'
 
 export default function Home(props) {
   const { loading, setLoading } = useAuth()
-  useEffect(() => {
-    props.showNav(false)
-
-    
-  }, [])
   
   return (
     <>

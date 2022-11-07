@@ -34,32 +34,31 @@ export default function AuthProvider({ children }) {
     const [isLogged, setIsLogged] = useState(false)
     const [user, setUser] = useState({})
 
-    const getData = async () => {
-        setLoading(true)
-        onAuthStateChanged(auth, async data => {
-            if(data){
-                setIsLogged(true)
-                try{
-                    const document = await getDoc(doc(database, "userDetails", data.email))
-                    if(!document.exists()){
-                        await setDoc(doc(DocRef, data.email), {
-                            email: data.email 
-                        })
-                    }
-                }
-                catch(err){
-                    console.log(err.message)
-                }                
-            }
-            setUser(data)
-            setLoading(false)
-        })
-    }
-
-    // UseEffect Fetch User Data
     useEffect(() => {
+        const getData = async () => {
+            setLoading(true)
+            onAuthStateChanged(auth, async data => {
+                if(data){
+                    setIsLogged(true)
+                    setUser(data)
+                    try{
+                        const document = await getDoc(doc(database, "userDetails", data.email))
+                        if(!document.exists()){
+                            await setDoc(doc(DocRef, data.email), {
+                                email: data.email 
+                            })
+                        }
+                    }
+                    catch(err){
+                        console.log(err.message)
+                    }                
+                }
+                setLoading(false)
+            })
+            }
         getData()
     }, [])
+    
 
     // log in with gmail -- pop up
     const logInWithPopUp = async () => {
@@ -85,16 +84,16 @@ export default function AuthProvider({ children }) {
 
     const logOut = async () => {
         setIsLogged(false)
-        setUser(null)
         signOut(auth)
         .then(() => {
+            setUser(null)
             localStorage.clear()
             toast.info("LOGGED OUT!")
         })
         if(!user){
             navigate('../login')
         }else{
-            navigate('../')
+            navigate('./')
         }
     }
 
@@ -102,7 +101,6 @@ export default function AuthProvider({ children }) {
     
 const value = {
     user,
-    setUser,
     DocRef,
     logInWithPopUp,
     logOut,
@@ -113,6 +111,8 @@ const value = {
     setError,
     loading,
     setLoading,
+    isLogged,
+    setIsLogged
 }
 
   return (

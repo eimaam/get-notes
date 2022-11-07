@@ -22,11 +22,10 @@ export default function Signup(props) {
 
 
   useEffect(() => {
-    // props.showNav(false)
     onAuthStateChanged(auth, data => {
-      data && navigate('../notes')
+      data ? navigate('/notes') : navigate('/signup')
     })
-  }, [props.showNav])
+  }, [navigate])
     
 // clear error message after 5 seconds
 useEffect(() => {

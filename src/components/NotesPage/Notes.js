@@ -14,9 +14,9 @@ import { NotesLayout } from './NotesLayout'
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 
-export default function Notes(props) {
+export default function Notes() {
 
-    const { navigate, user, loading, setLoading } = useAuth()
+    const { isLogged, setIsLogged, navigate, user, loading, setLoading } = useAuth()
     const { userInfo, setHideNav, fetchUserDetail } = useData();
 
     // state to manage accordions: setting show and hide
@@ -43,19 +43,16 @@ export default function Notes(props) {
 
     // check if user has username
     useEffect(() => {
-        // setLoading(true)
-        fetchUserDetail()
-        
+        // fetchUserDetail()
         if(userInfo.username != undefined){
             setLoading(true)
             userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
         }else if(userInfo.username === undefined){
-                setLoading(false)
-                navigate('./addusername')
+            return navigate('/addusername')
         }
-        
     }, [userInfo])
 
+    console.log(userInfo.username)
     // function to Fetch Notes in based on Department category
     const fetchNotes = async (level, setLevel) => {
         try{
@@ -122,22 +119,14 @@ export default function Notes(props) {
         fetchExtras()
     }
 
-    // check status of User session - logged or not
-    // Also load all notes
+    // Get all Notes all notes
     useEffect(() => {
         setLoading(true)
-        onAuthStateChanged(auth, data => {
-            if(!data){
-              navigate('../login')
-            }else if(data){
-                getAllNotes()
-            }
-
-            setTimeout(() => {
-                setLoading(false)
-            }, 5000);
-        })
-    }, [loading, getAllNotes()])
+        getAllNotes()
+        setTimeout(() => {
+            setLoading(false)
+        }, 5000);
+    }, [userInfo])
     
     // display Levels 
     function showCategory(cat, setCat){
@@ -165,7 +154,7 @@ export default function Notes(props) {
 
   return (
     <div id='notes' className="notes--container" onClick={() => setHideNav(true)} data-aos="flip-right" data-aos-easing="ease-out">
-        {!user && loading 
+        {!isLogged && loading 
         
         ? 
         

@@ -5,9 +5,6 @@ import { database } from '../../firebaseConfig'
 import { toast } from 'react-toastify'
 
 export const Forum = (props) => {
-  useEffect(() => {
-    props.showNav(false)
-  }, [])
 
   const [email, setEmail] = useState("")
 

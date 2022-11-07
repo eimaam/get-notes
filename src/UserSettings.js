@@ -16,14 +16,6 @@ export default function UserSettings() {
   const { navigate, setError, error, message, setMessage } = useAuth()
   const { setHideNav } = useData()
 
-  useEffect(() => {
-    onAuthStateChanged(auth, data => {
-        if(!data){
-          navigate('../login')
-        }
-    })
-}, [])
-
 
     const [show, setShow] = useState(false)
 

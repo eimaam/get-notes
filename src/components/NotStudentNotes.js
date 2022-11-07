@@ -48,28 +48,47 @@ catch(err){
 }
 
 useEffect(() => {
-    // setLoading(true)
     fetchUserDetail()
-    if(userInfo.username != undefined){
-        setLoading(true)
-        userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
-    }else if(userInfo.username === undefined){
-            setLoading(false)
-            navigate('./addusername')
-    }
+    onAuthStateChanged(auth, data => {
+        if(data && userInfo.username != undefined){
+            setLoading(true)
+        }else if(userInfo.student === "no"){
+            navigate('./not-student')
+        }else if(userInfo.student === "yes"){
+            navigate('./notes')
+        }else if(userInfo.username === undefined){
+                setLoading(false)
+                navigate('./addusername')
+            }
+    })
     
-}, [userInfo, props.showNav])
+}, [userInfo])
+// useEffect(() => {
+//     fetchUserDetail()
+//     onAuthStateChanged(auth, data => {
+//         if(data){
+//             if(userInfo.username != undefined){
+//                 setLoading(true)
+//                 userInfo.student === "no" ? navigate('./not-student') : navigate('./notes')
+//             }else if(userInfo.username === undefined){
+//                 setLoading(false)
+//                 navigate('./addusername')
+//             }
+//         }
+//     })
+    
+// }, [auth])
 
 useEffect(() => {
   setLoading(true)
-  if(!user){
-    return navigate('./login')
-  }
-  if(userInfo.student === "yes"){
-    return navigate('./notes')
-  }
   
   fetchAllNotes()
+
+  if(user === null){
+    return navigate('./login')
+    }else if(userInfo.student === "yes"){
+        return navigate('./notes')    
+    }   
 
   setTimeout(() => {
       setLoading(false)
@@ -80,12 +99,12 @@ useEffect(() => {
 
 const fetchAllNotes = () => {
     fetchNotes("agricultural engineering", setCpeNotes)
-  fetchNotes("civil engineering", setCweNotes)
-  fetchNotes("chemical engineering", setCheNotes)
-  fetchNotes("computer engineering", setCpeNotes)
-  fetchNotes("electrical & electronics engineering", setEeeNotes)
-  fetchNotes("food science technology", setFstNotes)
-  fetchNotes("mechanical engineering", setMeeNotes)
+    fetchNotes("civil engineering", setCweNotes)
+    fetchNotes("chemical engineering", setCheNotes)
+    fetchNotes("computer engineering", setCpeNotes)
+    fetchNotes("electrical & electronics engineering", setEeeNotes)
+    fetchNotes("food science technology", setFstNotes)
+    fetchNotes("mechanical engineering", setMeeNotes)
 }
 
 

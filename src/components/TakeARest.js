@@ -3,12 +3,8 @@
     import FootNote from './LandingPage/FootNote'
 
     export const TakeARest = (props) => {
-        useEffect(() => {
-        
-            props.showNav(false)
 
-        }, [])
-
+        // game cards design component
         const GameCard = (props) => {
             return <div className='game--card'>
                         {props.gameLink}

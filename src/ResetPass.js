@@ -10,17 +10,16 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 
 
-export default function ResetPass(props) {
+export default function ResetPass() {
     const { navigate, setError, error, message, setMessage, loading, setLoading } = useAuth()
 
   useEffect(() => {
-  props.showNav(false)
     onAuthStateChanged(auth, data => {
         if(data){
           navigate('../notes')
         }
     })
-}, [props.showNav])
+}, [])
 
     // const [show, setShow] = useState(false)
 
