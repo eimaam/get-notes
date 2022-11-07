@@ -9,6 +9,7 @@ import { useData } from '../contexts/DataContext';
 import { HashLoader, BeatLoader } from "react-spinners"
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { FaAt, FaKey, FaUser, FaUserLock } from 'react-icons/fa';
 // ..
 
 
@@ -91,24 +92,26 @@ console.log(user)
           <h2>Hello there!👋 </h2>
           <p>Enter your log in credentials to gain access </p>
         </div>
-        <div>
+        <div className='input--field'>
+            <span><FaUser /></span>
             <input
             name='email'
             type="email" 
             id='email' 
-            placeholder='yourAddress@example.com' 
+            placeholder='Email Address' 
             value={data.email}
             onChange={handleChange}
             required
             />
         </div>
 
-        <div>
+        <div className='input--field'>
+          <span><FaKey /></span>
             <input
             name='password'
             type="password" 
             id='password' 
-            placeholder='Your Password' 
+            placeholder='Password' 
             value={data.password}
             onChange={handleChange}
             required

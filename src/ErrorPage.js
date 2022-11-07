@@ -9,9 +9,6 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 import error from "./assets/error.jpg"
 
 export default function ErrorPage(props) {
-  useEffect(() => {
-    AOS.init({delay: 200, duration: 700})
-  })
 
   return (
     <div className='error--page' >

@@ -249,6 +249,16 @@ label{
 
     .confirm{
         display: inline;
+        @include flex(column);
+
+        .options{
+            @include flex(row);
+            margin-block: 1rem;
+
+            @include mobile{
+                flex-direction: column;
+            }
+        }
         
 
         input{
@@ -257,6 +267,7 @@ label{
             height: 1rem;
             border: 0;
         }
+
         button{
             width: max-content;
             height: max-content;
@@ -287,6 +298,20 @@ label{
             text-align: center;
         }
 
+        .input--field{
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+
+            span{
+                position: absolute;
+                text-align: right;
+                margin: 1rem;
+                margin-top: 1.5rem;
+                color: rgb(165, 163, 163);
+            }
+        }
+
         div{
             margin: auto;
             width: 80%;
@@ -294,6 +319,7 @@ label{
             @include mobile(){
                 width: 100%;
             }
+
 
             input, select{
                 width: 100%;

@@ -40,7 +40,7 @@ export default function AddData() {
       }else{
           setLoading(false)
       }   
-  }, [userInfo])
+  }, [userInfo, user])
 
 
   //state to save Student or not confirmation - Check if a user 

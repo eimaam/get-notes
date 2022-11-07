@@ -7,7 +7,7 @@ import Upload from './components/Upload';
 
 import { Routes, Route } from "react-router-dom"
 import Notes from './components/NotesPage/Notes';
-
+// Toastify
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -28,6 +28,7 @@ import { Forum } from './components/Forum/Forum';
 import RouteWithNavBar from './Routes/RoutesWithNavBar';
 import { ProtectedRoutes } from './Routes/ProtectedRoutes';
 import { WelcomePage } from './components/WelcomePage';
+// Animate on Scroll import
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -39,7 +40,7 @@ function App() {
     AOS.init({delay: 700, easing: 'ease-out'})
     setTimeout(() => {
       setLoading(false)
-    }, 2500);
+    }, 0);
   }, [])
 
   return (

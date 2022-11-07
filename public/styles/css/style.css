@@ -1153,6 +1153,24 @@ label {
 }
 #signup .confirm, #upload .confirm, #userSettings .confirm, #resetPass .confirm, #login .confirm {
   display: inline;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#signup .confirm .options, #upload .confirm .options, #userSettings .confirm .options, #resetPass .confirm .options, #login .confirm .options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 1rem;
+}
+@media only screen and (max-width: 1000px) {
+  #signup .confirm .options, #upload .confirm .options, #userSettings .confirm .options, #resetPass .confirm .options, #login .confirm .options {
+    flex-direction: column;
+  }
 }
 #signup .confirm input, #upload .confirm input, #userSettings .confirm input, #resetPass .confirm input, #login .confirm input, #signup .confirm button, #upload .confirm button, #userSettings .confirm button, #resetPass .confirm button, #login .confirm button {
   width: 50px;
@@ -1193,6 +1211,18 @@ label {
 }
 #signup form p, #upload form p, #userSettings form p, #resetPass form p, #login form p {
   text-align: center;
+}
+#signup form .input--field, #upload form .input--field, #userSettings form .input--field, #resetPass form .input--field, #login form .input--field {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+#signup form .input--field span, #upload form .input--field span, #userSettings form .input--field span, #resetPass form .input--field span, #login form .input--field span {
+  position: absolute;
+  text-align: right;
+  margin: 1rem;
+  margin-top: 1.5rem;
+  color: rgb(165, 163, 163);
 }
 #signup form div, #upload form div, #userSettings form div, #resetPass form div, #login form div {
   margin: auto;

@@ -11,9 +11,10 @@ import { BeatLoader, HashLoader } from 'react-spinners'
 import { FcGoogle } from 'react-icons/fc';
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { FaUser, FaKey, FaAt } from 'react-icons/fa';
 // ..
 
-export default function Signup(props) {
+export default function Signup() {
   const { logInWithPopUp, setUser, DocRef, navigate, loading, setLoading, error, setError} = useAuth();
   const { setHideNav } = useData();
 
@@ -23,9 +24,9 @@ export default function Signup(props) {
 
   useEffect(() => {
     onAuthStateChanged(auth, data => {
-      data ? navigate('/notes') : navigate('/signup')
+      data && navigate('/notes')
     })
-  }, [navigate])
+  }, [])
     
 // clear error message after 5 seconds
 useEffect(() => {
@@ -194,21 +195,24 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
  
   return (
     <div id='signup' onClick={() => setHideNav(true)} data-aos="fade-down" data-aos-easing="ease-out">
-      <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
+      {/* <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
           <h3>Are you an Engineering Student of the University of Maiduguri?</h3>
-            <input type="checkbox" value="yes" name='student' id='student' onChange={handleStudentSelection}/>
-            <label htmlFor="" >YES</label>
-            <br />
-            <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
-            <label htmlFor="">NO</label>
-      </form>
-      {studentSelection === "yes"
-      && 
+          <div className="options">
+            <div>
+              <input type="checkbox" value="yes" name='student' id='student' onChange={handleStudentSelection}/>
+              <label htmlFor="" >YES</label>
+            </div>
+            <div>
+              <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
+              <label htmlFor="">NO</label>
+            </div>
+          </div>
+      </form> */}
+      {/* {studentSelection === "yes"
+      &&  */}
       <form onSubmit={signUp} data-aos="fade-up" data-aos-easing="ease-out">
-        <div>
-          {/* <label htmlFor="Username">
-            Username
-          </label> */}
+        <div className='input--field'>
+          <span><FaUser /></span>
           <input
           name='username'
           type="text" 
@@ -221,12 +225,8 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           />
         </div>
 
-        
-
-        <div>
-          {/* <label htmlFor="Email">
-            Email
-          </label> */}
+        <div className="input--field">
+          <span><FaAt /></span>
           <input
           name='email'
           type="email" 
@@ -238,10 +238,8 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           />
         </div>
 
-        <div>
-          {/* <label htmlFor="Passowrd">
-            Password
-          </label> */}
+        <div className="input--field">
+          <span><FaKey /></span>
           <input
           name='password'
           type="password" 
@@ -253,10 +251,8 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           />
         </div>
 
-        <div>
-          {/* <label htmlFor="Confirm Passowrd">
-            Confirm Password
-          </label> */}
+        <div className="input--field">
+        <span><FaKey /></span>
           <input
           name='confirmPassword'
           type="password" 
@@ -268,9 +264,6 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           />
         </div>
         <div>
-          {/* <label htmlFor="Department">
-            Department
-          </label> */}
           <select defaultValue="Select Department" name="department" onChange={handleChange} required>
             <option defaultValue="" disabled>Select Department</option>
             <option value="Agricultural Engineering">Agricultural Engineering</option>
