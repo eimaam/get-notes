@@ -5,19 +5,7 @@ import { Link } from 'react-router-dom';
 // hero image import
 import heroImage2 from "../../assets/reading_online.png"
 
-// AOS import
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-// ..
-
-
-
 export default function Header(){
-
-  useEffect(() => {
-    AOS.init({delay: 700, duration: 700,})
-  }, [])
-
 
   return (
     <header>

@@ -4,9 +4,9 @@ import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/aut
 import { setDoc, doc, query, collection, onSnapshot, where } from 'firebase/firestore';
 import { auth, database } from "../firebaseConfig"
 import { toast } from 'react-toastify';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { useEffect } from 'react';
-import { useData } from '../context/DataContext';
+import { useData } from '../contexts/DataContext';
 import { BeatLoader, HashLoader } from 'react-spinners'
 import { FcGoogle } from 'react-icons/fc';
 // AOS import

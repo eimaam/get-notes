@@ -5,12 +5,10 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { BeatLoader, HashLoader } from 'react-spinners'
-import { useAuth } from '../context/AuthContext'
-import { useData } from '../context/DataContext'
+import { useAuth } from '../contexts/AuthContext'
+import { useData } from '../contexts/DataContext'
 import { auth, database, storage } from '../firebaseConfig'
-// AOS import
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-// ..
+
 
 export default function Upload() {
   const { navigate, loading, setLoading } = useAuth()

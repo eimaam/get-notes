@@ -5,16 +5,15 @@ import Nav from './components/Nav';
 import Signup from './components/Signup';
 import Upload from './components/Upload';
 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Notes from './components/NotesPage/Notes';
-import Footer from './components/Footer';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { HashLoader, PropagateLoader, PulseLoader } from "react-spinners"
-import AuthProvider from './context/AuthContext';
-import DataProvider from './context/DataContext';
+import { HashLoader } from "react-spinners"
+import AuthProvider from './contexts/AuthContext';
+import DataProvider from './contexts/DataContext';
 import ErrorPage from './ErrorPage';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -26,24 +25,23 @@ import { NotStudentNotes } from './components/NotStudentNotes';
 import { AdminDashboard } from './components/Dashboard/AdminDashboard';
 import { TakeARest } from './components/TakeARest';
 import { Forum } from './components/Forum/Forum';
-import RouteWithNavBar from './Route/RouteWithNavBar';
-import { ProtectedRoutes } from './Route/ProtectedRoutes';
-import { Success } from './components/Success';
+import RouteWithNavBar from './Routes/RoutesWithNavBar';
+import { ProtectedRoutes } from './Routes/ProtectedRoutes';
+import { WelcomePage } from './components/WelcomePage';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
-function App(props) {
+function App() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     setLoading(true)
+    AOS.init()
     setTimeout(() => {
       setLoading(false)
     }, 2500);
   }, [])
-  
-  // state passed as props to other components, used to manage Nav bar display on certain pages.
-  // Only display Nav bar on a component if set to true
 
-  
   return (
         <>
           {/* turned loader to enable app data from AuthContext to load before displaying */}
@@ -51,8 +49,7 @@ function App(props) {
           
           ?
     
-          // {/* // loader from react-spinners */}
-
+          // loader 
           <div className='loader'>
              <HashLoader loading={loading} className='test'/>
           </div>
@@ -75,7 +72,7 @@ function App(props) {
                   <Route path="/games" element={<TakeARest />}    />
                   <Route path="/forum" element={<Forum />}    />
                   <Route path="/admin" element={<AdminDashboard />}    />      
-                  <Route path="/welcome" element={<Success />}    />
+                  <Route path="/welcome" element={<WelcomePage />}    />
 
                   {/* Routes with Side Nav Bar */}
                   <Route element={<RouteWithNavBar />}>

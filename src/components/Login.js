@@ -3,13 +3,12 @@ import { signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browser
 import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-toastify';
 import { auth } from '../firebaseConfig';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import { useData } from '../context/DataContext';
+import { useData } from '../contexts/DataContext';
 import { HashLoader, BeatLoader } from "react-spinners"
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import { setUserId } from 'firebase/analytics';
 // ..
 
 

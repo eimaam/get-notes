@@ -32,7 +32,7 @@ export default function AuthProvider({ children }) {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         const getData = async () => {

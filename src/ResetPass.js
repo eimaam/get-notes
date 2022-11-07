@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth'
 import { toast } from 'react-toastify';
 import { auth } from './firebaseConfig';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 import { PulseLoader } from 'react-spinners'
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles

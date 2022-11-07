@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { FaBars, FaTimes } from "react-icons/fa"
 import { HashLink } from 'react-router-hash-link'
 

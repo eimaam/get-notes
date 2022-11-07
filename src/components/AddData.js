@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { onAuthStateChanged} from 'firebase/auth'
 import { toast } from 'react-toastify';
 import { auth, database } from '../firebaseConfig';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { collection, doc, query, updateDoc, onSnapshot, where } from 'firebase/firestore';
-import { useData } from '../context/DataContext';
+import { useData } from '../contexts/DataContext';
 import { HashLoader } from 'react-spinners';
 
 
