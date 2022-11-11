@@ -3,6 +3,10 @@
     background-color: $--primary;
     @include flex(column);
 
+    @include mobile{
+        width: 90%;
+    }
+
 
     button{
         background-color: $--secondary;
@@ -14,8 +18,18 @@
     #quotes{
         width: 90%;
         @include flex(row);
-        gap: 0;
+        gap: 0.5rem;
         text-align: center;
+        flex-wrap: wrap;
+
+
+        @include tablet{
+            width: 100%;
+        }
+
+        @include mobile{
+            width: 90% !important;
+        }
 
 
         .quote--card{
@@ -25,11 +39,17 @@
             min-width: 300px;
             min-height: 200px;
 
-
             i{
                 color: $--primary;
                 text-transform: capitalize;
             }
+
+
+            @include mobile{
+                min-width: 200px;
+            }
+
+
         }
     }
 }
