@@ -1,7 +1,6 @@
 import React from 'react'
 // import Container from './components/Container';
 import Login from './components/Login';
-import Nav from './components/Nav';
 import Signup from './components/Signup';
 import Upload from './components/Upload';
 
@@ -40,7 +39,7 @@ function App() {
     AOS.init({delay: 700, easing: 'ease-out'})
     setTimeout(() => {
       setLoading(false)
-    }, 2500);
+    }, 0);
   }, [])
 
   return (

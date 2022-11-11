@@ -50,7 +50,6 @@ export default function Notes() {
         }
     }, [userInfo])
 
-    console.log(userInfo.username)
     // function to Fetch Notes in based on Department category
     const fetchNotes = async (level, setLevel) => {
         try{

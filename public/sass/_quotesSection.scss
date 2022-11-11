@@ -1,0 +1,35 @@
+.quotes--section{
+    @extend .homepage--sizing;
+    background-color: $--primary;
+    @include flex(column);
+
+
+    button{
+        background-color: $--secondary;
+        a{
+            color: $--main;
+        }
+    }
+
+    #quotes{
+        width: 90%;
+        @include flex(row);
+        gap: 0;
+        text-align: center;
+
+
+        .quote--card{
+            @extend .card2;
+            display: grid;
+            place-items: center;
+            min-width: 300px;
+            min-height: 200px;
+
+
+            i{
+                color: $--primary;
+                text-transform: capitalize;
+            }
+        }
+    }
+}

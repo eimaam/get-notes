@@ -3,16 +3,22 @@ import HowTo from './components/LandingPage/how-to/HowTo'
 import Header from './components/LandingPage/Header'
 import FootNote from './components/LandingPage/FootNote'
 import TopNav from './components/LandingPage/TopNav'
-import { useAuth } from './contexts/AuthContext'
-import { BeatLoader, PulseLoader } from 'react-spinners'
 import { Feedback } from './components/LandingPage/Feedback'
-import { CheckForum, ForumNotice } from './components/LandingPage/ForumNotice'
+import { ForumNotice } from './components/LandingPage/ForumNotice'
+import { DailyQuotes } from './components/LandingPage/DailyQuotes'
 
+// AOS import
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
 
 
 
 export default function Home(props) {
-  const { loading, setLoading } = useAuth()
+
+  useEffect(() => {
+    AOS.init({delay: 250})
+  }, [])
   
   return (
     <>
@@ -21,6 +27,7 @@ export default function Home(props) {
       <Feedback />
       <HowTo />
       <ForumNotice />
+      <DailyQuotes />
       <FootNote />
     </>
   )

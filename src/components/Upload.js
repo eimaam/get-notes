@@ -1,13 +1,12 @@
-import { onAuthStateChanged } from 'firebase/auth'
 import { addDoc, collection, doc, getDoc, Timestamp } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { BeatLoader, HashLoader } from 'react-spinners'
+import { BeatLoader } from 'react-spinners'
 import { useAuth } from '../contexts/AuthContext'
 import { useData } from '../contexts/DataContext'
-import { auth, database, storage } from '../firebaseConfig'
+import { database, storage } from '../firebaseConfig'
 
 
 export default function Upload() {
@@ -27,7 +26,7 @@ export default function Upload() {
   // state to manage/save file type before upload
   const [fileType, setFileType] = useState("")
 
-  const [uploadProgress, setUploadProgress] = useState("")
+  const [uploadProgress, setUploadProgress] = useState(null)
   const storageRef = ref(storage, `/notes/${file.name}`)
 
   // DATE: creating date format Day/Month
@@ -133,8 +132,6 @@ export default function Upload() {
 
     }
 
-    // setLoading(false)
-
   return (
     <div id='upload' onClick={() => setHideNav(true)} data-aos="fade" data-aos-easing="ease-out">
       {userInfo.student === "no" 
@@ -174,7 +171,7 @@ export default function Upload() {
           </select>
         </div>
 
-        {data.category != 'extras' && <div>
+        {data.category !== 'extras' && <div>
           <label htmlFor="course code">
             Course Code:
           </label>
@@ -218,9 +215,9 @@ export default function Upload() {
         {uploadProgress > 1 && <p>Checking File... {uploadProgress}% done!</p>}
         {uploadProgress === 100 && <p>Now click on UPLOAD</p>}
 
-        {uploadProgress !== '' && uploadProgress < 100 && <button><BeatLoader color='#344648' /></button>}
+        {uploadProgress !== null && uploadProgress < 100 && <button><BeatLoader color='#344648' /></button>}
         {uploadProgress > 1 ? '' : <button onClick={uploadFile}>check file </button>}
-        {uploadProgress == 100 && <input type="submit" value="UPLOAD" />}
+        {uploadProgress === 100 && <input type="submit" value="UPLOAD" />}
         {loading && <BeatLoader color='#fff'/>}
       </form>
       }
