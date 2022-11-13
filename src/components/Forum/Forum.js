@@ -6,6 +6,7 @@ import { FiSend } from 'react-icons/fi'
 import { CgMenuGridO } from 'react-icons/cg'
 import { toast } from 'react-toastify'
 import { database } from '../../firebaseConfig'
+import { ChatBubble } from './ChatBubble'
 
 export const Forum = () => {
     const [receivedMessages, setReceivedMessages] = useState(["Hello World! What's up with the current market na? 😂 ", "I learnt Sam Bank-man Fried is on the run 😂", "Crypto is a scam!!! #EndCrypto!!!!! " ])
@@ -112,17 +113,20 @@ const toggleMenu = () => {
                 <div className='chats--container'>
                     {allMessages.map((item, index) => {
                         return item.sender != "test" 
-                        ? <div key={index} className='message--bubble--received'>
-                                    <p>{item.message}</p>
-                                    <i>{item.sender && `@${item.sender}`}</i>
-                                    <i>{item.time}</i>
-                                </div>
-                            
-                        : <div key={index} className='message--bubble--sent'>
-                                    <p>{item.message}</p>
-                                    <i>{item.sender && `@${item.sender}`}</i>
-                                    <i>{item.time}</i>
-                                </div>
+                        ? <ChatBubble
+                            key={index}
+                            message={item.message} 
+                            sender={item.sender} 
+                            time={item.time}
+                            className={"received"} 
+                        />  
+                        : <ChatBubble
+                            key={index}
+                            message={item.message} 
+                            sender={item.sender} 
+                            time={item.time}
+                            className={"sent"} 
+                        />
                     })}
                 </div>
             </div>

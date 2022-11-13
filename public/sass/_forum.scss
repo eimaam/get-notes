@@ -37,70 +37,70 @@
                 align-items: flex-start;
                 margin-block: 1rem;
 
-                .message--bubble--received{
-                    background-color: $--primary;
-                    max-width: 500px;
-                    padding: 0.2rem 0.5rem;
-                    border-radius: 0.5rem;
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    margin-inline: 1rem;
+                // .message--bubble--received{
+                //     background-color: $--primary;
+                //     max-width: 500px;
+                //     padding: 0.2rem 0.5rem;
+                //     border-radius: 0.5rem;
+                //     position: relative;
+                //     display: flex;
+                //     flex-direction: column;
+                //     margin-inline: 1rem;
 
 
-                    @include mobile{
-                        max-width: 80%;
-                    }
+                //     @include mobile{
+                //         max-width: 80%;
+                //     }
                 
-                &:before{
-                    content: "";
-                    width: 0px;
-                    height: 0px;
-                    position: absolute;
-                    border-left: 10px solid transparent;
-                    border-right: 10px solid $--primary;
-                    border-top: 10px solid $--primary;
-                    border-bottom: 10px solid transparent;
-                    left: -20px;
-                    top: 6px;   
-                }
+                // &:before{
+                //     content: "";
+                //     width: 0px;
+                //     height: 0px;
+                //     position: absolute;
+                //     border-left: 10px solid transparent;
+                //     border-right: 10px solid $--primary;
+                //     border-top: 10px solid $--primary;
+                //     border-bottom: 10px solid transparent;
+                //     left: -20px;
+                //     top: 6px;   
+                // }
 
-                i{
-                    font-family: 0.3rem;
-                    text-align: right;
-                }
-                }
+                // i{
+                //     font-family: 0.3rem;
+                //     text-align: right;
+                // }
+                // }
             }
 
-            .message--bubble--sent{
-                background-color: $--primary;
-                max-width: 500px;
-                padding: 0.2rem 0.5rem;
-                border-radius: 0.5rem;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                margin-inline: 1rem;
-                align-self: flex-end;
+            // .message--bubble--sent{
+            //     background-color: $--primary;
+            //     max-width: 500px;
+            //     padding: 0.2rem 0.5rem;
+            //     border-radius: 0.5rem;
+            //     position: relative;
+            //     display: flex;
+            //     flex-direction: column;
+            //     margin-inline: 1rem;
+            //     align-self: flex-end;
 
-                @include mobile{
-                    max-width: 80%;
-                    min-width: 200px;
-                }
+            //     @include mobile{
+            //         max-width: 80%;
+            //         min-width: 200px;
+            //     }
 
-                &:before{
-                    content: "";
-                    width: 0px;
-                    height: 0px;
-                    position: absolute;
-                    border-left: 10px solid $--primary;
-                    border-right: 10px solid transparent;
-                    border-top: 10px solid transparent;
-                    border-bottom: 10px solid $--primary;
-                    right: -19px;
-                    top: 40px;   
-                }
-            }
+            //     &:before{
+            //         content: "";
+            //         width: 0px;
+            //         height: 0px;
+            //         position: absolute;
+            //         border-left: 10px solid $--primary;
+            //         border-right: 10px solid transparent;
+            //         border-top: 10px solid transparent;
+            //         border-bottom: 10px solid $--primary;
+            //         right: -19px;
+            //         top: 40px;   
+            //     }
+            // }
 
         }
 
@@ -131,6 +131,8 @@
 
                 @include mobile{
                     border-radius: 0.5rem;
+                    padding: 0.2rem;
+                    height: auto;
 
                     &::placeholder{
                         margin-top: 0.5rem;
