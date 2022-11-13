@@ -65,12 +65,12 @@ function App() {
                 <Route path="/reset" element={<ResetPass />}    />
                 {/* Error Page */}
                 <Route path="*" element={<ErrorPage />}    />
+                  <Route path="/forum" element={<Forum />}    />
     
                 {/* PROTECTED ROUTES: Only logged in Users can access  */}
                 <Route element={<ProtectedRoutes />}>
                   <Route path="/addusername" element={<AddData/>}    />
                   <Route path="/games" element={<TakeARest />}    />
-                  <Route path="/forum" element={<Forum />}    />
                   <Route path="/admin" element={<AdminDashboard />}    />      
                   <Route path="/welcome" element={<WelcomePage />}    />
 

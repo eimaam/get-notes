@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import { browserLocalPersistence, onAuthStateChanged, setPersistence, signInWithPopup, signOut } from 'firebase/auth'
 import { toast } from 'react-toastify'
+
 // AOS import
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
