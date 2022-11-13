@@ -12,12 +12,12 @@
         @include flex(column);
         justify-content: space-between;
         
-        
         @include mobile{
             float: none;
             margin: auto;
             width: 100%;
             padding-inline: 0.5rem;
+            margin-top: 1rem;
         }
         .messages--container{
             margin: auto;
@@ -31,13 +31,11 @@
                 width: 100%;
             }
 
-            .received--messages{
+            .chats--container{
                 @include flex(column);
                 justify-content: flex-start;
                 align-items: flex-start;
                 margin-block: 1rem;
-                border: solid red;
-                
 
                 .message--bubble--received{
                     background-color: $--primary;
@@ -76,18 +74,19 @@
 
             .message--bubble--sent{
                 background-color: $--primary;
-                    max-width: 500px;
-                    padding: 0.2rem 0.5rem;
-                    border-radius: 0.5rem;
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    margin-inline: 1rem;
-                    align-self: flex-end;
+                max-width: 500px;
+                padding: 0.2rem 0.5rem;
+                border-radius: 0.5rem;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                margin-inline: 1rem;
+                align-self: flex-end;
 
-                    @include mobile{
-                        max-width: 80%;
-                    }
+                @include mobile{
+                    max-width: 80%;
+                    min-width: 200px;
+                }
 
                 &:before{
                     content: "";
@@ -112,16 +111,18 @@
             display: flex;
             justify-content: center;
             gap: 0.5rem;
+            position: fixed;
+            bottom: 0;
 
             @include mobile{
                 width: 100%;
+                padding-inline: 1rem;
             }
 
-
             textarea{
-                border-radius: 1rem;
-                overflow-y: scroll;
-                padding: 0 0.5rem;
+                border-radius: 0.5rem;
+                padding: auto; 
+                max-height: 300px;
 
                 &::placeholder{
                     color: $--primary;
@@ -149,10 +150,7 @@
 
     // forum navigation
     #forumNav{
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
+        float: left;
         height: 100vh;
         width: 20%;
         @include flex(column);
@@ -160,31 +158,57 @@
         justify-content: space-between;
         padding: 1rem 0.5rem;
         background-color: $--primary;
+        z-index: 9;
+
+        .toggler{
+            display: none;
+        }
         
         ul{
             @include flex(column);
             justify-content: flex-start;
             align-items: flex-start;
+            overflow: scroll;
             
             a{
-                font-size: 1.2rem;                
+                font-size: 1.2rem;
             }
         }
 
+        button{
+            background-color: $--bgColor2;
+        }
+
         @include mobile{
-            display: block;
-            position: absolute;
+            position: fixed;
+            float: none;
             width: 100%;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 1;
-            min-height: 0;
-            background-color: green;
-            padding: 2rem 1rem;
+            height: auto;
+            align-items: flex-end;
+            background-color: $--primary;
+            padding: 1rem;
+            margin: 0;
+
+            .toggler{
+                font-size: 1.2rem;
+                background-color: $--default;
+                z-index: 99999999990;
+                display: block;
+            }
 
             ul{
-                overflow-x: scroll;
+                justify-content: center;                
+                align-items: flex-start;                
+                border-radius: 1rem;
+                height: 100%;
+                width: 100%;
+                gap: 1.5rem;
+                display: none;
+                margin-top: 1rem;
+                padding: 0;
+
+
             }
 
             h2, button{
@@ -193,66 +217,3 @@
         }
     }
 }
-
-
-
-
-
-// #forum{
-//     margin: 0 auto;
-//     width: 80%;
-//     height: 100vh;
-//     @include flex(column);
-//     gap: 2rem;
-//     border: solid red !important;
-
-
-//     h1{
-//         text-align: center;
-//     }
-
-//     @include mobile{
-//         width: 90%;
-//         height: auto;
-//         padding-block: 2rem;
-//     }
-
-//     .waitlist{
-//         width: 80%;
-//         @include flex(row);
-//         background-color: $--primary;
-//         border-radius: 1rem;
-//         padding: 1rem 2rem;
-//         margin: 0;
-
-//         form{
-//             width: 60%;
-//             border: none;
-
-//             input[type=submit]{
-//                 background-color: $--secondary;
-//                 color: $--default;
-//             }
-
-//             @include mobile{
-//                 width: 100%;
-//                 padding: 0;
-//             }
-//         }
-
-//         @include mobile{
-//             flex-direction: column;
-//             padding: 1rem;
-//             width: 100%;
-//             text-align: center;
-//         }
-//     }
-
-//     form{
-//         padding: 1rem;
-//         border-radius: 1rem;
-//         @include flex(column);
-//         gap: 0.5rem;
-//         @include border;
-//     }
-// }

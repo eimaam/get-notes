@@ -3,6 +3,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { FiSend } from 'react-icons/fi'
+import { CgMenuGridO } from 'react-icons/cg'
 import { toast } from 'react-toastify'
 import { database } from '../../firebaseConfig'
 
@@ -75,14 +76,21 @@ const switchCategory = (categoryValue) => {
     console.log(category)
 }
 
+const toggleMenu = () => {
+    let menu = document.querySelector('#menu')
+    menu.style.display === "none" 
+    ? menu.style.display = "flex"
+    : menu.style.display = "none"
+}
+
 
   return (
     <div id='forum'>
         {/* Navigation Bar */}
         <div id='forumNav'>
             <h2>Channels:</h2>
-            <FaBars />
-            <ul>
+            <CgMenuGridO className='toggler' onClick={toggleMenu}/>
+            <ul id='menu'>
                 <li onClick={() => switchCategory("100level")}>🚀 100 Level General </li>
                 <li onClick={() => switchCategory("200level")}>🚀 200 Level General </li>
                 <li onClick={() => switchCategory("300level")}>🚀 300 Level General </li>
@@ -101,7 +109,7 @@ const switchCategory = (categoryValue) => {
         </div>
         <aside>
             <div className='messages--container'>
-                <div className='received--messages'>
+                <div className='chats--container'>
                     {allMessages.map((item, index) => {
                         return item.sender != "test" 
                         ? <div key={index} className='message--bubble--received'>

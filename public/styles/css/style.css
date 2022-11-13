@@ -814,6 +814,7 @@ header .info button a:hover {
     margin: auto;
     width: 100%;
     padding-inline: 0.5rem;
+    margin-top: 1rem;
   }
 }
 #forum aside .messages--container {
@@ -829,7 +830,7 @@ header .info button a:hover {
     width: 100%;
   }
 }
-#forum aside .messages--container .received--messages {
+#forum aside .messages--container .chats--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -838,9 +839,8 @@ header .info button a:hover {
   justify-content: flex-start;
   align-items: flex-start;
   margin-block: 1rem;
-  border: solid red;
 }
-#forum aside .messages--container .received--messages .message--bubble--received {
+#forum aside .messages--container .chats--container .message--bubble--received {
   background-color: #ffbd0c;
   max-width: 500px;
   padding: 0.2rem 0.5rem;
@@ -851,11 +851,11 @@ header .info button a:hover {
   margin-inline: 1rem;
 }
 @media only screen and (max-width: 1000px) {
-  #forum aside .messages--container .received--messages .message--bubble--received {
+  #forum aside .messages--container .chats--container .message--bubble--received {
     max-width: 80%;
   }
 }
-#forum aside .messages--container .received--messages .message--bubble--received:before {
+#forum aside .messages--container .chats--container .message--bubble--received:before {
   content: "";
   width: 0px;
   height: 0px;
@@ -867,7 +867,7 @@ header .info button a:hover {
   left: -20px;
   top: 6px;
 }
-#forum aside .messages--container .received--messages .message--bubble--received i {
+#forum aside .messages--container .chats--container .message--bubble--received i {
   font-family: 0.3rem;
   text-align: right;
 }
@@ -885,6 +885,7 @@ header .info button a:hover {
 @media only screen and (max-width: 1000px) {
   #forum aside .messages--container .message--bubble--sent {
     max-width: 80%;
+    min-width: 200px;
   }
 }
 #forum aside .messages--container .message--bubble--sent:before {
@@ -905,16 +906,19 @@ header .info button a:hover {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+  position: fixed;
+  bottom: 0;
 }
 @media only screen and (max-width: 1000px) {
   #forum aside .message--controls {
     width: 100%;
+    padding-inline: 1rem;
   }
 }
 #forum aside .message--controls textarea {
-  border-radius: 1rem;
-  overflow-y: scroll;
-  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  padding: auto;
+  max-height: 300px;
 }
 #forum aside .message--controls textarea::-moz-placeholder {
   color: #ffbd0c;
@@ -954,10 +958,7 @@ header .info button a:hover {
   border-radius: 0.5rem;
 }
 #forum #forumNav {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  float: left;
   height: 100vh;
   width: 20%;
   display: flex;
@@ -969,6 +970,10 @@ header .info button a:hover {
   justify-content: space-between;
   padding: 1rem 0.5rem;
   background-color: #ffbd0c;
+  z-index: 9;
+}
+#forum #forumNav .toggler {
+  display: none;
 }
 #forum #forumNav ul {
   display: flex;
@@ -978,25 +983,42 @@ header .info button a:hover {
   gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
+  overflow: scroll;
 }
 #forum #forumNav ul a {
   font-size: 1.2rem;
 }
+#forum #forumNav button {
+  background-color: #f6f6f6;
+}
 @media only screen and (max-width: 1000px) {
   #forum #forumNav {
-    display: block;
-    position: absolute;
+    position: fixed;
+    float: none;
     width: 100%;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 1;
-    min-height: 0;
-    background-color: green;
-    padding: 2rem 1rem;
+    height: auto;
+    align-items: flex-end;
+    background-color: #ffbd0c;
+    padding: 1rem;
+    margin: 0;
+  }
+  #forum #forumNav .toggler {
+    font-size: 1.2rem;
+    background-color: #fff;
+    z-index: 99999999990;
+    display: block;
   }
   #forum #forumNav ul {
-    overflow-x: scroll;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 1rem;
+    height: 100%;
+    width: 100%;
+    gap: 1.5rem;
+    display: none;
+    margin-top: 1rem;
+    padding: 0;
   }
   #forum #forumNav h2, #forum #forumNav button {
     display: none;
