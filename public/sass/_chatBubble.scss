@@ -13,6 +13,16 @@
         max-width: 80%;
     }
 
+    i{
+        color: $--default;
+        text-align: right;
+        
+        &:last-child{
+            font-size: 0.8rem;
+            color: $--bgColor2;
+        }
+    }
+
     &:before{
         content: "";
         width: 0px;
@@ -26,11 +36,27 @@
         top: 6px;   
     }
 
+
+    @include mobile{
+        p{
+            font-size: 0.8rem;
+        }
+
+        i{
+            font-size: 0.7rem;
+
+            &:last-child{
+                font-size: 0.6rem;
+            }
+        }
+    }
+
 }
 
-.message--bubble--sent{
+.chat--bubble--sent{
     background-color: $--primary;
     max-width: 500px;
+    min-width: 200px;
     padding: 0.2rem 0.5rem;
     border-radius: 0.5rem;
     position: relative;
@@ -44,6 +70,16 @@
         min-width: 200px;
     }
 
+    i{
+        color: $--default;
+        text-align: right;
+        
+        &:last-child{
+            font-size: 0.8rem;
+            color: $--bgColor2;
+        }
+    }
+
     &:before{
         content: "";
         width: 0px;
@@ -54,6 +90,21 @@
         border-top: 10px solid transparent;
         border-bottom: 10px solid $--primary;
         right: -19px;
-        top: 40px;   
+        top: 20px;   
+    }
+
+
+    @include mobile{
+        p{
+            font-size: 0.8rem;
+        }
+
+        i{
+            font-size: 0.7rem;
+
+            &:last-child{
+                font-size: 0.6rem;
+            }
+        }
     }
 }

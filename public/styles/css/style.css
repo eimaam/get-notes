@@ -797,7 +797,7 @@ header .info button a:hover {
   width: 100%;
   height: 100vh;
 }
-#forum aside {
+#forum aside, #forum .container {
   width: 80%;
   float: right;
   height: 100vh;
@@ -807,30 +807,39 @@ header .info button a:hover {
   align-items: center;
   gap: 1rem;
   justify-content: space-between;
+  gap: 0;
 }
 @media only screen and (max-width: 1000px) {
-  #forum aside {
+  #forum aside, #forum .container {
     float: none;
     margin: auto;
     width: 100%;
+    height: 100vh;
     padding-inline: 0.5rem;
-    margin-top: 1rem;
   }
 }
-#forum aside .messages--container {
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  #forum aside, #forum .container {
+    width: 75%;
+  }
+}
+#forum aside .messages--container, #forum .container .messages--container {
   margin: auto;
   width: 70%;
   height: 100%;
   border-radius: 0.5rem;
-  border: 1px solid rgb(240, 226, 226);
+  border: 1px solid rgb(219, 203, 203);
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 @media only screen and (max-width: 1000px) {
-  #forum aside .messages--container {
+  #forum aside .messages--container, #forum .container .messages--container {
+    margin-top: 3rem;
     width: 100%;
+    border: none;
   }
 }
-#forum aside .messages--container .chats--container {
+#forum aside .messages--container .chats--container, #forum .container .messages--container .chats--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -840,64 +849,76 @@ header .info button a:hover {
   align-items: flex-start;
   margin-block: 1rem;
 }
-#forum aside .message--controls {
+#forum aside .message--controls, #forum .container .message--controls {
   width: 70%;
   margin-block: 0.5rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  position: fixed;
-  bottom: 0;
+  border-radius: 0.5rem;
 }
 @media only screen and (max-width: 1000px) {
-  #forum aside .message--controls {
+  #forum aside .message--controls, #forum .container .message--controls {
     width: 100%;
-    padding-inline: 1rem;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    padding-top: 0.5rem;
+    border-radius: none;
   }
 }
-#forum aside .message--controls textarea {
+#forum aside .message--controls textarea, #forum .container .message--controls textarea {
   border-radius: 0.5rem;
-  padding: auto;
+  padding: 0 1rem;
   max-height: 300px;
+  width: 100%;
 }
-#forum aside .message--controls textarea::-moz-placeholder {
+#forum aside .message--controls textarea::-moz-placeholder, #forum .container .message--controls textarea::-moz-placeholder {
+  position: relative;
+  top: 15px;
   color: #ffbd0c;
   font-style: italic;
 }
-#forum aside .message--controls textarea:-ms-input-placeholder {
+#forum aside .message--controls textarea:-ms-input-placeholder, #forum .container .message--controls textarea:-ms-input-placeholder {
+  position: relative;
+  top: 15px;
   color: #ffbd0c;
   font-style: italic;
 }
-#forum aside .message--controls textarea::placeholder {
+#forum aside .message--controls textarea::placeholder, #forum .container .message--controls textarea::placeholder {
+  position: relative;
+  top: 15px;
   color: #ffbd0c;
   font-style: italic;
 }
 @media only screen and (max-width: 1000px) {
-  #forum aside .message--controls textarea {
+  #forum aside .message--controls textarea, #forum .container .message--controls textarea {
+    margin: 0.2rem;
     border-radius: 0.5rem;
     padding: 0.2rem;
     height: auto;
   }
-  #forum aside .message--controls textarea::-moz-placeholder {
-    margin-top: 0.5rem;
-    position: absolute;
+  #forum aside .message--controls textarea::-moz-placeholder, #forum .container .message--controls textarea::-moz-placeholder {
     left: 10px;
   }
-  #forum aside .message--controls textarea:-ms-input-placeholder {
-    margin-top: 0.5rem;
-    position: absolute;
+  #forum aside .message--controls textarea:-ms-input-placeholder, #forum .container .message--controls textarea:-ms-input-placeholder {
     left: 10px;
   }
-  #forum aside .message--controls textarea::placeholder {
-    margin-top: 0.5rem;
-    position: absolute;
+  #forum aside .message--controls textarea::placeholder, #forum .container .message--controls textarea::placeholder {
     left: 10px;
   }
 }
-#forum aside .message--controls button {
+#forum aside .message--controls button, #forum .container .message--controls button {
   display: grid;
   place-items: center;
   border-radius: 0.5rem;
+}
+#forum .container {
+  justify-content: center;
+  align-items: center;
+}
+#forum .container h2 {
+  text-transform: none;
 }
 #forum #forumNav {
   float: left;
@@ -925,13 +946,18 @@ header .info button a:hover {
   gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow: scroll;
 }
 #forum #forumNav ul a {
   font-size: 1.2rem;
 }
 #forum #forumNav button {
   background-color: #f6f6f6;
+  font-size: 0.9rem;
+}
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  #forum #forumNav button {
+    font-size: 0.8rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
   #forum #forumNav {
@@ -944,6 +970,8 @@ header .info button a:hover {
     background-color: #ffbd0c;
     padding: 1rem;
     margin: 0;
+    overflow: scroll;
+    border-bottom: 1px solid #1a2930;
   }
   #forum #forumNav .toggler {
     font-size: 1.2rem;
@@ -964,6 +992,11 @@ header .info button a:hover {
   }
   #forum #forumNav h2, #forum #forumNav button {
     display: none;
+  }
+}
+@media only screen and (min-width: 1001px) and (max-width: 1500px) {
+  #forum #forumNav {
+    width: 25%;
   }
 }
 
@@ -1020,6 +1053,103 @@ header .info button a:hover {
 @media only screen and (max-width: 1000px) {
   .quotes--section #quotes .quote--card {
     min-width: 200px;
+  }
+}
+
+.chat--bubble--received {
+  background-color: #ffbd0c;
+  max-width: 500px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1rem;
+}
+@media only screen and (max-width: 1000px) {
+  .chat--bubble--received {
+    max-width: 80%;
+  }
+}
+.chat--bubble--received i {
+  color: #fff;
+  text-align: right;
+}
+.chat--bubble--received i:last-child {
+  font-size: 0.8rem;
+  color: #f6f6f6;
+}
+.chat--bubble--received:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #ffbd0c;
+  border-top: 10px solid #ffbd0c;
+  border-bottom: 10px solid transparent;
+  left: -20px;
+  top: 6px;
+}
+@media only screen and (max-width: 1000px) {
+  .chat--bubble--received p {
+    font-size: 0.8rem;
+  }
+  .chat--bubble--received i {
+    font-size: 0.7rem;
+  }
+  .chat--bubble--received i:last-child {
+    font-size: 0.6rem;
+  }
+}
+
+.chat--bubble--sent {
+  background-color: #ffbd0c;
+  max-width: 500px;
+  min-width: 200px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1rem;
+  align-self: flex-end;
+}
+@media only screen and (max-width: 1000px) {
+  .chat--bubble--sent {
+    max-width: 80%;
+    min-width: 200px;
+  }
+}
+.chat--bubble--sent i {
+  color: #fff;
+  text-align: right;
+}
+.chat--bubble--sent i:last-child {
+  font-size: 0.8rem;
+  color: #f6f6f6;
+}
+.chat--bubble--sent:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #ffbd0c;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid #ffbd0c;
+  right: -19px;
+  top: 20px;
+}
+@media only screen and (max-width: 1000px) {
+  .chat--bubble--sent p {
+    font-size: 0.8rem;
+  }
+  .chat--bubble--sent i {
+    font-size: 0.7rem;
+  }
+  .chat--bubble--sent i:last-child {
+    font-size: 0.6rem;
   }
 }
 

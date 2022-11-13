@@ -9,13 +9,9 @@ import { database } from '../../firebaseConfig'
 import { ChatBubble } from './ChatBubble'
 
 export const Forum = () => {
-    const [receivedMessages, setReceivedMessages] = useState(["Hello World! What's up with the current market na? 😂 ", "I learnt Sam Bank-man Fried is on the run 😂", "Crypto is a scam!!! #EndCrypto!!!!! " ])
-    const [sentMessages, setSentMessages] = useState([])
-    const [otherMessages, setOtherMessages] = useState([])
     const [allMessages, setAllMessages] = useState([])
     const [message, setMessage] = useState("")
-    const [category, setCategory] = useState("music")
-
+    const [category, setCategory] = useState("")
     
     // creating time format to save along with every message
     const d = new Date()
@@ -29,21 +25,26 @@ export const Forum = () => {
     hour > 12 ? hour = hour - 12 : hour = hour;
     mins < 10 ? mins = "0"+mins : mins = mins;
     
-
+    // function to handle new messages on type
     const handleChange = (e) => {
         setMessage(e.target.value)
     }
     
+    // send message function
     const sendMessage = async (e) => {
+        if(message == ""){
+            return;
+        }
         try{
             await addDoc(collection(database, "forumMessages"), {
                 message: message,
-                date: serverTimestamp(),
+                date: date,
                 time: `${hour}:${mins}${period}`,
                 sender: "test",
                 category: category,
             })
-            toast.success("sent")
+            // if message sent, set the message box to empty
+            setMessage("")
         }
         catch(err){
             console.log(err.message)
@@ -51,10 +52,11 @@ export const Forum = () => {
 
     }
 
+    // fetch messages on load
+    // re-renders anytime category is changed
     useEffect(() => {
         fetchMessages()
     }, [category])
-
 
     // user messages
     const fetchMessages = async () => {
@@ -71,19 +73,21 @@ export const Forum = () => {
         }
     }
 
-const switchCategory = (categoryValue) => {
-    setCategory(categoryValue);
-    fetchMessages()
-    console.log(category)
-}
+    // switch category
+    const switchCategory = (categoryValue) => {
+        setCategory(categoryValue);
+        fetchMessages()
+        // // set menu display to none on select
+        // toggleMenu()
+    }
 
-const toggleMenu = () => {
-    let menu = document.querySelector('#menu')
-    menu.style.display === "none" 
-    ? menu.style.display = "flex"
-    : menu.style.display = "none"
-}
-
+    // toggle menu display on Mobile
+    const toggleMenu = () => {
+        let menu = document.querySelector('#menu')
+        menu.style.display != "flex" 
+        ? menu.style.display = "flex"
+        : menu.style.display = "none"
+    }
 
   return (
     <div id='forum'>
@@ -108,6 +112,11 @@ const toggleMenu = () => {
             </ul>
             <button>Suggest additional Channel</button>
         </div>
+        {category === "" 
+        ? <div className='container'>
+            <h2>Select a CHANNEL from the navigation menu to join a discussion</h2>
+        </div>
+        :
         <aside>
             <div className='messages--container'>
                 <div className='chats--container'>
@@ -118,14 +127,15 @@ const toggleMenu = () => {
                             message={item.message} 
                             sender={item.sender} 
                             time={item.time}
-                            className={"received"} 
+                            className={"received"}
                         />  
                         : <ChatBubble
                             key={index}
                             message={item.message} 
                             sender={item.sender} 
                             time={item.time}
-                            className={"sent"} 
+                            className={"sent"}
+                            date={item.date} 
                         />
                     })}
                 </div>
@@ -136,9 +146,10 @@ const toggleMenu = () => {
                 placeholder='...type message'
                 onChange={handleChange}
                 /> 
-                <button onClick={(e) => sendMessage(e)}><FiSend /></button>
+                {message !== "" && <button onClick={(e) => sendMessage(e)}><FiSend /></button>}
             </div>
         </aside>
+        }
     </div>
   )
 }
