@@ -4,14 +4,32 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { FiSend } from 'react-icons/fi'
 import { CgMenuGridO } from 'react-icons/cg'
-import { toast } from 'react-toastify'
-import { database } from '../../firebaseConfig'
+import { auth, database } from '../../firebaseConfig'
 import { ChatBubble } from './ChatBubble'
+import { useData } from '../../contexts/DataContext'
+import { useAuth } from '../../contexts/AuthContext'
+import {HashLoader} from "react-spinners"
+import { Navigate } from 'react-router-dom'
+import { onAuthStateChanged } from 'firebase/auth'
 
 export const Forum = () => {
+    const { userInfo } = useData()
+    const {isLogged, loading, setLoading, navigate} = useAuth()
+
+
+    useEffect(() => {
+        onAuthStateChanged(auth, data => {
+            data && navigate("/forum")
+        })
+        setTimeout(() => {
+            setLoading(false)
+        }, 2500);
+        userInfo.username !== undefined && navigate('/forum')
+    }, [])
+
     const [allMessages, setAllMessages] = useState([])
     const [message, setMessage] = useState("")
-    const [category, setCategory] = useState("")
+    const [channel, setChannel] = useState("")
     
     // creating time format to save along with every message
     const d = new Date()
@@ -32,16 +50,18 @@ export const Forum = () => {
     
     // send message function
     const sendMessage = async (e) => {
+        e.preventDefault()
         if(message == ""){
             return;
         }
         try{
             await addDoc(collection(database, "forumMessages"), {
                 message: message,
+                sender: userInfo.username,
+                channel: channel,
+                timestamp: serverTimestamp(),
                 date: date,
                 time: `${hour}:${mins}${period}`,
-                sender: "test",
-                category: category,
             })
             // if message sent, set the message box to empty
             setMessage("")
@@ -53,15 +73,15 @@ export const Forum = () => {
     }
 
     // fetch messages on load
-    // re-renders anytime category is changed
+    // re-renders anytime channel is changed
     useEffect(() => {
         fetchMessages()
-    }, [category])
+    }, [channel])
 
     // user messages
     const fetchMessages = async () => {
         try{
-            const q = query(collection(database, "forumMessages"), where("category", "==", `${category}`), orderBy("date"))
+            const q = query(collection(database, "forumMessages"), where("channel", "==", `${channel}`), orderBy("timestamp"))
             await onSnapshot(q, snapShot => {
                 setAllMessages(snapShot.docs.map(data => ({
                     ...data.data(),
@@ -73,9 +93,9 @@ export const Forum = () => {
         }
     }
 
-    // switch category
-    const switchCategory = (categoryValue) => {
-        setCategory(categoryValue);
+    // switch channel
+    const switchCategory = (channelValue) => {
+        setChannel(channelValue);
         fetchMessages()
         // // set menu display to none on select
         // toggleMenu()
@@ -89,11 +109,31 @@ export const Forum = () => {
         : menu.style.display = "none"
     }
 
+    const mystyle = {
+        margin: "auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "black",
+    }
+
   return (
     <div id='forum'>
+        {loading 
+        
+        ? 
+        
+        <div style={mystyle}>
+            <h3>Loading Chat...</h3>
+            <HashLoader />
+        </div>
+
+        :
+        <>
         {/* Navigation Bar */}
         <div id='forumNav'>
-            <h2>Channels:</h2>
+            <h2>{`Channel: ${channel}`}</h2>
             <CgMenuGridO className='toggler' onClick={toggleMenu}/>
             <ul id='menu'>
                 <li onClick={() => switchCategory("100level")}>🚀 100 Level General </li>
@@ -101,33 +141,44 @@ export const Forum = () => {
                 <li onClick={() => switchCategory("300level")}>🚀 300 Level General </li>
                 <li onClick={() => switchCategory("400level")}>🚀 400 Level General </li>
                 <li onClick={() => switchCategory("500level")}>🚀 500 Level General </li>
-                <li onClick={() => switchCategory("football")}>🚀 Football</li>
+                <li onClick={() => switchCategory("football")}>⚽ Football</li>
                 <li onClick={() => switchCategory("sports")}>🥇 Sports - General </li>
                 <li onClick={() => switchCategory("politics")}>🗯 Politics</li>
                 <li onClick={() => switchCategory("music")}>🎶 Music</li>
-                <li onClick={() => switchCategory("movies")}>🚀 Movies</li>
-                <li onClick={() => switchCategory("cryptocurrency")}>📊 Cryptocurrency</li>
+                <li onClick={() => switchCategory("movies")}>🎬 Movies</li>
+                <li onClick={() => switchCategory("cryptocurrency")}>📈 Cryptocurrency</li>
                 <li onClick={() => switchCategory("economy")}>💵 Economy</li>
-                <li onClick={() => switchCategory("business")}>📊 Business</li>
+                <li onClick={() => switchCategory("business")}>🤑 Business</li>
             </ul>
             <button>Suggest additional Channel</button>
         </div>
-        {category === "" 
+        {channel === "" 
         ? <div className='container'>
             <h2>Select a CHANNEL from the navigation menu to join a discussion</h2>
         </div>
         :
         <aside>
             <div className='messages--container'>
+                {/* channel name */}
                 <div className='chats--container'>
-                    {allMessages.map((item, index) => {
-                        return item.sender != "test" 
+                    {/* show no messages if channel contains no message else display the messages */}
+                    {allMessages.length === 0 
+                    ? <div>
+                        <h3 style={{textAlign: "center"}}>
+                            No message here yet! Send one to start a conversation 😇
+                        </h3>
+                       </div> 
+                    :
+                    // display messages if the channel contains some
+                    allMessages.map((item, index) => {
+                        return item.sender != userInfo.username 
                         ? <ChatBubble
                             key={index}
                             message={item.message} 
                             sender={item.sender} 
                             time={item.time}
                             className={"received"}
+                            date={item.date} 
                         />  
                         : <ChatBubble
                             key={index}
@@ -137,19 +188,22 @@ export const Forum = () => {
                             className={"sent"}
                             date={item.date} 
                         />
-                    })}
+                    })
+                    }
                 </div>
             </div>
             <div className='message--controls'>
                 <textarea
                 name="messageBox" 
                 placeholder='...type message'
-                onChange={handleChange}
+                onChange={(e) => setMessage(e.target.value)}
                 /> 
                 {message !== "" && <button onClick={(e) => sendMessage(e)}><FiSend /></button>}
             </div>
         </aside>
         }
+        </>
+    }
     </div>
   )
 }

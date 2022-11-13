@@ -919,6 +919,7 @@ header .info button a:hover {
 }
 #forum .container h2 {
   text-transform: none;
+  text-align: center;
 }
 #forum #forumNav {
   float: left;
@@ -949,6 +950,7 @@ header .info button a:hover {
 }
 #forum #forumNav ul a {
   font-size: 1.2rem;
+  cursor: pointer;
 }
 #forum #forumNav button {
   background-color: #f6f6f6;
