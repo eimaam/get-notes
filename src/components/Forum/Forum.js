@@ -19,7 +19,6 @@ export const Forum = () => {
     const {isLogged, loading, setLoading, navigate} = useAuth()
 
     useEffect(() => {
-        setLoading(true)
         onAuthStateChanged(auth, data => {
             data && navigate("/forum")
         })
@@ -27,7 +26,9 @@ export const Forum = () => {
             setLoading(false)
         }, 2500);
         userInfo.username !== undefined && navigate('/forum')
-    }, [])
+    }, [userInfo])
+
+    console.log(userInfo.student)
 
     const [allMessages, setAllMessages] = useState([])
     const [message, setMessage] = useState("")
@@ -121,7 +122,8 @@ export const Forum = () => {
         alignItems: "center",
         color: "black",
         height: "100vh",
-        width: "100%"
+        width: "100%",
+        textAlign: "center"
     }
 
     // state manager for user detail for profile modal
@@ -143,6 +145,12 @@ export const Forum = () => {
             }
             console.log(err.message)
         }
+    }
+
+    if(userInfo.student == "no"){
+        return <div style={mystyle}>
+                <h1>Ooops! Forum is only opened to Students </h1>
+            </div>
     }
 
   return (

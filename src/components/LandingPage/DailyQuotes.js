@@ -10,7 +10,6 @@ export const DailyQuotes = () => {
     
 
       const getQuote = async () => {
-        setLoading(true)
         const data = await fetch('https://type.fit/api/quotes/')
         .then(res => res.json())
         .then(data => setData(prevState => data))
