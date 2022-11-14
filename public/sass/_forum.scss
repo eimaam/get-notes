@@ -117,7 +117,7 @@
         align-items: flex-start;
         justify-content: space-between;
         padding: 1rem 0.5rem;
-        background-color: $--primary;
+        background-color: $--main;
         z-index: 9;
 
         .toggler{
@@ -136,7 +136,6 @@
         }
 
         button{
-            background-color: $--bgColor2;
             font-size: 0.9rem;
 
             @include tablet{
@@ -151,7 +150,6 @@
             top: 0;
             height: auto;
             align-items: flex-end;
-            background-color: $--primary;
             padding: 1rem;
             margin: 0;
             overflow: scroll;

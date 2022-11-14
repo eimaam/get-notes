@@ -14,8 +14,8 @@
     }
 
     i{
-        color: $--default;
         text-align: right;
+        color: $--bgColor2;
         
         &:last-child{
             font-size: 0.8rem;
@@ -71,8 +71,8 @@
     }
 
     i{
-        color: $--default;
         text-align: right;
+        color: $--bgColor2;
         
         &:last-child{
             font-size: 0.8rem;

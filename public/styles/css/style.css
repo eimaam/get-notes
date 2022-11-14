@@ -933,7 +933,7 @@ header .info button a:hover {
   align-items: flex-start;
   justify-content: space-between;
   padding: 1rem 0.5rem;
-  background-color: #ffbd0c;
+  background-color: #fff;
   z-index: 9;
 }
 #forum #forumNav .toggler {
@@ -953,7 +953,6 @@ header .info button a:hover {
   cursor: pointer;
 }
 #forum #forumNav button {
-  background-color: #f6f6f6;
   font-size: 0.9rem;
 }
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
@@ -969,7 +968,6 @@ header .info button a:hover {
     top: 0;
     height: auto;
     align-items: flex-end;
-    background-color: #ffbd0c;
     padding: 1rem;
     margin: 0;
     overflow: scroll;
@@ -1074,8 +1072,8 @@ header .info button a:hover {
   }
 }
 .chat--bubble--received i {
-  color: #fff;
   text-align: right;
+  color: #f6f6f6;
 }
 .chat--bubble--received i:last-child {
   font-size: 0.8rem;
@@ -1124,8 +1122,8 @@ header .info button a:hover {
   }
 }
 .chat--bubble--sent i {
-  color: #fff;
   text-align: right;
+  color: #f6f6f6;
 }
 .chat--bubble--sent i:last-child {
   font-size: 0.8rem;
@@ -1153,6 +1151,44 @@ header .info button a:hover {
   .chat--bubble--sent i:last-child {
     font-size: 0.6rem;
   }
+}
+
+.profile--card {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding-block: 1rem;
+  text-align: center;
+  top: 30%;
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 1000px) {
+  .profile--card {
+    width: 80%;
+  }
+}
+.profile--card h3 {
+  text-transform: lowercase;
+}
+.profile--card p {
+  text-align: center;
+}
+.profile--card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #1a2930;
+}
+.profile--card button {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 * {

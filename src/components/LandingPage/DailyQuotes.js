@@ -4,10 +4,10 @@ import { PuffLoader } from 'react-spinners';
 import { useAuth } from '../../contexts/AuthContext';
 
 export const DailyQuotes = () => {
+  const {loading, setLoading} = useAuth()
     const random = Math.floor(Math.random() * (1643-1) - 1);
     const [data, setData] = useState([])
     
-    const [loading, setLoading] = useState(true)
 
       const getQuote = async () => {
         setLoading(true)
@@ -21,8 +21,6 @@ export const DailyQuotes = () => {
         getQuote()
       }, [])
 
-      console.log(loading)
-
   return (
     <div className='quotes--section' data-aos="fade-up">
         <div>
@@ -32,15 +30,15 @@ export const DailyQuotes = () => {
         {loading ? <PuffLoader /> :
         <div id='quotes'>
             <div className='quote--card' data-aos="zoom-up">
-                <p>{data[random].text}</p>
+                <p>"{data[random].text}"</p>
                 <i>{data[random].author == "" ? "ANON" : data[random].author}</i>
             </div>
             <div className='quote--card' data-aos="zoom-up">
-                <p>{data[random+1].text}</p>
+                <p>"{data[random+1].text}"</p>
                 <i>{data[random+1].author == "" ? "ANON" : data[random+1].author}</i>
             </div>
             <div className='quote--card' data-aos="zoom-up">
-                <p>{data[random+2].text}</p>
+                <p>"{data[random+2].text}"</p>
                 <i>{data[random+2].author == "" ? "ANON" : data[random+2].author}</i>
             </div>
         </div>

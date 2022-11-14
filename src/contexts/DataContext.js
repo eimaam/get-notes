@@ -44,7 +44,7 @@ export default function DataProvider({ children }) {
 
     useEffect(() => {
         fetchUserDetail()
-    }, [])
+    }, [user])
 
     
     

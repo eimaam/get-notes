@@ -8,16 +8,18 @@ import { auth, database } from '../../firebaseConfig'
 import { ChatBubble } from './ChatBubble'
 import { useData } from '../../contexts/DataContext'
 import { useAuth } from '../../contexts/AuthContext'
-import {HashLoader} from "react-spinners"
+import { PuffLoader } from "react-spinners"
 import { Navigate } from 'react-router-dom'
 import { onAuthStateChanged } from 'firebase/auth'
+import { ProfileModal } from './ProfileModal'
+import { toast } from 'react-toastify'
 
 export const Forum = () => {
-    const { userInfo } = useData()
+    const { userInfo, fetchUserDetails } = useData()
     const {isLogged, loading, setLoading, navigate} = useAuth()
 
-
     useEffect(() => {
+        setLoading(true)
         onAuthStateChanged(auth, data => {
             data && navigate("/forum")
         })
@@ -30,6 +32,7 @@ export const Forum = () => {
     const [allMessages, setAllMessages] = useState([])
     const [message, setMessage] = useState("")
     const [channel, setChannel] = useState("")
+    const [showModal, setShowModal] = useState(false)
     
     // creating time format to save along with every message
     const d = new Date()
@@ -109,6 +112,7 @@ export const Forum = () => {
         : menu.style.display = "none"
     }
 
+    // syling the loader animation to full screen
     const mystyle = {
         margin: "auto",
         display: "flex",
@@ -116,6 +120,29 @@ export const Forum = () => {
         justifyContent: "center",
         alignItems: "center",
         color: "black",
+        height: "100vh",
+        width: "100%"
+    }
+
+    // state manager for user detail for profile modal
+    const [profileInfo, setProfileInfo] = useState({})
+    // fetch profileInfo to display on modals
+    const fetchProfileInfo = async (username) => {
+        try{
+            const q =  query(collection(database, "userDetails"), where("username", "==", `${username}`))
+            await onSnapshot(q, snapShot => {
+                setProfileInfo(snapShot.docs.map(data => ({
+                    ...data.data()
+                })))
+            })
+            setShowModal(!showModal)
+        }
+        catch(err){
+            if(err.message === 'Failed to get document because the client is offline.'){
+                toast.error('Couldn\'t load NOTES. You appear to be OFFLINE!')
+            }
+            console.log(err.message)
+        }
     }
 
   return (
@@ -126,7 +153,7 @@ export const Forum = () => {
         
         <div style={mystyle}>
             <h3>Loading Chat...</h3>
-            <HashLoader />
+            <PuffLoader />
         </div>
 
         :
@@ -178,7 +205,8 @@ export const Forum = () => {
                             sender={item.sender} 
                             time={item.time}
                             className={"received"}
-                            date={item.date} 
+                            date={item.date}
+                            handleClick={() => fetchProfileInfo(item.sender)} 
                         />  
                         : <ChatBubble
                             key={index}
@@ -187,6 +215,7 @@ export const Forum = () => {
                             time={item.time}
                             className={"sent"}
                             date={item.date} 
+                            handleClick={() => fetchProfileInfo(item.sender)}  
                         />
                     })
                     }
@@ -200,6 +229,15 @@ export const Forum = () => {
                 /> 
                 {message !== "" && <button onClick={(e) => sendMessage(e)}><FiSend /></button>}
             </div>
+            {/* profile info card modal */}
+            {showModal 
+                && <ProfileModal 
+                username={profileInfo[0].username} 
+                level={profileInfo[0].level} 
+                department={profileInfo[0].department}
+                handleClick={() => setShowModal(false)}
+                />
+            }
         </aside>
         }
         </>
