@@ -180,7 +180,7 @@ export const Forum = () => {
         :
         <>
         {/* Navigation Bar */}
-        <div id='forumNav'>
+        <div id='forumNav' onClick={setShowModal(false)}>
             <h2>{`Channel: ${channel}`}</h2>
             <CgMenuGridO className='toggler' onClick={toggleMenu}/>
             <ul id='menu'>

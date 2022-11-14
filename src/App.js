@@ -68,7 +68,7 @@ function App() {
     
                 {/* PROTECTED ROUTES: Only logged in Users can access  */}
                 <Route element={<ProtectedRoutes />}>
-                  <Route path="/forum" element={<Forum />}    />
+                  {/* <Route path="/forum" element={<Forum />}    /> */}
                   <Route path="/addusername" element={<AddData/>}    />
                   <Route path="/games" element={<TakeARest />}    />
                   <Route path="/admin" element={<AdminDashboard />}    />      
