@@ -19,7 +19,6 @@ export default function Notes() {
     const [showLectureNotes, setShowLectureNotes] = useState(false)
     const [showOtherNotes, setShowOtherNotes] = useState(false)
     const [showExtras, setShowExtras] = useState(false)
-
     // State to save notes based on category
     const [lectureNotes100, setLectureNotes100] = useState([])
     const [lectureNotes200, setLectureNotes200] = useState([])
@@ -40,7 +39,7 @@ export default function Notes() {
     // check if user has username
     useEffect(() => {
         // fetchUserDetail()
-        if(userInfo.username != undefined){
+        if(userInfo.username != undefined && userInfo.level != undefined){
             setLoading(true)
             // userInfo.student === "no" ? navigate('/not-student') : navigate('./notes')
         }else if(userInfo.username === undefined){

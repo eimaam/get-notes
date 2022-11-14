@@ -75,15 +75,6 @@ console.log(user)
       setLoading(false)
     }
   
-  
-//   useEffect(()=>{
-//     if(error!==''){
-//       setTimeout(()=>{
-//           setError('')
-//       }, 3000)
-//   }
-// },[error])
-
   return (
       <div id='login' onClick={() => setHideNav(true)} data-aos="flip-up" data-aos-easing="ease-in">
         {loading ? <BeatLoader /> : 

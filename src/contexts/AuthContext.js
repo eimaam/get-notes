@@ -69,7 +69,7 @@ export default function AuthProvider({ children }) {
             setUser({
                 email: res.email,
             })
-            return navigate('../addusername')
+            return navigate('/addusername')
         })
         .catch(err => {
             if(err.code === 'auth/popup-blocked'){

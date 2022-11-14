@@ -12,16 +12,6 @@ export default function AddData() {
     const { userInfo, fetchUserDetail } = useData();
   const { user, navigate, DocRef, error, setError, loading, setLoading } = useAuth();
 
-  // useEffect(() => {
-  //   fetchUserDetail()
-  //   onAuthStateChanged(auth, data => {
-  //   if(data && userInfo.username != undefined){
-  //     navigate('./notes')
-  //   }else{
-  //     setLoading(false)
-  //   }  
-  //   })   
-  // }, [userInfo])
 
    // check if user is logged in or nah
    useEffect(() => {
@@ -32,10 +22,10 @@ export default function AddData() {
     })
 }, [])
 
+// check that user has a username and also level set
+// if yes, go to notes page else display form to fill in
   useEffect(() => {
-    fetchUserDetail()
-
-    if(userInfo.username != undefined){
+    if(userInfo.username != undefined && userInfo.level != undefined){
         navigate('./notes')
       }else{
           setLoading(false)
@@ -47,7 +37,7 @@ export default function AddData() {
   const [studentSelection, setStudentSelection] = useState("")
 
   const [data, setData] = useState({
-    username: '',
+    username: userInfo.username != undefined ? userInfo.username : '',
     department: '',
     level: '',
   })
@@ -97,7 +87,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
   // Add Username
   const addData = async (e) => {
     e.preventDefault()
-    if(data.username === takenUsername){
+    if(data.username === takenUsername && data.username != userInfo.username){
       return toast.error('Username already taken!')
       // check if username matches requested format from username regular expression usernameRegex
     }else if(!usernameRegex.test(data.username)){

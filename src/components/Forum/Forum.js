@@ -68,7 +68,7 @@ export const Forum = () => {
                 time: `${hour}:${mins}${period}`,
             })
             // if message sent, set the message box to empty
-            setMessage("")
+            document.querySelector('textarea').value = "";
         }
         catch(err){
             console.log(err.message)
@@ -167,7 +167,7 @@ export const Forum = () => {
     console.log(userInfo)
 
   return (
-    <div id='forum'>
+    <div id='forum' onClick={() => setShowModal(false)}>
         {loading 
         
         ? 
@@ -180,7 +180,7 @@ export const Forum = () => {
         :
         <>
         {/* Navigation Bar */}
-        <div id='forumNav' onClick={setShowModal(false)}>
+        <div id='forumNav'>
             <h2>{`Channel: ${channel}`}</h2>
             <CgMenuGridO className='toggler' onClick={toggleMenu}/>
             <ul id='menu'>
