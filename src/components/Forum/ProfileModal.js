@@ -1,10 +1,5 @@
-import { collection, onSnapshot, query, where } from 'firebase/firestore'
 import React from 'react'
-import { useState } from 'react'
-import { toast } from 'react-toastify'
 import dummy from "../../assets/error.jpg"
-import { useData } from '../../contexts/DataContext'
-import { database } from '../../firebaseConfig'
 
 export const ProfileModal = ({username, level, department, handleClick}) => {
 

@@ -28,7 +28,6 @@ export const Forum = () => {
         userInfo.username !== undefined && navigate('/forum')
     }, [userInfo])
 
-    console.log(userInfo.student)
 
     const [allMessages, setAllMessages] = useState([])
     const [message, setMessage] = useState("")
@@ -127,9 +126,10 @@ export const Forum = () => {
     }
 
     // state manager for user detail for profile modal
-    const [profileInfo, setProfileInfo] = useState({})
+    const [profileInfo, setProfileInfo] = useState([])
     // fetch profileInfo to display on modals
     const fetchProfileInfo = async (username) => {
+        setLoading(true)
         try{
             const q =  query(collection(database, "userDetails"), where("username", "==", `${username}`))
             await onSnapshot(q, snapShot => {
@@ -137,6 +137,7 @@ export const Forum = () => {
                     ...data.data()
                 })))
             })
+            setLoading(false)
             setShowModal(!showModal)
         }
         catch(err){
@@ -239,12 +240,15 @@ export const Forum = () => {
             </div>
             {/* profile info card modal */}
             {showModal 
-                && <ProfileModal 
-                username={profileInfo[0].username} 
-                level={profileInfo[0].level} 
-                department={profileInfo[0].department}
+                && profileInfo.map((item,index) => {
+               return  <ProfileModal 
+                username={item.username} 
+                level={item.level} 
+                department={item.department}
                 handleClick={() => setShowModal(false)}
                 />
+                }
+                )
             }
         </aside>
         }

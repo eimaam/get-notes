@@ -948,7 +948,7 @@ header .info button a:hover {
   justify-content: flex-start;
   align-items: flex-start;
 }
-#forum #forumNav ul a {
+#forum #forumNav ul li, #forum #forumNav ul a {
   font-size: 1.2rem;
   cursor: pointer;
 }
