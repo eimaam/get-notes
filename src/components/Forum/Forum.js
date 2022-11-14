@@ -1,5 +1,5 @@
 import { addDoc, collection, doc, getDoc, getDocs, onSnapshot, orderBy, query, serverTimestamp, setDoc, Timestamp, where } from 'firebase/firestore'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { FiSend } from 'react-icons/fi'
@@ -17,6 +17,8 @@ import { toast } from 'react-toastify'
 export const Forum = () => {
     const { userInfo, fetchUserDetails } = useData()
     const {isLogged, loading, setLoading, navigate} = useAuth()
+
+    const messagesEndRef = useRef(null)
 
     useEffect(() => {
         onAuthStateChanged(auth, data => {
@@ -73,23 +75,18 @@ export const Forum = () => {
 
     }
 
-    // function to scroll to last message on Channel selection
-    // to remove default load showing fist message in a Channel
-    const scrollToBottom = () => {
-        const chatbox = document.querySelector(".messages--container")
-        chatbox.scrollTop = chatbox.scrollHeight;
-        
-    }
-
     // fetch messages on load
     // re-renders anytime channel is changed
 
     useEffect(() => {
         fetchMessages()
         // only run when channel have been selected to stop the id from returning null
-        channel != "" && scrollToBottom()
         
     }, [channel])
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView()
+    }, [channel, allMessages])
     
     // user messages
     const fetchMessages = async () => {
@@ -238,6 +235,7 @@ export const Forum = () => {
                         />
                     })
                     }
+                    <div ref={messagesEndRef}></div>
                 </div>
             </div>
             <div className='message--controls'>
