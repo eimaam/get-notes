@@ -835,8 +835,10 @@ header .info button a:hover {
 @media only screen and (max-width: 1000px) {
   #forum aside .messages--container, #forum .container .messages--container {
     margin-top: 3rem;
+    margin-bottom: 3.5rem;
     width: 100%;
     border: none;
+    overflow-x: hidden;
   }
 }
 #forum aside .messages--container .chats--container, #forum .container .messages--container .chats--container {
@@ -872,6 +874,9 @@ header .info button a:hover {
   padding: 0 1rem;
   max-height: 300px;
   width: 100%;
+}
+#forum aside .message--controls textarea:focus, #forum .container .message--controls textarea:focus {
+  outline: none;
 }
 #forum aside .message--controls textarea::-moz-placeholder, #forum .container .message--controls textarea::-moz-placeholder {
   position: relative;
@@ -935,6 +940,7 @@ header .info button a:hover {
   padding: 1rem 0.5rem;
   background-color: #fff;
   z-index: 9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #forum #forumNav .toggler {
   display: none;
@@ -989,6 +995,9 @@ header .info button a:hover {
     display: none;
     margin-top: 1rem;
     padding: 0;
+  }
+  #forum #forumNav ul li {
+    font-size: 0.9rem;
   }
   #forum #forumNav h2, #forum #forumNav button {
     display: none;
@@ -1173,7 +1182,7 @@ header .info button a:hover {
     width: 80%;
   }
 }
-.profile--card h3 {
+.profile--card h4 {
   text-transform: lowercase;
 }
 .profile--card p {

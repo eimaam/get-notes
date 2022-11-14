@@ -19,7 +19,7 @@ export default function Home(props) {
   useEffect(() => {
     AOS.init({delay: 250})
   }, [])
-  
+
   return (
     <>
       <TopNav />

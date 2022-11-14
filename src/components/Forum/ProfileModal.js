@@ -10,7 +10,7 @@ export const ProfileModal = ({username, level, department, handleClick}) => {
         </div>
         <div>
             <h4>@{username}</h4>
-            <p>{level}</p>
+            <p>{level} Level</p>
             <p>{department}</p>
         </div>
         <div>

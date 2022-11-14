@@ -21,6 +21,7 @@ export const Forum = () => {
     useEffect(() => {
         onAuthStateChanged(auth, data => {
             data && navigate("/forum")
+
         })
         setTimeout(() => {
             setLoading(false)
@@ -75,12 +76,24 @@ export const Forum = () => {
 
     }
 
+    // function to scroll to last message on Channel selection
+    // to remove default load showing fist message in a Channel
+    const scrollToBottom = () => {
+        const chatbox = document.querySelector(".messages--container")
+        chatbox.scrollTop = chatbox.scrollHeight;
+        
+    }
+
     // fetch messages on load
     // re-renders anytime channel is changed
+
     useEffect(() => {
         fetchMessages()
+        // only run when channel have been selected to stop the id from returning null
+        channel != "" && scrollToBottom()
+        
     }, [channel])
-
+    
     // user messages
     const fetchMessages = async () => {
         try{
@@ -129,7 +142,6 @@ export const Forum = () => {
     const [profileInfo, setProfileInfo] = useState([])
     // fetch profileInfo to display on modals
     const fetchProfileInfo = async (username) => {
-        setLoading(true)
         try{
             const q =  query(collection(database, "userDetails"), where("username", "==", `${username}`))
             await onSnapshot(q, snapShot => {
@@ -137,7 +149,6 @@ export const Forum = () => {
                     ...data.data()
                 })))
             })
-            setLoading(false)
             setShowModal(!showModal)
         }
         catch(err){
@@ -153,6 +164,7 @@ export const Forum = () => {
                 <h1>Ooops! Forum is only opened to Students </h1>
             </div>
     }
+    console.log(userInfo)
 
   return (
     <div id='forum'>
@@ -172,11 +184,11 @@ export const Forum = () => {
             <h2>{`Channel: ${channel}`}</h2>
             <CgMenuGridO className='toggler' onClick={toggleMenu}/>
             <ul id='menu'>
-                <li onClick={() => switchCategory("100level")}>🚀 100 Level General </li>
-                <li onClick={() => switchCategory("200level")}>🚀 200 Level General </li>
-                <li onClick={() => switchCategory("300level")}>🚀 300 Level General </li>
-                <li onClick={() => switchCategory("400level")}>🚀 400 Level General </li>
-                <li onClick={() => switchCategory("500level")}>🚀 500 Level General </li>
+                {userInfo.level == "100" && <li onClick={() => switchCategory("100level")}>🚀 100 Level General </li>}
+                {userInfo.level == "200" && <li onClick={() => switchCategory("200level")}>🚀 200 Level General </li>}
+                {userInfo.level == "300" && <li onClick={() => switchCategory("300level")}>🚀 300 Level General </li>}
+                {userInfo.level == "400" && <li onClick={() => switchCategory("400level")}>🚀 400 Level General </li>}
+                {userInfo.level == "500" && <li onClick={() => switchCategory("500level")}>🚀 500 Level General </li>}
                 <li onClick={() => switchCategory("football")}>⚽ Football</li>
                 <li onClick={() => switchCategory("sports")}>🥇 Sports - General </li>
                 <li onClick={() => switchCategory("politics")}>🗯 Politics</li>
@@ -241,12 +253,13 @@ export const Forum = () => {
             {/* profile info card modal */}
             {showModal 
                 && profileInfo.map((item,index) => {
-               return  <ProfileModal 
-                username={item.username} 
-                level={item.level} 
-                department={item.department}
-                handleClick={() => setShowModal(false)}
-                />
+               return  <ProfileModal
+                        key={index} 
+                        username={item.username} 
+                        level={item.level} 
+                        department={item.department}
+                        handleClick={() => setShowModal(false)}
+                        />
                 }
                 )
             }
