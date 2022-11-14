@@ -29,7 +29,6 @@
             height: 100%;
             border-radius: 0.5rem;
             border: 1px solid rgb(219, 203, 203);
-            overflow-y: scroll;
             overflow-x: hidden;
             
             @include mobile{
@@ -45,6 +44,8 @@
                 justify-content: flex-start;
                 align-items: flex-start;
                 margin-block: 1rem;
+                overflow-y: scroll;
+
 
             }
 
@@ -181,6 +182,7 @@
                 display: none;
                 margin-top: 1rem;
                 padding: 0;
+                overflow-y: scroll;
 
                 li{
                     font-size: 0.9rem;

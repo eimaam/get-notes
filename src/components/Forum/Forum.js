@@ -55,9 +55,6 @@ export const Forum = () => {
     // send message function
     const sendMessage = async (e) => {
         e.preventDefault()
-        if(message == ""){
-            return;
-        }
         try{
             await addDoc(collection(database, "forumMessages"), {
                 message: message,
@@ -164,7 +161,6 @@ export const Forum = () => {
                 <h1>Ooops! Forum is only opened to Students </h1>
             </div>
     }
-    console.log(userInfo)
 
   return (
     <div id='forum' onClick={() => setShowModal(false)}>
@@ -173,7 +169,7 @@ export const Forum = () => {
         ? 
         
         <div style={mystyle}>
-            <h3>Loading Chat...</h3>
+            <h3>Loading Channels...</h3>
             <PuffLoader />
         </div>
 
@@ -184,11 +180,13 @@ export const Forum = () => {
             <h2>{`Channel: ${channel}`}</h2>
             <CgMenuGridO className='toggler' onClick={toggleMenu}/>
             <ul id='menu'>
-                {userInfo.level == "100" && <li onClick={() => switchCategory("100level")}>🚀 100 Level General </li>}
-                {userInfo.level == "200" && <li onClick={() => switchCategory("200level")}>🚀 200 Level General </li>}
-                {userInfo.level == "300" && <li onClick={() => switchCategory("300level")}>🚀 300 Level General </li>}
-                {userInfo.level == "400" && <li onClick={() => switchCategory("400level")}>🚀 400 Level General </li>}
-                {userInfo.level == "500" && <li onClick={() => switchCategory("500level")}>🚀 500 Level General </li>}
+                {userInfo.level == "100" && <li onClick={() => switchCategory("100 Level")}>🚀 100 Level General </li>}
+                {userInfo.level == "200" && <li onClick={() => switchCategory("200 Level")}>🚀 200 Level General </li>}
+                {userInfo.level == "300" && <li onClick={() => switchCategory("300 Level")}>🚀 300 Level General </li>}
+                {userInfo.level == "400" && <li onClick={() => switchCategory("400 Level")}>🚀 400 Level General </li>}
+                {userInfo.level == "500" && <li onClick={() => switchCategory("500 Level")}>🚀 500 Level General </li>}
+                <li onClick={() => switchCategory("campus discussion")}>🏨 Campus Discussion</li>
+                <li onClick={() => switchCategory("mental health")}>🧠 Mental Health</li>
                 <li onClick={() => switchCategory("football")}>⚽ Football</li>
                 <li onClick={() => switchCategory("sports")}>🥇 Sports - General </li>
                 <li onClick={() => switchCategory("politics")}>🗯 Politics</li>
