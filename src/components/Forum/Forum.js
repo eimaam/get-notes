@@ -105,7 +105,7 @@ export const Forum = () => {
     const switchCategory = (channelValue) => {
         setChannel(channelValue);
         fetchMessages()
-        hideMenu()
+        // hideMenu()
         // // set menu display to none on select
         // toggleMenu()
     }
