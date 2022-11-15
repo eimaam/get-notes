@@ -1,5 +1,5 @@
 .chat--bubble--received{
-    background-color: $--$extras;
+    background-color: #f8e6b4;
     max-width: 500px;
     padding: 0.2rem 0.5rem;
     border-radius: 0.5rem;
@@ -54,7 +54,7 @@
 }
 
 .chat--bubble--sent{
-    background-color: #ffe08c;
+    background-color: $--primary;
     max-width: 500px;
     min-width: 200px;
     padding: 0.2rem 0.5rem;
