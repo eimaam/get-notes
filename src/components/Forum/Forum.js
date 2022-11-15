@@ -18,6 +18,7 @@ export const Forum = () => {
     const { userInfo, fetchUserDetails } = useData()
     const {isLogged, loading, setLoading, navigate} = useAuth()
 
+    // ref to manage scroll to end of message position
     const messagesEndRef = useRef(null)
 
     useEffect(() => {
@@ -80,10 +81,10 @@ export const Forum = () => {
 
     useEffect(() => {
         fetchMessages()
-        // only run when channel have been selected to stop the id from returning null
-        
     }, [channel])
 
+    // go to end of messages
+    // runs anytime there's a new message or category is changed
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView()
     }, [channel, allMessages])
@@ -226,7 +227,7 @@ export const Forum = () => {
                         />  
                         : <ChatBubble
                             key={index}
-                            message={item.message} 
+                            message={item.message.slice(0,400)} 
                             sender={item.sender} 
                             time={item.time}
                             className={"sent"}
