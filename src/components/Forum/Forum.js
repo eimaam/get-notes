@@ -24,7 +24,8 @@ export const Forum = () => {
     useEffect(() => {
         onAuthStateChanged(auth, data => {
             data && navigate("/forum")
-
+            // set page title in browser
+            document.title = `getNOTES | Forum`
         })
         setTimeout(() => {
             setLoading(false)
@@ -49,11 +50,6 @@ export const Forum = () => {
     hour == 0 ? hour = 12 : hour = hour;
     hour > 12 ? hour = hour - 12 : hour = hour;
     mins < 10 ? mins = "0"+mins : mins = mins;
-    
-    // function to handle new messages on type
-    const handleChange = (e) => {
-        setMessage(e.target.value)
-    }
     
     // send message function
     const sendMessage = async (e) => {
@@ -108,6 +104,7 @@ export const Forum = () => {
     const switchCategory = (channelValue) => {
         setChannel(channelValue);
         fetchMessages()
+        hideMenu()
         // // set menu display to none on select
         // toggleMenu()
     }
@@ -119,8 +116,13 @@ export const Forum = () => {
         ? menu.style.display = "flex"
         : menu.style.display = "none"
     }
+    
+    const hideMenu = () => {
+        let menu = document.querySelector('#menu')
+        menu.style.display = "none"   
+    }
 
-    // syling the loader animation to full screen
+    // syling to set the loader animation to fullscreen
     const mystyle = {
         margin: "auto",
         display: "flex",
@@ -193,7 +195,7 @@ export const Forum = () => {
                 : channel === "cryptocurrency" ? `Channel: 📈 ${channel}`
                 : channel === "economy" ? `Channel: 💵 ${channel}`
                 : channel === "business" ? `Channel: 🤑 ${channel}`
-                : "Channel:"
+                : ""
                 }
             </h2>
             <CgMenuGridO className='toggler' onClick={toggleMenu}/>
@@ -204,7 +206,7 @@ export const Forum = () => {
                 {userInfo.level ==="300" && <li onClick={() => switchCategory("300level")}>🚀 300 Level General </li>}
                 {userInfo.level === "400" && <li onClick={() => switchCategory("400level")}>🚀 400 Level General </li>}
                 {userInfo.level === "500" && <li onClick={() => switchCategory("500level")}>🚀 500 Level General </li>}
-                <li className='active' onClick={() => switchCategory("campus discussion")}>🏨 Campus Discussion</li>
+                <li onClick={() => switchCategory("campus discussion")}>🏨 Campus Discussion</li>
                 <li onClick={() => switchCategory("mental health")}>🧠 Mental Health</li>
                 <li onClick={() => switchCategory("football")}>⚽ Football</li>
                 <li onClick={() => switchCategory("sports")}>🥇 Sports - General </li>
@@ -222,7 +224,7 @@ export const Forum = () => {
             <h2>Select a CHANNEL from the navigation menu to join a discussion</h2>
         </div>
         :
-        <aside>
+        <aside onClick={hideMenu}>
             <div className='messages--container'>
                 {/* channel name */}
                 <div className='chats--container'>

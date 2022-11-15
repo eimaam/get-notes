@@ -866,7 +866,7 @@ header .info button a:hover {
     position: fixed;
     bottom: 0;
     margin: 0;
-    padding: 0.5rem;
+    padding-inline: 0.5rem;
     border-radius: none;
   }
 }
@@ -939,12 +939,14 @@ header .info button a:hover {
   align-items: flex-start;
   justify-content: space-between;
   padding: 1rem 0.5rem;
-  background-color: #fff;
+  background-color: #ffbd0c;
   z-index: 9;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #forum #forumNav .toggler {
   display: none;
+}
+#forum #forumNav h2 {
+  font-size: 1.2rem;
 }
 #forum #forumNav ul {
   display: flex;
@@ -954,17 +956,26 @@ header .info button a:hover {
   gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
 }
 #forum #forumNav ul li, #forum #forumNav ul a {
-  font-size: 1.2rem;
+  width: 100%;
+  font-size: 1.1rem;
   cursor: pointer;
+  background-color: #ffbd0c;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.2rem;
 }
 #forum #forumNav ul li:hover, #forum #forumNav ul a:hover {
-  color: #ffbd0c;
-  border-bottom: 1px solid #ffbd0c;
+  background-color: #fff;
+}
+#forum #forumNav .active {
+  background-color: #fff;
 }
 #forum #forumNav button {
   font-size: 0.9rem;
+  background-color: #1a2930;
+  color: #fff;
 }
 @media only screen and (min-width: 1001px) and (max-width: 1500px) {
   #forum #forumNav button {
@@ -979,7 +990,7 @@ header .info button a:hover {
     top: 0;
     height: auto;
     align-items: flex-end;
-    padding: 1rem;
+    padding: 0.5rem;
     margin: 0;
     overflow: scroll;
     border-bottom: 1px solid #1a2930;
@@ -990,15 +1001,20 @@ header .info button a:hover {
     z-index: 99999999990;
     display: block;
   }
+  #forum #forumNav h2 {
+    font-size: 1rem;
+  }
   #forum #forumNav ul {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
     justify-content: center;
     align-items: flex-start;
-    border-radius: 1rem;
-    height: 100%;
-    width: 100%;
-    gap: 1.5rem;
+    height: 100vh;
+    width: 80%;
+    background-color: #ffbd0c;
     display: none;
-    margin-top: 1rem;
     padding: 0;
     overflow-y: scroll;
   }
