@@ -65,6 +65,7 @@ export const Forum = () => {
             })
             // if message sent, set the message box to empty
             document.querySelector('textarea').value = "";
+            setMessage("")
         }
         catch(err){
             console.log(err.message)
@@ -116,7 +117,8 @@ export const Forum = () => {
         ? menu.style.display = "flex"
         : menu.style.display = "none"
     }
-    
+
+    // hide menu
     const hideMenu = () => {
         let menu = document.querySelector('#menu')
         menu.style.display = "none"   
