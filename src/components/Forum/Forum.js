@@ -232,7 +232,7 @@ export const Forum = () => {
                             time={item.time}
                             className={"sent"}
                             date={item.date} 
-                            handleClick={() => fetchProfileInfo(item.sender)}  
+                            handleClick={() => fetchProfileInfo(item.sender)}   
                         />
                     })
                     }
