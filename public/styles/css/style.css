@@ -796,6 +796,7 @@ header .info button a:hover {
 #forum {
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
 }
 #forum aside, #forum .container {
   width: 80%;
@@ -833,7 +834,7 @@ header .info button a:hover {
 }
 @media only screen and (max-width: 1000px) {
   #forum aside .messages--container, #forum .container .messages--container {
-    margin-top: 3rem;
+    margin-top: 3.5rem;
     margin-bottom: 3.5rem;
     width: 100%;
     border: none;
@@ -865,7 +866,7 @@ header .info button a:hover {
     position: fixed;
     bottom: 0;
     margin: 0;
-    padding-top: 0.5rem;
+    padding: 0.5rem;
     border-radius: none;
   }
 }
@@ -958,6 +959,10 @@ header .info button a:hover {
   font-size: 1.2rem;
   cursor: pointer;
 }
+#forum #forumNav ul li:hover, #forum #forumNav ul a:hover {
+  color: #ffbd0c;
+  border-bottom: 1px solid #ffbd0c;
+}
 #forum #forumNav button {
   font-size: 0.9rem;
 }
@@ -1000,7 +1005,7 @@ header .info button a:hover {
   #forum #forumNav ul li {
     font-size: 0.9rem;
   }
-  #forum #forumNav h2, #forum #forumNav button {
+  #forum #forumNav button {
     display: none;
   }
 }

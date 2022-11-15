@@ -115,7 +115,7 @@ export const Forum = () => {
     // toggle menu display on Mobile
     const toggleMenu = () => {
         let menu = document.querySelector('#menu')
-        menu.style.display != "flex" 
+        menu.style.display !== "flex" 
         ? menu.style.display = "flex"
         : menu.style.display = "none"
     }
@@ -154,7 +154,7 @@ export const Forum = () => {
         }
     }
 
-    if(userInfo.student == "no"){
+    if(userInfo.student === "no"){
         return <div style={mystyle}>
                 <h1>Ooops! Forum is only opened to Students </h1>
             </div>
@@ -175,15 +175,36 @@ export const Forum = () => {
         <>
         {/* Navigation Bar */}
         <div id='forumNav'>
-            <h2>{`Channel: ${channel}`}</h2>
+            <div style={{display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center"}}>
+            <h2>
+                {
+                channel === "100level" ? `Channel: 🚀 100 Level`
+                : channel === "200level" ? `Channel: 🚀 200 Level`
+                : channel === "300level" ? `Channel: 🚀 300 Level`
+                : channel === "400level" ? `Channel: 🚀 400 Level`
+                : channel === "500level" ? `Channel: 🚀 500 Level`
+                : channel === "campus discussion" ? `Channel: 🏨 ${channel}`
+                : channel === "mental health" ? `Channel: 🧠 ${channel}`
+                : channel === "football" ? `Channel: ⚽ ${channel}`
+                : channel === "sports" ? `Channel: 🥇 ${channel}`
+                : channel === "politics" ? `Channel: 🗯 ${channel}`
+                : channel === "music" ? `Channel: 🎶 ${channel}`
+                : channel === "movies" ? `Channel: 🎬 ${channel}`
+                : channel === "cryptocurrency" ? `Channel: 📈 ${channel}`
+                : channel === "economy" ? `Channel: 💵 ${channel}`
+                : channel === "business" ? `Channel: 🤑 ${channel}`
+                : "Channel:"
+                }
+            </h2>
             <CgMenuGridO className='toggler' onClick={toggleMenu}/>
+            </div>
             <ul id='menu'>
-                {userInfo.level == "100" && <li onClick={() => switchCategory("100 Level")}>🚀 100 Level General </li>}
-                {userInfo.level == "200" && <li onClick={() => switchCategory("200 Level")}>🚀 200 Level General </li>}
-                {userInfo.level == "300" && <li onClick={() => switchCategory("300 Level")}>🚀 300 Level General </li>}
-                {userInfo.level == "400" && <li onClick={() => switchCategory("400 Level")}>🚀 400 Level General </li>}
-                {userInfo.level == "500" && <li onClick={() => switchCategory("500 Level")}>🚀 500 Level General </li>}
-                <li onClick={() => switchCategory("campus discussion")}>🏨 Campus Discussion</li>
+                {userInfo.level === "100" && <li onClick={() => switchCategory("100level")}>🚀 100 Level General </li>}
+                {userInfo.level === "200" && <li onClick={() => switchCategory("200level")}>🚀 200 Level General </li>}
+                {userInfo.level ==="300" && <li onClick={() => switchCategory("300level")}>🚀 300 Level General </li>}
+                {userInfo.level === "400" && <li onClick={() => switchCategory("400level")}>🚀 400 Level General </li>}
+                {userInfo.level === "500" && <li onClick={() => switchCategory("500level")}>🚀 500 Level General </li>}
+                <li className='active' onClick={() => switchCategory("campus discussion")}>🏨 Campus Discussion</li>
                 <li onClick={() => switchCategory("mental health")}>🧠 Mental Health</li>
                 <li onClick={() => switchCategory("football")}>⚽ Football</li>
                 <li onClick={() => switchCategory("sports")}>🥇 Sports - General </li>
@@ -207,15 +228,15 @@ export const Forum = () => {
                 <div className='chats--container'>
                     {/* show no messages if channel contains no message else display the messages */}
                     {allMessages.length === 0 
-                    ? <div>
+                    ? <div style={mystyle}>
                         <h3 style={{textAlign: "center"}}>
-                            No message here yet! Send one to start a conversation 😇
+                            No message here yet... Send one to start a conversation 😇
                         </h3>
                        </div> 
                     :
                     // display messages if the channel contains some
                     allMessages.map((item, index) => {
-                        return item.sender != userInfo.username 
+                        return item.sender !== userInfo.username 
                         ? <ChatBubble
                             key={index}
                             message={item.message} 
@@ -232,11 +253,11 @@ export const Forum = () => {
                             time={item.time}
                             className={"sent"}
                             date={item.date} 
-                            handleClick={() => fetchProfileInfo(item.sender)}   
+                            handleClick={() => fetchProfileInfo(item.sender)}  
                         />
                     })
                     }
-                    <div ref={messagesEndRef}></div>
+                    <div ref={messagesEndRef} />
                 </div>
             </div>
             <div className='message--controls'>

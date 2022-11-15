@@ -1,6 +1,7 @@
 #forum{
     width: 100%;
     height: 100vh;
+    overflow-x: hidden;
 
     aside{
         width: 80%;
@@ -32,7 +33,7 @@
             overflow-x: hidden;
             
             @include mobile{
-                margin-top: 3rem;
+                margin-top: 3.5rem;
                 margin-bottom: 3.5rem;
                 width: 100%;
                 border: none;
@@ -65,7 +66,7 @@
                 position: fixed;
                 bottom: 0;
                 margin: 0;
-                padding-top: 0.5rem;
+                padding: 0.5rem;
                 border-radius: none;
             }
 
@@ -142,6 +143,11 @@
             li,a{
                 font-size: 1.2rem;
                 cursor: pointer;
+
+                &:hover{
+                    color: $--primary;
+                    border-bottom: 1px solid $--primary;
+                }
             }
         }
 
@@ -189,7 +195,7 @@
                 }
             }
 
-            h2, button{
+            button{
                 display: none;
             }
         }

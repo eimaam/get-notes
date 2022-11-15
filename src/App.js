@@ -39,7 +39,7 @@ function App() {
     AOS.init({delay: 700, easing: 'ease-out'})
     setTimeout(() => {
       setLoading(false)
-    }, 2500);
+    }, 0);
   }, [])
 
   return (
