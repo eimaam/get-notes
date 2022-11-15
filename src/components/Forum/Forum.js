@@ -63,9 +63,9 @@ export const Forum = () => {
                 date: date,
                 time: `${hour}:${mins}${period}`,
             })
+            setMessage("")
             // if message sent, set the message box to empty
             document.querySelector('textarea').value = "";
-            setMessage("")
         }
         catch(err){
             console.log(err.message)
