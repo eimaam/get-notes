@@ -185,6 +185,12 @@ button{
         font-weight: 100;
     }
 }
+.btn--small{
+    color: $--secondary;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    padding: 1px 0.3rem;
+}
 label{
     font-size: 1.1rem;
     text-align: left;

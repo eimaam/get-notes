@@ -164,31 +164,31 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
           username: username,
           email: data.email,
           department: data.department,
-            })
-            setDoc(doc(DocRef, data.email), {
-              email: data.email,
-              username: username,
-              department: data.department,
-              level: data.level,
-              student: studentSelection,
-            })
-            toast.info("SIGNED UP SUCCESSFULLY")
-            return navigate('../login')
-            })
-            .catch(err => {
-              if(err.code === 'auth/weak-password'){
-                setLoading(false)
-                toast.error('Weak Password! Password should be at least 6 characters')
-              }else if(err.code === 'auth/email-already-in-use'){
-                setLoading(false)
-                setError('Account already exist!')
-                toast.error('Account already exist!')
-              }else{
-                setLoading(false)
-                toast.error(err.code)
-              }
-            })
-          }
+          })
+          setDoc(doc(DocRef, data.email), {
+            email: data.email,
+            username: username,
+            department: data.department,
+            level: data.level,
+            student: studentSelection,
+          })
+          toast.info("SIGNED UP SUCCESSFULLY")
+          return navigate('../login')
+          })
+          .catch(err => {
+            if(err.code === 'auth/weak-password'){
+              setLoading(false)
+              toast.error('Weak Password! Password should be at least 6 characters')
+            }else if(err.code === 'auth/email-already-in-use'){
+              setLoading(false)
+              setError('Account already exist!')
+              toast.error('Account already exist!')
+            }else{
+              setLoading(false)
+              toast.error(err.code)
+            }
+          })
+        }
     setLoading(true)
   }
 

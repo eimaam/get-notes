@@ -1,10 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-// AOS import
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-
 // error page image illustration
 import error from "./assets/error.jpg"
 

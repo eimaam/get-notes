@@ -1433,6 +1433,13 @@ button:hover {
   }
 }
 
+.btn--small {
+  color: #1a2930;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  padding: 1px 0.3rem;
+}
+
 label {
   font-size: 1.1rem;
   text-align: left;

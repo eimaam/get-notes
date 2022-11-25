@@ -26,7 +26,6 @@ export default function Login() {
     })
 }, [])
 
-console.log(user)
 
   const [data, setData] = useState({
     email: '',

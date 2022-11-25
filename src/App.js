@@ -37,6 +37,7 @@ function App() {
   useEffect(() => {
     setLoading(true)
     AOS.init({delay: 700, easing: 'ease-out'})
+    
     setTimeout(() => {
       setLoading(false)
     }, 2500);
@@ -44,7 +45,7 @@ function App() {
 
   return (
         <>
-          {/* turned loader to enable app data from AuthContext to load before displaying */}
+          {/* loading animation to enable app data from AuthContext to load before displaying */}
           {loading 
           
           ?
@@ -74,19 +75,20 @@ function App() {
                   <Route path="/admin" element={<AdminDashboard />}    />      
                   <Route path="/welcome" element={<WelcomePage />}    />
 
-                  {/* Routes with Side Nav Bar */}
+                  {/* Protected Routes with Side Nav Bar */}
                   <Route element={<RouteWithNavBar />}>
                     <Route path="/notes" element={<Notes />} />  
                     <Route path="/upload" element={<Upload />}    />
                     <Route path="/:userName/settings" element={<UserSettings />}    />
                     <Route exact path="/not-student" element={<NotStudentNotes />} />  
                   </Route>
-                  {/* end */}
+
                 </Route>
               </Routes>
             </DataProvider>
           </AuthProvider>
         }
+        {/* React toastify component */}
           <ToastContainer
           autoClose={3000}
           />

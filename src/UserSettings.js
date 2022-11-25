@@ -7,17 +7,22 @@ import { useData } from './contexts/DataContext';
 import { useParams } from 'react-router-dom';
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { doc, setDoc, updateDoc } from 'firebase/firestore';
 // ..
 
 
 
 export default function UserSettings() {
   const { userName } = useParams();
-  const { navigate, setError, error, message, setMessage } = useAuth()
+
+  const { user, loading, setLoading, setError, error, message, setMessage, DocRef } = useAuth()
+  const { userInfo } = useData()
   const { setHideNav } = useData()
 
-
-    const [show, setShow] = useState(false)
+  // manage password reset input - show or hide
+  const [showPass, setShowPass] = useState(false)
+  // manage level change input - show or hide
+  const [showLevelChange, setShowLevelChange] = useState(false)
 
 
     const [data, setData] = useState({
@@ -26,7 +31,7 @@ export default function UserSettings() {
 
     // const [regUsernames, setRegUsernames] = useState([])
 
-  function handleChange(e){
+  function handlePass(e){
     const {name, value} = e.target
     setData(prevData => ({
       ...prevData,
@@ -35,14 +40,26 @@ export default function UserSettings() {
     )
   }
 
+  // handle level selection
+  const handleLevel = (e) => {
+    setLevel(e.target.value)
+  }
+
 //   reset password
 const resetPass = async (e) => {
     e.preventDefault()
+    if(data.email !== user.email){
+      return (
+        setError('Email incorrect'),
+        toast.error('Email incorrect')
+        )
+    }
     try{
         await sendPasswordResetEmail(auth, data.email)
         .then(() => {
             setMessage('Password reset link sent! Check your Inbox or Spam Folder')
             toast.info('Password reset link sent! Check your Inbox or Spam Folder')
+            setShowPass(false)
         })
     }
     catch(err){
@@ -60,6 +77,27 @@ const resetPass = async (e) => {
   return setData({
     email: ''
   })
+}
+
+// change level
+const [level, setLevel] = useState("")
+
+
+const updateLevel = async (e) => {
+  e.preventDefault()
+  setLoading(true)
+  try{
+      await updateDoc(doc(DocRef, user.email), {
+        level: level
+      })
+      setLoading(false)
+      setMessage(`Level Updated to ${level}`)
+      toast.success('Level Updated')
+      setShowLevelChange(false)
+    }
+    catch(err){
+      console.log(err.code)
+    }
 }
 
 useEffect(() => {
@@ -150,8 +188,24 @@ useEffect(() => {
 
   return (
     <div id='userSettings' onClick={() => setHideNav(true)} data-aos="fade" data-aos-easing="ease-in">
-      <form action="" onSubmit={resetPass}>
-        {show &&
+      <form>
+        <h3>
+          Level: {userInfo.level}  <button type='button' className='btn--small' onClick={() => setShowLevelChange(prev => !prev)}>Edit</button>
+        </h3>
+        {showLevelChange &&
+        <>
+          <select defaultValue="Select Level" name="level" onChange={handleLevel} required>
+            <option defaultValue="" disabled>Select Level</option>
+            <option value="100">100 Level</option>
+            <option value="200">200 Level</option>
+            <option value="300">300 Level</option>
+            <option value="400">400 Level</option>
+            <option value="500">500 Level</option>
+          </select>
+          <input type="submit" onClick={updateLevel}/>
+        </>
+        }
+        {showPass &&
         <React.StrictMode>
         <label htmlFor="Registered Email">
           Re-enter your registered Email:
@@ -161,13 +215,13 @@ useEffect(() => {
         type="email" 
         placeholder='Enter registered Email Address' 
         value={data.email}
-        onChange={(e) => handleChange(e)}
+        onChange={(e) => handlePass(e)}
         required
         />
-        <input type="submit" value="Change Password"/>
+        <input type="submit" value="Change Password" onClick={resetPass}/>
         </React.StrictMode>
         }
-        {!show && <button onClick={() => setShow(true)}>Change Password</button>}
+        {!showPass && <button onClick={() => setShowPass(true)}>Change Password</button>}
         <button type='button' disabled>Change username <i>(coming soon...)</i></button>
         <p className='success'>{message}</p>
         <p className='error'>{error}</p>
