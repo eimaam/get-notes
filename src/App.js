@@ -40,7 +40,7 @@ function App() {
     
     setTimeout(() => {
       setLoading(false)
-    }, 2500);
+    }, 0);
   }, [])
 
   return (
@@ -68,9 +68,9 @@ function App() {
                 <Route path="*" element={<ErrorPage />}    />
     
                 {/* PROTECTED ROUTES: Only logged in Users can access  */}
+                <Route path="/addusername" element={<AddData/>}    />
                 <Route element={<ProtectedRoutes />}>
                   <Route path="/forum" element={<Forum />}    />
-                  <Route path="/addusername" element={<AddData/>}    />
                   <Route path="/games" element={<TakeARest />}    />
                   <Route path="/admin" element={<AdminDashboard />}    />      
                   <Route path="/welcome" element={<WelcomePage />}    />

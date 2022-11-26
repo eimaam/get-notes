@@ -12,6 +12,7 @@ import { MdOutlineForum } from 'react-icons/md';
 
 // AOS import
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { HashLoader } from 'react-spinners';
 // ..
 
 
@@ -43,6 +44,13 @@ export default function Nav() {
     }
   }
 // //
+
+if(userInfo === undefined){
+  return <div>
+              <h3>Loading Notes...</h3>
+              <HashLoader />
+          </div>
+}
 
   return (
     <React.StrictMode>

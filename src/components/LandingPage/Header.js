@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // hero image import
-import heroImage2 from "../../assets/reading_online.png"
-import { useAuth } from '../../contexts/AuthContext';
+import heroImage2 from "../../assets/header.svg"
 
 export default function Header(){
+
+  
   
 
   return (

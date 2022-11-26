@@ -1547,6 +1547,13 @@ label {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+#signup .confirm h3, #upload .confirm h3, #userSettings .confirm h3, #resetPass .confirm h3, #login .confirm h3 {
+  width: 50%;
 }
 #signup .confirm .options, #upload .confirm .options, #userSettings .confirm .options, #resetPass .confirm .options, #login .confirm .options {
   display: flex;
@@ -1555,6 +1562,14 @@ label {
   align-items: center;
   gap: 1rem;
   margin-block: 1rem;
+}
+#signup .confirm .options label, #upload .confirm .options label, #userSettings .confirm .options label, #resetPass .confirm .options label, #login .confirm .options label {
+  font-size: 1rem;
+}
+#signup .confirm .options div input, #upload .confirm .options div input, #userSettings .confirm .options div input, #resetPass .confirm .options div input, #login .confirm .options div input, #signup .confirm .options div button, #upload .confirm .options div button, #userSettings .confirm .options div button, #resetPass .confirm .options div button, #login .confirm .options div button {
+  border-radius: 50%;
+  padding: 3rem;
+  background-color: red;
 }
 @media only screen and (max-width: 1000px) {
   #signup .confirm .options, #upload .confirm .options, #userSettings .confirm .options, #resetPass .confirm .options, #login .confirm .options {

@@ -38,11 +38,10 @@ useEffect(() => {
 }, [error])
 
   //state to save Student or not confirmation - Check if a user 
-  const [studentSelection, setStudentSelection] = useState("")
-
+  
   // state to save all user sign up info
   const [data, setData] = useState({
-    student: studentSelection,
+    student: "",
     username: '',
     department: '',
     level: '',
@@ -53,35 +52,31 @@ useEffect(() => {
   
 
   // Handle student or not selection state 
-  function handleStudentSelection(e){
-    
-    // check if a user is a student or not
-    // if student, value is store as yes else stored as no
 
-    const notStudentOption = document.getElementById('notStudent')
+  const handleSelection = () => {
+    // // check if a user is a student or not
+    // // if student, value is stored as true else stored as falsy
+
     const studentOption = document.getElementById('student')
+    const notStudentOption = document.getElementById('notStudent')
 
     if(studentOption.checked){
       notStudentOption.disabled = true
-      return setStudentSelection("yes")
-    }else{
+      return setData(prevData => ({...prevData, student: "yes"}))
+    }else if(!studentOption.checked){
       notStudentOption.disabled = false 
-      setStudentSelection("") 
-    } 
-
-    if(notStudentOption.checked){
-      studentOption.disabled = true
-      setStudentSelection(notStudentOption.value) 
-    }else{
-      studentOption.disabled = false
-      setStudentSelection("") 
+      notStudentOption.checked = true 
+      setData(prevData => ({...prevData, student: "no"}))
     }
-
-    console.log(studentSelection)
 
   }
 
+ 
+  
 
+  
+  
+  
 
   // Handle input change
   function handleChange(e){
@@ -91,7 +86,9 @@ useEffect(() => {
       [name]: value.toLowerCase(),
     })
     )
+    
   }
+
 
   // const passwordRegex =  /^[A-Za-z]\w{6,14}$/
   
@@ -128,6 +125,8 @@ useEffect(() => {
 // if regUsernames' length is greater than 0 that means username entered matches one from the database
 const takenUsername = regUsernames.length > 0 && regUsernames[0].username
 
+console.log(data)
+
 // sign up function
   const signUp = (e) => {
     e.preventDefault()
@@ -149,67 +148,68 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       setError('Passwords do not match')
       return toast.error('Passwords do not match')
       // create User Database if all conditions are met
-    }else if(studentSelection === "yes" && data.department === ""){
+    }else if(data.student === "yes" && data.department === ""){
       setLoading(false)
       setError('Select Department')
       return toast.error('Select Department')
-    }else if(studentSelection === "yes" && data.level === ""){
+    }else if(data.student === "yes" && data.level === ""){
       setLoading(false)
       setError('Select Level')
       return toast.error('Select Level')
-    }else{
+    }
+    try{
       createUserWithEmailAndPassword(auth, data.email, data.password)
       .then(res => {
         setUser({
           username: username,
           email: data.email,
           department: data.department,
-          })
-          setDoc(doc(DocRef, data.email), {
-            email: data.email,
-            username: username,
-            department: data.department,
-            level: data.level,
-            student: studentSelection,
-          })
-          toast.info("SIGNED UP SUCCESSFULLY")
-          return navigate('../login')
-          })
-          .catch(err => {
-            if(err.code === 'auth/weak-password'){
-              setLoading(false)
-              toast.error('Weak Password! Password should be at least 6 characters')
-            }else if(err.code === 'auth/email-already-in-use'){
-              setLoading(false)
-              setError('Account already exist!')
-              toast.error('Account already exist!')
-            }else{
-              setLoading(false)
-              toast.error(err.code)
-            }
-          })
-        }
-    setLoading(true)
+        })
+        setDoc(doc(DocRef, data.email), {
+          email: data.email,
+          username: username,
+          department: data.department,
+          level: data.level,
+          student: data.student,
+        })
+        setLoading(true)
+        toast.success("SIGNED UP SUCCESSFULLY")
+        return navigate('/notes')
+      })
+    }
+    catch(err){
+      if(err.code === 'auth/weak-password'){
+        setLoading(false)
+        toast.error('Weak Password! Password should be at least 6 characters')
+      }else if(err.code === 'auth/email-already-in-use'){
+        setLoading(false)
+        setError('Account already exist!')
+        toast.error('Account already exist!')
+      }else{
+        setLoading(false)
+        toast.error(err.code)
+      }
+    }
   }
 
  
   return (
     <div id='signup' onClick={() => setHideNav(true)} data-aos="fade-down" data-aos-easing="ease-out">
-      {/* <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
+      <div className='confirm' data-aos="fade" data-aos-easing="ease-out">
           <h3>Are you an Engineering Student of the University of Maiduguri?</h3>
           <div className="options">
             <div>
-              <input type="checkbox" value="yes" name='student' id='student' onChange={handleStudentSelection}/>
+              <input type="checkbox" value={"yes"} name='student' id='student' onChange={handleSelection}/>
               <label htmlFor="" >YES</label>
             </div>
             <div>
-              <input type="checkbox" value="no" name='student' id='notStudent' onChange={handleStudentSelection}/>
+              <input type="checkbox" value={"no"} name='student' id='notStudent' onChange={handleSelection}/>
               <label htmlFor="">NO</label>
             </div>
           </div>
-      </form> */}
-      {/* {studentSelection === "yes"
-      &&  */}
+      </div>
+      {data.student === "yes"
+      && 
       <form onSubmit={signUp} data-aos="fade-up" data-aos-easing="ease-out">
         <div className='input--field'>
           <span><FaUser /></span>
@@ -301,7 +301,8 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         <p>Have an account already? <Link to="/login" style={{color: '#f7ce3e'}}><b>Log in</b> </Link></p>
       </form>
       }
-      {studentSelection === "no"
+      
+      {data.student === "no"
       &&
       <form onSubmit={signUp} data-aos="fade-up" data-aos-easing="ease-out">
           <div>

@@ -14,7 +14,6 @@ export default function Notes() {
 
     const { isLogged, setIsLogged, navigate, user, setUser, loading, setLoading } = useAuth()
     const { userInfo, setHideNav, fetchUserDetail } = useData();
-
     // state to manage accordions: setting show and hide
     const [showLectureNotes, setShowLectureNotes] = useState(false)
     const [showOtherNotes, setShowOtherNotes] = useState(false)
@@ -35,19 +34,6 @@ export default function Notes() {
 
     // state to save extras
     const [extraNotes, setExtraNotes] = useState([])
-
-    // check if user has username
-    useEffect(() => {
-        // fetchUserDetail()
-        if(userInfo.username != undefined && userInfo.level != undefined){
-            setLoading(true)
-            // userInfo.student === "no" ? navigate('/not-student') : navigate('./notes')
-        }else if(userInfo.username === undefined){
-            navigate('/addusername')
-        }else if(userInfo.student === "no"){
-            navigate('/not-student')
-        }
-    }, [userInfo])
 
     // function to Fetch Notes in based on Department category
     const fetchNotes = async (level, setLevel) => {
@@ -118,13 +104,15 @@ export default function Notes() {
     // Get all Notes all notes
     useEffect(() => {
         setLoading(true)
+
         getAllNotes()
+
         setTimeout(() => {
             setLoading(false)
         }, 5000);
     }, [userInfo])
     
-    // display Levels 
+    // display Levels - accordion
     function showCategory(cat, setCat){
         !cat ? setCat(true) : setCat(false)
     }
@@ -138,29 +126,9 @@ export default function Notes() {
         : level.style.display = "none"
     }
 
-    // style to centralize the Note loader animation in center
-    const mystyle = {
-        margin: "auto",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "black",
-    }
-
   return (
     <div id='notes' className="notes--container" onClick={() => setHideNav(true)} data-aos="flip-right" data-aos-easing="ease-out">
-        {!isLogged && loading 
         
-        ? 
-        
-        <div style={mystyle}>
-            <h3>Loading Notes...</h3>
-            <HashLoader />
-        </div>
-
-        :
-        <>
         <div className='accordion--container'>
             {/* Main 
                     Lecture 
@@ -350,11 +318,6 @@ export default function Notes() {
                 }
             </div>
         </div>
-
-
-
-        </>
-        }
     </div>     
   )
 }

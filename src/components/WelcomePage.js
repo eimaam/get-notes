@@ -15,7 +15,7 @@ export const WelcomePage = () => {
     useEffect(() => {
         fetchUserDetail()
     }, [])
-console.log(user.email)
+console.log(userInfo)
 
   return (
     <div id='signup' data-aos="zoom-up">

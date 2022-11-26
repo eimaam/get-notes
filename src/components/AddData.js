@@ -12,26 +12,22 @@ export default function AddData() {
     const { userInfo, fetchUserDetail } = useData();
   const { user, navigate, DocRef, error, setError, loading, setLoading } = useAuth();
 
-
-   // check if user is logged in or nah
-   useEffect(() => {
-    onAuthStateChanged(auth, data => {
-        if(!data){
-          navigate('/login')
-        }
-    })
-}, [])
-
 // check that user has a username and also level set
 // if yes, go to notes page else display form to fill in
   useEffect(() => {
     if(userInfo.username != undefined && userInfo.level != undefined){
-        navigate('./notes')
+        navigate('notes')
       }else{
           setLoading(false)
       }   
   }, [userInfo, user])
 
+  // check if user is logged in or nah
+  useEffect(() => {
+    onAuthStateChanged(auth, data => {
+      !data && navigate('login')
+    })
+  }, [])
 
   //state to save Student or not confirmation - Check if a user 
   const [studentSelection, setStudentSelection] = useState("")
@@ -106,6 +102,7 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
         level: data.level,
         student: studentSelection,
       })
+    fetchUserDetail()
     }
       toast.info("Profile Updated!")
       return navigate('../notes')
