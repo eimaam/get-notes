@@ -134,9 +134,19 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
       setStudentSelection("") 
     }
 
-    console.log(studentSelection)
-
   }
+
+  // style loader
+  const mystyle = {
+    margin: "auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "black",
+}
+
+ 
 
 
 // component body
