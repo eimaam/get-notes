@@ -73,11 +73,6 @@ useEffect(() => {
 
  
   
-
-  
-  
-  
-
   // Handle input change
   function handleChange(e){
     const {name, value} = e.target
@@ -96,7 +91,7 @@ useEffect(() => {
   // and also use it for useEffect error boundary
   const username = data.username;
   
-  // regular expression for USERNAME
+  // regular expression for USERNAME to use in testing if username corresponds to the expression
   const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{2,16}$/;
 
 
@@ -125,7 +120,6 @@ useEffect(() => {
 // if regUsernames' length is greater than 0 that means username entered matches one from the database
 const takenUsername = regUsernames.length > 0 && regUsernames[0].username
 
-console.log(data)
 
 // sign up function
   const signUp = (e) => {
