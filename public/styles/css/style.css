@@ -1554,6 +1554,12 @@ label {
 }
 #signup .confirm h3, #upload .confirm h3, #userSettings .confirm h3, #resetPass .confirm h3, #login .confirm h3 {
   width: 50%;
+  text-align: center;
+}
+@media only screen and (max-width: 1000px) {
+  #signup .confirm h3, #upload .confirm h3, #userSettings .confirm h3, #resetPass .confirm h3, #login .confirm h3 {
+    width: 100%;
+  }
 }
 #signup .confirm .options, #upload .confirm .options, #userSettings .confirm .options, #resetPass .confirm .options, #login .confirm .options {
   display: flex;
@@ -1566,21 +1572,26 @@ label {
 #signup .confirm .options label, #upload .confirm .options label, #userSettings .confirm .options label, #resetPass .confirm .options label, #login .confirm .options label {
   font-size: 1rem;
 }
-#signup .confirm .options div input, #upload .confirm .options div input, #userSettings .confirm .options div input, #resetPass .confirm .options div input, #login .confirm .options div input, #signup .confirm .options div button, #upload .confirm .options div button, #userSettings .confirm .options div button, #resetPass .confirm .options div button, #login .confirm .options div button {
-  border-radius: 50%;
-  padding: 3rem;
-  background-color: red;
-}
 @media only screen and (max-width: 1000px) {
   #signup .confirm .options, #upload .confirm .options, #userSettings .confirm .options, #resetPass .confirm .options, #login .confirm .options {
     flex-direction: column;
+    margin: 0;
+    padding: 0;
   }
 }
-#signup .confirm input, #upload .confirm input, #userSettings .confirm input, #resetPass .confirm input, #login .confirm input, #signup .confirm button, #upload .confirm button, #userSettings .confirm button, #resetPass .confirm button, #login .confirm button {
+#signup .confirm .options div, #upload .confirm .options div, #userSettings .confirm .options div, #resetPass .confirm .options div, #login .confirm .options div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  gap: 0.2rem;
+}
+#signup .confirm .options div input, #upload .confirm .options div input, #userSettings .confirm .options div input, #resetPass .confirm .options div input, #login .confirm .options div input, #signup .confirm .options div button, #upload .confirm .options div button, #userSettings .confirm .options div button, #resetPass .confirm .options div button, #login .confirm .options div button {
   width: 50px;
-  margin: 0.5rem;
   height: 1rem;
   border: 0;
+  padding: 0;
 }
 #signup .confirm button, #upload .confirm button, #userSettings .confirm button, #resetPass .confirm button, #login .confirm button {
   width: -webkit-max-content;

@@ -266,6 +266,11 @@ label{
 
         h3{
             width: 50%;
+            text-align: center;
+
+            @include mobile{
+                width: 100%;
+            }
         }
 
         .options{
@@ -276,26 +281,25 @@ label{
                 font-size: 1rem;
             }
 
-            div{
-                input{
-                    border-radius: 50%;
-                    padding: 3rem;
-                    background-color: red;
-                }
-            }
-
             @include mobile{
                 flex-direction: column;
+                margin: 0;
+                padding: 0;
                 
             }
-        }
-        
 
-        input{
-            width: 50px;
-            margin: 0.5rem;
-            height: 1rem;
-            border: 0;
+            div{
+                @include flex(row);
+                gap: 0.2rem;
+
+                
+                input{
+                    width: 50px;
+                    height: 1rem;
+                    border: 0;
+                    padding: 0;
+                }
+            }
         }
 
         button{
