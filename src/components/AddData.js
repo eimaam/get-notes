@@ -43,7 +43,6 @@ useEffect(() => {
   userInfo.username != undefined && navigate('notes')
 }, [user, loading, userInfo])
 
-console.log(userInfo)
   // check for usernames
   const [regUsernames, setRegUsernames] = useState([])
   const username = data.username;
