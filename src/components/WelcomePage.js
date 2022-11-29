@@ -1,12 +1,8 @@
-import { setUserId } from 'firebase/analytics'
-import { onAuthStateChanged } from 'firebase/auth'
 import React from 'react'
 import { useEffect } from 'react'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import { FcCheckmark } from 'react-icons/fc'
-import { useAuth } from '../contexts/AuthContext'
 import { useData } from '../contexts/DataContext'
-import { auth } from '../firebaseConfig'
 
 export const WelcomePage = () => {
     const { fetchUserDetail, userInfo } = useData()

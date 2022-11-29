@@ -12,8 +12,8 @@ import { FaAt, FaKey, FaUser, FaUserLock } from 'react-icons/fa';
 
 
 export default function Login() {
-  const { user, setUser, logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
-  const { setHideNav, userInfo } = useData()
+  const { logInWithPopUp, navigate, loading, setLoading, error, setError } = useAuth();
+  const { setHideNav } = useData()
 
 
   useEffect(() => {
@@ -71,7 +71,6 @@ export default function Login() {
           toast.error('Retry...')
         }
       }
-      // setLoading(false)
     }
   
 

@@ -98,6 +98,7 @@ useEffect(() => {
   
 // get list of usernames from database that matches one entered by new user on sign up and save to regUsernames state 
 useEffect(() => {
+  setLoading(false)
   const checkUsername = async () => {
     try{
       const q = query(collection(database, "userDetails"), where("username", "==", data.username))

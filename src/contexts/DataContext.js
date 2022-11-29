@@ -41,7 +41,6 @@ export default function DataProvider({ children }) {
                 console.log(err.message)
             }
         }
-        setLoading(false)
     }
     
     // run fetch user detail anytime user state changes
@@ -51,7 +50,6 @@ export default function DataProvider({ children }) {
 
     }, [user])
 
-    console.log(loading)
 
     const value = {
         userInfo,

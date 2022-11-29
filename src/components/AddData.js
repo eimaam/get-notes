@@ -5,7 +5,6 @@ import { auth, database } from '../firebaseConfig';
 import { useAuth } from '../contexts/AuthContext';
 import { collection, doc, query, updateDoc, onSnapshot, where } from 'firebase/firestore';
 import { useData } from '../contexts/DataContext';
-import { HashLoader } from 'react-spinners';
 import { FullscreenLoader } from './Utilities/FullscreenLoader';
 
 
@@ -138,23 +137,13 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
 
   }
 
-  // style loader
-  const mystyle = {
-    margin: "auto",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "black",
-}
-
-if(loading){
-  return <FullscreenLoader />
-}
- 
 
 
-// component body
+  if(loading){
+    return <FullscreenLoader />
+  }
+
+
   return (
     <div id='login'>
         <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
