@@ -8,22 +8,14 @@ import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
 import { RiHome4Line } from 'react-icons/ri';
 import { GrGamepad } from 'react-icons/gr';
 import { MdOutlineForum } from 'react-icons/md';
-// import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
-
-// AOS import
-import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { HashLoader } from 'react-spinners';
-// ..
+// import { RiUserSettingsLine, RiUser } from 'react-icons/ri';
 
 
 export default function Nav() {
 
-  const { userInfo, fetchUserDetail, setHideNav, hideNav } = useData();
+  const { userInfo, setHideNav, hideNav } = useData();
   const { logOut, user } = useAuth();
-  
-  useEffect(() => {
-    fetchUserDetail()
-  }, [user])
 
   
 // Mobile Navigation toggle

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { MoonLoader } from 'react-spinners'
+import { FullscreenLoader } from '../components/Utilities/FullscreenLoader'
 import { useAuth } from '../contexts/AuthContext'
 import { useData } from '../contexts/DataContext'
 
 export const ProtectedRoutes = () => {
-    const { user, navigate } = useAuth()
+    const { user, navigate, loading } = useAuth()
     const { userInfo } = useData()
     
     // style to centralize the Note loader animation in center
@@ -18,15 +19,11 @@ export const ProtectedRoutes = () => {
       color: "black",
   }
 
-  if(userInfo === undefined){
-      return <div style={mystyle}>
-                  <MoonLoader />
-              </div>
+  if(loading){
+    return <FullscreenLoader />
   }else if(userInfo.username === undefined){
-      <div style={mystyle}>
-        <MoonLoader />
-      </div>
-    return navigate('addusername')
+    <FullscreenLoader />
+    return navigate('/addusername')
   }
 
   return (

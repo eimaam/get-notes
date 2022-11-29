@@ -4,7 +4,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Upload from './components/Upload';
 
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Notes from './components/NotesPage/Notes';
 // Toastify
 import { ToastContainer } from 'react-toastify';

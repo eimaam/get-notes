@@ -10,7 +10,6 @@ import { auth } from '../firebaseConfig'
 
 export const WelcomePage = () => {
     const { fetchUserDetail, userInfo } = useData()
-    const { user } = useAuth()
     
     useEffect(() => {
         fetchUserDetail()

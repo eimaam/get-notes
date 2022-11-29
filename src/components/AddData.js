@@ -6,34 +6,18 @@ import { useAuth } from '../contexts/AuthContext';
 import { collection, doc, query, updateDoc, onSnapshot, where } from 'firebase/firestore';
 import { useData } from '../contexts/DataContext';
 import { HashLoader } from 'react-spinners';
+import { FullscreenLoader } from './Utilities/FullscreenLoader';
 
 
 export default function AddData() {
-    const { userInfo, fetchUserDetail } = useData();
+  const { userInfo, fetchUserDetail } = useData();
   const { user, navigate, DocRef, error, setError, loading, setLoading } = useAuth();
-
-// check that user has a username and also level set
-// if yes, go to notes page else display form to fill in
-  useEffect(() => {
-    if(userInfo.username != undefined && userInfo.level != undefined){
-        navigate('notes')
-      }else{
-          setLoading(false)
-      }   
-  }, [userInfo, user])
-
-  // check if user is logged in or nah
-  useEffect(() => {
-    onAuthStateChanged(auth, data => {
-      !data && navigate('login')
-    })
-  }, [])
 
   //state to save Student or not confirmation - Check if a user 
   const [studentSelection, setStudentSelection] = useState("")
 
   const [data, setData] = useState({
-    username: userInfo.username != undefined ? userInfo.username : '',
+    username: '',
     department: '',
     level: '',
   })
@@ -47,6 +31,20 @@ export default function AddData() {
     )
   }
 
+  // check if user is logged in
+  useEffect(() => {
+    onAuthStateChanged(auth, data => {
+      !data && navigate('login')
+    })
+  }, [])
+
+  // check that user has a username and also level set
+// if yes, go to notes page else display form to fill in
+useEffect(() => {
+  userInfo.username != undefined && navigate('notes')
+}, [user, loading, userInfo])
+
+console.log(userInfo)
   // check for usernames
   const [regUsernames, setRegUsernames] = useState([])
   const username = data.username;
@@ -95,21 +93,25 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
     }else if(studentSelection === "yes" && data.level === ""){
       setError('Oops! You forgot Level')
       return toast.error('Oops! You forgot Level')
-    }else{
+    }
+    try{
+      setLoading(true)
       await updateDoc(doc(DocRef, user.email), {
         username: username,
         department: data.department,
         level: data.level,
         student: studentSelection,
       })
-    fetchUserDetail()
+      setLoading(false)
+      toast.success('Profile Updated!')
+      fetchUserDetail()
+      return navigate('/notes')
     }
-      toast.info("Profile Updated!")
-      return navigate('../notes')
+    catch(err){
+      console.log(err.message)
+    }
   }
 
-  
-  
   // Handle student or not selection state 
   function handleStudentSelection(e){
     
@@ -146,20 +148,15 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
     color: "black",
 }
 
+if(loading){
+  return <FullscreenLoader />
+}
  
 
 
 // component body
   return (
     <div id='login'>
-      {loading 
-      
-      ? 
-      
-      <HashLoader /> 
-      
-      :
-
         <form className='confirm' data-aos="fade" data-aos-easing="ease-out">
               <h3>We need few details about you...</h3>
               <p>Are you an Engineering Student of the University of Maiduguri?</p>
@@ -175,7 +172,6 @@ const takenUsername = regUsernames.length > 0 && regUsernames[0].username
               </div>
               <br />
         </form>
-      }
 
       {/* form to display if user is registering as a student */}
       {studentSelection === "yes" 

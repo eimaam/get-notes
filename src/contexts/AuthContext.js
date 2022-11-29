@@ -13,18 +13,20 @@ export const useAuth = () => {
 }
 
 export default function AuthProvider({ children }) {
-
     const navigate = useNavigate()
+    // document reference in firestore db
     const DocRef = collection(database, "userDetails")
 
 
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [isLogged, setIsLogged] = useState(false)
     const [user, setUser] = useState(null)
 
     useEffect(() => {
+        setLoading(true)
+        
         const getData = async () => {
             onAuthStateChanged(auth, async data => {
                 if(data){
@@ -37,19 +39,18 @@ export default function AuthProvider({ children }) {
                                 email: data.email 
                             })
                         }
+                        setUser(data)
                     }
                     catch(err){
                         console.log(err.message)
                     }                
                 }
-                setUser(data)
-                setLoading(false)
             })
             }
         getData()
     }, [])
-    
 
+    
     // log in with gmail -- pop up
     const logInWithPopUp = async () => {
         // await setPersistence(auth, browserLocalPersistence)
@@ -74,17 +75,13 @@ export default function AuthProvider({ children }) {
 
     const logOut = async () => {
         setIsLogged(false)
+        setLoading(false)
         signOut(auth)
         .then(() => {
             setUser(null)
             localStorage.clear()
             toast.info("LOGGED OUT!")
         })
-        if(!user){
-            navigate('../login')
-        }else{
-            navigate('./')
-        }
     }
 
     

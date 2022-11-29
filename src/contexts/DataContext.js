@@ -1,4 +1,4 @@
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, onSnapshot, query, QuerySnapshot, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -24,37 +24,41 @@ export default function DataProvider({ children }) {
     const { user, loading, setLoading} = useAuth()
     const [userInfo, setUserInfo] = useState({})
 
-
     // fetch all all data linked to logged in user and save in userInfo state
-    const fetchUserDetail = () => {
+    const fetchUserDetail = async () => {
         try{
-            const data =  getDoc(doc(database, "userDetails", user.email))
-            .then(res => {
-                setUserInfo(res.data())
+            const q = query(collection(database, "userDetails"), where("email", "==", user.email))
+            const querySnapshot = await getDocs(q)
+            querySnapshot.forEach((doc) => {
+                setUserInfo(doc.data())
             })
+            setLoading(false)
         }
         catch(err){
             if(err.message === 'Failed to get document because the client is offline.'){
                 toast.error('Couldn\'t load NOTES. You appear to be OFFLINE!')
+            }else{
+                console.log(err.message)
             }
-            console.log(err.message)
         }
+        setLoading(false)
     }
-
-
+    
+    // run fetch user detail anytime user state changes
     useEffect(() => {
+        
         fetchUserDetail()
+
     }, [user])
 
-    
-    
-  
+    console.log(loading)
+
     const value = {
         userInfo,
-        fetchUserDetail,
         setUserInfo,
         setHideNav,
         hideNav,
+        fetchUserDetail,
     }
 
     return (

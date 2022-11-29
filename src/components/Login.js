@@ -7,8 +7,6 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../contexts/DataContext';
 import { HashLoader, BeatLoader } from "react-spinners"
-// AOS import
-import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { FaAt, FaKey, FaUser, FaUserLock } from 'react-icons/fa';
 // ..
 
@@ -19,9 +17,10 @@ export default function Login() {
 
 
   useEffect(() => {
+    setLoading(false)
     onAuthStateChanged(auth, data => {
         if(data){
-          navigate('/notes')
+          navigate('notes')
         }
     })
 }, [])
@@ -51,6 +50,7 @@ export default function Login() {
         .then((res) => {
           toast.success(`Welcome...👋`)
           navigate('/welcome') 
+          setLoading(false)
         })
       }
       catch(err){
@@ -71,13 +71,17 @@ export default function Login() {
           toast.error('Retry...')
         }
       }
-      setLoading(false)
+      // setLoading(false)
     }
   
+
+
+
+
+    
   return (
       <div id='login' onClick={() => setHideNav(true)} data-aos="flip-up" data-aos-easing="ease-in">
-        {loading ? <BeatLoader /> : 
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
           <h2>Hello there!👋 </h2>
           <p>Enter your log in credentials to gain access </p>
@@ -116,10 +120,9 @@ export default function Login() {
           <p>Don't have an account yet? <Link to="/signup" style={{color: '#ffbd0c'}}>SIGN UP!</Link></p>
           <p>or</p>
           <button onClick={logInWithPopUp} className='flex'>
-            Sign up with <FcGoogle />
+            Log in with <FcGoogle />
           </button>
       </form>
-          }
       </div>
         )
       }

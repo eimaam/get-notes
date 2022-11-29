@@ -9,11 +9,11 @@ import { HashLoader } from 'react-spinners'
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io'
 import { GiWhiteBook } from 'react-icons/gi'
 import { NotesLayout } from './NotesLayout'
+import { Navigate } from 'react-router-dom'
 
 export default function Notes() {
-
-    const { isLogged, setIsLogged, navigate, user, setUser, loading, setLoading } = useAuth()
-    const { userInfo, setHideNav, fetchUserDetail } = useData();
+    const { navigate } = useAuth()
+    const { userInfo, setHideNav } = useData();
     // state to manage accordions: setting show and hide
     const [showLectureNotes, setShowLectureNotes] = useState(false)
     const [showOtherNotes, setShowOtherNotes] = useState(false)
@@ -103,14 +103,9 @@ export default function Notes() {
 
     // Get all Notes all notes
     useEffect(() => {
-        setLoading(true)
-
         getAllNotes()
-
-        setTimeout(() => {
-            setLoading(false)
-        }, 5000);
     }, [userInfo])
+
     
     // display Levels - accordion
     function showCategory(cat, setCat){
