@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 export default function FootNote() {
   return (
@@ -7,15 +9,14 @@ export default function FootNote() {
             <ul>
                 <li>Quick Links:</li>
                 <li><a href="/games"> Play Games </a></li>
-                <li>HOW-TO</li>
-                <li>getNOTES</li>
-                <li>Upload Notes</li>
-                <li>SIGN IN</li>
-                <li>HOME</li>
+                <li><HashLink to="#howTo"> HOW-TO</HashLink></li>
+                <li><Link to="notes">getNOTES</Link></li>
+                <li><Link to="upload">Upload Notes</Link></li>
+                <li><Link to="login">Sign in</Link></li>
             </ul>
             <ul>
                 <li>Reach us:</li>
-                <li>Mail: </li>
+                <li>Mail: leadtechie@gmail.com</li>
                 <li>Twitter</li>
                 <li><a href='wa.me/+2348068375557'> WhatsApp</a></li>
             </ul>
