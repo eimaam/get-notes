@@ -1,5 +1,4 @@
-    import React, { useEffect } from 'react'
-    import {FaArrowCircleUp} from "react-icons/fa"
+    import React from 'react'
     import FootNote from './LandingPage/FootNote'
 
     export const TakeARest = (props) => {
@@ -22,11 +21,6 @@
                 <p>Don't let them get you carried away though 😅 </p>
             </div>
             <div className='games--section'>
-                {/* <GameCard 
-                gameLink={<iframe  allow="fullscreen; encrypted-media" src="https://play.idevgames.co.uk/embed/galactic-wars" frameBorder="0" allowFullScreen="true" msallowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">Browser not compatible.</iframe>}
-                gameTitle="Galactic Wars"
-                desc="Destroy all the enemies, collect energy capsules to upgrade your ship and face the destroyer galactus x without being destroyed to save our planet. Use Z to shoot and cursor keys to move"
-                /> */}
                 <GameCard 
                     gameLink={<iframe allowFullScreen="true" allow="fullscreen; encrypted-media" src="https://games.construct.net/1463/latest" frameBorder="0" msallowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" allowpaymentrequest="false" referrerPolicy="unsafe-url" sandbox="allow-same-origin allow-forms allow-scripts allow-pointer-lock allow-orientation-lock allow-popups" scrolling="no">
                                 </iframe>}

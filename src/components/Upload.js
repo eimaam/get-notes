@@ -49,7 +49,6 @@ export default function Upload() {
 
     // end of date formatting
 
-
   // function to get file type from added file
   function getFileType(){
     if(file){

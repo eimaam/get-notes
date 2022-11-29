@@ -20,13 +20,11 @@ export default function AuthProvider({ children }) {
 
     const [message, setMessage] = useState('')
     const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [isLogged, setIsLogged] = useState(false)
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        setLoading(true)
-        
         const getData = async () => {
             onAuthStateChanged(auth, async data => {
                 if(data){
@@ -40,6 +38,7 @@ export default function AuthProvider({ children }) {
                             })
                         }
                         setUser(data)
+                        setLoading(false)
                     }
                     catch(err){
                         console.log(err.message)

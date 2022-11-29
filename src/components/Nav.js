@@ -2,8 +2,7 @@ import React from 'react';
 import { Link, NavLink } from "react-router-dom"
 import { useAuth } from '../contexts/AuthContext';
 import { useData } from '../contexts/DataContext';
-import { useEffect } from 'react';
-import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt, FaGamepad} from 'react-icons/fa';
+import { FaBars, FaTimes, FaUser, FaUserCog, FaSignOutAlt } from 'react-icons/fa';
 import { TbBookDownload, TbBookUpload } from 'react-icons/tb';
 import { RiHome4Line } from 'react-icons/ri';
 import { GrGamepad } from 'react-icons/gr';

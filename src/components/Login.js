@@ -6,8 +6,8 @@ import { auth } from '../firebaseConfig';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { useData } from '../contexts/DataContext';
-import { HashLoader, BeatLoader } from "react-spinners"
-import { FaAt, FaKey, FaUser, FaUserLock } from 'react-icons/fa';
+import { BeatLoader } from "react-spinners"
+import { FaKey, FaUser } from 'react-icons/fa';
 // ..
 
 

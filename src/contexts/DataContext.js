@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, onSnapshot, query, QuerySnapshot, where } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -21,11 +21,12 @@ export default function DataProvider({ children }) {
     // NAV hide state manager: managing hide navigation bar on clicking outside of the nav
     const [hideNav, setHideNav] = useState(true);
 
-    const { user, loading, setLoading} = useAuth()
+    const { user, setLoading} = useAuth()
     const [userInfo, setUserInfo] = useState({})
 
     // fetch all all data linked to logged in user and save in userInfo state
     const fetchUserDetail = async () => {
+        setLoading(true)
         try{
             const q = query(collection(database, "userDetails"), where("email", "==", user.email))
             const querySnapshot = await getDocs(q)
@@ -41,6 +42,7 @@ export default function DataProvider({ children }) {
                 console.log(err.message)
             }
         }
+        setLoading(false)
     }
     
     // run fetch user detail anytime user state changes
@@ -49,6 +51,7 @@ export default function DataProvider({ children }) {
         fetchUserDetail()
 
     }, [user])
+
 
 
     const value = {

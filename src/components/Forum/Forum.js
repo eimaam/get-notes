@@ -15,11 +15,13 @@ import { ProfileModal } from './ProfileModal'
 import { toast } from 'react-toastify'
 
 export const Forum = () => {
-    const { userInfo, fetchUserDetails } = useData()
-    const {isLogged, loading, setLoading, navigate} = useAuth()
+    const { userInfo } = useData()
+    const {loading, setLoading, navigate} = useAuth()
 
     // ref to manage scroll to end of message position
     const messagesEndRef = useRef(null)
+
+    console.log(loading)
 
     useEffect(() => {
         onAuthStateChanged(auth, data => {
