@@ -21,8 +21,6 @@ export const Forum = () => {
     // ref to manage scroll to end of message position
     const messagesEndRef = useRef(null)
 
-    console.log(loading)
-
     useEffect(() => {
         onAuthStateChanged(auth, data => {
             data && navigate("/forum")
