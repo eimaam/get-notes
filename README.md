@@ -141,16 +141,6 @@ To run the project, execute the following command:
   npm run start
 ```
 
-### Run tests
-
-To run tests, run the following command:
-
-
-```sh
-  npm run test
-```
---->
-
 ### Deployment
 
 You can deploy this via Firebase or Vercel (make sure to add the env variables via Vercel settings environment variables)
