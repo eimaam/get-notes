@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="" alt="logo" width="140"  height="auto" />
+  <img src="https://firebasestorage.googleapis.com/v0/b/myportfolio-1b84c.appspot.com/o/projects%2Fget-notes-banner.svg?alt=media&token=8c75be4d-1412-4368-962e-19b0360facac" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>getNOTES | Student Social e-Library</b></h3>
