@@ -1,175 +1,70 @@
-<a name="readme-top"></a>
+# Getting Started with Create React App
 
-<div align="center">
-  <img src="https://firebasestorage.googleapis.com/v0/b/myportfolio-1b84c.appspot.com/o/projects%2Fget-notes-banner.svg?alt=media&token=8c75be4d-1412-4368-962e-19b0360facac" alt="logo" width="140"  height="auto" />
-  <br/>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-  <h3><b>getNOTES | Student Social e-Library</b></h3>
+## Available Scripts
 
-</div>
+In the project directory, you can run:
 
-<!-- TABLE OF CONTENTS -->
+### `npm start`
 
-# 📗 Table of Contents
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-<!-- PROJECT DESCRIPTION -->
+### `npm test`
 
-# 📖 getNOTES <a name="about-project"></a>
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-**getNOTES** is a Fullstack WebApp - mini e-library platform that allows the sharing of Notes in different formats (pdf, ppt, txt, docx, mp3 etc) from digital to audio notes. Built purposely to ease access to Lecture notes in the Faculty of Engineering (My Faculty) in my Institute. Notes are uploaded by the Students themselves and managed by an Admin.
+### `npm run build`
 
-## 🛠 Built With <a name="built-with"></a>
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Tech Stack <a name="tech-stack"></a>
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-    <li><a href="https://sass.org/">SASS</a></li>
-    <li><a href="#">React Toastify</a></li>
-  </ul>
-</details>
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://console.firebase.com/">Firebase</a></li>
-  </ul>
-</details>
+### `npm run eject`
 
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.firebase.com/">FireStore</a></li>
-  </ul>
-</details>
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-<!-- Features -->
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Key Features <a name="key-features"></a>
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-- **Upload/Add Notes**
-- **Games Forum**
-- **Forum - With over 10 Groups**
-- **Sign Up**
-- **Profile - Unique Username**
-- **Profile Management**
-- **Announcement Page**
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-<!-- LIVE DEMO -->
+### Code Splitting
 
-## 🚀 Live Demo <a name="live-demo"></a>
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-- [Live Demo Link](https://getnotes.xyz)
+### Analyzing the Bundle Size
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-<!-- GETTING STARTED -->
+### Making a Progressive Web App
 
-## 💻 Getting Started <a name="getting-started"></a>
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-To get a local copy up and running, follow these steps.
+### Advanced Configuration
 
-### Prerequisites
-
-In order to run this project you need:
-- Firebase Account
-
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
-
-### Setup
-
-Clone this repository to your desired folder:
-
-Example commands:
-
-```sh
-  cd my-folder
-  git clone git@github.com:myaccount/https://github.com/eimaam/get-notes.git
-```
-
-- Create `New Project` in Firebase Console
-- Create `.env.local` file and paste the new firebase project configuration data according using the format `REACT_APP_API_KEY= x132434`
-
-### Install
-
-Install this project with:
-
- Use `npm install` or `yarn install`
-```sh
-  cd my-project
-  npm install
-```
-
-### Usage
-
-To run the project, execute the following command:
-
-
-```sh
-  npm run start
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
 ### Deployment
 
-You can deploy this via Firebase or Vercel (make sure to add the env variables via Vercel settings environment variables)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### `npm run build` fails to minify
 
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a name="future-features"></a>
-
-
-- [ ] **Make open to all Faculties in the Institute**
-- [ ] **Integrate a marketplace**
-- [ ] **Add a Poll to the Forum**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- SUPPORT -->
-
-## ⭐️ Show your support <a name="support"></a>
-
-If you like this project kindly share and recommend my brand for Works.
-
-
-<!-- LICENSE -->
-
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./LICENSE) licensed.
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
