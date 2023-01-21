@@ -27,6 +27,7 @@ export default function Upload() {
   const [fileType, setFileType] = useState("")
 
   const [uploadProgress, setUploadProgress] = useState(null)
+  const [uploadComplete, setUploadComplete] = useState(false)
   const storageRef = ref(storage, `/notes/${file.name}`)
 
   // DATE: creating date format Day/Month
@@ -97,7 +98,8 @@ export default function Upload() {
         // download url
         await getDownloadURL(uploadTask.snapshot.ref)
         .then((url) => {
-            return setFileURL(url);
+            setFileURL(url);
+            return setUploadComplete(prev => !prev)
         });
       }
   );
@@ -216,7 +218,7 @@ export default function Upload() {
 
         {uploadProgress !== null && uploadProgress < 100 && <button><BeatLoader color='#344648' /></button>}
         {uploadProgress > 1 ? '' : <button onClick={uploadFile}>check file </button>}
-        {uploadProgress === 100 && <input type="submit" value="UPLOAD" />}
+        {uploadComplete && <input type="submit" value="UPLOAD" />}
         {loading && <BeatLoader color='#fff'/>}
       </form>
       }
