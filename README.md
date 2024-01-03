@@ -116,7 +116,7 @@ Example commands:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/https://github.com/eimaam/get-notes.git
+  git clone https://github.com/eimaam/get-notes.git
 ```
 
 - Create `New Project` in Firebase Console
